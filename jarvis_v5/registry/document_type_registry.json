@@ -1,0 +1,698 @@
+{
+  "version": "v5.0.0-alpha.35.17",
+  "registry": "document_types",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "document_read": false,
+  "ocr_enabled": false,
+  "rag_enabled": false,
+  "document_types": [
+    {
+      "document_type_key": "acoustic_report",
+      "display_name": "Acoustic Report",
+      "aliases": [
+        "acoustic report",
+        "acoustic assessment",
+        "noise report"
+      ],
+      "source_authority_key": "consultant_report",
+      "source_authority_level": "consultant_report",
+      "allowed_extraction_goals": [
+        "identify_acoustic_requirements",
+        "extract_wall_floor_ceiling_rating_impacts",
+        "extract_glazing_door_seal_impacts",
+        "extract_testing_commissioning_requirements",
+        "generate_qs_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "wall acoustic ratings",
+        "ceiling insulation/acoustic build-up",
+        "floor impact/acoustic treatment",
+        "glazing acoustic rating",
+        "door seals / acoustic seals",
+        "plant noise attenuation",
+        "construction noise/vibration controls",
+        "testing / certification requirements"
+      ],
+      "boq_risk_fields": [
+        "missing acoustic insulation",
+        "missing door seals",
+        "wrong glazing allowance",
+        "missing testing/certification item",
+        "spec/report mismatch"
+      ],
+      "rfi_candidate_fields": [
+        "confirm acoustic rating per wall type",
+        "confirm glazing acoustic performance",
+        "confirm whether door seals are included",
+        "confirm acoustic insulation extent",
+        "confirm testing/certification requirements"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "j1v3_jv3_energy_report",
+      "display_name": "J1V3 / JV3 Energy Report",
+      "aliases": [
+        "j1v3 report",
+        "jv3 report",
+        "energy report",
+        "section j report",
+        "esd energy report"
+      ],
+      "source_authority_key": "consultant_report",
+      "source_authority_level": "consultant_report_statutory_support",
+      "allowed_extraction_goals": [
+        "identify_envelope_requirements",
+        "extract_insulation_glazing_performance_assumptions",
+        "extract_services_lighting_assumptions",
+        "generate_qs_scope_impacts",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "roof insulation",
+        "wall insulation",
+        "slab/floor insulation",
+        "glazing performance assumptions",
+        "shading requirements",
+        "air tightness/sealing requirements",
+        "lighting assumptions",
+        "mechanical/services assumptions"
+      ],
+      "boq_risk_fields": [
+        "missing insulation scope",
+        "wrong glazing performance allowance",
+        "services assumption not in drawings/specs",
+        "report assumptions not carried to trade scopes"
+      ],
+      "rfi_candidate_fields": [
+        "confirm insulation R-values",
+        "confirm glazing U-value/SHGC assumptions",
+        "confirm whether modelling assumptions are included in specs",
+        "confirm responsibility for sealing/thermal breaks"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "bca_ncc_report",
+      "display_name": "BCA / NCC Report",
+      "aliases": [
+        "bca report",
+        "ncc report",
+        "building code report",
+        "certifier report"
+      ],
+      "source_authority_key": "certifier_report",
+      "source_authority_level": "certifier_report_statutory_reference",
+      "allowed_extraction_goals": [
+        "identify_compliance_scope_items",
+        "extract_fire_access_egress_requirements",
+        "extract_compartmentation_requirements",
+        "generate_qs_scope_risks",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "fire-rated walls/doors",
+        "egress doors/hardware",
+        "stair/handrail requirements",
+        "accessibility-related scope",
+        "signage",
+        "fire stopping",
+        "compartmentation",
+        "certification/testing requirements"
+      ],
+      "boq_risk_fields": [
+        "missing fire-rated construction",
+        "missing egress hardware",
+        "missing signage",
+        "missing certification/testing",
+        "report/drawing mismatch"
+      ],
+      "rfi_candidate_fields": [
+        "confirm fire rating requirements",
+        "confirm door hardware requirements",
+        "confirm BCA/NCC report scope where inconsistent",
+        "confirm certification deliverables"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "fire_engineering_report",
+      "display_name": "Fire Engineering Report",
+      "aliases": [
+        "fire engineering report",
+        "fire strategy report",
+        "performance solution report"
+      ],
+      "source_authority_key": "fire_engineer_report",
+      "source_authority_level": "fire_engineer_report",
+      "allowed_extraction_goals": [
+        "extract_performance_solution_requirements",
+        "identify_fire_safety_scope_impacts",
+        "extract_testing_commissioning_requirements",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "fire-rated construction",
+        "fire stopping",
+        "smoke seals",
+        "fire/smoke doors",
+        "sprinkler or detection assumptions",
+        "smoke control measures",
+        "performance solution requirements",
+        "testing/commissioning/certification"
+      ],
+      "boq_risk_fields": [
+        "performance solution not priced",
+        "fire stopping gaps",
+        "missing fire seals",
+        "mechanical/fire services assumptions not included",
+        "certification responsibility unclear"
+      ],
+      "rfi_candidate_fields": [
+        "confirm performance solution scope",
+        "confirm trade responsibility for fire stopping",
+        "confirm fire door/seal requirements",
+        "confirm required commissioning/testing"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "access_report",
+      "display_name": "Access Report",
+      "aliases": [
+        "access report",
+        "accessibility report",
+        "dDA report"
+      ],
+      "source_authority_key": "access_consultant_report",
+      "source_authority_level": "access_consultant_report",
+      "allowed_extraction_goals": [
+        "extract_accessibility_scope_items",
+        "identify_door_ramp_handrail_sanitary_impacts",
+        "generate_boq_risks",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "accessible doors/clearances",
+        "ramps",
+        "handrails",
+        "tactile indicators",
+        "accessible sanitary fixtures",
+        "signage",
+        "thresholds",
+        "circulation clearances"
+      ],
+      "boq_risk_fields": [
+        "missing tactile indicators",
+        "missing accessible signage",
+        "door hardware/clearances not allowed",
+        "accessible fixture scope incomplete"
+      ],
+      "rfi_candidate_fields": [
+        "confirm accessible door hardware requirements",
+        "confirm tactile indicator extent",
+        "confirm accessible sanitary fixture scope",
+        "confirm signage requirements"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "stormwater_report",
+      "display_name": "Stormwater Report",
+      "aliases": [
+        "stormwater report",
+        "civil stormwater report",
+        "drainage report"
+      ],
+      "source_authority_key": "civil_consultant_report",
+      "source_authority_level": "civil_consultant_report",
+      "allowed_extraction_goals": [
+        "extract_drainage_scope_impacts",
+        "identify_detention_retention_requirements",
+        "identify_pits_pipes_tanks",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "stormwater pits",
+        "pipework",
+        "OSD tanks",
+        "rainwater tanks",
+        "pumps",
+        "grates",
+        "connections",
+        "erosion/sediment controls",
+        "civil testing/certification"
+      ],
+      "boq_risk_fields": [
+        "missing OSD tank",
+        "pit/pipe mismatch",
+        "council condition not priced",
+        "pump/control scope unclear"
+      ],
+      "rfi_candidate_fields": [
+        "confirm pit/pipe schedule",
+        "confirm OSD/rainwater tank requirements",
+        "confirm council condition requirements",
+        "confirm connection/discharge point"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "traffic_report",
+      "display_name": "Traffic Report",
+      "aliases": [
+        "traffic report",
+        "traffic impact assessment",
+        "parking report"
+      ],
+      "source_authority_key": "traffic_consultant_report",
+      "source_authority_level": "traffic_consultant_report",
+      "allowed_extraction_goals": [
+        "extract_parking_loading_access_requirements",
+        "identify_line_marking_signage_scope",
+        "generate_qs_scope_risks",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "car parking layout",
+        "line marking",
+        "traffic signage",
+        "loading bay requirements",
+        "vehicle access works",
+        "bollards/wheel stops",
+        "roadworks/public domain interface"
+      ],
+      "boq_risk_fields": [
+        "missing line marking",
+        "missing signage",
+        "loading bay requirements not included",
+        "external/council works unclear"
+      ],
+      "rfi_candidate_fields": [
+        "confirm line marking/signage scope",
+        "confirm loading bay requirements",
+        "confirm public road/interface works",
+        "confirm carpark fixture responsibilities"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "geotech_report",
+      "display_name": "Geotech Report",
+      "aliases": [
+        "geotech report",
+        "geotechnical report",
+        "site investigation report"
+      ],
+      "source_authority_key": "geotechnical_consultant_report",
+      "source_authority_level": "geotechnical_consultant_report",
+      "allowed_extraction_goals": [
+        "extract_ground_condition_risks",
+        "identify_excavation_foundation_impacts",
+        "identify_dewatering_shoring_risks",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "excavation class assumptions",
+        "rock excavation risk",
+        "dewatering",
+        "groundwater",
+        "shoring/retention",
+        "foundation recommendations",
+        "soil disposal/contamination notes",
+        "testing/inspection requirements"
+      ],
+      "boq_risk_fields": [
+        "rock not allowed",
+        "dewatering not allowed",
+        "contaminated material risk",
+        "retention/shoring not scoped",
+        "foundation recommendation mismatch"
+      ],
+      "rfi_candidate_fields": [
+        "confirm excavation classification",
+        "confirm groundwater/dewatering allowance",
+        "confirm rock excavation basis",
+        "confirm inspection/testing requirements"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "arborist_report",
+      "display_name": "Arborist Report",
+      "aliases": [
+        "arborist report",
+        "tree report",
+        "tree protection report"
+      ],
+      "source_authority_key": "arborist_consultant_report",
+      "source_authority_level": "arborist_consultant_report",
+      "allowed_extraction_goals": [
+        "extract_tree_protection_requirements",
+        "identify_removal_retention_scope",
+        "identify_root_zone_constraints",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "tree removal",
+        "tree protection fencing",
+        "root protection zones",
+        "arborist supervision",
+        "pruning",
+        "public/council tree constraints",
+        "temporary protection"
+      ],
+      "boq_risk_fields": [
+        "missing tree protection",
+        "arborist supervision not allowed",
+        "council tree constraints not priced",
+        "root zone excavation restrictions"
+      ],
+      "rfi_candidate_fields": [
+        "confirm trees to remove/retain",
+        "confirm tree protection zone requirements",
+        "confirm arborist supervision frequency",
+        "confirm council approval conditions"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "da_consent_council_conditions",
+      "display_name": "DA Consent / Council Conditions",
+      "aliases": [
+        "da consent",
+        "development consent",
+        "council conditions",
+        "planning consent"
+      ],
+      "source_authority_key": "council_condition",
+      "source_authority_level": "statutory_condition_council_condition",
+      "allowed_extraction_goals": [
+        "extract_cost_affecting_conditions",
+        "identify_preconstruction_conditions",
+        "identify_public_domain_civil_requirements",
+        "generate_rfi_candidates"
+      ],
+      "qs_scope_impact_fields": [
+        "public domain works",
+        "traffic management",
+        "erosion/sediment controls",
+        "tree protection",
+        "stormwater conditions",
+        "certification requirements",
+        "dilapidation reports",
+        "hours/noise constraints",
+        "authority fees/bonds placeholders"
+      ],
+      "boq_risk_fields": [
+        "council condition not carried in BOQ",
+        "public domain works missing",
+        "temporary controls missing",
+        "certification/reporting costs missed"
+      ],
+      "rfi_candidate_fields": [
+        "confirm which council conditions are contractor scope",
+        "confirm public domain works extent",
+        "confirm temporary control requirements",
+        "confirm authority fee/bond treatment"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "specification",
+      "display_name": "Specification",
+      "aliases": [
+        "specification",
+        "specs",
+        "project specification",
+        "technical specification"
+      ],
+      "source_authority_key": "specification",
+      "source_authority_level": "project_specification",
+      "allowed_extraction_goals": [
+        "extract_material_system_requirements",
+        "identify_quality_testing_warranty_items",
+        "identify_scope_inclusions_exclusions",
+        "generate_boq_description_risks"
+      ],
+      "qs_scope_impact_fields": [
+        "material/system requirements",
+        "supplier/brand requirements",
+        "finish requirements",
+        "testing requirements",
+        "warranties",
+        "mockups/samples",
+        "installation standards",
+        "scope inclusions/exclusions"
+      ],
+      "boq_risk_fields": [
+        "BOQ description too generic",
+        "warranty/testing not priced",
+        "specified system not reflected in scope",
+        "drawing/spec mismatch"
+      ],
+      "rfi_candidate_fields": [
+        "confirm specified system",
+        "confirm warranty/testing requirements",
+        "confirm scope inclusions/exclusions",
+        "confirm precedence between drawings and specification"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    },
+    {
+      "document_type_key": "addenda_rfi_log",
+      "display_name": "Addenda / RFI Logs",
+      "aliases": [
+        "addenda",
+        "addendum",
+        "rfi log",
+        "rfi register",
+        "clarification register",
+        "site instruction log"
+      ],
+      "source_authority_key": "addendum",
+      "source_authority_level": "project_instruction_clarification_record",
+      "allowed_extraction_goals": [
+        "identify_scope_changes",
+        "identify_superseded_information",
+        "extract_pricing_impacts",
+        "generate_variation_or_rfi_followups"
+      ],
+      "qs_scope_impact_fields": [
+        "changed descriptions",
+        "changed quantities",
+        "new items",
+        "deleted items",
+        "clarified inclusions/exclusions",
+        "superseded drawings/specs",
+        "pricing instructions"
+      ],
+      "boq_risk_fields": [
+        "old information still used",
+        "scope change not priced",
+        "RFI answer conflicts with BOQ",
+        "addendum not reflected in current takeoff"
+      ],
+      "rfi_candidate_fields": [
+        "confirm superseded documents",
+        "confirm pricing impact of addendum",
+        "confirm whether RFI response changes BOQ item scope",
+        "confirm latest revision basis"
+      ],
+      "required_human_review": true,
+      "citation_source_placeholder": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false,
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "authority_contract_required": true,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false
+    }
+  ]
+}

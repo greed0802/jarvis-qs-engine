@@ -1,0 +1,49 @@
+{
+  "version": "v5.0.0-alpha.35.3",
+  "results": [
+    {
+      "pack": "006",
+      "passed": 50,
+      "failed": 0,
+      "overall": "PASS"
+    },
+    {
+      "pack": "007",
+      "passed": 50,
+      "failed": 0,
+      "overall": "PASS"
+    },
+    {
+      "pack": "008",
+      "passed": 50,
+      "failed": 0,
+      "overall": "PASS"
+    },
+    {
+      "pack": "009",
+      "passed": 25,
+      "failed": 25,
+      "overall": "FAIL_EXPECTATION_CONFLICT_ONLY"
+    },
+    {
+      "pack": "010",
+      "passed": 25,
+      "failed": 25,
+      "overall": "FAIL_EXPECTATION_CONFLICT_ONLY"
+    },
+    {
+      "pack": "011",
+      "passed": 25,
+      "failed": 25,
+      "overall": "FAIL_EXPECTATION_CONFLICT_ONLY"
+    }
+  ],
+  "general_stub_remaining": 0,
+  "new_builder_task_shell_remaining": 0,
+  "safety": {
+    "workbook_read_any_true": false,
+    "engine_called_any_true": false,
+    "excel_created_any_true": false,
+    "legacy_builder_called_any_true": false
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "pack_name": "alpha35_19_workbook_permission_evidence_lock_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA35_19_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_ALPHA35_18_WORKBOOK_PERMISSION_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[9].policy_key",
+              "equals": "workbook_read_permission_contract"
+            },
+            {
+              "path": "$.policies[9].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].workbook_content_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].formula_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].cell_value_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].sheet_name_probe_allowed",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_TOOLS_REQUIRE_PERMISSION_BUT_CANNOT_READ",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[0].tool_key",
+              "equals": "builder"
+            },
+            {
+              "path": "$.tools[0].requires_workbook_permission_future",
+              "equals": true
+            },
+            {
+              "path": "$.tools[0].workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[1].workbook_content_read",
+              "equals": false
+            },
+            {
+              "path": "$.tools[2].formula_read",
+              "equals": false
+            },
+            {
+              "path": "$.tools[22].sheet_name_probe_allowed",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_FILE_PERMISSION_PLACEHOLDERS_STILL_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "file_requirements",
+          "method": "GET",
+          "endpoint": "/api/registry/file-requirements",
+          "assertions": [
+            {
+              "path": "$.file_requirements[59].file_key",
+              "equals": "workbook_file_reference"
+            },
+            {
+              "path": "$.file_requirements[59].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.file_requirements[60].file_key",
+              "equals": "allowed_sheet_scope"
+            },
+            {
+              "path": "$.file_requirements[60].sheet_name_probe_allowed",
+              "equals": false
+            },
+            {
+              "path": "$.file_requirements[61].file_key",
+              "equals": "allowed_range_scope"
+            },
+            {
+              "path": "$.file_requirements[61].formula_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_DIRECT_WORKBOOK_READ_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha3519_direct_workbook_read_pack",
+            "client_event_id": "alpha3519_direct_workbook_read_pack",
+            "text": "Open the workbook, list the sheet names, read all formulas and cell values."
+          },
+          "assertions": [
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_ALPHA35_17_SOURCE_AUTHORITY_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[0].can_certify_compliance",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[0].web_lookup_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_ALPHA35_16_DOCUMENT_CONTRACTS_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[8].tool_key",
+              "equals": "client_document_reader"
+            },
+            {
+              "path": "$.tools[8].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].document_read",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].ocr_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].rag_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_ALPHA35_12_ADVISORY_SAFETY_STILL_FALSE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha3519_advisory_safety",
+            "client_event_id": "alpha3519_advisory_safety",
+            "text": "Which tool should handle old and revised BOQ comparison?"
+          },
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+Jarvis v5.0.0-alpha.26.1 test run results
+
+PASS - python -m compileall -q jarvis_v5
+PASS - PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+Result: 212 passed
+
+PASS - Full built-in JSON pack sweep
+Packs: 24 / 24
+Tests: 106 / 106
+
+Safety:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false
+
+Protected Builder boundary files unchanged: 10 / 10

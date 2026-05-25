@@ -1,0 +1,398 @@
+{
+  "pack_name": "alpha31E_parser_function_unit_conflict_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA31E_PARSER_FORMWORKS_GUARD_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.scope",
+              "equals": "workbook_read_policy_review_no_content_read"
+            },
+            {
+              "path": "$.scope_metadata.parser_signal_helper_owner",
+              "equals": true
+            },
+            {
+              "path": "$.scope_metadata.formworks_unit_compatibility_guard",
+              "equals": true
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FORMWORKS_T_BLOCKS_FORMWORKS_M2_VALID",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_t",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_formworks_t",
+            "client_event_id": "start_t",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "formworks_t",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_formworks_t",
+            "client_event_id": "formworks_t",
+            "text": "Use XGETCUSTOM Formworks unit t"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "start_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_formworks_m2",
+            "client_event_id": "start_m2",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "formworks_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_formworks_m2",
+            "client_event_id": "formworks_m2",
+            "text": "Use XGETCUSTOM Formworks unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXISTING_INVALID_UNIT_CONFLICTS_STILL_BLOCK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_steel",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_steel",
+            "client_event_id": "start_steel",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "steel_no",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_steel",
+            "client_event_id": "steel_no",
+            "text": "Use Steel Surface Area unit no"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_reo",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_reo",
+            "client_event_id": "start_reo",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "reo_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_reo",
+            "client_event_id": "reo_m2",
+            "text": "Use Reinforcement Weight unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_count",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_count",
+            "client_event_id": "start_count",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "count_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_count",
+            "client_event_id": "count_m2",
+            "text": "Use XGETCOUNT m\u00b2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_wall",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_wall",
+            "client_event_id": "start_wall",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "wall_no",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_invalid_wall",
+            "client_event_id": "wall_no",
+            "text": "Use XGETWALLAREA with unit no"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXISTING_VALID_SETUP_EDITS_STILL_MUTATE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_count",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_count",
+            "client_event_id": "start_count",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "count_no",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_count",
+            "client_event_id": "count_no",
+            "text": "Use XGETCOUNT unit no"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "start_wall",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_wall",
+            "client_event_id": "start_wall",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "wall_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_wall",
+            "client_event_id": "wall_m2",
+            "text": "Use XGETWALLAREA unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "start_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_trade",
+            "client_event_id": "start_trade",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "wall_types",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "pack_alpha31E_valid_trade",
+            "client_event_id": "wall_types",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

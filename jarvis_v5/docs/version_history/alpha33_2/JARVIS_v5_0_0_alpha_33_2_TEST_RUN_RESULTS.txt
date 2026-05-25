@@ -1,0 +1,7 @@
+Jarvis v5.0.0-alpha.33.2 test run results
+
+Targeted artifact test: 1 passed.
+python -m compileall -q jarvis_v5: PASS.
+Smoke pytest suite in clean chunks: 275 passed.
+Built-in JSON pack sweep: 38/38 packs passed, 174/174 tests passed.
+Safety aggregate: workbook_read_any_true=false, engine_called_any_true=false, excel_created_any_true=false, legacy_builder_called_any_true=false.

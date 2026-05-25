@@ -1,0 +1,8 @@
+compileall: PASS
+pytest: PASS — 367 passed
+alpha35_16_document_contract_tests: PASS — 8/8
+alpha35_15_job_output_contract_tests: PASS — 8/8
+alpha35_14_tool_contract_map_tests: PASS — 6/6
+alpha35_12_advisory_regression_hardening_tests: PASS — 6/6
+alpha35_10_2_active_writing_report_preview_false_positive_tests: PASS — 3/3
+Safety: workbook_read_any_true=False; engine_called_any_true=False; excel_created_any_true=False; legacy_builder_called_any_true=False

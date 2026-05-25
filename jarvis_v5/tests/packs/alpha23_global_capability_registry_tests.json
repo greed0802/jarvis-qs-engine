@@ -1,0 +1,419 @@
+{
+  "pack_name": "alpha23_global_capability_registry_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA23_REGISTRY_SCOPE",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.scope",
+              "equals": "workbook_read_policy_review_no_content_read"
+            },
+            {
+              "path": "$.scope_metadata.global_capability_registry",
+              "equals": true
+            },
+            {
+              "path": "$.scope_metadata.future_tools_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "READ_ONLY_TOOL_AND_CAPABILITY_REGISTRIES",
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.tools[0].tool_key",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "capabilities",
+          "method": "GET",
+          "endpoint": "/api/registry/capabilities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[0].capability_key",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "READ_ONLY_CONNECTOR_MODEL_AND_ECOSYSTEM_REGISTRIES",
+      "steps": [
+        {
+          "name": "connectors",
+          "method": "GET",
+          "endpoint": "/api/registry/connectors",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.connector_called",
+              "equals": false
+            },
+            {
+              "path": "$.connectors[0].connector_key",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "models",
+          "method": "GET",
+          "endpoint": "/api/registry/models",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.model_called",
+              "equals": false
+            },
+            {
+              "path": "$.models[0].model_key",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "ecosystem",
+          "method": "GET",
+          "endpoint": "/api/registry/ecosystem-adapters",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.ecosystem_adapters[0].adapter_key",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QS_SCOPE_RFI_AND_FILE_REQUIREMENT_REGISTRIES",
+      "steps": [
+        {
+          "name": "scope",
+          "method": "GET",
+          "endpoint": "/api/registry/scope-advisors",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.scope_advisors[0].scope_advisor_key",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "files",
+          "method": "GET",
+          "endpoint": "/api/registry/file-requirements",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.file_requirements[0].file_key",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "rfi",
+          "method": "GET",
+          "endpoint": "/api/registry/rfi-templates",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.rfi_templates[0].template_key",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REQUIREMENT_CHECKS_ARE_METADATA_ONLY",
+      "steps": [
+        {
+          "name": "waterproofing_scope",
+          "method": "POST",
+          "endpoint": "/api/registry/requirement-check",
+          "json": {
+            "request": "What should I measure for waterproofing?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "registry_requirement_check"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capability_candidates",
+              "includes_all": [
+                "qs_scope_advice"
+              ]
+            },
+            {
+              "path": "$.tool_execution_called",
+              "equals": false
+            },
+            {
+              "path": "$.connector_called",
+              "equals": false
+            },
+            {
+              "path": "$.model_called",
+              "equals": false
+            },
+            {
+              "path": "$.install_command_run",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "smart_home",
+          "method": "POST",
+          "endpoint": "/api/registry/requirement-check",
+          "json": {
+            "request": "Control my lights from Jarvis."
+          },
+          "assertions": [
+            {
+              "path": "$.capability_candidates",
+              "includes_all": [
+                "smart_home_control"
+              ]
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.connector_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ROUTE_TO_CAPABILITY_DIAGNOSTICS_ONLY",
+      "steps": [
+        {
+          "name": "check_workbook",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a23_pack_diag_workbook",
+            "client_event_id": "a23_pack_diag_workbook_1",
+            "text": "Check this workbook."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.registry_assist.capability",
+              "equals": "workbook_tool_ambiguity"
+            },
+            {
+              "path": "$.registry_assist.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capability_candidates",
+              "includes_all": [
+                "workbook_tool_ambiguity"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "scope_advice",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a23_pack_diag_scope",
+            "client_event_id": "a23_pack_diag_scope_1",
+            "text": "What should I measure for waterproofing?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "registry_advisory_metadata_only"
+            },
+            {
+              "path": "$.registry_assist.capability",
+              "equals": "qs_scope_advice"
+            },
+            {
+              "path": "$.registry_assist.execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_BUILDER_SLOT_REDUCER_HAS_NO_REGISTRY_SIDE_EFFECT",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a23_pack_active_safe",
+            "client_event_id": "a23_pack_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "setup",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a23_pack_active_safe",
+            "client_event_id": "a23_pack_setup",
+            "text": "Use Wall Types XGETWALLAREA unit m2. Zone 1: Old and New. Use Head 2 for Zone 1. Levels GF to L3."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.registry_assist",
+              "not_exists": true
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

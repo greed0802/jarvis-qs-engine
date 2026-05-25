@@ -1,0 +1,157 @@
+{
+  "version": "v5.0.0-alpha.35.11",
+  "registry": "requirement_advisor",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "requirements": [
+    {
+      "requirement_key": "read_scanned_report",
+      "capability": "document_ocr",
+      "status": "planned_requires_install_or_model",
+      "required_install": [
+        "ocrmypdf",
+        "tesseract"
+      ],
+      "optional_model": [
+        "vision_model"
+      ],
+      "safe_first_mode": [
+        "read_only_summary",
+        "qs_scope_checklist"
+      ],
+      "blocked_actions": [
+        "auto_mutate_builder_plan"
+      ]
+    },
+    {
+      "requirement_key": "patch_backend_router",
+      "capability": "code_patch_worker",
+      "status": "planned_requires_fire_and_repo_policy",
+      "requires": [
+        "git_repo_connected",
+        "AGENTS.md_present",
+        "protected_system_rules",
+        "test_command_defined",
+        "FIRE_approval"
+      ]
+    },
+    {
+      "requirement_key": "smart_home_control",
+      "capability": "smart_home_control",
+      "status": "future_connector_required",
+      "requires": [
+        "device_allowlist",
+        "auth_token",
+        "command_safety_tiers"
+      ]
+    },
+    {
+      "requirement_key": "remote_access",
+      "capability": "remote_access_connector",
+      "status": "planned_high_risk_connector_required",
+      "requires": [
+        "cloudflare_access_policy",
+        "auth_gate",
+        "firewall_rules"
+      ]
+    },
+    {
+      "requirement_key": "qs_scope_advice",
+      "capability": "qs_scope_advice",
+      "status": "available_metadata_only",
+      "requires": [
+        "trade_or_scope_description"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_drafts",
+        "scope_risk_register"
+      ]
+    },
+    {
+      "requirement_key": "what_should_i_measure",
+      "capability": "qs_scope_advice",
+      "status": "metadata_only",
+      "requires": [
+        "trade_or_scope_name"
+      ],
+      "safe_first_mode": [
+        "measurement_checklist",
+        "file_requirements",
+        "rfi_templates"
+      ],
+      "blocked_actions": [
+        "auto_mutate_builder_plan",
+        "read_workbook_contents",
+        "execute_builder"
+      ]
+    },
+    {
+      "requirement_key": "what_files_do_i_need",
+      "capability": "file_requirement_advice",
+      "status": "metadata_only",
+      "requires": [
+        "trade_or_scope_name"
+      ],
+      "safe_first_mode": [
+        "required_files",
+        "optional_files",
+        "missing_information_questions"
+      ],
+      "blocked_actions": [
+        "read_project_documents_without_policy"
+      ]
+    },
+    {
+      "requirement_key": "draft_rfi",
+      "capability": "rfi_template_advice",
+      "status": "metadata_only",
+      "requires": [
+        "scope_gap_or_question"
+      ],
+      "safe_first_mode": [
+        "rfi_template",
+        "clarification_question"
+      ],
+      "blocked_actions": [
+        "send_email",
+        "mutate_builder_plan"
+      ]
+    },
+    {
+      "requirement_key": "future_tool_choice",
+      "capability": "capability_advisory",
+      "status": "metadata_only",
+      "requires": [
+        "user_goal"
+      ],
+      "safe_first_mode": [
+        "capability_candidates",
+        "tool_candidates",
+        "blocked_or_available_status"
+      ],
+      "blocked_actions": [
+        "execute_future_tool",
+        "enable_execution_flag"
+      ]
+    },
+    {
+      "requirement_key": "scope_risk_checklist",
+      "capability": "scope_risk_checklist",
+      "status": "metadata_only",
+      "requires": [
+        "trade_or_report_type"
+      ],
+      "safe_first_mode": [
+        "scope_risk_register",
+        "review_checklist",
+        "rfi_templates"
+      ],
+      "blocked_actions": [
+        "claim_compliance",
+        "read_report_without_policy",
+        "mutate_builder_plan"
+      ]
+    }
+  ]
+}

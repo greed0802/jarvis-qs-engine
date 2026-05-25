@@ -1,0 +1,62 @@
+{
+  "version": "v5.0.0-alpha.35.11",
+  "registry": "rfi_templates",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "rfi_templates": [
+    {
+      "template_key": "confirm_scope_extent",
+      "title": "Confirm scope extent",
+      "question_template": "Please confirm the extent of {scope_item}, including limits, locations, and exclusions.",
+      "reason_template": "The available documents do not clearly define the full extent. This affects quantities, inclusions, and pricing assumptions."
+    },
+    {
+      "template_key": "confirm_system_warranty",
+      "title": "Confirm system and warranty",
+      "question_template": "Please confirm the required system, supplier/manufacturer requirements, and warranty period for {trade}.",
+      "reason_template": "System and warranty requirements affect specification, BOQ descriptions, testing, and certification allowances."
+    },
+    {
+      "template_key": "confirm_heights_levels_locations",
+      "title": "Confirm heights, levels, and locations",
+      "question_template": "Please confirm the applicable heights, levels, locations, and extents for {scope_item}.",
+      "reason_template": "The documents do not clearly define where the item applies, which may affect quantity measurement and BOQ breakdown."
+    },
+    {
+      "template_key": "confirm_inclusions_exclusions",
+      "title": "Confirm inclusions and exclusions",
+      "question_template": "Please confirm whether {scope_item} includes associated trims, accessories, testing, certification, protection, preparation, and making good.",
+      "reason_template": "Inclusions and exclusions affect BOQ descriptions and avoid double counting or missing allowances."
+    },
+    {
+      "template_key": "confirm_testing_commissioning",
+      "title": "Confirm testing / commissioning",
+      "question_template": "Please confirm testing, commissioning, certification, and handover requirements for {trade}.",
+      "reason_template": "Testing/certification may require separate BOQ allowances or preliminaries."
+    },
+    {
+      "template_key": "confirm_drawing_spec_conflict",
+      "title": "Confirm drawing/specification conflict",
+      "question_template": "Please confirm which document takes precedence for {scope_item}, as the drawings and specification appear inconsistent.",
+      "reason_template": "Conflicting documents create quantity, specification, and pricing risk."
+    },
+    {
+      "template_key": "confirm_report_recommendation_inclusion",
+      "title": "Confirm report recommendation inclusion",
+      "question_template": "Please confirm whether the consultant report recommendation for {scope_item} is to be included in the BOQ scope.",
+      "reason_template": "Consultant report recommendations may not be fully reflected on drawings or schedules."
+    },
+    {
+      "template_key": "confirm_testing_commissioning_requirements",
+      "title": "Confirm testing and commissioning requirements",
+      "question_template": "Please confirm testing, commissioning, certification, warranty, and handover requirements for {trade}.",
+      "reason_template": "Testing and certification requirements can affect preliminaries, trade scope, and BOQ item descriptions."
+    },
+    {
+      "template_key": "confirm_builder_services_interface",
+      "title": "Confirm builder/services interface",
+      "question_template": "Please confirm whether {scope_item} is Builder scope, Services scope, specialist subcontractor scope, or excluded.",
+      "reason_template": "Interface ambiguity can cause duplication, omission, or trade gap risk."
+    }
+  ]
+}

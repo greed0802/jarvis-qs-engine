@@ -1,0 +1,5 @@
+python -m compileall -q jarvis_v5: PASS
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q jarvis_v5/tests/smoke: PASS in clean chunks
+Smoke tests: 275 passed
+Built-in JSON pack sweep: 38 / 38 packs passed, 174 / 174 tests passed
+Safety aggregate: workbook_read_any_true=false, engine_called_any_true=false, excel_created_any_true=false, legacy_builder_called_any_true=false

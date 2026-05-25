@@ -1,0 +1,8 @@
+# Duplicate Scan Report
+
+{
+  "duplicate_fastapi_routes": {},
+  "duplicate_same_file_top_level_definitions": [],
+  "duplicate_route_count": 0,
+  "duplicate_definition_count": 0
+}

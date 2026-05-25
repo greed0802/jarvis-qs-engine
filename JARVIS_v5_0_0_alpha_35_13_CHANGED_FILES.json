@@ -1,0 +1,642 @@
+[
+  {
+    "path": "CURRENT_BACKEND_STATUS_v5_alpha_35_13.md",
+    "before_sha256": null,
+    "after_sha256": "8c2a445e21e63dc6ba67e676262926da96368a801e1a63d94b7894e94bc525d1"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_CHANGED_FILES.json",
+    "before_sha256": null,
+    "after_sha256": "a793364d09886fd13f134b9a916acb2f194b2960902f52415db2fd16e7dc0178"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_CHANGE_REPORT.md",
+    "before_sha256": null,
+    "after_sha256": "d508665dc342bdc1171c77e0ec77fb793c6d2c68f6b2216301aad5530d58b360"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_DUPLICATE_SCAN.json",
+    "before_sha256": null,
+    "after_sha256": "4bc0a1625c2fbc9281c0177a4916aa0ffcddefc9e13799fc4950e73291e01f4f"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_DUPLICATE_SCAN_REPORT.md",
+    "before_sha256": null,
+    "after_sha256": "54213ea657a2836f0dfce5ce99accaee327876d843d6007f42359352951b786c"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_PACKAGE_HYGIENE.json",
+    "before_sha256": null,
+    "after_sha256": "139867c35d1d2ec43e9919a1e854d621d7346234225b19b1f3b46f879e8f03f4"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_PACKAGE_HYGIENE_REPORT.md",
+    "before_sha256": null,
+    "after_sha256": "018fe3c41ecb4b3702bfb666ab1133d5e3efa1dad3dc64651fd61759ee532b8f"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_PROTECTED_HASH_COMPARE.json",
+    "before_sha256": null,
+    "after_sha256": "7d39aadfba38e77c6d64e3beb18480a03c5bd9e29cf05372f2aeca48ec33c5ed"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_REGISTRY_EXECUTION_FLAG_SCAN.json",
+    "before_sha256": null,
+    "after_sha256": "047e0931fb16cd5ca13174c89839ebc276136b1566dbe442d6fd876deb2f3309"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_REGISTRY_EXECUTION_FLAG_SCAN_REPORT.md",
+    "before_sha256": null,
+    "after_sha256": "35686082a60779e7e40deb0056a669ee3b2465ef8a4355c426ea0425d3cadaf3"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_TEST_REPORT.md",
+    "before_sha256": null,
+    "after_sha256": "94d47aa69f767dc729a3041d49f6c1add0645b4ea3d4ec6903999261a7476031"
+  },
+  {
+    "path": "JARVIS_v5_0_0_alpha_35_13_TEST_RUN_RESULTS.txt",
+    "before_sha256": null,
+    "after_sha256": "a365c0d6f86526bf11582a922268322694e89f3f333ff10175ebd1550b378464"
+  },
+  {
+    "path": "NEXT_CHAT_HANDOFF_v5_alpha_35_13.md",
+    "before_sha256": null,
+    "after_sha256": "54343b1ed0d088b7a61f55e575324c0e48e1f8571f8432b6dcfa0f795c5875cb"
+  },
+  {
+    "path": "jarvis_v5/config.py",
+    "before_sha256": "698c876efe06a8c1b4e8b9040aa92a61af33241b74204aaeaaa56270737fcf82",
+    "after_sha256": "8e1214c574109a9faf1bc9febab2e37fbe1b19369f2194e20d18e7944dff6c3e"
+  },
+  {
+    "path": "jarvis_v5/data/active_tasks/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/adapters/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/attachments/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/contracts/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/conversations/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/engine_execution_requests/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/events/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/outputs/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/preflights/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/snapshots/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/data/test_reports/.keep",
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": null
+  },
+  {
+    "path": "jarvis_v5/docs/ACCEPTED_CHECKPOINT_ALPHA_35_12.md",
+    "before_sha256": null,
+    "after_sha256": "9dc241b737b7fa00139034ee79dcab6fea9277cdc27344e5af220b07d72f51e8"
+  },
+  {
+    "path": "jarvis_v5/docs/ADVISORY_ROUTE_CONTRACT.md",
+    "before_sha256": null,
+    "after_sha256": "186283c06467bbda06cb8c4c7a484f1bdd2ea993e8f360f7e380f100a9743449"
+  },
+  {
+    "path": "jarvis_v5/docs/ALPHA_35_13_SCOPE.md",
+    "before_sha256": null,
+    "after_sha256": "d63cd3ab34e5fdbfa0e8c73b4dc390d97600d14912985032e19b621d2058d499"
+  },
+  {
+    "path": "jarvis_v5/docs/PROTECTED_BUILDER_BOUNDARY_HASH_MANIFEST_ALPHA_35_13.md",
+    "before_sha256": null,
+    "after_sha256": "109dd2d2a009223acbf89c4266eedc337844fe0451d90b5be7cdbffe9fc2bf27"
+  },
+  {
+    "path": "jarvis_v5/docs/ROADMAP_AFTER_ALPHA_35_12.md",
+    "before_sha256": null,
+    "after_sha256": "825b56e09c7675839785ec7534ecfb053a37cbb7d1315097945f5ffb9d6e40b1"
+  },
+  {
+    "path": "jarvis_v5/docs/ROUTE_CONTRACTS.md",
+    "before_sha256": "cba116a1dfd61578ba0b80e8fdf2b686ccca262f85873314f6857545c3e80acd",
+    "after_sha256": "9d97a555d4bd936a03452b851db86267d64550f60565e6dbba2e86ecb1ce5d49"
+  },
+  {
+    "path": "jarvis_v5/docs/ROUTE_OWNERSHIP_MATRIX.md",
+    "before_sha256": "30542d59abed84d8aa2d46eb7b56f4e34681526bd9d71661d171197d233e71c5",
+    "after_sha256": "35a0245df1ee929f794a862a140fed9f0789892e99f1defc285b67531f348e4c"
+  },
+  {
+    "path": "jarvis_v5/tests/fixtures/contracts/wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1.json",
+    "before_sha256": "d47bc5660409b58dedd6bddd73913def39447eda44e552a05650f84946821463",
+    "after_sha256": "7de9795b5c6ee85a30062235e1e6344f62dc5a36f3c8cc8dcd7b7ed798df4ee9"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha11_contract_negative_guards.json",
+    "before_sha256": "5a47c3e8e6d14a09895c21f8ed8f3e29f530fd61f48a51cf887a1beac6f0cf17",
+    "after_sha256": "e7f696c2df7653f7d3c37cbfad1601abb41dc7a44e3ae2744cda202a207a74ec"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha15_review_readiness_tests.json",
+    "before_sha256": "a0fe8a0c2b6431844f2b6ff3dd645289890d9463087c61eb4c7567c1b2ed6351",
+    "after_sha256": "dcf30cc64b2e27080d02ba183791deb0e34babfc08d28cd57534d68afdfd768d"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha16_engine_preflight_tests.json",
+    "before_sha256": "9c490f01af368a0fce44bc5b01f32e19813faebbfc2e02bf53a99d5d530e2d08",
+    "after_sha256": "33a9e7c1c4eef75811e7c4c79a150a808df8232843210ab30cab2ce2cd8f9e4e"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha17_engine_execution_lock_tests.json",
+    "before_sha256": "7c09df26a31f9c3445f5994f2baed66662efdd34bb206038d13114dcbf93fffe",
+    "after_sha256": "fae32d944375339ca657eb35fbff96368fa24e3e8d79755c32aaefe1ca7705ee"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha18_1_safety_envelope_tests.json",
+    "before_sha256": "9667ee294a8881fb0fa49026a03355e4e8476b8ba90b465cc505559152d8896d",
+    "after_sha256": "de3bb742eb53fc14707dcf55ed13c566141f93c6fed300110795a656c6a9d76c"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha18_response_consistency_tests.json",
+    "before_sha256": "d15942ffee4ea86ab6b5b121647be3024a12c5b538cd92508d49d9fcaa47589e",
+    "after_sha256": "c6136f0777950fd4936f6e35c7e0b4dfa08fa17ba66bd46a90a1259f92c0f0d1"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha19_contract_fixture_replay_tests.json",
+    "before_sha256": "88bac8f237b9f6e4c301863fee4eda603e920fd0c2aaff85d03a07651fb5af0b",
+    "after_sha256": "2acac662aaf4e894341e2aeb479e41a9004f206c996591c5eae144d2ce7d440d"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha20_deep_weak_point_boundary_tests.json",
+    "before_sha256": "fac013f2de311cfabe928d7bfcd885ea2f0fb5f24c2de05bc74c5af8cdde2f5e",
+    "after_sha256": "a96668a4a50da1216e8f883adcd3f14a7c46e2d9b06c7adc44924ec9e4c607b5"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha20_legacy_import_boundary_audit_tests.json",
+    "before_sha256": "4d91a9dfe1ded74ff8cc8034abc20cb34524ed0add49536c3ee41caafbe06021",
+    "after_sha256": "41d71365704f66c757eb1253d3057cd682af16880019f5cc17978f623c5d47d1"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha21_function_unit_compatibility_tests.json",
+    "before_sha256": "a3f9b198431c84ecf996aa3ba2b9dd2d05c87114170029c03685f8ba4ea7abbe",
+    "after_sha256": "6b5829b895debe7428c66b16c6bf6d502412099fb8fa74936be511a7253acbb9"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_1_no_fallback_router_tightening_tests.json",
+    "before_sha256": "a656e838d998d8532f32da44fcc816f2d712553c618841517059cbc10af2bf45",
+    "after_sha256": "848f0ec946ac2f8cc4215db3aa3242b073784d137a7f65b05385a7bfa167d69b"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2a_router_confidence_shadow_tests.json",
+    "before_sha256": "31b6bdcb13af367eef9897d06f31dfca0698abddc517efaa82d05e3e71beb86d",
+    "after_sha256": "4d70ade090294ffa5be503dc87ce90183f61c7018febbd476cd50f6af29a49b6"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2b_limited_control_router_tests.json",
+    "before_sha256": "f4096518d5662b22acc078f58465f1cb7cde8a49a757efc5a368f2d06ac8c8b0",
+    "after_sha256": "1d95de456a9f0f912f24d5b65300bae4085d41de941822eebd966b69aa5a71d1"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2c_route_ownership_and_setup_normalization_tests.json",
+    "before_sha256": "4646e738d1f89ffe68436e7db8ff7732938f9ad4ba9fa8ae1a48e342bf52990a",
+    "after_sha256": "4bea581753874083014a0f172102f9ebfec05cd055bd4238da1ac7ceb57092b0"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2d_high_priority_ownership_repair_tests.json",
+    "before_sha256": "8606d7b4a7d503f15d8e884de6fbc24bb5d3bce5fc5d1de19ccf07e456bb3630",
+    "after_sha256": "54add2be1f5f12275f92e2ad1662bdd83e62c6f930ab4e2f1a7f32d47e5be13b"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2e_active_task_language_plan_cleanup_tests.json",
+    "before_sha256": "11e9b51bad50cbbb58d27d28af413e99dea2c4a96ad4af594d84afa52bed8828",
+    "after_sha256": "7d05d60874a36a5f8105ebbd71090d7e21c0c8dd2f76ba8082324330fac7a309"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_2f_engineering_language_gate_tests.json",
+    "before_sha256": "c158dd2dc06a7e80fd1bc0857b79de291524f80c5a5505bc24081eda90b68851",
+    "after_sha256": "83ab78a020463106e19d61db3c10f7b69cf5e9ff8fd5664c3e62ed793e3f591a"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha22_qs_intent_alias_router_tests.json",
+    "before_sha256": "7c084a37b1055863224f3368786e6dd280ba3a4bd58b79d49f3fdcc5915ecc3f",
+    "after_sha256": "0491605ad132624f0a1efdf9f2d1cca14921e8ba62f9a0e29580c2b7aba2409e"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha23_global_capability_registry_tests.json",
+    "before_sha256": "48deda44639c49c870ad0b8466ae95830cd4846645e12d8d827e427a4af91523",
+    "after_sha256": "1f229054592e745ac5dd96ef198de0f3766f656a19ac28d6ba263d17d4d72c16"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha24_route_ownership_registry_advisory_tests.json",
+    "before_sha256": "bcbf27cf0be1654b73306fe6c8245db6ab5f33c3962f4a0ee5ef10b905232841",
+    "after_sha256": "6ac18c7838e73e8eb17a91408c68ea1f62f3ab7717b46c8a8f3d00280e680a82"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha25_legacy_bridge_readiness_audit_tests.json",
+    "before_sha256": "44c842a0251cac4734ebf6f14f000230916f738213892ee518c2e659685e19b2",
+    "after_sha256": "53f7b52133a6c8edf4d9c5500228d9f5052ac9e433be52150d874028a6d6a55d"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha26_1_response_schema_pack_hygiene_tests.json",
+    "before_sha256": "99fe675cc458cb2c344ae7e3d2c6b567dab237fbbdf4cee1f0f1a03923c3b6a4",
+    "after_sha256": "00dcf0cdff6c344aa1f76030beb15a3fe224eabe33861f91380ca226afac4d8f"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha26_legacy_bridge_shadow_probe_tests.json",
+    "before_sha256": "ea37ac33da32db4228c070955bfbfdd43f21844474038598913caabb8e6c6ded",
+    "after_sha256": "9f6c9d46e31968d4cdd7f3682b0392fe055849856786b17e984ebb3fc0713a58"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha27_preview_execution_policy_tests.json",
+    "before_sha256": "36cbc1ca273bbe992faf6bdb5a6ad8e4729004f584f49640fe843925f23bb952",
+    "after_sha256": "34179b3a2bf3e127b0465c9d8e8085f17f934e44053e4ef2d37a239d4f148e6f"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha28_1_package_hygiene_tests.json",
+    "before_sha256": "cf8c73a843d33de38cce9850c84f1f5bdb0e1a378d78f792cf1c14e631ac739b",
+    "after_sha256": "61e563adc9ba55c0d4c94eff18d1665e85412c191961c7175b774ad38df89657"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha28_policy_response_hygiene_approval_readiness_tests.json",
+    "before_sha256": "ca84e4a98055c181453a2ee63db5854de862ca38fcdf9d21018e03726d63381d",
+    "after_sha256": "1d46f77cd562f55395f614fb4f375ce8681f27f21d1c67c94a345f024802dce0"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha29_safe_workbook_path_resolver_dry_run_tests.json",
+    "before_sha256": "2778db4bdfc5f62b1ca3d61a4d7e7876f18edd919eca0bbee46c756b0d7ac58e",
+    "after_sha256": "d877ba352e5c1d82c8fce56c6e9f3c7c324cf7750df76f47aeef0568228e08ca"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha30_1_weakness_triage_reduced_regression_tests.json",
+    "before_sha256": "16d0d59604c2632d4d038e99590022742a9b705f6f1de1273eb839f89bda372b",
+    "after_sha256": "fe2c5778efb141717505c9b7acccd5f8f7da48cd04d90cc9b62a87f9b3204101"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha30_workbook_read_preflight_contract_tests.json",
+    "before_sha256": "e16583da7b00ff081a2bad8828d2262b5d3e18926eab7f56f2bdf7ec32693062",
+    "after_sha256": "2ea56b3e0feb95f6c90c46294744fb6934e9382965480d101bdd677e6688fdc6"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31A_response_shape_compatibility_tests.json",
+    "before_sha256": "ed9cb28303012cdc16b48acd9bf1addc9a61e08ea22183310ae20a1fab916e56",
+    "after_sha256": "99dedfa949a8c9a7dbb8ec60c98a441e359410606c9abf6e058636a7fc54edfb"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31B_no_active_route_hygiene_tests.json",
+    "before_sha256": "2c14399219fb680f7ee45a140671563965c7cce6424b2edfd76204c548a75b59",
+    "after_sha256": "7d5dc51570e8132d727ec6fe768caef177c03d0caf3f843739b3a23cd4b22cb2"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31C_active_non_mutating_feedback_read_only_tests.json",
+    "before_sha256": "c2e0602f2f6de9a016bf770bd38104e7053326c1928c79f3e729a1da8660fa67",
+    "after_sha256": "367563fc9c6bed8793b07c9f5a9da7c529f966a591d81723bd88d60d9b9e6e64"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31D_pending_clarification_risky_action_coverage_tests.json",
+    "before_sha256": "b390111ce2bcefe17f1ba24a1d589aa235b734389054c4677bd2aa785883696d",
+    "after_sha256": "7d802355bec9b9b1d64aa3b5e57f413408427c3b18da848fd78f81f0ce72560b"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31E_parser_function_unit_conflict_tests.json",
+    "before_sha256": "746dc6ce8962807af762997875258c8f1f4ad6660381f88c327915ee13dfa29c",
+    "after_sha256": "7be5121059e4d4352af5981e4a39db012f66d0e3ccb6ae3e378c2d4402132804"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha31F_1_weakness_replay_compatibility_tests.json",
+    "before_sha256": "6f831131478c2a059a7b24e32075e17f0fc79b3b353a478e3dfebfbe3a551784",
+    "after_sha256": "b3e678d120a485a167188a81cb674e27f868b583e8ab948936141c3102433b1c"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha32A_minimal_pair_route_ownership_tests.json",
+    "before_sha256": "bf8984734b3a424173ba79d695e9402e0a93c507886f0fd8cef23c2ce35a73ac",
+    "after_sha256": "0127717b9ae0f8f089e66d1918818e98c021f5200237f261f74bd41018f916ea"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha33_workbook_metadata_probe_approval_tests.json",
+    "before_sha256": "8dd3e5180fc39b2ae0cea5bd46a399d9cf34e58f39853986ab529cacbc2c22d6",
+    "after_sha256": "9e0b80c03cba10d4821f2c9c2b4c995cade9b366c2e86813938573823b38fb44"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha34_workbook_sheet_name_probe_approval_tests.json",
+    "before_sha256": "c67244b31654d2f0f7e88aee4cd7c9e3eb49ef1f4f0043e83849a87e8b6e6c59",
+    "after_sha256": "0f97f8475d6d900e9c69e3bfe62c805c1d2ab0877613e811acc3405579a2a6b4"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_10_1_uae_podium_basement_level_tests.json",
+    "before_sha256": "b2c13fd9226d9ec77cdcc5864c33ee893cf0b32f582a7cfd91d9ed1594198d1e",
+    "after_sha256": "baca90a31f217dd423eb209872853a2d75c32506b9817764b11b1ee07a0c833c"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json",
+    "before_sha256": "a8c10cde8e0cf1e80d2388e4e2ee96dbbeb059a58c71f95a56e3e741304562bd",
+    "after_sha256": "52d687a57c72d69e5d076dd9d2cf1785a6060097ae37d96473867a61ffe5f786"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_10_no_active_mixed_language_policy_route_tests.json",
+    "before_sha256": "683acce2cc69200a6825d9a09b0b3356718dce74b6b402f41678ead6a02bc6c7",
+    "after_sha256": "0dcce50da9541fd7f1c4335d07792fc7bce063069071128bbe1a48c0681120e3"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_11_capability_advisory_tests.json",
+    "before_sha256": "c826674244b1bcf3108f45e32612f0c5c5ffccdedbf9c3b57411b4253c3cc228",
+    "after_sha256": "c5e7038cec453892afc5cb1c57d73841c5d2831ce9ffdd9d1406914712d87ee3"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_12_advisory_regression_hardening_tests.json",
+    "before_sha256": "d332a25da26a30a43751b696e4f3f1786b7b78986fcb0b8769a5256aaa8e2dff",
+    "after_sha256": "c0f74b8ecb947f56e5682722b4890b3ce80ebaa2ce405aeaa6dddd5cd28f1eab"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_8_workbook_read_policy_plan_visibility_tests.json",
+    "before_sha256": "b89b61bed2fe65e0d4aaaf50eb10ca365caa369f3ba0cb1dcea0f9c4e317e651",
+    "after_sha256": "d7cdfe56325a369b2db99244ac7190a317e01cb09722a1dcfdb9bb1f975d734a"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_9_pending_clarification_policy_action_ownership_tests.json",
+    "before_sha256": "598205b3c550e74d4f759403510318d59a8dac943a3f7a4d85e0e7b61ffd5022",
+    "after_sha256": "cc00b8a567de006c027bf84874ab156d964490eac0c75919e8b3ecbc2174ebfd"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/alpha35_workbook_read_policy_review_tests.json",
+    "before_sha256": "49256669714f3423297349201963d42d90dd3b97ab9dd15797a2642f1561dc8a",
+    "after_sha256": "810c251385658e3ec0375c03798ac08fffc58664272a9f74754ce6d7fe976a80"
+  },
+  {
+    "path": "jarvis_v5/tests/packs/sample_external_ai_pack_valid.json",
+    "before_sha256": "3ed3161424e730a9771728f139dc3dc5d3fae902076b182abb493c448cbf4f16",
+    "after_sha256": "4ce06dbf2021048d8ebb7dd530821294a3e57f862b259a11aa291d0424bca4f0"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+    "before_sha256": "ab9826d34ab65219b1939f03222a192d27c0f97c65bd24d9c2d734311484aff3",
+    "after_sha256": "0dfdb59d795806285b92deeffb58c47467bafad4af7a134ad115390c3031369c"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+    "before_sha256": "4a676272ab67905c4146c6403c30b949c7f20bb549393d9edf09b7e8a9612c30",
+    "after_sha256": "2e1dca2b24a0ba98622fb3dfe10faebac0b56e2c4ac9d7ced4d78ca9867a03ba"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+    "before_sha256": "3fb99bb567db7f82739c245ac779d53221a97852245de03c77b71b1e362d648c",
+    "after_sha256": "4814cd35f43d8a2ea287c2470e630e5e190b43ed790d8c32345bda33b4628660"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+    "before_sha256": "09dfcc82fd2c3c8cd0dec96f9eb3b2c279d685391581c6957c4f2f82d0cdfcd7",
+    "after_sha256": "f72547045d56c256b31c7b28c2907e88db6ebd953a97773de92e512943d79489"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+    "before_sha256": "180f2cf67a3be188bea2f2b578f2a9343486e38d04f60edf20e7406f014ce027",
+    "after_sha256": "5f41948476c48a091a449def82b2630dfa415d9800f1c2c417049fb2b269049b"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py",
+    "before_sha256": "049548c665e3de85e4dd163bf8241cc7d60b1e20393f1bf47c04d10409444c2e",
+    "after_sha256": "cf495468bfc2cda792e325b3cf4dc799ad129b7a75a2a81158e08321efd34cd7"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py",
+    "before_sha256": "738a6ecd491f1f36709cb6b07f3ccf3d88fec720b4f606953e7d235d057ea487",
+    "after_sha256": "2a5db6d47d49b4b71678e59346d0ac75d9aad84aa25d162cd1b008467a528cc0"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py",
+    "before_sha256": "493f1ef4c0719eddf795334ec4c555993ef85b79a7caf33662e7776d4ea4b2ce",
+    "after_sha256": "4058f31a1c1f2a602bad2c8c4f0761136ecd9b37af9931095fd0af694a381003"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py",
+    "before_sha256": "f0887184a956797cc4a784c2570e21d4478a50ecd23fdd9091ededa42a5c4c05",
+    "after_sha256": "8cf3e2a80fcb69e6da36063c31146da87eb599efa1a782cf1afe5542d06df5ac"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py",
+    "before_sha256": "ae52570e1ed37a6aea5544c213e669498d24ee0a82bd87943fa706f0448d9f47",
+    "after_sha256": "aa19b8a1f2e42b15b39dd2fe8bd38abbdeeccc9eb5c1396ff77ec035c56230ce"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py",
+    "before_sha256": "257c34c424acbd65efe8461530c9de84564ed4f9ff8cd222d18f798a4ecf131a",
+    "after_sha256": "59e6a64e41fb9b66b573cb40323f463a90ac879d639ddeb5ef382b69b8aad507"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+    "before_sha256": "1b1a2ad78e899307cdc06708449581f59e78c8ac96b016e65ae5aef56f2acf85",
+    "after_sha256": "4db872642663973158941b3616564f80cc9fd92fed83ca695e9566d43fea8bf8"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+    "before_sha256": "8b420c134178b1d1cdead45a3101985e10a6fc201a218ca0a3cae18f43f3969e",
+    "after_sha256": "61714b1f464a9a18a743fc67c45b6d62a78e9f8c9079dc2c0d243e5a1c18f1b3"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py",
+    "before_sha256": "9f740a384830be29251be38a95f8a918999b2d2ffba0bc9a5d6dc9d4910db004",
+    "after_sha256": "7d7894274bfba9f3970ea4e155093dc97d570cd0d20f9f8d7cc94d951643f988"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py",
+    "before_sha256": "935e05b129b40b86b2250c74baf0add99b7bd6c5b88dcf307f7126fe7628adb2",
+    "after_sha256": "554f43747da574aee119e1ef8254312bc00ca31ae14c2c20b65be04e599d8517"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha23_global_capability_registry.py",
+    "before_sha256": "ecce1083c8bf85bd25e1375c3c0162cee4c56dcb6e75b84cb0662b3ec2f409db",
+    "after_sha256": "5df94ad44cf32aaa61901bcac2949813bd80f0c384e291f1234d745dab16f7bb"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha24_2_cleanup_hygiene.py",
+    "before_sha256": "99aa4c2e78daff90e088e9e96d6e0b0bee5f76654748ed68c736ab7a72d7542b",
+    "after_sha256": "6fa5845cc5ec4c67a1e6ab5d448377f5ee8e9646734c777c9c99ce7ffdf22daf"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha24_route_ownership_registry_advisory.py",
+    "before_sha256": "395a7bb87313ffc13212a83bb6c86dfd0d341b974f5a6ba5232365e226e23fef",
+    "after_sha256": "1a5b947c62c7979c216d501fd9ac88c1bee5cbee3e4192f82e4817e96941504c"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha25_legacy_bridge_readiness_audit.py",
+    "before_sha256": "73db2b8320332cc7d210d57c0d3ae37ede36d648309f8bf497c4ad4d1a386290",
+    "after_sha256": "939effa84907364374ae50650a626fd9e8e99e4b2d9509a47c6eec1fd1625504"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha26_1_response_schema_pack_hygiene.py",
+    "before_sha256": "52f97e614696a535a04cbf9fdde59985e1d92f7c1542dac9dd862efbe95138d4",
+    "after_sha256": "9d26a45c2e306db3838abf4ed20374c349436b886ec124ab29e848e85b5a085f"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha26_legacy_bridge_shadow_probe.py",
+    "before_sha256": "defa8b050d18a9fd135f2c01646f87576fcc1739472d918f799cbbe6f028b12e",
+    "after_sha256": "ab0fc9014ec540398d5b461d2d865f65a511c8c3fab89b0d508a0941498d1a5e"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py",
+    "before_sha256": "8e8c0d7c8bd370b20dc827485a575e1d39a0c4f26ea254f64f314f398933069c",
+    "after_sha256": "4b521faf0e76ecef8a994b0027205cd5d0645bb6b4dd689483d2d6917a59467c"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha28_1_package_hygiene.py",
+    "before_sha256": "e50a696859fb3309d1322f246ef23965e84b960de5c8deb6ca544d577359a2fc",
+    "after_sha256": "0140c6513f5d54aa5ebb98757a32b467b6ac555a8bd9c72e063d21554883389a"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py",
+    "before_sha256": "234981256d7bad854db34660854e6ece9e17c360cb1afa30f0b5a425eeaf55c9",
+    "after_sha256": "62b2d6bd309365e0252fd15676e5bf34574af90fd8a8a885fc890d8a184e5502"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha29_safe_workbook_path_resolver_dry_run.py",
+    "before_sha256": "de849507c20512198bc53f85f0c3ba32b7d365068e5c46355f56981ec5b44bf1",
+    "after_sha256": "f296cfd11dc4eadef29a74bb0a57be5aaa5d3e9735d27f0a46e39c1beefe8a41"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha30_workbook_read_preflight_contract.py",
+    "before_sha256": "6b4a402e006f71477a1eede985935d579c3a468a97c356d8da0a19d0aa1eca5a",
+    "after_sha256": "dff9465fb9edc59b7a635c336ac3cce083cd48eca83ceb19717d1e1dfd47a586"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py",
+    "before_sha256": "ca4f59c1bffd998b53f80b8f9f27ab06db5b3868950f0c3d04cca28e2a36f7ce",
+    "after_sha256": "c67313b3995f98a13f2609bda08643897faf933ce946d0e67120f0769847cfe3"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31B_no_active_route_hygiene.py",
+    "before_sha256": "c16c1c86f31636a05cf40fe4e4e2b1a5e79da071e90218206ad515baa8baf5d0",
+    "after_sha256": "d13194a89461ce57980062fed782252f5eff874111c425dc6c60dcb1e4b22bea"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+    "before_sha256": "4e91f93faea2707e1cfee3e5e4f9373e20753eeabb3862afe0b1c9e30bed0a5a",
+    "after_sha256": "1ddf2c6140842ed88af32bc78055d69e452817fd499f800d97557c3055045ab1"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+    "before_sha256": "72d2c1f299b31b42b86d4ffc8fdfdfffc73e4a8c85675da50adbf38d9ce016ab",
+    "after_sha256": "62bde2b6106b4f0d6491f97bd173bdead2de94cb3234ce4344adc55f3f20a9f6"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+    "before_sha256": "f0aa54d45843b03c3fb4b645ad4607b473e91847c17564854e41987bf07f6c22",
+    "after_sha256": "d87eba26349a7e556d986448c37f28df95dedfd22392981a64b8ce247ec98ea0"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+    "before_sha256": "45fae022e462da4222ede9c1ca6dade66ea298b659faa2267a66c1a90a8ccacf",
+    "after_sha256": "7994a8677154402ac4c5bf4b9cc8d6a081e1128cac9237e2e6027d3855e32772"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+    "before_sha256": "be2869acc03320921003bc022ea7e18f2c09950118a532794da8f97ba70b0ce5",
+    "after_sha256": "2ee0555491020400e4d91ccd69a0ae1fa4bd1ce57f90101fd6a6c5bf26319ab6"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py",
+    "before_sha256": "df94349ea471e68659de0c3eb739b37d8d2773d0fd6dd88f6170ad27f17216e7",
+    "after_sha256": "074a2437d25bf932fb784345a58ff6dcfbb81898b3c2a0b2cac69149cb39bdd9"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+    "before_sha256": "43d91375b3e5d1b0d47e57d3689aee56ee519ce7343e894b44cffb500cae246a",
+    "after_sha256": "ed015a0a71504bddf8c730eebdfee136750dfc4dd8d140410395ec68b9a9a8cd"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py",
+    "before_sha256": "5515529ad61124882b4ac6daac6e46d60b4ead7e6ba9a8222785563aacfd9286",
+    "after_sha256": "11f570fe4444fff8e9d9001af26aa22b6ba0e2e46856d75b86082c2aac062ba0"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+    "before_sha256": "64aa24ed7bf1760826d2962bd724cb8623bc021444df95d51809a8bf16846810",
+    "after_sha256": "e8f5d8f4943e9d7149226eb855f55ae649a638cf74aece201ff6ae8969ea2b1c"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+    "before_sha256": "c87d2a362a48f5395e8b5e1865a02a47152e4987b6f30904105dfcaaeefe932c",
+    "after_sha256": "5af3dbed39b9ee598e0526b1e60d88d7776b0211fa368371f10e275d4e1e8130"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "before_sha256": "e1bc55f3d232a90b34ff2733fc06c89e157eb4f55382c781bc15c4e03d65be50",
+    "after_sha256": "dc41a90e0189445488e9d1bae4a2b7f6531dbe4f005079469079f9d1f7a89c21"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py",
+    "before_sha256": "0e46c7ce4ed7ef3471a2d6bfa432bd3d007f851e7ee3fb98744ad403b7409d9b",
+    "after_sha256": "d462b9fe3d757ae245b831fa4e890d843425f6b8761d30ee3ecb392d18158284"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py",
+    "before_sha256": "a13757a7fa4458ab14cc8cd3ae12641e67e5e9ab9116e600ba665988bbe617f0",
+    "after_sha256": "8fc1f6820e153d970b2c000a0b576e0ff7a6dd3a7e29a156bb232d334dd20c5c"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+    "before_sha256": "d558c83483b45f6faa18a3879926445291a463796123f710968ddd49d0ee30c5",
+    "after_sha256": "246a73915328a7ef0a62b0a661a6a668edd7b3e784e11e5d9102ca436d06db47"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+    "before_sha256": "b13f6ae0e45a40d1ee7412d4f39e0ad3ca4066fa9f4f9e76be180e339b92e202",
+    "after_sha256": "6d86f463ba8c48ce6476ceb8c3460e939ebb48f5481e968115648c7978d87cf6"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "before_sha256": "533d47cd0c319972cb03cfd57b443374db5c0ab1457f9e8cb2d9ee3d7ba30709",
+    "after_sha256": "a84cf1136b22aa0cf6f0a97025f0c033ca5b95eb308a82d0f042a9a937c1ac66"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+    "before_sha256": "cb41fd068d76102f6d73b5f2c623bda9e69ac19a41b1df8fbc1dbfcafd5b38d4",
+    "after_sha256": "f69ab504711d31fac4064a73f2af79183531c2605ed50d252732893f9d30f009"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_8_workbook_read_policy_plan_visibility.py",
+    "before_sha256": "cd5c6738de468ea2ab8910982ef36a29e293ea3166a83655dfec03b4a36cd35a",
+    "after_sha256": "7485de414a93914e9185b0afa64f38f64ba6013eec20783d2bce572b395b7893"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+    "before_sha256": "fbba2a51c20c6b08be2fad8873f28a2ff5f50ee63f7c90ebbb97d4e571d755c2",
+    "after_sha256": "41d9cfa8ac8869ab1d6cc81768850e9e6152f200c4e112805d056ef0239c2efe"
+  },
+  {
+    "path": "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py",
+    "before_sha256": "9e13f60f7d5ccc443a56b09d6a3bac67902c081b37026f5f0f777c51c548529b",
+    "after_sha256": "36053c9765da01a237a5b657f6cf26499414a1c3b37edf75aaebd4598475f83e"
+  }
+]

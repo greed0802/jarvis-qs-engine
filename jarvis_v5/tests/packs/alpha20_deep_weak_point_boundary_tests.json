@@ -1,0 +1,254 @@
+{
+  "pack_name": "alpha20_deep_weak_point_boundary_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+      "steps": [
+        {
+          "name": "audit",
+          "method": "POST",
+          "endpoint": "/api/builder/legacy-import-boundary-audit",
+          "json": {
+            "conversation_id": "alpha20_weak_clean_plan",
+            "client_event_id": "weak_clean_audit",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_import_boundary_audit"
+            },
+            {
+              "path": "$.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "latest",
+          "method": "GET",
+          "endpoint": "/api/builder/legacy-import-boundary-audit/latest/alpha20_weak_clean_plan",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_import_boundary_audit_latest"
+            },
+            {
+              "path": "$.found",
+              "equals": true
+            },
+            {
+              "path": "$.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha20_weak_clean_plan",
+          "assertions": [
+            {
+              "path": "$.legacy_import_boundary_audit.found",
+              "equals": true
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FUNCTION_UNIT_CONFLICT_XGETCOUNT_M2_NOW_BLOCKS",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_weak_count_m2_fixed",
+            "client_event_id": "weak_count_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_weak_count_m2_fixed",
+            "client_event_id": "weak_count_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_weak_count_m2_fixed",
+            "client_event_id": "weak_count_func",
+            "text": "Use XGETCOUNT"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "bad_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_weak_count_m2_fixed",
+            "client_event_id": "weak_count_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.reducer_result.conflict_type",
+              "equals": "function_unit_conflict"
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "snapshot_blocked",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha20_weak_count_m2_fixed",
+            "client_event_id": "weak_count_snap"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_blocked"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

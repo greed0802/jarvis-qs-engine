@@ -1,0 +1,26 @@
+Jarvis v5.0.0-alpha.35.7.1 test run results
+
+PASS - python -m compileall -q jarvis_v5
+PASS - PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+Result: 315 passed in 18.16s
+
+Targeted packs:
+003 PASS 50/50
+029 PASS 50/50
+030 PASS 50/50
+031 PASS 50/50
+040 PASS 50/50
+041 PASS 50/50
+042 PASS 50/50
+043 PASS 50/50
+044 PASS 50/50
+045 PASS 50/50
+046 PASS 50/50
+047 PASS 50/50
+060 expected partial 40/50: known sheet-name strict expectations only
+
+Safety:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

@@ -1,0 +1,528 @@
+{
+  "pack_name": "alpha18_response_consistency_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA18_RESPONSE_CONSISTENCY",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_CLARIFICATION_BLOCKED_ENDPOINTS_HAVE_SAFETY",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_pending",
+            "client_event_id": "a18p_pending_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "painting",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_pending",
+            "client_event_id": "a18p_pending_painting",
+            "text": "Use Painting"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha18_pack_pending",
+            "client_event_id": "a18p_pending_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run_blocked"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha18_pack_pending",
+            "client_event_id": "a18p_pending_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "execution",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-execution-request",
+          "json": {
+            "conversation_id": "alpha18_pack_pending",
+            "client_event_id": "a18p_pending_exec"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_execution_blocked"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STALE_ADAPTER_REASON_STANDARDIZED",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot1",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_snap1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            }
+          ]
+        },
+        {
+          "name": "edit_levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_edit",
+            "text": "Levels GF to L5"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot2",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_snap2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha18_pack_stale_adapter",
+            "client_event_id": "a18p_stale_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "adapter_is_stale"
+            },
+            {
+              "path": "$.validation.stale_reason",
+              "equals": "adapter_snapshot_mismatch"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REINFORCEMENT_CLARIFICATION_RESOLUTION_VISIBLE",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_reinforcement",
+            "client_event_id": "a18p_reo_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha18_pack_reinforcement",
+            "client_event_id": "a18p_reo_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "reinforcement",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_reinforcement",
+            "client_event_id": "a18p_reo_trade",
+            "text": "Use Reinforcement"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "resolve",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha18_pack_reinforcement",
+            "client_event_id": "a18p_reo_resolve",
+            "text": "Use XGETCUSTOM with Reinforcement Weight unit t"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_resolved"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "equals": null
+            },
+            {
+              "path": "$.reducer_result.requires_clarification",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.trade_registry.canonical_trade",
+              "equals": "Concrete / Reinforcement"
+            },
+            {
+              "path": "$.reducer_result.normalization.status",
+              "equals": "clean"
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha18_pack_reinforcement",
+          "assertions": [
+            {
+              "path": "$.plan_summary.trade_profile",
+              "equals": "Concrete / Reinforcement"
+            },
+            {
+              "path": "$.plan_summary.costx_function",
+              "equals": "XGETCUSTOM"
+            },
+            {
+              "path": "$.plan_summary.custom_quantity",
+              "equals": "Reinforcement Weight"
+            },
+            {
+              "path": "$.plan_summary.unit",
+              "equals": "t"
+            },
+            {
+              "path": "$.normalization.status",
+              "equals": "clean"
+            },
+            {
+              "path": "$.readiness.pending_clarification_id",
+              "equals": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

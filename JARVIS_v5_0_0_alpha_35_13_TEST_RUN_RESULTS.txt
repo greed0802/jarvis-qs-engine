@@ -1,0 +1,61 @@
+== compile ==
+== pytest ==
+........................................................................ [ 20%]
+........................................................................ [ 41%]
+........................................................................ [ 61%]
+........................................................................ [ 82%]
+.............................................................            [100%]
+349 passed in 25.63s
+== PACK jarvis_v5/tests/packs/alpha35_12_advisory_regression_hardening_tests.json ==
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_12_advisory_regression_hardening_tests
+
+PASS T01_VERSION_ALPHA35_12_LOCKS
+PASS T02_POSITIVE_ADVISORY_TYPES
+PASS T03_FUTURE_TOOL_EXECUTION_REQUESTS_METADATA_ONLY_BLOCKED
+PASS T04_UNKNOWN_SCOPE_CLARIFICATION
+PASS T05_ROUTE_PRECISION_REGRESSIONS
+PASS T06_ACTIVE_WRITING_REPORT_PREVIEW_FALSE_POSITIVE_STILL_FIXED
+
+Overall: PASS
+Passed: 6
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+== PACK jarvis_v5/tests/packs/alpha35_11_capability_advisory_tests.json ==
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_11_capability_advisory_tests
+
+PASS VERSION_ALPHA35_11_ADVISORY_LOCKS
+PASS NO_ACTIVE_QS_SCOPE_ADVISORY_METADATA_ONLY
+PASS FILE_AND_RFI_AND_CAPABILITY_ADVISORY_TYPES
+PASS TARGETED_REGRESSION_CHECKS
+PASS ACTIVE_WRITING_REPORT_PREVIEW_FALSE_POSITIVE_STILL_FIXED
+
+Overall: PASS
+Passed: 5
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+== PACK jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json ==
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_10_2_active_writing_report_preview_false_positive_tests
+
+PASS VERSION_ALPHA35_10_2_ACTIVE_WRITING_PREVIEW_LOCKS
+PASS WRITING_ISSUE_REPORT_WITH_PREVIEW_WORD_IS_NON_MUTATING
+PASS REAL_FEEDBACK_AND_PREVIEW_ACTIONS_STILL_WORK
+
+Overall: PASS
+Passed: 3
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False

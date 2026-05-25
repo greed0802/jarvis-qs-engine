@@ -1,0 +1,9 @@
+compileall: PASS
+pytest -q: PASS — 408 passed
+alpha36_2_sheet_name_probe_dry_run_tests.json: PASS — 6 / 6
+alpha36_1_workbook_metadata_probe_plan_tests.json: PASS — 8 / 8
+alpha36_0_integrity_contract_tests.json: PASS — 8 / 8
+alpha35_19_workbook_permission_evidence_lock_tests.json: PASS — 8 / 8
+alpha35_18_workbook_permission_contract_tests.json: PASS — 8 / 8
+alpha35_12_advisory_regression_hardening_tests.json: PASS — 6 / 6
+alpha35_10_2_active_writing_report_preview_false_positive_tests.json: PASS — 3 / 3

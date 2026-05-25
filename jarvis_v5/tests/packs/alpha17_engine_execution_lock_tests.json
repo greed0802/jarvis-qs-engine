@@ -1,0 +1,594 @@
+{
+  "pack_name": "alpha17_engine_execution_lock_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA17_EXECUTION_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.engines_connected.builder_engine_execution",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXECUTION_REQUEST_WITHOUT_CONTRACT_BLOCKS",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_no_contract",
+            "client_event_id": "a17_nc_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "execution_request",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-execution-request",
+          "json": {
+            "conversation_id": "alpha17_pack_no_contract",
+            "client_event_id": "a17_nc_exec"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_execution_blocked"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "engine_contract_not_found"
+            },
+            {
+              "path": "$.execution_status",
+              "equals": "disabled"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXECUTION_REQUEST_AFTER_PREFLIGHT_BLOCKS_BY_KILL_SWITCH",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "boundary_audit",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-boundary-audit",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_audit"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_boundary_audit"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "preflight",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-preflight",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_preflight"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_preflight_ready"
+            },
+            {
+              "path": "$.preflight_status",
+              "equals": "ready_for_future_engine_adapter"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "execution_request",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-execution-request",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_exec"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_execution_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "engine_execution_disabled_by_kill_switch"
+            },
+            {
+              "path": "$.bridge_status",
+              "equals": "blocked_by_kill_switch"
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.would_call.legacy_target",
+              "equals": "legacy_builder_v4_contract_v1"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan_visibility",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha17_pack_kill_switch",
+          "assertions": [
+            {
+              "path": "$.engine_execution.found",
+              "equals": true
+            },
+            {
+              "path": "$.engine_execution.status",
+              "equals": "blocked_by_kill_switch"
+            },
+            {
+              "path": "$.engine_execution.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.engine_execution.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "review_visibility",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_review",
+            "text": "Review"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_review"
+            },
+            {
+              "path": "$.message",
+              "contains": "Builder engine execution lock"
+            },
+            {
+              "path": "$.message",
+              "contains": "blocked by kill switch"
+            },
+            {
+              "path": "$.message",
+              "contains": "No Builder engine was called"
+            }
+          ]
+        },
+        {
+          "name": "preview_stub",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_kill_switch",
+            "client_event_id": "a17_ks_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "preview_engine_not_connected"
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXECUTION_REQUEST_PENDING_CLARIFICATION_BLOCKS",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_pending",
+            "client_event_id": "a17_p_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "use_painting",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha17_pack_pending",
+            "client_event_id": "a17_p_002",
+            "text": "Use Painting"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "execution_request",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-execution-request",
+          "json": {
+            "conversation_id": "alpha17_pack_pending",
+            "client_event_id": "a17_p_exec"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_execution_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_exists"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

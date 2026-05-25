@@ -1,0 +1,86 @@
+{
+  "version": "model_registry_v1",
+  "registry": "models",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "models": [
+    {
+      "model_key": "local_small_model",
+      "provider": "ollama",
+      "status": "available_or_planned",
+      "runs_local": true,
+      "allowed_use": [
+        "simple_routing",
+        "short_rewrite",
+        "basic_explanation"
+      ],
+      "limits": [
+        "long_code_patching",
+        "OCR",
+        "large_document_reasoning"
+      ],
+      "execution_enabled": false
+    },
+    {
+      "model_key": "local_coding_model",
+      "provider": "ollama",
+      "status": "not_installed_or_planned",
+      "runs_local": true,
+      "allowed_use": [
+        "code_explanation",
+        "small_patch_review"
+      ],
+      "blocked_use": [
+        "core_patch_without_FIRE"
+      ],
+      "execution_enabled": false
+    },
+    {
+      "model_key": "local_vision_model",
+      "provider": "ollama",
+      "status": "not_installed",
+      "runs_local": true,
+      "capabilities": [
+        "image_understanding",
+        "scanned_page_assist"
+      ],
+      "requirements": [
+        "vision_capable_model",
+        "image_input_pipeline"
+      ],
+      "execution_enabled": false
+    },
+    {
+      "model_key": "external_reasoning_model",
+      "provider": "external_api",
+      "status": "optional",
+      "allowed_use": [
+        "architecture_review",
+        "complex_reasoning"
+      ],
+      "execution_enabled": false
+    },
+    {
+      "model_key": "ocr_engine",
+      "provider": "system_tool",
+      "status": "not_installed",
+      "requirements": [
+        "ocrmypdf",
+        "tesseract"
+      ],
+      "execution_enabled": false
+    },
+    {
+      "model_key": "embedding_model",
+      "provider": "local_or_external",
+      "status": "future",
+      "execution_enabled": false
+    },
+    {
+      "model_key": "reranker",
+      "provider": "local_or_external",
+      "status": "future",
+      "execution_enabled": false
+    }
+  ]
+}

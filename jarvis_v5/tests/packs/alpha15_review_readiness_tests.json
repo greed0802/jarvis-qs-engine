@@ -1,0 +1,366 @@
+{
+  "pack_name": "alpha15_review_readiness_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "PLAN_READINESS_INCOMPLETE_NO_ENGINE",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_incomplete",
+            "client_event_id": "a15p_inc_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.readiness.can_create_snapshot",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha15_pack_incomplete",
+          "assertions": [
+            {
+              "path": "$.readiness.can_create_engine_contract",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.preview_status",
+              "equals": "stubbed_no_engine"
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PAINTING_REVIEW_SHOWS_PENDING_CLARIFICATION",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_painting",
+            "client_event_id": "a15p_paint_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "use_painting",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_painting",
+            "client_event_id": "a15p_paint_002",
+            "text": "Use Painting"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "needs_clarification"
+            }
+          ]
+        },
+        {
+          "name": "review",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_painting",
+            "client_event_id": "a15p_paint_003",
+            "text": "Review"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_review"
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "needs_clarification"
+            },
+            {
+              "path": "$.readiness.can_create_snapshot",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CONTRACT_READY_BOUNDARY_AUDIT_ALLOWED_NO_ENGINE",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_create"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "engine_boundary_audit",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-boundary-audit",
+          "json": {
+            "conversation_id": "alpha15_pack_contract",
+            "client_event_id": "a15p_contract_audit"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_boundary_audit"
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

@@ -1,0 +1,139 @@
+{
+  "pack_name": "alpha32A_weakness_replay_compatibility_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA32A_REPLAY_COMPATIBILITY_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.scope_metadata.weakness_replay_compatibility_cleanup", "equals": true},
+            {"path": "$.scope_metadata.active_action_diagnostic_alias", "equals": true},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXACT_REVIEW_ACTION_DIAGNOSTIC_ALIAS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_exact_review", "client_event_id": "start", "text": "Build me a BOQ"},
+          "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]
+        },
+        {
+          "name": "review_exact",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_exact_review", "client_event_id": "review_exact", "text": "Review the current setup"},
+          "assertions": [
+            {"path": "$.route", "equals": "active_task_review"},
+            {"path": "$.active_task_action_language.matched", "equals": true},
+            {"path": "$.active_task_action_language.action", "equals": "review"},
+            {"path": "$.active_task_action_language.route_hint", "equals": "active_task_review"},
+            {"path": "$.fallback_used", "equals": false},
+            {"path": "$.plan_mutated", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NATURAL_ACTION_DIAGNOSTICS_PRESERVED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_preview", "client_event_id": "start_preview", "text": "Build me a BOQ"},
+          "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]
+        },
+        {
+          "name": "preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_preview", "client_event_id": "preview", "text": "Preview it please"},
+          "assertions": [
+            {"path": "$.route", "equals": "active_task_preview_stub"},
+            {"path": "$.active_task_action_language.matched", "equals": true},
+            {"path": "$.active_task_action_language.action", "equals": "preview"},
+            {"path": "$.active_task_action_language.route_hint", "equals": "active_task_preview_stub"},
+            {"path": "$.fallback_used", "equals": false},
+            {"path": "$.plan_mutated", "equals": false}
+          ]
+        },
+        {
+          "name": "start_export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_export", "client_event_id": "start_export", "text": "Build me a BOQ"},
+          "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]
+        },
+        {
+          "name": "export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_export", "client_event_id": "export", "text": "Export current builder output"},
+          "assertions": [
+            {"path": "$.route", "equals": "active_task_export_stub"},
+            {"path": "$.active_task_action_language.matched", "equals": true},
+            {"path": "$.active_task_action_language.action", "equals": "export"},
+            {"path": "$.fallback_used", "equals": false},
+            {"path": "$.plan_mutated", "equals": false}
+          ]
+        },
+        {
+          "name": "start_download",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_download", "client_event_id": "start_download", "text": "Build me a BOQ"},
+          "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]
+        },
+        {
+          "name": "download",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "pack_alpha32A_download", "client_event_id": "download", "text": "Download output link"},
+          "assertions": [
+            {"path": "$.route", "equals": "active_task_action_stub"},
+            {"path": "$.active_task_action_language.matched", "equals": true},
+            {"path": "$.active_task_action_language.action", "equals": "download"},
+            {"path": "$.fallback_used", "equals": false},
+            {"path": "$.plan_mutated", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NO_EXECUTION_SAFETY_REMAINS_FALSE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "pack_name": "alpha21_function_unit_compatibility_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA21_FUNCTION_UNIT_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XGETCOUNT_M2_CROSS_MESSAGE_BLOCKS",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_m2",
+            "client_event_id": "a21_count_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_m2",
+            "client_event_id": "a21_count_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_m2",
+            "client_event_id": "a21_count_function",
+            "text": "Use XGETCOUNT"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "bad_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_m2",
+            "client_event_id": "a21_count_unit_m2",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.conflict_type",
+              "equals": "function_unit_conflict"
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha21_pack_count_m2",
+          "assertions": [
+            {
+              "path": "$.plan_summary.costx_function",
+              "equals": "XGETCOUNT"
+            },
+            {
+              "path": "$.plan_summary.unit",
+              "equals": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XGETCOUNT_NO_VALID_CONTRACT_ONLY",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_function_unit",
+            "text": "Use XGETCOUNT unit no"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.reducer_result.changes.unit",
+              "equals": "no"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha21_pack_count_no",
+            "client_event_id": "a21_no_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XGETWALLAREA_NO_BLOCKS",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_wallarea_no",
+            "client_event_id": "a21_wallno_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_wallarea_no",
+            "client_event_id": "a21_wallno_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_wallarea_no",
+            "client_event_id": "a21_wallno_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "bad_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha21_pack_wallarea_no",
+            "client_event_id": "a21_wallno_unit",
+            "text": "Unit no"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.reducer_result.conflict_type",
+              "equals": "function_unit_conflict"
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CONTRACT_FIXTURE_REPLAY_REPORT_NAME_SHORT_SAFE",
+      "steps": [
+        {
+          "name": "fixture_replay",
+          "method": "POST",
+          "endpoint": "/api/builder/contract-fixture-replay",
+          "json": {
+            "conversation_id": "alpha21_replay_short_report",
+            "client_event_id": "a21_replay_short",
+            "fixture": "wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_contract_fixture_replay"
+            },
+            {
+              "path": "$.passed",
+              "equals": true
+            },
+            {
+              "path": "$.diff_status",
+              "equals": "clean"
+            },
+            {
+              "path": "$.report_write_error",
+              "not_exists": true
+            },
+            {
+              "path": "$.report_json",
+              "exists": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

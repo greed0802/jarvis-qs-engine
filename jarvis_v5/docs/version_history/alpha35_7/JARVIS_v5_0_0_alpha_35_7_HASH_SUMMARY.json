@@ -1,0 +1,577 @@
+{
+  "CURRENT_BACKEND_STATUS_v5_alpha_35_7.md": {
+    "old": null,
+    "new": "bceaf4b9eebd7587d7e34e1a1aae7df14a2dc92a89c4ab9602692b1ca5ff31e3",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_CHANGED_FILES.json": {
+    "old": null,
+    "new": "f507824057e8d22c00e934b1817a524c9ccc220bf610e08c733bba30a316a33f",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_CHANGE_REPORT.md": {
+    "old": null,
+    "new": "1c1392b4227a8e7dfae933b4f04ded1ae836c341ad18590176ef208ccb75b35f",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_HASH_SUMMARY.json": {
+    "old": null,
+    "new": "e3485c1c816d036cd5455cc786ce374fcf5aefbb0c8f1bc3c09c5a1c492e53a0",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_PROTECTED_HASH_COMPARE.json": {
+    "old": null,
+    "new": "1f74dd9e28ed91cb022cfe4a5de21421e68ed861c3611d86026a18396c26d867",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_TEST_REPORT.md": {
+    "old": null,
+    "new": "7988c1dfb5b4fee2e5f75b0aad21b23a8b133ba387018b6183b14f4cad347c75",
+    "status": "added"
+  },
+  "JARVIS_v5_0_0_alpha_35_7_TEST_RUN_RESULTS.txt": {
+    "old": null,
+    "new": "02a1b5923beb7fb184f90528bd89bfde92d68aa09fc30b73d0bbfc1e5463b4c2",
+    "status": "added"
+  },
+  "NEXT_CHAT_HANDOFF_v5_alpha_35_7.md": {
+    "old": null,
+    "new": "b799dc2e94594eb0ab37d12ffe75ae34d2a3d3074865c5917df19537164b5ba8",
+    "status": "added"
+  },
+  "README.md": {
+    "old": "574a4eb4fdc1a83aba9c599c7949cd73710838a61c6ff998bd45bf5948acfafb",
+    "new": "a4afc09037e2e0080b75d978cbef5675430e42cb5b115b57c10c9b09e9303eeb",
+    "status": "changed"
+  },
+  "START_JARVIS_V5_ALPHA_35_7.bat": {
+    "old": null,
+    "new": "d9eeed6b4178ca0971a196378993c98843bd82d676061c0728cd63e494a30bdc",
+    "status": "added"
+  },
+  "START_JARVIS_V5_ALPHA_35_7_SIMPLE_NO_RELOAD.bat": {
+    "old": null,
+    "new": "0f9ae3cdf6bf0f9d1dead5b9e94e7f920dc9f29782781ac29c5b6a887efe3af5",
+    "status": "added"
+  },
+  "jarvis_v5/config.py": {
+    "old": "3de5db1fa024359139bbcd1d0c867561e27f042f2a2c07e40f5777083affcb8f",
+    "new": "fec2025ca36e63740319de00ba2a9171cd5d3c66121fa80d353a6786b1196271",
+    "status": "changed"
+  },
+  "jarvis_v5/docs/ALPHA_35_7_SCOPE.md": {
+    "old": null,
+    "new": "18108b95ae0c69302742446374dfb0715edbf52b163f7fe2803e267dca19d824",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/CHAT_CONTEXT_ARCHIVE_v5_alpha_35_6.md": {
+    "old": null,
+    "new": "d00fc2ef7a9f61c0ac65650220364d4ca28886c0c5cca9f2e404156698713ecd",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/CURRENT_BACKEND_STATUS_v5_alpha_35_6.md": {
+    "old": null,
+    "new": "aaef69fefeebfab6ceae0929d99d8dca0661b38adf8294014e35133b7970351f",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_BUG_REPORT.md": {
+    "old": null,
+    "new": "05439eee251f08fc35d1528ff195fca8dc393e7663dd38e1833c690db999af5a",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_CHANGE_REPORT.md": {
+    "old": null,
+    "new": "67eb923165ec536fd4e24b78f715ce3bc61688f6189bfb2d4af16a53b847891a",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_CONTEXT_REPORT.md": {
+    "old": null,
+    "new": "e13d9722c8741a442a26b61b01f7904ac507cfcdd8017aaeebc3ec78be4259f8",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_DUPLICATE_SCAN_REPORT.md": {
+    "old": null,
+    "new": "3e1c7b1764a8bbe91768b1704a7c1ddfdb5b16e2fd013f8443ee512527163a7b",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_PACKAGE_HYGIENE_REPORT.md": {
+    "old": null,
+    "new": "3a403e98a5545aa2c27cc366d4850539cd8cf529afd45cbc87a705837e2ae3f7",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_PROCEDURE_REPORT.md": {
+    "old": null,
+    "new": "7307a228a4cb8a4ff786f382fd4ef390e6effbde00c93c8e70bfff46706554b2",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_TARGETED_WEAKNESS_SUBSET_REPORT.md": {
+    "old": null,
+    "new": "e1b3eef28e82015b5e9b57881ae47ad24aae5520d6a764788592bbff790a2835",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_TEST_REPORT.md": {
+    "old": null,
+    "new": "2cd37dc371dacef875c11d399ff5db15dbd8550ae022d40a483784de5974414d",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/JARVIS_v5_0_0_alpha_35_6_TEST_RUN_RESULTS.txt": {
+    "old": null,
+    "new": "6119e16c9555e97cb4474a6a9db14c9c3b16e4a7d1e3fb39083b504525ec4a94",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/NEXT_CHAT_HANDOFF_v5_alpha_35_6.md": {
+    "old": null,
+    "new": "95adeef30c4ecaae2294c6ae926073b2adbc8017d121f77421a14ec9a1dde5c4",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/START_JARVIS_V5_ALPHA_35_6.bat": {
+    "old": null,
+    "new": "d9eeed6b4178ca0971a196378993c98843bd82d676061c0728cd63e494a30bdc",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/START_JARVIS_V5_ALPHA_35_6_SIMPLE_NO_RELOAD.bat": {
+    "old": null,
+    "new": "0f9ae3cdf6bf0f9d1dead5b9e94e7f920dc9f29782781ac29c5b6a887efe3af5",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/alpha35_3_attack_006_011_results.json": {
+    "old": null,
+    "new": "ebc648d8c5621b604730f27b6dd3d37fd7092a1104cfb17db6981ef48631ed4f",
+    "status": "added"
+  },
+  "jarvis_v5/docs/version_history/alpha35_6/alpha35_6_all_pack_results.json": {
+    "old": null,
+    "new": "8b5410e71b5c1213cc3df13de34f13b9da08a9202aa3b65d094f460e3d755731",
+    "status": "added"
+  },
+  "jarvis_v5/registry/registry_loader.py": {
+    "old": "7d447727591cb8435ff214539fe30f65f25dc79ec3785cbba9c36fcf914b678f",
+    "new": "009a69ebd8999979d9a461fda12f5b1a339c07a02e99c76d8197b532964c9669",
+    "status": "changed"
+  },
+  "jarvis_v5/schemas/message_schema.py": {
+    "old": "57e9c3ffaa8f8d45acfc1bc72940899499dc043b4bdb735e93557700b54f4304",
+    "new": "47aaa6068d62b79b43752e327f4a07465f59f518b8a08f1645194afc3930391a",
+    "status": "changed"
+  },
+  "jarvis_v5/schemas/registry_schema.py": {
+    "old": "491fe40fde0eb34399e25bf73962e47da4bfcf7b5caec7314cd3d3e05110b7d6",
+    "new": "eb770339130e309e11ddd756d437aa0cb8981130429805f5c1116e96c99260ac",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha11_contract_negative_guards.json": {
+    "old": "f1efc61bcc1df87543624117a4e2f44d6953c548d619bd2bef2435375adb3ae9",
+    "new": "ed744b963f74053922bc51eaaba3a420048bc62d53045727e91b322e77a11106",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha15_review_readiness_tests.json": {
+    "old": "b07ab0423f1dfde73a2a84815d5f441522b662244af926678b8857a52c76f32e",
+    "new": "45a050687dc0bc351dda7701ea8776cc8419b2e73dbe55afc896ecc581f92e0d",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha16_engine_preflight_tests.json": {
+    "old": "d773bb6867d543771c078813b5cd751edda7a6486555383fff5d984a25ac1d8f",
+    "new": "52e7db9a258dadc8b1677487b1f69c3f0a6ad0557ab66789a0335d3b9e769cdc",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha17_engine_execution_lock_tests.json": {
+    "old": "01e28623f915f2bcc2672a24c71e394c2458228e4fab460fc94d48964d27e308",
+    "new": "2da17f6f9dfc18119989ac70cad1afece70a24d06ff6d27f136df9f9b2dd29dc",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha18_1_safety_envelope_tests.json": {
+    "old": "79ec9376711ce0ad13bcca328bcbc378cc776b953c58dcadcda709aa6ff7c453",
+    "new": "64855aa1ffc1613f138843a455785960148dd02e8ae518cc7390dfd35a941189",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha18_response_consistency_tests.json": {
+    "old": "8a0e7c62aa8fdf2906ffaa0cbe1d813684ba427dbb5148f46b51aff74721a56f",
+    "new": "1c32a9003fd44209083fc373cbe2c4280ffe73ec41e8d281b7d9f92f1ec77cae",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha19_contract_fixture_replay_tests.json": {
+    "old": "f13ee44ad9a7c9f4122b8ad7d33f0f53a4f670e67933e0ece25155af4550f5ad",
+    "new": "d0418469f1bd8ab18d272d9c8b532ab698af78dbfb8b7acee83d20b367621935",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha20_deep_weak_point_boundary_tests.json": {
+    "old": "478e1e7830bf544d2899d5ccb108a102f6d9669c5130518968aa865f79070a82",
+    "new": "7cc6ca65ce239c4be39ecc7c263784d40f5ba3cc7b0f54e8c266facd2ca2e110",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha20_legacy_import_boundary_audit_tests.json": {
+    "old": "0d98a7f7375e032750b9f6e908fa981b16c75027794b4fb2f42be1faa6922f8f",
+    "new": "f63badf05d5fe0b3f13bf2b68537cdd85e09fef4ed0395a0d9a79e7259ddf2d6",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha21_function_unit_compatibility_tests.json": {
+    "old": "3b8b3e37d3faa61eb8eb812e0ab0a0e78bb0c444dddd5135b45bf2beab5bc7d9",
+    "new": "f8a610727c371f195e05cde1325cd1f8c335232ac0b484eed156fee4139f5593",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_1_no_fallback_router_tightening_tests.json": {
+    "old": "6e47ce05bf7d46cebe90f157188c68b83febe0e276ab232dd939d387ba17d331",
+    "new": "c30faf17d8475c6ba82b8f73985098cdaee3bc2c862888a701b7b569b109b7ee",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2a_router_confidence_shadow_tests.json": {
+    "old": "86c1c081be2d2dd8e9119c067a00c1193382de432e5ee78253b95aa62cbdc782",
+    "new": "5b614d5b0dd515ebb2cba712ce4f813c6676290a6aca9ebcf5d4ff8bab161503",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2b_limited_control_router_tests.json": {
+    "old": "d5fc155fdfebcd38eb5805ffb5fbadf7cd732832fcc0932383044094d62f42fc",
+    "new": "c7db6161526efa0eab8cc58a520fa98a2e3bd07309a66026be0907ee0219602a",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2c_route_ownership_and_setup_normalization_tests.json": {
+    "old": "16f8806328aa27b64e1897fbfb1c98c7bd519e536252724d9eb679368cae5641",
+    "new": "2a3085ebfeb7a1cc4da67bea531febdba0aaba734b661db2831104c95a9c1767",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2d_high_priority_ownership_repair_tests.json": {
+    "old": "b5ab1719e663bebfdc61f82eb3463d9db91f0b2508875603b5e86fb3c45e895f",
+    "new": "677d80c1b1e591a8b96abff58edaaf0864911a3460384ea842c60f869d8267b6",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2e_active_task_language_plan_cleanup_tests.json": {
+    "old": "44fbb8c496495a0961ea653dc304bcbacaf69c5a6647bfa22d3e3274bc9c127e",
+    "new": "d1d029b85e642115deb59627f0091bffaae8f0947225d9e9bfddf3983f8cc900",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_2f_engineering_language_gate_tests.json": {
+    "old": "80100cb511a52e0f373c8feeb8ba255bdadd2a1216b6aec3dff99aa617cd1337",
+    "new": "d3be7b85812d026a6bf52c88e49778ff50d173d345bcea8dbe746dd6e8b4f3c4",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha22_qs_intent_alias_router_tests.json": {
+    "old": "87f38ded03e6590d5004f2396761743901787ade6a43db7ad4c634288f0a2aed",
+    "new": "6c61d24e8a8ab4483d8da39936f67d7f435b2b44c8ff95deacfaa36facfdb56e",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha23_global_capability_registry_tests.json": {
+    "old": "360a752a4e47dea759b317c562fb8f0df54bcde5159e8b1d9f9734332cc8302e",
+    "new": "98ee20d552656039a5e93d64370b5c14b3ed02b7931bb87c0c5666b8b0374b83",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha24_route_ownership_registry_advisory_tests.json": {
+    "old": "d39d8839582cdf782fb469b2cdf9319256f155ab3086ef7efc5ea5ad34e7bbd8",
+    "new": "3cd9e27c9af3a6942000bf2b3631ecc6df601c65693f77818bd1400ee2f37d4b",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha25_legacy_bridge_readiness_audit_tests.json": {
+    "old": "52b7a6334dde99e95f9470b3957bfe002ef2103dc326a8bbce9181d00d0df07f",
+    "new": "f6f5395a59242a28940d14b30a10b488ca760393e7b71c231058ad5ba2216624",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha26_1_response_schema_pack_hygiene_tests.json": {
+    "old": "84106ad52265e3d84200bfaa0bcd0b4ef1fc2e7aea91b5f0f0543a188ecc1d5e",
+    "new": "2b3da80f6f53378a8071749aec270b49335622a25672c4444bc6cf1f98ab048d",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha26_legacy_bridge_shadow_probe_tests.json": {
+    "old": "50679befe850fbc626fc3a218d39f5bb191e0f2603a9b2678068eaaca801c997",
+    "new": "78225100236f2f7c07cee3a2c18bd205d37e49a56781d9ac11be7a76afe11ae8",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha27_preview_execution_policy_tests.json": {
+    "old": "006e72794b067cd656d87a372037ac79d1e5038b1a0bf26a21cf3715865f8a62",
+    "new": "1d0ddd31e9ee321901ae5931c26a6586aa156bb67c9a82d0d5276c20637b07c2",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha28_1_package_hygiene_tests.json": {
+    "old": "235b2eddeb7914a6a979b52c1d9bfc944479637bfa262ffac2817f080f84ff07",
+    "new": "f6aa3ebf2e48edf74aa5a0db010da9078db4a5f54507d5af349d9486fc85920f",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha28_policy_response_hygiene_approval_readiness_tests.json": {
+    "old": "b860297e07f4781f637b13e568146e8fcc0f723d7a0d5019b9a28c8155c60ccc",
+    "new": "495cf8610f36e41b52b1e59da3bd2d577b860965cc982bd27966a75e890cfd84",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha29_safe_workbook_path_resolver_dry_run_tests.json": {
+    "old": "035b4ad6c9689dd1135accc9e34023f2fd531c4ca432d7f807fe32def29fd1cb",
+    "new": "801ab64fcdc2ad4043c66442607561a2b5398f0ac0eeb491cd50f68dfa0de94c",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha30_1_weakness_triage_reduced_regression_tests.json": {
+    "old": "97a680265ae6f6926dddb233aea04a91e64e7fba3542771548c7abb977b48998",
+    "new": "2d29186dba6b0685a94036cfd135b3fa7f38ed7ce8ca1651dc62b6bb506ea237",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha30_workbook_read_preflight_contract_tests.json": {
+    "old": "44e4b4eef482bc3f480b5dcceb22e027f6f9b4bb61f31146675aed26f677ead8",
+    "new": "1b5998179ce7896229df86557cd16316c3eded17994f5143880e4e825ab55a1b",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31A_response_shape_compatibility_tests.json": {
+    "old": "eb5350410a92e1bf6dfd05264c90cfd5e410890af66b2e7cd4f6c2b6672c8ea3",
+    "new": "084f83250a2beac5f6adf4ddc99f3eb6c1c6cf64be082a56e0dc4507ec0bf94e",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31B_no_active_route_hygiene_tests.json": {
+    "old": "2f68e420c146a1403fbe85cab20dcb467d7519f708adb238c37dd809e948eba2",
+    "new": "e70adc84c348ab25fea69f01e7a731b136b639cd820c6d22aef39365e25d277c",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31C_active_non_mutating_feedback_read_only_tests.json": {
+    "old": "e604da222c3adfa51a086b660adcf969bfc3aaac11798813b89cface6fd82fba",
+    "new": "7f86aee4f6e8982069bee912968d733d4b0f6c8dcc3c3489a08a4304620d711e",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31D_pending_clarification_risky_action_coverage_tests.json": {
+    "old": "2092158e1839e034f325266295a2bd8973ffed8460709dbac90d951c4a70b73e",
+    "new": "a60d4e09dd452d0fa61a620705cad56cb5bf7186dd773fa1d76ebc59cf135545",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31E_parser_function_unit_conflict_tests.json": {
+    "old": "c91733ca3f7b0f2c3f9855dfc1e4fa48b7144d66f83c4502efd9928699b5b662",
+    "new": "5c5cb01393a71eee89083ad4e03d362d56478f5676cd98cd0147db4433c3c293",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha31F_1_weakness_replay_compatibility_tests.json": {
+    "old": "0dc587fc0e736c751e63416bd251ca99debc571fc993a1f0bbbbc9a451c05318",
+    "new": "5b79380e95d1f177f9b5332db531f888868f37db9f3b4522cfc9aa2c817fcd8f",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha32A_minimal_pair_route_ownership_tests.json": {
+    "old": "ccd7d916761454c0aa3d5c4a5db2b91cbecc200dcfac8675de104be63c819df8",
+    "new": "577ffdffc2d7bb36504d09e161d35c40d383964abf3c451b5b2351b0b9973359",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha33_workbook_metadata_probe_approval_tests.json": {
+    "old": "a1aa4716c24368d4612e714fe8e0bee3c07b8664c67db2da7349451c8e42877a",
+    "new": "05e2db1effd7323c2eddd0d6791f28ea651ef60c4ee51b01e5846c6826c2de32",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha34_workbook_sheet_name_probe_approval_tests.json": {
+    "old": "b827e3b7537684c252f83f3f0d8a7c00d3227de5a43516cb005117dcd66d2317",
+    "new": "6d0a553818e3f9b4d5129dbeb8bd5e9608d58fc1936bf0ef103185ba85a81b0a",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/alpha35_workbook_read_policy_review_tests.json": {
+    "old": "d8eae39d45d29c61f70db56f7abd68ec4cfe06b53301be50a93324acde111aa1",
+    "new": "1526ffd1d34d69ce6075afa19caab277ca3446cf52cb0fbfc439983c30723199",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/packs/sample_external_ai_pack_valid.json": {
+    "old": "69f7a8b688f95b7aeaeabf3b9621239c4215bc8f4b4b040a91659e3622334506",
+    "new": "955b31a6f33bed73c87725d6db64fe354abb4818e07ec3065bbf1970def9cb7e",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py": {
+    "old": "93f307826495db596a824f0425076ed21a83f8109cf99f975eb05c38e6d290e9",
+    "new": "5570d92fe7e12c3d8a43a3f746d76350f910c25cbec7e2f91e229b78492c9437",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py": {
+    "old": "7adbcfcda11cc4fcb3262583fb36c101f12cdd8d2e19134f8fe5929c52cc80f5",
+    "new": "d8df2111dbd64bbb636d09e11774de9550a26b9e8fbefbb0e1ede1e9cc09d643",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py": {
+    "old": "08dd45220734523ee94cfc87a9233b57c9d9df0f9f7581d4b88607dba086c8a6",
+    "new": "6ca00b3fbea9faf2d44175d8f3b95ef312734f2103e95c722f098d2972459038",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py": {
+    "old": "1be69a176a2e1ff4a37d7806b045652b2216399f1d61ffd8b99f82d1eafddff2",
+    "new": "f12746e86cb0d10fc46c1b2e82c9ded83e64a62225f6d8abdf56aab2cf98f52a",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py": {
+    "old": "7744a59f01e64d85a6d3a3e770a56641b6578b8b4084be8b25692603e50ca3a4",
+    "new": "82fd06fe8f4ae696ba6e2a4591cc1e7ac22c3e56d9228eacc9a305fffe2426b3",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py": {
+    "old": "7e8b89add3d8e48b5a7a58499929b141b3033f7b190a090ea44d49b7bd9b8fee",
+    "new": "ec61a7b66f682946a577b46fbb0c27ce39ad36511f3130b9687894ae99ebf929",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py": {
+    "old": "92a017ddc471ba0b4264645b6910777854a899f4fd95baf6d2ef3bee3d0c01cc",
+    "new": "59e54d677c03880955804ebf2c81a9acba37fcecf418d12a8247077c0a45eefa",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py": {
+    "old": "fbd55d544e46d44d1b9d2c955f544c27371548337aa5a0dd88dffac64d12d93e",
+    "new": "f6772ac08e989feee352f222ed74e87033e50897aa313c6f07616d1932080227",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py": {
+    "old": "badf099f75c7d09341b9707a78e14f770dc3d625bfa0e9f672dcf10234c123d5",
+    "new": "2765bbd8e79616a862af9dc39c7a3f97b4f23d51b3cba6b5ad163626205d83d1",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py": {
+    "old": "bc3c5257664ce9c4e08090c322f1c59362e249cf9b3c1c6769c71a7333ffb08b",
+    "new": "38a152ae43f99061ba0b1ce060a54438b4f8dd7119df30900d6f5e695622bdbd",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py": {
+    "old": "4f259b06078aefd1ce19bc4292d93f6e9ceab5de5cc58ef7677938f0b50a7a22",
+    "new": "875c69ea2605d92044b9ab3d4a1a824ff8947ac27d367beb2aa0fa4a66654364",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py": {
+    "old": "4f13da06944e32109773609eab742254610c7fe61f3df1e41bbfd1b87c5e03a4",
+    "new": "dbc5244db362605e6e4b56ef547909c49caaa2e81b64dbbad8bf1258fb2f00dc",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py": {
+    "old": "08bb9a7a8275ca57832eb503b58fb9f76517ffefb5ec9482c6a7d9ed6ece6845",
+    "new": "6fed5e8f05326708943ac7d3b3805bb2519aa24ebd88c66f01d42fba23bae03a",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py": {
+    "old": "6cce5dac8739d858961a4135dcb092b50dd279e4deb2420d691ad3a7e065f274",
+    "new": "59a1fe9ad5114cb1e6c1a5457d8829bca3b8b67134cb9bd2a85352fd57b45a53",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py": {
+    "old": "a38f37f47fd1252897a4d432007f4d14ab69c3b8e6ed016364e829d4662e36ab",
+    "new": "067afe2506c4915d5e0ec8a58be1d17ea248a5ae5cccf9ff7e0b4cd46507947e",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha23_global_capability_registry.py": {
+    "old": "920e07f40771d66f79aedef4bc1357711e6c41477531a4eb937f6a1c532c6cf9",
+    "new": "0cae4df69b031656a7b582e32ce7a14be49ef3c62264baff0e8d32aef1434977",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha24_2_cleanup_hygiene.py": {
+    "old": "b61726fdaa5c8a2467070efea54db7df3e9d0b92de46c5a5a321e1ce7e1b4ed8",
+    "new": "04104c5371c56c0fd6042576243d6c86c1d4b6405e94af8ec9a22d1d17938fdb",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha24_route_ownership_registry_advisory.py": {
+    "old": "771c8fb2030bae3938b645795696397a70fe18351593a93baa8c9d07d15b6ef0",
+    "new": "e5513848ccc4b98ba291456347945f673e36c32b4b51cc6bec0be3c329b666f0",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha25_legacy_bridge_readiness_audit.py": {
+    "old": "0c302de5b05be1b3bacd34ada22732034f3fa401620e515228660ee1f2d8e181",
+    "new": "5b44cd21210f00beadc56b8c452f8635a330e1b71a369768fa48ca191e935cef",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha26_1_response_schema_pack_hygiene.py": {
+    "old": "0838af5c3705f4019b37469e48be9e53fd015e4c47872759f78dc6715e1bf5ab",
+    "new": "938c331c3b0c3a9b86ac84bec8d13d487076e847a4b6f2bbc6e3a38918cbb48c",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha26_legacy_bridge_shadow_probe.py": {
+    "old": "8c043a5e88c34149b9bfb18d3c9ba4af9a31af5e2b1ebda478676f62fd378e14",
+    "new": "cd84667e013fcffb336bd45c2e09922981db9d06a305eed0f0ce30d5ea07be9b",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py": {
+    "old": "896a22fff7675f346d92f958a0fb72c217fbdfc9defa353fc85937b392416574",
+    "new": "d7e9b11393c565da184763b73e1bfb39baf0e919ad5076224e19e5a6d8a138f2",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha28_1_package_hygiene.py": {
+    "old": "0e4564e67d34974d78784e26606244ace503b825f0c3175b68f770c0bc2905c2",
+    "new": "06eff7355bae177db8f8b840e5f7e37d23e20d73a02279bc53284a02cc762ec0",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py": {
+    "old": "f9a82b12be24438fd624a59d275866d218e0317a6dd82422fa48fb6a1e206ef9",
+    "new": "721db2ca813028cb546887626e5ab38b7dde2118c0d318dcad3b7a9b76790b02",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha29_safe_workbook_path_resolver_dry_run.py": {
+    "old": "5b38615fdf6ee3a8e7d96019f969d862c72e6983f27c14bb4ea5d4a4f48a9594",
+    "new": "6e94dcc22c2194749fa8dea3cd7ab36ec21f4a5787f7ab3292b1c06adfba28f9",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha30_workbook_read_preflight_contract.py": {
+    "old": "ab8bccce37ed2ed5e5bcebe496dc23b71cb16ff87413d82c1d171042a7c63713",
+    "new": "d7c88b7493934022021de2d3e8058843a1d3426dcba8929c3bfdd79e5de5a4d6",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py": {
+    "old": "62caba84c8e726beb21cb637d3b73650176bbe26c2ab85e252f2ae19f66f9bdc",
+    "new": "e29c374132825f117249f1592e4823acb9d7337d296ffa40be26f949a3fff6c5",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31B_no_active_route_hygiene.py": {
+    "old": "4e15b03d958453a5bb47de62d9a7bb6d9f211e14b1a14a2d12b72813e339f815",
+    "new": "1d31991151669158ca6415dff233f9eeac00284c9cb125de05ecac15484f63ef",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py": {
+    "old": "73a6543a640770874fa0914b078560ecc5813ffbed42a46c149b690cbe2eddcb",
+    "new": "bac18af6a2969d61c17ec9d8317242e0a9b8b266e91058c226c992da0be38388",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py": {
+    "old": "21ef73d36d572290bd9c3d1bd32cd02d25b12b478e5837db42700ff09a7438e8",
+    "new": "3dbac767d19e83df2952aa4c774e4b8a85cf17611ee0676bd63c70cef2b3906b",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py": {
+    "old": "78cec3369fff3dcd7eab5ce008f07cdb59f423dcdda3137f6981c960b656e88b",
+    "new": "d3e518e64f5d4c0a68e8a7e994cccf6da4ea2dc8a3a24f221999bdfa2028a05f",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py": {
+    "old": "7b83fe7e5371cbf192637bec4be7b96d5eb8d7e2f2a686e57cad446ac9182307",
+    "new": "ffa9b27f454194eefc4ce02e0a22367227fba96600c8e6aba279b7203ccb78ce",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py": {
+    "old": "36c9a2c0fbea4da107dd8933d4d3658efa68828842419d23af8fc2a29b91738b",
+    "new": "628b0d54605f2a0f162e72268f4a728d184469a32b0dbe627fa61eb9484a6939",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py": {
+    "old": "9370ab0420f016dab9faa9aa19fff21ff544bb3ecac0233591921662495bb73a",
+    "new": "c9073784baa2c061612ce19eb5556e800fa07027985017a466927a9ce8660eda",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py": {
+    "old": "651bc265debdcb8efe3c085234520b5dae64f8e769e3cd0a2f7a976d6adb10fa",
+    "new": "71ce7349dbf0d7b87cf2471478a864671255bcf56c9bb2140daf53bc1a9f9115",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py": {
+    "old": "00705e5fca8525c8fd3e3181edf0e636747d25be2c85f19301667645038f08aa",
+    "new": "45435a5fe51264893d467d374ff5d567c3ef665bf871c84906b5241d80f1417a",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py": {
+    "old": "ed6f9628154149bd6edfcf157d8d9ad2c8eb9d86dbe8dbaffe94079a183bf23e",
+    "new": "a12c88bb3c45405b44ac78ea503f309ee32917979cc544ec5e46cb08a7ba29eb",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py": {
+    "old": "acdc07bde9dd2b6e1f92f340555f2b7e7bdbea03e04eb8132cadc2cfd74f4a0a",
+    "new": "1722d57124ffa6cf059e18cdd2fc2aede90e6c4c4b8e42306aad4c0f51a18a2c",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py": {
+    "old": "0a9362649e5344fdbca80ada87fe8f73a30d50112eefb4c9260f628b0545942c",
+    "new": "85228c4fd748c0fc5516ba38dcb4935f6e3aa9ac985cdd6dd5058213fd3deabe",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py": {
+    "old": "98f843be3aeb82b20fbeff07703a076b27b74d5aed496e802984ee44eac25bcb",
+    "new": "ef92c92db7135bc5e49fb940eb322acf4bb1fcdd4202e54f1428e9643beaa6f3",
+    "status": "changed"
+  },
+  "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py": {
+    "old": "6898fcea4b601122d856ced45fbeae5d00dd8ad3035dbb92f45ebfc1c711b66f",
+    "new": "a5f87736612247f1b4c6fe7314662123a79d2c6765972f0582119a2071378ab3",
+    "status": "changed"
+  },
+  "jarvis_v5/tools/builder/workbook_read_policy_review.py": {
+    "old": "d1bc3cbc8e8e2d17fdee55ce789f99253337ff1c0ef3659329294688c47cc307",
+    "new": "8fe30733847211862b2527843c31938e65d278ac77f7ae2013cc40aea01be368",
+    "status": "changed"
+  },
+  "jarvis_v5/tools/builder/workbook_read_preflight_contract.py": {
+    "old": "e0870a0d8d328d725966cbd75dacc4bd3247820623a7505e7c5c9b6c5b63f071",
+    "new": "209d48cc48f4556e40031221ac6f84f6b316eff83f7b9cf78d58c432f9767fc8",
+    "status": "changed"
+  }
+}

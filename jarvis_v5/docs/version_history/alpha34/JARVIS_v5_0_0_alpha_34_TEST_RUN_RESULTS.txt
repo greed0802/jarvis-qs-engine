@@ -1,0 +1,5 @@
+python -m compileall -q jarvis_v5: PASS
+Targeted alpha.34 smoke: 9 passed
+Smoke pytest clean chunks: 284 passed
+Built-in JSON pack sweep: 39 packs / 177 tests passed
+Safety aggregate: workbook_read_any_true=false, engine_called_any_true=false, excel_created_any_true=false, legacy_builder_called_any_true=false

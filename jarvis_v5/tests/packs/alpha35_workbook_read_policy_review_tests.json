@@ -1,0 +1,71 @@
+{
+  "pack_name": "alpha35_3_workbook_read_policy_review_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_WORKBOOK_READ_POLICY_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "version", "method": "GET", "endpoint": "/api/version", "assertions": [
+          {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+          {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+          {"path": "$.scope_metadata.workbook_read_policy_review_contract", "equals": true},
+          {"path": "$.scope_metadata.cell_read_enabled", "equals": false},
+          {"path": "$.scope_metadata.formula_read_enabled", "equals": false},
+          {"path": "$.scope_metadata.dimension_read_enabled", "equals": false},
+          {"path": "$.scope_metadata.workbook_parse_enabled", "equals": false},
+          {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+          {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+          {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+          {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+        ]}
+      ]
+    },
+    {
+      "name": "WORKBOOK_READ_POLICY_REVIEW_IS_POLICY_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "policy", "method": "POST", "endpoint": "/api/builder/workbook-read-policy-review", "json": {"conversation_id": "pack_alpha35_3_policy", "client_event_id": "policy"}, "assertions": [
+          {"path": "$.route", "equals": "builder_workbook_read_policy_review"},
+          {"path": "$.policy_only", "equals": true},
+          {"path": "$.current_access_tier", "equals": "sheet_name_probe_only"},
+          {"path": "$.cell_read_enabled", "equals": false},
+          {"path": "$.formula_read_enabled", "equals": false},
+          {"path": "$.dimension_read_enabled", "equals": false},
+          {"path": "$.workbook_parse_enabled", "equals": false},
+          {"path": "$.workbook_opened", "equals": false},
+          {"path": "$.workbook_read", "equals": false},
+          {"path": "$.workbook_content_read", "equals": false},
+          {"path": "$.workbook_parsed", "equals": false},
+          {"path": "$.cells_read", "equals": false},
+          {"path": "$.formulas_read", "equals": false},
+          {"path": "$.engine_called", "equals": false},
+          {"path": "$.excel_created", "equals": false},
+          {"path": "$.legacy_builder_called", "equals": false},
+          {"path": "$.preview_readiness_upgraded", "equals": false},
+          {"path": "$.export_readiness_upgraded", "equals": false},
+          {"path": "$.readiness.next_gate", "equals": "future_structure_probe_policy_review"}
+        ]}
+      ]
+    },
+    {
+      "name": "ALPHA33_AND_ALPHA34_PROBES_REMAIN_BLOCKED_WITHOUT_CONTRACT",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "metadata", "method": "POST", "endpoint": "/api/builder/workbook-metadata-probe-approval", "json": {"conversation_id": "pack_alpha35_3_guards", "client_event_id": "metadata", "approval_granted": false}, "assertions": [
+          {"path": "$.route", "equals": "builder_workbook_metadata_probe_approval"},
+          {"path": "$.blocked", "equals": true},
+          {"path": "$.workbook_opened", "equals": false},
+          {"path": "$.sheet_names_read", "equals": false}
+        ]},
+        {"name": "sheet", "method": "POST", "endpoint": "/api/builder/workbook-sheet-name-probe-approval", "json": {"conversation_id": "pack_alpha35_3_guards", "client_event_id": "sheet", "approval_granted": false}, "assertions": [
+          {"path": "$.route", "equals": "builder_workbook_sheet_name_probe_approval"},
+          {"path": "$.blocked", "equals": true},
+          {"path": "$.workbook_opened", "equals": false},
+          {"path": "$.sheet_names_read", "equals": false}
+        ]}
+      ]
+    }
+  ]
+}

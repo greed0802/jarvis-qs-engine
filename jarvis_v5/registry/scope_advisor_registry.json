@@ -1,0 +1,555 @@
+{
+  "version": "v5.0.0-alpha.35.11",
+  "registry": "scope_advisors",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "scope_advisors": [
+    {
+      "scope_advisor_key": "waterproofing",
+      "aliases": [
+        "waterproofing",
+        "membrane",
+        "wet area waterproofing"
+      ],
+      "trade_family": "finishes_envelope",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no",
+        "item"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "wet_area_details",
+        "finishes_schedule",
+        "specification"
+      ],
+      "optional_files": [
+        "consultant_reports",
+        "details",
+        "rfi_log"
+      ],
+      "common_scope_items": [
+        "wet_area_floor_membrane",
+        "wall_upturns",
+        "shower_recesses",
+        "balcony_membrane",
+        "planter_box_membrane",
+        "protection_board",
+        "flood_testing"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_draft",
+        "boq_scope_risk_register"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "tiling",
+      "aliases": [
+        "tiling",
+        "tiles",
+        "wall tiling",
+        "floor tiling"
+      ],
+      "trade_family": "finishes",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "finishes_schedule",
+        "tile_schedule",
+        "specification"
+      ],
+      "common_scope_items": [
+        "floor_tiles",
+        "wall_tiles",
+        "skirting",
+        "trims",
+        "movement_joints",
+        "tile_beds"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "structural_steel",
+      "aliases": [
+        "structural steel",
+        "steelwork",
+        "steel"
+      ],
+      "trade_family": "structure",
+      "measurement_units": [
+        "t",
+        "kg",
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "structural_drawings",
+        "steel_schedule",
+        "specification",
+        "architectural_plans"
+      ],
+      "common_scope_items": [
+        "beams",
+        "columns",
+        "connections",
+        "surface_treatment",
+        "fire_protection",
+        "shop_drawings"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_draft",
+        "scope_risk_register"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium_high"
+    },
+    {
+      "scope_advisor_key": "painting",
+      "aliases": [
+        "painting",
+        "paint",
+        "paintwork"
+      ],
+      "trade_family": "finishes",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no",
+        "item"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "finishes_schedule",
+        "specification"
+      ],
+      "common_scope_items": [
+        "walls",
+        "ceilings",
+        "doors_frames",
+        "trims",
+        "external_painting",
+        "special_coatings"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "civil_drainage",
+      "aliases": [
+        "civil drainage",
+        "stormwater",
+        "drainage"
+      ],
+      "trade_family": "civil",
+      "measurement_units": [
+        "m",
+        "no",
+        "m3",
+        "item"
+      ],
+      "files_required": [
+        "civil_drawings",
+        "stormwater_long_sections",
+        "specification",
+        "council_conditions"
+      ],
+      "common_scope_items": [
+        "pipes",
+        "pits",
+        "headwalls",
+        "trenching",
+        "backfill",
+        "testing"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "rfi_draft",
+        "scope_risk_register"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium_high"
+    },
+    {
+      "scope_advisor_key": "doors_windows",
+      "aliases": [
+        "doors and windows",
+        "doors",
+        "windows",
+        "glazing schedule",
+        "door schedule",
+        "window schedule"
+      ],
+      "trade_family": "openings",
+      "measurement_units": [
+        "m2",
+        "no",
+        "m"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "door_window_schedule",
+        "elevations",
+        "specification"
+      ],
+      "optional_files": [
+        "hardware_schedule",
+        "acoustic_report",
+        "fire_report"
+      ],
+      "common_scope_items": [
+        "door_leaf_area",
+        "window_glazing_area",
+        "frames",
+        "hardware_sets",
+        "fire_rated_doors",
+        "acoustic_seals"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "file_requirement_list",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "glazing",
+      "aliases": [
+        "glazing",
+        "curtain wall",
+        "shopfront",
+        "glass",
+        "windows"
+      ],
+      "trade_family": "facade_openings",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "architectural_elevations",
+        "window_schedule",
+        "facade_details",
+        "specification"
+      ],
+      "optional_files": [
+        "acoustic_report",
+        "j1v3_report",
+        "wind_load_notes"
+      ],
+      "common_scope_items": [
+        "glazing_panels",
+        "frames",
+        "spandrel_panels",
+        "louvres",
+        "film_coatings",
+        "sealants"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "plasterboard",
+      "aliases": [
+        "plasterboard",
+        "drywall",
+        "partitions",
+        "linings"
+      ],
+      "trade_family": "interior_linings",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "partition_schedule",
+        "reflected_ceiling_plans",
+        "specification"
+      ],
+      "optional_files": [
+        "acoustic_report",
+        "fire_report"
+      ],
+      "common_scope_items": [
+        "wall_linings",
+        "partitions",
+        "shaftwall",
+        "bulkheads",
+        "access_panels",
+        "fire_rated_lining"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "ceilings",
+      "aliases": [
+        "ceilings",
+        "suspended ceiling",
+        "raked ceiling",
+        "bulkhead"
+      ],
+      "trade_family": "interior_finishes",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "reflected_ceiling_plans",
+        "architectural_sections",
+        "specification"
+      ],
+      "optional_files": [
+        "services_drawings",
+        "acoustic_report"
+      ],
+      "common_scope_items": [
+        "ceiling_tiles",
+        "plasterboard_ceiling",
+        "bulkheads",
+        "access_panels",
+        "insulation",
+        "shadowline_trims"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "file_requirement_list",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "floor_finishes",
+      "aliases": [
+        "floor finishes",
+        "carpet",
+        "vinyl",
+        "flooring",
+        "resilient flooring"
+      ],
+      "trade_family": "finishes",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "finishes_schedule",
+        "floor_finish_plan",
+        "specification"
+      ],
+      "optional_files": [
+        "room_data_sheet",
+        "skirting_schedule"
+      ],
+      "common_scope_items": [
+        "floor_finish_area",
+        "skirtings",
+        "transitions",
+        "floor_prep",
+        "stair_nosings"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "joinery",
+      "aliases": [
+        "joinery",
+        "casework",
+        "cabinets",
+        "benchtops"
+      ],
+      "trade_family": "fitout",
+      "measurement_units": [
+        "m",
+        "m2",
+        "no",
+        "item"
+      ],
+      "files_required": [
+        "architectural_plans",
+        "joinery_details",
+        "room_data_sheet",
+        "specification"
+      ],
+      "optional_files": [
+        "finishes_schedule",
+        "services_coordination_drawings"
+      ],
+      "common_scope_items": [
+        "base_cabinets",
+        "wall_cabinets",
+        "benchtops",
+        "splashbacks",
+        "hardware",
+        "appliance_allowances"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "file_requirement_list",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "roofing",
+      "aliases": [
+        "roofing",
+        "metal roof",
+        "roof sheeting",
+        "roof plumbing"
+      ],
+      "trade_family": "envelope",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no"
+      ],
+      "files_required": [
+        "roof_plan",
+        "architectural_sections",
+        "specification"
+      ],
+      "optional_files": [
+        "structural_roof_framing",
+        "hydraulic_stormwater_drawings"
+      ],
+      "common_scope_items": [
+        "roof_sheets",
+        "flashings",
+        "gutters",
+        "downpipes",
+        "sarking",
+        "insulation",
+        "roof_accessories"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium"
+    },
+    {
+      "scope_advisor_key": "fire_stopping",
+      "aliases": [
+        "fire stopping",
+        "fire seal",
+        "fire collars",
+        "penetration seals"
+      ],
+      "trade_family": "fire_safety",
+      "measurement_units": [
+        "no",
+        "m",
+        "item"
+      ],
+      "files_required": [
+        "fire_report",
+        "architectural_fire_compartment_plans",
+        "services_penetration_details",
+        "specification"
+      ],
+      "optional_files": [
+        "as_built_services_layout"
+      ],
+      "common_scope_items": [
+        "penetration_seals",
+        "fire_collars",
+        "linear_gap_seals",
+        "certification",
+        "testing"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium_high"
+    },
+    {
+      "scope_advisor_key": "acoustic_treatments",
+      "aliases": [
+        "acoustic treatments",
+        "acoustic lining",
+        "acoustic insulation",
+        "noise control"
+      ],
+      "trade_family": "acoustics",
+      "measurement_units": [
+        "m2",
+        "m",
+        "no",
+        "item"
+      ],
+      "files_required": [
+        "acoustic_report",
+        "architectural_plans",
+        "wall_partition_schedule",
+        "specification"
+      ],
+      "optional_files": [
+        "mechanical_drawings",
+        "door_window_schedule"
+      ],
+      "common_scope_items": [
+        "acoustic_insulation",
+        "acoustic_seals",
+        "rated_glazing",
+        "plant_attenuation",
+        "testing"
+      ],
+      "outputs": [
+        "measurement_checklist",
+        "scope_risk_register",
+        "rfi_draft"
+      ],
+      "builder_mutation_allowed": false,
+      "risk_level": "medium_high"
+    }
+  ]
+}

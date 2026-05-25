@@ -1,0 +1,12 @@
+Jarvis v5.0.0-alpha.31D raw test run results
+
+compileall: PASS
+pytest: PASS — 249 passed
+JSON packs: PASS — 33 / 33 packs
+JSON pack tests: PASS — 136 / 136 tests
+Targeted 020–024 + 031–034: PASS — 9 / 9 packs, 450 / 450 tests
+Selected active-only minimal/mixed subset: PASS — 10 / 10 tests
+Duplicate FastAPI routes: 0
+Same-file duplicate top-level definitions: 0
+Protected Builder boundary hash check: PASS — 10 / 10 unchanged
+Safety aggregate: workbook_read_any_true=false; engine_called_any_true=false; excel_created_any_true=false; legacy_builder_called_any_true=false

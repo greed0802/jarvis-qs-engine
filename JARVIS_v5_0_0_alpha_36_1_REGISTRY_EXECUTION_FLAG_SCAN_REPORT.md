@@ -1,0 +1,19 @@
+# Registry Flag Scan — alpha36.1
+
+```json
+{
+  "execution_enabled": 0,
+  "workbook_read": 0,
+  "workbook_content_read": 0,
+  "formula_read": 0,
+  "cell_value_read": 0,
+  "style_read": 0,
+  "sheet_name_probe_allowed": 0,
+  "engine_called": 0,
+  "excel_created": 0,
+  "legacy_builder_called": 0,
+  "tool_execution_called": 0
+}
+```
+
+Offenders: 0

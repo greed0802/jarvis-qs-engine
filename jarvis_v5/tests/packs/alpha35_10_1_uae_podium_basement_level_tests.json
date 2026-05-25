@@ -1,0 +1,349 @@
+{
+  "pack_name": "alpha35_10_1_uae_podium_basement_level_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_10_1_UAE_LEVEL_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UAE_PODIUM_BASEMENT_DESCENDING_FLOW_REACHES_SNAPSHOT_ADAPTER",
+      "conversation_id": "alpha35_10_1_uae_pack_flow",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_002",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "set_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_003",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "set_function_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_004",
+            "text": "Use XGETWALLAREA unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "set_zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "set_headings",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "set_levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_007",
+            "text": "Levels B3 to B1, GF, Podium, Level 1 to Level 20"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "equals": null
+            },
+            {
+              "path": "$.reducer_result.requires_clarification",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.conflicts",
+              "equals": []
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "B3"
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "B2"
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "B1"
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "GF"
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "Podium"
+            },
+            {
+              "path": "$.reducer_result.changes.levels",
+              "contains": "L20"
+            }
+          ]
+        },
+        {
+          "name": "review",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_008",
+            "text": "Review"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_review"
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "create_snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_009"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "adapter_dry_run",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha35_10_1_uae_pack_flow",
+            "client_event_id": "a35101_uae_evt_010"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ASCENDING_BASEMENT_RANGE_STILL_CLARIFIES",
+      "conversation_id": "alpha35_10_1_ascending_basement_guard",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_ascending_basement_guard",
+            "client_event_id": "a35101_asc_evt_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "set_ascending_basements",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_1_ascending_basement_guard",
+            "client_event_id": "a35101_asc_evt_002",
+            "text": "Levels B2 to B5"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.reducer_result.conflict_type",
+              "equals": "ambiguous_basement_range"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

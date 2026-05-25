@@ -1,0 +1,359 @@
+{
+  "pack_name": "alpha22_1_no_fallback_router_tightening_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_1_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GENERIC_TOOL_PHRASES_CHOOSE_TOOL_NOT_FALLBACK",
+      "steps": [
+        {
+          "name": "compare",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_compare",
+            "client_event_id": "a221_compare_001",
+            "text": "Compare"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder",
+                "qa_checker"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "check",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_check",
+            "client_event_id": "a221_check_001",
+            "text": "Check"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_create",
+            "client_event_id": "a221_create_001",
+            "text": "Create"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder",
+                "formatter",
+                "qa_checker"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "run_it",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_run",
+            "client_event_id": "a221_run_001",
+            "text": "Run it"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "start_tool",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_start_tool",
+            "client_event_id": "a221_start_tool_001",
+            "text": "Start the tool"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FORMAT_TEXT_NEGATIVE_GUARD_NOT_FORMATTER",
+      "steps": [
+        {
+          "name": "format_sentence",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_format_sentence",
+            "client_event_id": "a221_format_sentence_001",
+            "text": "Format this sentence"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_reason",
+              "equals": "negative_guard:format_text_not_workbook"
+            },
+            {
+              "path": "$.tool_candidates",
+              "equals": []
+            }
+          ]
+        },
+        {
+          "name": "format_reply",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_format_reply",
+            "client_event_id": "a221_format_reply_001",
+            "text": "Format this chat reply only"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_reason",
+              "equals": "negative_guard:format_text_not_workbook"
+            },
+            {
+              "path": "$.tool_candidates",
+              "equals": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CARPET_OR_TILING_CLARIFIES_NO_SILENT_MUTATION",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_trade_ambig",
+            "client_event_id": "a221_trade_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "ambiguous_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_trade_ambig",
+            "client_event_id": "a221_trade_002",
+            "text": "Use Carpet or Tiling"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.reducer_result.conflict_type",
+              "equals": "trade_choice_ambiguous"
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/a221_pack_trade_ambig",
+          "assertions": [
+            {
+              "path": "$.plan_summary.trade_profile",
+              "equals": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TRADE_MEASURE_SCHEDULE_ALIAS_STARTS_BUILDER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a221_pack_trade_measure",
+            "client_event_id": "a221_trade_measure_001",
+            "text": "Prepare a trade measure schedule for NZ QS review"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.reducer_result.qs_alias.alias",
+              "equals": "trade_measure_schedule"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

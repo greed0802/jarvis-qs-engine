@@ -1,0 +1,6 @@
+{
+  "version": "v5.0.0-alpha.35.5",
+  "built_in_pack_sweep": {"packs_passed": 40, "packs_total": 40, "tests_passed": 180, "tests_total": 180},
+  "attack_014_018": {"014": "50/50", "015": "50/50", "016": "50/50", "017": "50/50", "018": "50/50"},
+  "safety": {"workbook_read_any_true": false, "engine_called_any_true": false, "excel_created_any_true": false, "legacy_builder_called_any_true": false}
+}

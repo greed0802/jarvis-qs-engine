@@ -1,0 +1,383 @@
+{
+  "pack_name": "alpha24_route_ownership_registry_advisory_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "ACTIVE_NATURAL_REVIEW_PREVIEW_EXPORT_DOWNLOAD",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_active_actions",
+            "client_event_id": "a24_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "natural_review",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_active_actions",
+            "client_event_id": "a24_review",
+            "text": "Please review the current setup"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_review"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_action_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.active_task_action_language.matched",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "natural_preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_active_actions",
+            "client_event_id": "a24_preview",
+            "text": "Preview it please"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_action_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "not_exists": true
+            }
+          ]
+        },
+        {
+          "name": "natural_export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_active_actions",
+            "client_event_id": "a24_export",
+            "text": "Export it when ready"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_export_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_action_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "natural_download",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_active_actions",
+            "client_event_id": "a24_download",
+            "text": "Download the output"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_action_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_action_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_SETUP_NORMALIZATION_REACHES_SLOT_REDUCER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_setup_norm",
+            "client_event_id": "a24_setup_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "unit_correction",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_setup_norm",
+            "client_event_id": "a24_unit_no",
+            "text": "The unit should be no, not square metres"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "unit"
+              ]
+            },
+            {
+              "path": "$.reducer_result.normalization.canonical_text",
+              "contains": "Unit no"
+            }
+          ]
+        },
+        {
+          "name": "reversed_zone_values",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_setup_norm",
+            "client_event_id": "a24_zone_reverse",
+            "text": "Please put Old and New under Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "dynamic_zones"
+              ]
+            },
+            {
+              "path": "$.reducer_result.normalization.canonical_text",
+              "contains": "Zone 1: Old and New"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BOQ_REPORT_CHECKLIST_USES_REGISTRY_ADVISORY_NOT_BUILDER",
+      "steps": [
+        {
+          "name": "boq_fire_report_checklist",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_registry_advisory",
+            "client_event_id": "a24_registry_advisory_1",
+            "text": "Create a BOQ checklist from fire report"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "registry_advisory_metadata_only"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capability_candidates",
+              "includes_all": [
+                "qs_scope_advice",
+                "document_ocr_or_report_reader"
+              ]
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "client_document_reader",
+                "qs_scope_advisor"
+              ]
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MEASURE_SCHEDULE_SOFT_BUILDER_ALIAS_BUT_DEFINITION_IS_GENERAL",
+      "steps": [
+        {
+          "name": "measure_schedule_start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_measure_schedule",
+            "client_event_id": "a24_measure_schedule_start",
+            "text": "Can you start a measure schedule?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.qs_alias.alias",
+              "equals": "measure_schedule"
+            }
+          ]
+        },
+        {
+          "name": "measure_schedule_definition",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a24_measure_schedule_definition",
+            "client_event_id": "a24_measure_schedule_definition_1",
+            "text": "What does measure schedule mean?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.reason",
+              "equals": "casual_non_tool_phrase"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REGISTRY_REQUIREMENT_CHECK_RECOGNIZES_REPORT_CHECKLIST_METADATA_ONLY",
+      "steps": [
+        {
+          "name": "requirement_check",
+          "method": "POST",
+          "endpoint": "/api/registry/requirement-check",
+          "json": {
+            "request": "Create a BOQ checklist from fire report"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "registry_requirement_check"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.capability_candidates",
+              "includes_all": [
+                "qs_scope_advice",
+                "document_ocr_or_report_reader"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

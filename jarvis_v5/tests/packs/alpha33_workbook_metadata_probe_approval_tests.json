@@ -1,0 +1,132 @@
+{
+  "pack_name": "alpha33_workbook_metadata_probe_approval_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA33_METADATA_PROBE_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.scope_metadata.workbook_metadata_probe_approval_contract", "equals": true},
+            {"path": "$.scope_metadata.workbook_metadata_probe_approval_required_by_default", "equals": true},
+            {"path": "$.scope_metadata.workbook_metadata_probe_metadata_only", "equals": true},
+            {"path": "$.scope_metadata.workbook_sheet_names_enabled", "equals": true},
+            {"path": "$.scope_metadata.workbook_parse_enabled", "equals": false},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "METADATA_PROBE_NO_CONTRACT_BLOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "probe_no_contract",
+          "method": "POST",
+          "endpoint": "/api/builder/workbook-metadata-probe-approval",
+          "json": {"conversation_id": "pack_alpha33_no_contract", "client_event_id": "probe", "approval_granted": false},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_workbook_metadata_probe_approval"},
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.blocked", "equals": true},
+            {"path": "$.reason", "equals": "engine_contract_not_found"},
+            {"path": "$.contract_found", "equals": false},
+            {"path": "$.workbook_ref_found", "equals": false},
+            {"path": "$.workbook_opened", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.workbook_parsed", "equals": false},
+            {"path": "$.sheet_names_read", "equals": false},
+            {"path": "$.cells_read", "equals": false},
+            {"path": "$.formulas_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false},
+            {"path": "$.saved_path", "not_exists": true},
+            {"path": "$.path", "not_exists": true}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "METADATA_PROBE_APPROVAL_REQUIRED_THEN_APPROVED_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "attach", "method": "POST", "endpoint": "/api/attach", "form": {"conversation_id": "pack_alpha33_contract", "client_event_id": "attach", "text": "Here"}, "file_fixture": "Test.xlsx", "assertions": [{"path": "$.route", "equals": "attachment_bind"}, {"path": "$.reducer_result.workbook_read", "equals": false}]},
+        {"name": "trade", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "trade", "text": "Use Wall Types"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "function", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "func", "text": "Use XGETWALLAREA"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "unit", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "unit", "text": "Unit m2"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "zone", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "zone", "text": "Zone 1: Old and New"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "head", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "head", "text": "Use Head 2 for Zone 1"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "levels", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "levels", "text": "Levels GF to L3"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "snapshot", "method": "POST", "endpoint": "/api/builder/create-snapshot", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "snapshot"}, "assertions": [{"path": "$.route", "equals": "builder_snapshot_created"}, {"path": "$.workbook_read", "equals": false}]},
+        {"name": "adapter", "method": "POST", "endpoint": "/api/builder/adapter-dry-run", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "adapter"}, "assertions": [{"path": "$.route", "equals": "builder_adapter_dry_run"}, {"path": "$.workbook_read", "equals": false}]},
+        {"name": "contract", "method": "POST", "endpoint": "/api/builder/engine-contract", "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "contract"}, "assertions": [{"path": "$.route", "equals": "builder_engine_contract_created"}, {"path": "$.contract.workbook_ref.saved_path", "exists": true}, {"path": "$.workbook_read", "equals": false}]},
+        {
+          "name": "probe_requires_approval",
+          "method": "POST",
+          "endpoint": "/api/builder/workbook-metadata-probe-approval",
+          "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "probe_required", "approval_granted": false},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_workbook_metadata_probe_approval"},
+            {"path": "$.blocked", "equals": true},
+            {"path": "$.reason", "equals": "metadata_probe_approval_required"},
+            {"path": "$.approval_required", "equals": true},
+            {"path": "$.approval_granted", "equals": false},
+            {"path": "$.workbook_ref_found", "equals": true},
+            {"path": "$.workbook_opened", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.workbook_parsed", "equals": false},
+            {"path": "$.sheet_names_read", "equals": false},
+            {"path": "$.cells_read", "equals": false},
+            {"path": "$.formulas_read", "equals": false},
+            {"path": "$.saved_path", "not_exists": true},
+            {"path": "$.path", "not_exists": true}
+          ]
+        },
+        {
+          "name": "probe_approved_metadata_only",
+          "method": "POST",
+          "endpoint": "/api/builder/workbook-metadata-probe-approval",
+          "json": {"conversation_id": "pack_alpha33_contract", "client_event_id": "probe_approved", "approval_granted": true},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_workbook_metadata_probe_approval"},
+            {"path": "$.blocked", "equals": false},
+            {"path": "$.reason", "equals": "metadata_probe_approved_metadata_only"},
+            {"path": "$.approval_required", "equals": false},
+            {"path": "$.approval_granted", "equals": true},
+            {"path": "$.workbook_metadata.filename", "equals": "Test.xlsx"},
+            {"path": "$.workbook_metadata.extension", "equals": ".xlsx"},
+            {"path": "$.metadata_validation.metadata_probe_candidate_allowed", "equals": true},
+            {"path": "$.workbook_opened", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.workbook_parsed", "equals": false},
+            {"path": "$.sheet_names_read", "equals": false},
+            {"path": "$.cells_read", "equals": false},
+            {"path": "$.formulas_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false},
+            {"path": "$.safety.workbook_opened", "equals": false},
+            {"path": "$.safety.workbook_read", "equals": false},
+            {"path": "$.safety.sheet_names_read", "equals": false},
+            {"path": "$.saved_path", "not_exists": true},
+            {"path": "$.path", "not_exists": true}
+          ]
+        }
+      ]
+    }
+  ]
+}

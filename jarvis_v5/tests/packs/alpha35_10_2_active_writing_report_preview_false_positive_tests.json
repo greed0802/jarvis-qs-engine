@@ -1,0 +1,75 @@
+{
+  "pack_name": "alpha35_10_2_active_writing_report_preview_false_positive_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_10_2_ACTIVE_WRITING_PREVIEW_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WRITING_ISSUE_REPORT_WITH_PREVIEW_WORD_IS_NON_MUTATING",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_write_preview", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "rewrite_preview_issue", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_write_preview", "client_event_id": "write1", "text": "Rewrite this issue report: Preview is broken after MPa."}, "assertions": [
+          {"path": "$.route", "equals": "active_task_non_mutating_language"},
+          {"path": "$.router_step", "equals": "active_task_non_mutating_language_gate"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false},
+          {"path": "$.workbook_read", "not_equals": true},
+          {"path": "$.engine_called", "not_equals": true},
+          {"path": "$.excel_created", "not_equals": true},
+          {"path": "$.legacy_builder_called", "not_equals": true}
+        ]},
+        {"name": "rewrite_unit_issue", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_write_preview", "client_event_id": "write2", "text": "Rewrite this issue report: sq.m failed."}, "assertions": [
+          {"path": "$.route", "equals": "active_task_non_mutating_language"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false}
+        ]}
+      ]
+    },
+    {
+      "name": "REAL_FEEDBACK_AND_PREVIEW_ACTIONS_STILL_WORK",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start_feedback", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_feedback_preview", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "real_feedback", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_feedback_preview", "client_event_id": "feedback", "text": "Preview is broken after wall area."}, "assertions": [
+          {"path": "$.route", "equals": "feedback_read_only"},
+          {"path": "$.router_step", "equals": "feedback_router"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false}
+        ]},
+        {"name": "start_preview", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_real_preview", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "plain_preview", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_real_preview", "client_event_id": "preview1", "text": "Preview"}, "assertions": [
+          {"path": "$.route", "equals": "active_task_preview_stub"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false}
+        ]},
+        {"name": "run_preview", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_10_2_real_preview", "client_event_id": "preview2", "text": "Run preview"}, "assertions": [
+          {"path": "$.route", "equals": "active_task_preview_stub"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false},
+          {"path": "$.workbook_read", "not_equals": true},
+          {"path": "$.engine_called", "not_equals": true},
+          {"path": "$.excel_created", "not_equals": true},
+          {"path": "$.legacy_builder_called", "not_equals": true}
+        ]}
+      ]
+    }
+  ]
+}

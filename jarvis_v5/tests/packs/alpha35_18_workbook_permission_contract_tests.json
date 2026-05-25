@@ -1,0 +1,167 @@
+{
+  "pack_name": "alpha35_18_workbook_permission_contract_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA35_18_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_WORKBOOK_PERMISSION_EXECUTION_POLICY_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {"path": "$.policies[9].policy_key", "equals": "workbook_read_permission_contract"},
+            {"path": "$.policies[9].metadata_only", "equals": true},
+            {"path": "$.policies[9].execution_enabled", "equals": false},
+            {"path": "$.policies[9].workbook_read", "equals": false},
+            {"path": "$.policies[9].workbook_content_read", "equals": false},
+            {"path": "$.policies[9].formula_read", "equals": false},
+            {"path": "$.policies[9].cell_value_read", "equals": false},
+            {"path": "$.policies[9].sheet_name_probe_allowed", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_WORKBOOK_PERMISSION_CAPABILITIES_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "capabilities",
+          "method": "GET",
+          "endpoint": "/api/registry/capabilities",
+          "assertions": [
+            {"path": "$.capabilities[38].capability_key", "equals": "workbook_read_permission_contract"},
+            {"path": "$.capabilities[38].execution_enabled", "equals": false},
+            {"path": "$.capabilities[38].workbook_read", "equals": false},
+            {"path": "$.capabilities[39].capability_key", "equals": "workbook_metadata_permission_contract"},
+            {"path": "$.capabilities[39].sheet_name_probe_allowed", "equals": false},
+            {"path": "$.capabilities[40].capability_key", "equals": "workbook_content_read_permission_placeholder"},
+            {"path": "$.capabilities[40].workbook_content_read", "equals": false},
+            {"path": "$.capabilities[41].capability_key", "equals": "workbook_read_audit_contract"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_TOOLS_REQUIRE_PERMISSION_BUT_READ_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {"path": "$.tools[0].tool_key", "equals": "builder"},
+            {"path": "$.tools[0].requires_workbook_permission_future", "equals": true},
+            {"path": "$.tools[0].workbook_read_enabled", "equals": false},
+            {"path": "$.tools[1].tool_key", "equals": "formatter"},
+            {"path": "$.tools[1].workbook_content_read", "equals": false},
+            {"path": "$.tools[2].tool_key", "equals": "qa_checker"},
+            {"path": "$.tools[2].formula_read", "equals": false},
+            {"path": "$.tools[22].tool_key", "equals": "bulkcheck_helper"},
+            {"path": "$.tools[22].sheet_name_probe_allowed", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_FILE_REQUIREMENT_PERMISSION_PLACEHOLDERS_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "file_requirements",
+          "method": "GET",
+          "endpoint": "/api/registry/file-requirements",
+          "assertions": [
+            {"path": "$.file_requirements[59].file_key", "equals": "workbook_file_reference"},
+            {"path": "$.file_requirements[59].workbook_read", "equals": false},
+            {"path": "$.file_requirements[60].file_key", "equals": "allowed_sheet_scope"},
+            {"path": "$.file_requirements[60].sheet_name_probe_allowed", "equals": false},
+            {"path": "$.file_requirements[61].file_key", "equals": "allowed_range_scope"},
+            {"path": "$.file_requirements[61].formula_read", "equals": false},
+            {"path": "$.file_requirements[62].file_key", "equals": "workbook_permission_request"},
+            {"path": "$.file_requirements[63].file_key", "equals": "workbook_read_audit_log_future"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_DIRECT_WORKBOOK_READ_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha3518_direct_read",
+            "client_event_id": "alpha3518_direct_read",
+            "text": "Open the workbook and read formulas and cell values from every sheet"
+          },
+          "assertions": [
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_ALPHA35_17_SOURCE_AUTHORITY_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.authorities[0].can_certify_compliance", "equals": false},
+            {"path": "$.authorities[0].web_lookup_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_ALPHA35_16_DOCUMENT_CONTRACTS_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {"path": "$.tools[8].tool_key", "equals": "client_document_reader"},
+            {"path": "$.tools[8].execution_enabled", "equals": false},
+            {"path": "$.tools[8].document_read", "equals": false},
+            {"path": "$.tools[8].ocr_enabled", "equals": false},
+            {"path": "$.tools[8].rag_enabled", "equals": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

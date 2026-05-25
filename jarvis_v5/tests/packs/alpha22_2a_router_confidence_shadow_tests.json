@@ -1,0 +1,227 @@
+{
+  "pack_name": "alpha22_2a_router_confidence_shadow_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_2A_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHADOW_BUILDER_ALIAS_NO_CONTROL_TAKEN",
+      "steps": [
+        {
+          "name": "soft_boq",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222a_pack_soft_boq",
+            "client_event_id": "a222a_soft_boq_001",
+            "text": "Can you help me put together a BOQ?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.confidence_engine.mode",
+              "equals": "limited_control"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.actual_route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.confidence_engine.would_route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.confidence_engine.route_mismatch",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHADOW_COMPARE_MISMATCH_VISIBLE_NO_ROUTE_CHANGE_REQUIRED",
+      "steps": [
+        {
+          "name": "compare_this",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222a_pack_compare",
+            "client_event_id": "a222a_compare_001",
+            "text": "Compare this"
+          },
+          "assertions": [
+            {
+              "path": "$.confidence_engine.mode",
+              "equals": "limited_control"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.actual_route",
+              "exists": true
+            },
+            {
+              "path": "$.confidence_engine.would_route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.confidence_engine.tool_candidates",
+              "includes_all": [
+                "builder",
+                "qa_checker"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHADOW_WRITING_NEGATIVE_GUARD_VISIBLE",
+      "steps": [
+        {
+          "name": "writing",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222a_pack_writing",
+            "client_event_id": "a222a_writing_001",
+            "text": "Clean this reply wording"
+          },
+          "assertions": [
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.mode",
+              "equals": "limited_control"
+            },
+            {
+              "path": "$.confidence_engine.would_route",
+              "equals": "general_writing_help"
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "format_text_not_workbook"
+            },
+            {
+              "path": "$.confidence_engine.tool_candidates",
+              "equals": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN_NO_ACTIVE_TASK_HAS_SAFETY_READINESS",
+      "steps": [
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/a222a_pack_no_active",
+          "assertions": [
+            {
+              "path": "$.found",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "no_active_task"
+            },
+            {
+              "path": "$.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

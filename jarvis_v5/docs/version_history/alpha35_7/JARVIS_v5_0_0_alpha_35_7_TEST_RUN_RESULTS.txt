@@ -1,0 +1,129 @@
+JARVIS v5.0.0-alpha.35.7 TEST RUN RESULTS
+
+Compile: PASS
+Pytest: PASS — 315 passed
+
+Targeted packs:
+=== 003_policy_future_tier_strict_all_disabled.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 029_workbook_read_preflight_strict_block_1.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 030_workbook_read_preflight_strict_block_2.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 031_workbook_read_preflight_strict_block_3.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 040_registry_poisoning_cannot_enable_read_1.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 041_registry_poisoning_cannot_enable_read_2.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 042_registry_poisoning_cannot_enable_read_3.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 043_registry_poisoning_cannot_enable_read_4.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 044_registry_endpoint_strict_no_execution_1.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 045_registry_endpoint_strict_no_execution_2.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 046_registry_endpoint_strict_no_execution_3.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 047_registry_endpoint_strict_no_execution_4.json ===
+Overall: PASS
+Passed: 50
+Failed: 0
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+=== 060_mixed_focused_attack_60.json ===
+Overall: FAIL
+Passed: 40
+Failed: 10
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+
+
+Protected Builder hashes: 10 / 10 unchanged
+Duplicate FastAPI routes: 0
+Duplicate top-level defs: 0
+Package hygiene: clean

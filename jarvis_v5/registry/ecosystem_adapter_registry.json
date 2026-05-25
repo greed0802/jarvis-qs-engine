@@ -1,0 +1,106 @@
+{
+  "version": "ecosystem_adapter_registry_v1",
+  "registry": "ecosystem_adapters",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "ecosystem_adapters": [
+    {
+      "adapter_key": "mobile_android",
+      "category": "mobile_client",
+      "backend_language": "kotlin_or_flutter",
+      "status": "future",
+      "execution_enabled": false,
+      "requires": [
+        "api_auth",
+        "device_session_policy",
+        "secure_file_access"
+      ],
+      "risk_level": "medium_high"
+    },
+    {
+      "adapter_key": "mobile_ios",
+      "category": "mobile_client",
+      "backend_language": "swift_or_flutter",
+      "status": "future",
+      "execution_enabled": false,
+      "requires": [
+        "api_auth",
+        "device_session_policy",
+        "secure_file_access"
+      ],
+      "risk_level": "medium_high"
+    },
+    {
+      "adapter_key": "web_pwa",
+      "category": "web_client",
+      "backend_language": "javascript",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "medium"
+    },
+    {
+      "adapter_key": "home_assistant",
+      "category": "smart_home_hub_connector",
+      "backend_language": "python_http_websocket",
+      "status": "future",
+      "execution_enabled": false,
+      "allowed_use": [
+        "read_device_state",
+        "trigger_approved_scene",
+        "notify_user"
+      ],
+      "blocked_use": [
+        "unlock_doors_without_confirmation",
+        "disable_security_without_confirmation",
+        "expose_qs_project_files_to_home_devices"
+      ],
+      "requires": [
+        "home_assistant_url",
+        "access_token",
+        "entity_allowlist",
+        "command_approval_policy"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "adapter_key": "matter_bridge",
+      "category": "smart_home_protocol",
+      "status": "future",
+      "execution_enabled": false,
+      "requires": [
+        "controller_platform",
+        "device_commissioning",
+        "allowlist"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "adapter_key": "apple_home",
+      "category": "smart_home_platform",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "adapter_key": "google_home_android",
+      "category": "mobile_smart_home_api",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "adapter_key": "alexa_skill",
+      "category": "voice_assistant_connector",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "adapter_key": "cloudflare_tunnel",
+      "category": "access_connector",
+      "status": "planned",
+      "execution_enabled": false,
+      "risk_level": "high"
+    }
+  ]
+}

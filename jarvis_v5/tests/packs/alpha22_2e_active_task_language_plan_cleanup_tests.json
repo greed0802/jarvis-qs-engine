@@ -1,0 +1,406 @@
+{
+  "pack_name": "alpha22_2e_active_task_language_plan_cleanup_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_AND_PLAN_WRAPPER_ALPHA22_2E",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.scope",
+              "equals": "workbook_read_policy_review_no_content_read"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_plan",
+            "client_event_id": "a222e_pack_plan_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/a222e_pack_plan",
+          "assertions": [
+            {
+              "path": "$.found",
+              "equals": true
+            },
+            {
+              "path": "$.tool",
+              "equals": "builder"
+            },
+            {
+              "path": "$.active_task.found",
+              "equals": true
+            },
+            {
+              "path": "$.active_task.tool",
+              "equals": "builder"
+            },
+            {
+              "path": "$.active_task.task_id",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_TASK_NON_MUTATING_LANGUAGE_DOES_NOT_ENTER_REDUCER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_language",
+            "client_event_id": "a222e_pack_active_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "greeting",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_language",
+            "client_event_id": "a222e_pack_active_greeting",
+            "text": "Hi Jarvis"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result",
+              "not_exists": true
+            }
+          ]
+        },
+        {
+          "name": "writing",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_language",
+            "client_event_id": "a222e_pack_active_writing",
+            "text": "Format this sentence"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result",
+              "not_exists": true
+            }
+          ]
+        },
+        {
+          "name": "costx_help",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_language",
+            "client_event_id": "a222e_pack_active_costx",
+            "text": "Explain CostX functions generally"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result",
+              "not_exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_SETUP_EDITS_STAY_SLOT_REDUCER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_edits",
+            "client_event_id": "a222e_pack_edits_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_edits",
+            "client_event_id": "a222e_pack_edits_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "trade_profile"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_active_edits",
+            "client_event_id": "a222e_pack_edits_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "unit"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_FEEDBACK_REFINEMENT",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_feedback",
+            "client_event_id": "a222e_pack_feedback_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "writing_report",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_feedback",
+            "client_event_id": "a222e_pack_feedback_writing",
+            "text": "Rewrite this issue report"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "real_feedback",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_feedback",
+            "client_event_id": "a222e_pack_feedback_issue",
+            "text": "Preview is broken"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "feedback_read_only"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "feedback_router"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UNIT_ALIAS_EDGE_VARIANTS",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_units",
+            "client_event_id": "a222e_pack_units_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "sq_dot_m",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_units",
+            "client_event_id": "a222e_pack_units_sqdotm",
+            "text": "Use Wall Types XGETWALLAREA unit sq. m"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.reducer_result.conflicts",
+              "equals": []
+            }
+          ]
+        },
+        {
+          "name": "m_squared",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222e_pack_units",
+            "client_event_id": "a222e_pack_units_m2symbol",
+            "text": "Use Wall Types XGETWALLAREA unit m²"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.reducer_result.conflicts",
+              "equals": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

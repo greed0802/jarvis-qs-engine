@@ -1,0 +1,143 @@
+{
+  "pack_name": "alpha28_policy_response_hygiene_approval_readiness_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA28_POLICY_HYGIENE_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.scope_metadata.policy_response_hygiene", "equals": true},
+            {"path": "$.scope_metadata.contract_summary_public_only", "equals": true},
+            {"path": "$.scope_metadata.approval_token_policy_schema_defined", "equals": true},
+            {"path": "$.scope_metadata.preview_approval_readiness_defined", "equals": true},
+            {"path": "$.scope_metadata.export_approval_readiness_defined", "equals": true},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_POLICY_NO_CONTRACT_PUBLIC_SUMMARY_APPROVAL_LOCK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policy_no_contract",
+          "method": "POST",
+          "endpoint": "/api/builder/preview-execution-policy",
+          "json": {
+            "conversation_id": "pack_alpha28_no_contract",
+            "client_event_id": "pack_a28_no_contract",
+            "requested_action": "preview"
+          },
+          "assertions": [
+            {"path": "$.route", "equals": "builder_preview_execution_policy"},
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.blocked", "equals": true},
+            {"path": "$.reason", "equals": "engine_contract_not_found"},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false},
+            {"path": "$.contract", "equals": null},
+            {"path": "$.contract_summary.found", "equals": false},
+            {"path": "$.contract_summary.ready", "equals": false},
+            {"path": "$.safety.raw_contract_payload_returned", "equals": false},
+            {"path": "$.safety.contract_summary_has_raw_path_key", "equals": false},
+            {"path": "$.approval_token_policy.status", "equals": "schema_defined_not_issued"},
+            {"path": "$.approval_token_policy.token_issued", "equals": false},
+            {"path": "$.preview_approval_readiness.can_execute_preview", "equals": false},
+            {"path": "$.preview_approval_readiness.approval_token_issued", "equals": false},
+            {"path": "$.export_approval_readiness.can_execute_export", "equals": false},
+            {"path": "$.export_approval_readiness.requires_successful_preview", "equals": true},
+            {"path": "$.blocked_by_policy", "includes_all": ["workbook_read_disabled", "legacy_builder_callable_disabled", "excel_output_disabled", "execution_kill_switch", "engine_contract_not_ready"]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_POLICY_READY_CONTRACT_SCRUBBED_SUMMARY_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "attach", "method": "POST", "endpoint": "/api/attach", "form": {"conversation_id": "pack_alpha28_contract", "client_event_id": "attach", "text": "Here"}, "file_fixture": "Test.xlsx", "assertions": [{"path": "$.route", "equals": "attachment_bind"}, {"path": "$.reducer_result.workbook_read", "equals": false}]},
+        {"name": "trade", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "trade", "text": "Use Wall Types"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "function", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "func", "text": "Use XGETWALLAREA"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "unit", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "unit", "text": "Unit m2"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "zone", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "zone", "text": "Zone 1: Old and New"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "head", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "head", "text": "Use Head 2 for Zone 1"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "levels", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "levels", "text": "Levels GF to L3"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}]},
+        {"name": "snapshot", "method": "POST", "endpoint": "/api/builder/create-snapshot", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "snapshot"}, "assertions": [{"path": "$.route", "equals": "builder_snapshot_created"}, {"path": "$.workbook_read", "equals": false}]},
+        {"name": "adapter", "method": "POST", "endpoint": "/api/builder/adapter-dry-run", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "adapter"}, "assertions": [{"path": "$.route", "equals": "builder_adapter_dry_run"}, {"path": "$.workbook_read", "equals": false}]},
+        {"name": "contract", "method": "POST", "endpoint": "/api/builder/engine-contract", "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "contract"}, "assertions": [{"path": "$.route", "equals": "builder_engine_contract_created"}, {"path": "$.workbook_read", "equals": false}]},
+        {
+          "name": "preview_policy",
+          "method": "POST",
+          "endpoint": "/api/builder/preview-execution-policy",
+          "json": {"conversation_id": "pack_alpha28_contract", "client_event_id": "policy", "requested_action": "preview"},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_preview_execution_policy"},
+            {"path": "$.reason", "equals": "preview_execution_disabled_by_policy"},
+            {"path": "$.contract_found", "equals": true},
+            {"path": "$.contract_ready", "equals": true},
+            {"path": "$.contract", "equals": null},
+            {"path": "$.contract_summary.found", "equals": true},
+            {"path": "$.contract_summary.ready", "equals": true},
+            {"path": "$.contract_summary.workbook_ref.filename", "equals": "Test.xlsx"},
+            {"path": "$.contract_summary.setup_summary.trade_profile", "equals": "Wall Types"},
+            {"path": "$.contract_summary.setup_summary.costx_function", "equals": "XGETWALLAREA"},
+            {"path": "$.contract_summary.setup_summary.unit", "equals": "m2"},
+            {"path": "$.safety.contract_summary_public_only", "equals": true},
+            {"path": "$.safety.raw_contract_payload_returned", "equals": false},
+            {"path": "$.safety.contract_summary_has_raw_path_key", "equals": false},
+            {"path": "$.approval_token_policy.token_issued", "equals": false},
+            {"path": "$.preview_approval_readiness.can_execute_preview", "equals": false},
+            {"path": "$.export_approval_readiness.can_execute_export", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXPORT_POLICY_APPROVAL_READINESS_REQUIRES_PREVIEW_FIRST",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "export_policy",
+          "method": "POST",
+          "endpoint": "/api/builder/preview-execution-policy",
+          "json": {"conversation_id": "pack_alpha28_export", "client_event_id": "export_policy", "requested_action": "export"},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_preview_execution_policy"},
+            {"path": "$.requested_action", "equals": "export"},
+            {"path": "$.blocked", "equals": true},
+            {"path": "$.contract", "equals": null},
+            {"path": "$.blocked_by_policy", "includes_all": ["preview_approval_required_before_export"]},
+            {"path": "$.export_approval_readiness.can_execute_export", "equals": false},
+            {"path": "$.export_approval_readiness.requires_successful_preview", "equals": true},
+            {"path": "$.export_approval_readiness.blocked_by_policy", "includes_all": ["preview_approval_required_before_export"]},
+            {"path": "$.blocked_reason_details[0].execution_enabled", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

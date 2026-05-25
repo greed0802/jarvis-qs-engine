@@ -1,0 +1,10 @@
+{
+  "version_name": "v5.0.0-alpha.35.7.1",
+  "base": "v5.0.0-alpha.35.7",
+  "changed_existing_files": [
+    "jarvis_v5/tests/smoke/test_alpha28_1_package_hygiene.py"
+  ],
+  "added_existing_files_before_reports": [],
+  "removed_existing_files": [],
+  "runtime_changed": false
+}

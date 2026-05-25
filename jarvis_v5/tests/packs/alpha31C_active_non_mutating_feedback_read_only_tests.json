@@ -1,0 +1,65 @@
+{
+  "pack_name": "alpha31C_active_non_mutating_feedback_read_only_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA31C_ACTIVE_LANGUAGE_FEEDBACK_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_NON_MUTATING_CONCEPT_QUESTIONS",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "workbook_read_false", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask1", "text": "Tell me why workbook_read must stay false."}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "safety_boundary", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask2", "text": "Explain the current safety boundary."}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "adapter_dry_run", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask3", "text": "What is an adapter dry run?"}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "contract_only_stage", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask4", "text": "Explain the contract-only stage."}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "fig", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask5", "text": "What does formula integrity guard mean?"}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "preview_approval", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask6", "text": "Why should preview be approval-based?"}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "snapshot", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_nonmutating", "client_event_id": "ask7", "text": "What is a BuilderRunSnapshot?"}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]}
+      ]
+    },
+    {
+      "name": "ACTIVE_FEEDBACK_READ_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "preflight_wording", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb1", "text": "The workbook preflight wording looks wrong."}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "milestone_levels", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb2", "text": "There are no milestone levels in this setup."}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "window_issue", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb3", "text": "The window issue is UI feedback, not Doors and Windows."}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "open_preview_close", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb4", "text": "Open preview must close correctly."}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "fallback_correct", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb5", "text": "Why do you still fallback on correct actions?"}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "feedback_only", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_feedback", "client_event_id": "fb6", "text": "This is feedback only about active Builder."}, "assertions": [{"path": "$.route", "equals": "feedback_read_only"}, {"path": "$.plan_mutated", "equals": false}, {"path": "$.fallback_used", "equals": false}]}
+      ]
+    },
+    {
+      "name": "ACTIVE_ACTIONS_AND_SLOT_EDITS_STILL_WORK",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "preview", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "preview", "text": "Preview it please."}, "assertions": [{"path": "$.route", "equals": "active_task_preview_stub"}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "export", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "export", "text": "Export it."}, "assertions": [{"path": "$.route", "equals": "active_task_export_stub"}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "review", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "review", "text": "Review current setup."}, "assertions": [{"path": "$.route", "equals": "active_task_review"}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "slot", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "slot", "text": "Use Wall Types."}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": true}]},
+        {"name": "writing", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31C_stability", "client_event_id": "writing", "text": "Rewrite this issue report."}, "assertions": [{"path": "$.route", "equals": "active_task_non_mutating_language"}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": false}]}
+      ]
+    }
+  ]
+}

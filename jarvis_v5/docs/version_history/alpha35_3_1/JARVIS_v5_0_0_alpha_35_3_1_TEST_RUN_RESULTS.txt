@@ -1,0 +1,8 @@
+v5.0.0-alpha.35.5 test run results
+- compileall: PASS
+- targeted affected smoke tests: 21 passed
+- cleanup helper tests: 2 passed
+- full pytest: 302 passed
+- built-in JSON pack sweep: 40 packs / 180 tests passed
+- attack packs 006-008: 50/50 each
+- safety aggregate: workbook_read_any_true=false; engine_called_any_true=false; excel_created_any_true=false; legacy_builder_called_any_true=false

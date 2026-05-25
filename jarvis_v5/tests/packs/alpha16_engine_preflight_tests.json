@@ -1,0 +1,455 @@
+{
+  "pack_name": "alpha16_engine_preflight_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA16_NO_ENGINE",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VALID_ENGINE_PREFLIGHT_FULL_FLOW",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.contract.contract_schema_version",
+              "equals": "builder_contract_v1"
+            },
+            {
+              "path": "$.contract.legacy_target",
+              "equals": "legacy_builder_v4_contract_v1"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "boundary_audit",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-boundary-audit",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_audit"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_boundary_audit"
+            },
+            {
+              "path": "$.missing_legacy_required_fields",
+              "equals": []
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "preflight",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-preflight",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_preflight"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_preflight_ready"
+            },
+            {
+              "path": "$.preflight_status",
+              "equals": "ready_for_future_engine_adapter"
+            },
+            {
+              "path": "$.compatibility.valid",
+              "equals": true
+            },
+            {
+              "path": "$.compatibility.score",
+              "equals": 100
+            },
+            {
+              "path": "$.compatibility.missing_required_fields",
+              "equals": []
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan_visibility",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha16_pack_full",
+          "assertions": [
+            {
+              "path": "$.engine_preflight.found",
+              "equals": true
+            },
+            {
+              "path": "$.engine_preflight.status",
+              "equals": "ready_for_future_engine_adapter"
+            },
+            {
+              "path": "$.engine_preflight.compatibility_score",
+              "equals": 100
+            },
+            {
+              "path": "$.engine_preflight.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "review_visibility",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_review",
+            "text": "Review"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_review"
+            },
+            {
+              "path": "$.message",
+              "contains": "Builder engine preflight"
+            },
+            {
+              "path": "$.message",
+              "contains": "No Builder engine was called"
+            },
+            {
+              "path": "$.message",
+              "contains": "No Excel file was created"
+            }
+          ]
+        },
+        {
+          "name": "preview_stub",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_full",
+            "client_event_id": "a16p_full_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "preview_engine_not_connected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREFLIGHT_BLOCKED_WITHOUT_CONTRACT",
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha16_pack_no_contract",
+            "client_event_id": "a16p_nc_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "preflight",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-preflight",
+          "json": {
+            "conversation_id": "alpha16_pack_no_contract",
+            "client_event_id": "a16p_nc_preflight"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_preflight_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "engine_contract_not_found"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

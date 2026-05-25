@@ -1,0 +1,464 @@
+{
+  "pack_name": "alpha22_2b_limited_control_router_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_2B_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WRITING_NEGATIVE_GUARDS_LIMITED_CONTROL",
+      "steps": [
+        {
+          "name": "format_sentence",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_write_format",
+            "client_event_id": "a222b_write_001",
+            "text": "Format this sentence."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.mode",
+              "equals": "limited_control"
+            },
+            {
+              "path": "$.tool_candidates",
+              "equals": []
+            }
+          ]
+        },
+        {
+          "name": "clean_reply",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_write_clean",
+            "client_event_id": "a222b_write_002",
+            "text": "Clean this reply wording."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "format_text_not_workbook"
+            }
+          ]
+        },
+        {
+          "name": "not_boq",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_write_not_boq",
+            "client_event_id": "a222b_write_003",
+            "text": "Make this paragraph read better, not a BOQ."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.active_task_id",
+              "equals": null
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GENERIC_TOOL_AMBIGUITY_LIMITED_CONTROL",
+      "steps": [
+        {
+          "name": "compare",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_compare",
+            "client_event_id": "a222b_compare_001",
+            "text": "Compare this."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder",
+                "qa_checker"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "create_one",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_create",
+            "client_event_id": "a222b_create_001",
+            "text": "Create one for me."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder",
+                "formatter",
+                "qa_checker"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "run_this",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_run",
+            "client_event_id": "a222b_run_001",
+            "text": "Run this."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SOFT_BUILDER_SHELL_LIMITED_CONTROL_NO_SLOT_MUTATION",
+      "steps": [
+        {
+          "name": "steel_surface_shell",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_steel_shell",
+            "client_event_id": "a222b_steel_001",
+            "text": "Set up the steel surface area measurement."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.reducer_result.confidence_engine.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "doors_windows_shell",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_dw_shell",
+            "client_event_id": "a222b_dw_001",
+            "text": "I need a door and window count schedule."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CASUAL_NEGATIVE_GUARDS_LIMITED_CONTROL",
+      "steps": [
+        {
+          "name": "estimate_time",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_estimate",
+            "client_event_id": "a222b_estimate_001",
+            "text": "Estimate how long this will take."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "schedule_call",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_schedule",
+            "client_event_id": "a222b_schedule_001",
+            "text": "Schedule a call tomorrow."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.active_task_id",
+              "equals": null
+            }
+          ]
+        },
+        {
+          "name": "value_meaning",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_value",
+            "client_event_id": "a222b_value_001",
+            "text": "What does value mean?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "casual_non_tool_phrase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PROTECTED_CONTEXTS_NO_CONTROL_TAKEN",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_protect_active",
+            "client_event_id": "a222b_protect_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "active_compare",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_protect_active",
+            "client_event_id": "a222b_protect_compare",
+            "text": "Compare this"
+          },
+          "assertions": [
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.active_task_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "attachment_no_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222b_pack_attach_no_task",
+            "client_event_id": "a222b_attach_001",
+            "text": "Here",
+            "attachments": [
+              {
+                "filename": "Test.xlsx",
+                "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "size_bytes": 1234
+              }
+            ]
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_received_no_active_task"
+            },
+            {
+              "path": "$.active_task_id",
+              "equals": null
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

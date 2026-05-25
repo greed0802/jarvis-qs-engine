@@ -1,0 +1,1504 @@
+{
+  "version": "v5.0.0-alpha.33.1",
+  "packs_total": 38,
+  "packs_passed": 38,
+  "packs_failed": 0,
+  "tests_passed": 174,
+  "tests_failed": 0,
+  "safety": {
+    "workbook_read_any_true": false,
+    "engine_called_any_true": false,
+    "excel_created_any_true": false,
+    "legacy_builder_called_any_true": false
+  },
+  "results": [
+    {
+      "pack": "alpha11_contract_negative_guards",
+      "overall": "PASS",
+      "passed": 7,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha15_review_readiness_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha16_engine_preflight_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha17_engine_execution_lock_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha18_1_safety_envelope_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha18_response_consistency_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha19_contract_fixture_replay_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "contract_creation_expected_but_setup_steps_missing",
+          "test": "REINFORCEMENT_GOLDEN_REPLAY_CLEAN",
+          "step": "contract",
+          "message": "This test expects contract creation but does not include the full required Builder setup, snapshot, and adapter dry run before it.",
+          "missing_setup_seen_flags": {
+            "builder_start": true,
+            "attach": true,
+            "trade": false,
+            "function": true,
+            "unit": true,
+            "zone": true,
+            "head": true,
+            "levels": true,
+            "snapshot": true,
+            "adapter": true
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha20_deep_weak_point_boundary_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+          "step": "latest",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+          "step": "latest",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+          "step": "latest",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+          "step": "latest",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_AUDIT_LATEST_REPLAY_AND_PLAN_VISIBILITY_CLEANED",
+          "step": "latest",
+          "path": "$.contract_only",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha20_legacy_import_boundary_audit_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_BOUNDARY_AUDIT_LOCKED_NO_IMPORT",
+          "step": "latest",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_BOUNDARY_AUDIT_LOCKED_NO_IMPORT",
+          "step": "latest",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "LEGACY_IMPORT_BOUNDARY_AUDIT_LOCKED_NO_IMPORT",
+          "step": "latest",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha21_function_unit_compatibility_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_1_no_fallback_router_tightening_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2a_router_confidence_shadow_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2b_limited_control_router_tests",
+      "overall": "PASS",
+      "passed": 6,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2c_route_ownership_and_setup_normalization_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2d_high_priority_ownership_repair_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2e_active_task_language_plan_cleanup_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_2f_engineering_language_gate_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha22_qs_intent_alias_router_tests",
+      "overall": "PASS",
+      "passed": 8,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha23_global_capability_registry_tests",
+      "overall": "PASS",
+      "passed": 7,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "READ_ONLY_TOOL_AND_CAPABILITY_REGISTRIES",
+          "step": "tools",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "READ_ONLY_TOOL_AND_CAPABILITY_REGISTRIES",
+          "step": "tools",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "READ_ONLY_TOOL_AND_CAPABILITY_REGISTRIES",
+          "step": "tools",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "READ_ONLY_TOOL_AND_CAPABILITY_REGISTRIES",
+          "step": "tools",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha24_route_ownership_registry_advisory_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "ACTIVE_NATURAL_REVIEW_PREVIEW_EXPORT_DOWNLOAD",
+          "step": "natural_preview",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "BOQ_REPORT_CHECKLIST_USES_REGISTRY_ADVISORY_NOT_BUILDER",
+          "step": "boq_fire_report_checklist",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "BOQ_REPORT_CHECKLIST_USES_REGISTRY_ADVISORY_NOT_BUILDER",
+          "step": "boq_fire_report_checklist",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "BOQ_REPORT_CHECKLIST_USES_REGISTRY_ADVISORY_NOT_BUILDER",
+          "step": "boq_fire_report_checklist",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "BOQ_REPORT_CHECKLIST_USES_REGISTRY_ADVISORY_NOT_BUILDER",
+          "step": "boq_fire_report_checklist",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "REGISTRY_REQUIREMENT_CHECK_RECOGNIZES_REPORT_CHECKLIST_METADATA_ONLY",
+          "step": "requirement_check",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "REGISTRY_REQUIREMENT_CHECK_RECOGNIZES_REPORT_CHECKLIST_METADATA_ONLY",
+          "step": "requirement_check",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "REGISTRY_REQUIREMENT_CHECK_RECOGNIZES_REPORT_CHECKLIST_METADATA_ONLY",
+          "step": "requirement_check",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "REGISTRY_REQUIREMENT_CHECK_RECOGNIZES_REPORT_CHECKLIST_METADATA_ONLY",
+          "step": "requirement_check",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha25_legacy_bridge_readiness_audit_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha26_1_response_schema_pack_hygiene_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha26_legacy_bridge_shadow_probe_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha27_preview_execution_policy_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha28_1_package_hygiene_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha28_policy_response_hygiene_approval_readiness_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha29_safe_workbook_path_resolver_dry_run_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha30_1_weakness_triage_reduced_regression_tests",
+      "overall": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha30_workbook_read_preflight_contract_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha31B_response_shape_compatibility_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha31B_no_active_route_hygiene_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_workbook_read",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_workbook_read",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_workbook_read",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_workbook_read",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "developer_raw_path",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "developer_raw_path",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "developer_raw_path",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "developer_raw_path",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "ignore_builder_engine",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "ignore_builder_engine",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "ignore_builder_engine",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "ignore_builder_engine",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "openpyxl",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "openpyxl",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "openpyxl",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "openpyxl",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_prompt_raw_path",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_prompt_raw_path",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_prompt_raw_path",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "NO_ACTIVE_PROMPT_INJECTION_SAFE_BLOCK",
+          "step": "system_prompt_raw_path",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha31C_active_non_mutating_feedback_read_only_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha31D_pending_clarification_risky_action_coverage_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha31E_parser_function_unit_conflict_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha32A_weakness_replay_compatibility_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "alpha32A_minimal_pair_route_ownership_tests",
+      "overall": "PASS",
+      "passed": 24,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_BROKEN_FEEDBACK",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_BROKEN_FEEDBACK",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_BROKEN_FEEDBACK",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_BROKEN_FEEDBACK",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_NO_ACTIVE_ACTION",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_NO_ACTIVE_ACTION",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_NO_ACTIVE_ACTION",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "PREVIEW_NO_ACTIVE_ACTION",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "DOORS_WINDOWS_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "DOORS_WINDOWS_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "DOORS_WINDOWS_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "DOORS_WINDOWS_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_EXPLAIN_HELP",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_EXPLAIN_HELP",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_EXPLAIN_HELP",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_EXPLAIN_HELP",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_DRY_RUN_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_DRY_RUN_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_DRY_RUN_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "SAFE_RESOLVER_DRY_RUN_CHOOSE_TOOL",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WATERPROOFING_CHECKLIST_HELP",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WATERPROOFING_CHECKLIST_HELP",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WATERPROOFING_CHECKLIST_HELP",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WATERPROOFING_CHECKLIST_HELP",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_01",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_01",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_01",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_01",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_02",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_02",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_02",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_02",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_03",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_03",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_03",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_03",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_04",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_04",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_04",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_04",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_05",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_05",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_05",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_05",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_06",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_06",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_06",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_06",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_07",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_07",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_07",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_07",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_08",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_08",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_08",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_08",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_09",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_09",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_09",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_09",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_10",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_10",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_10",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_10",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_11",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_11",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_11",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_11",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_12",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_12",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_12",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_12",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_13",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_13",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_13",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_13",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_14",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_14",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_14",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "MINIMAL_PAIR_REGRESSION_14",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_1",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_1",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_1",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_1",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_2",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_2",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_2",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_2",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_3",
+          "step": "chat",
+          "path": "$.workbook_read",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_3",
+          "step": "chat",
+          "path": "$.engine_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_3",
+          "step": "chat",
+          "path": "$.excel_created",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        },
+        {
+          "type": "possibly_endpoint_specific_safety_path",
+          "test": "WRITING_HELP_NOT_FEEDBACK_3",
+          "step": "chat",
+          "path": "$.legacy_builder_called",
+          "message": "Top-level safety fields are not returned by every endpoint; prefer endpoint-specific nested fields or assert only on adapter/contract/preview responses."
+        }
+      ],
+      "failures": []
+    },
+    {
+      "pack": "alpha33_workbook_metadata_probe_approval_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    },
+    {
+      "pack": "sample_external_ai_pack_valid",
+      "overall": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      },
+      "compatibility_warnings": [],
+      "failures": []
+    }
+  ]
+}

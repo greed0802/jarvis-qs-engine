@@ -1,0 +1,23 @@
+python -m compileall -q jarvis_v5
+PASS
+
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+PASS — 234 passed
+
+All JSON packs
+PASS — 29 / 29 packs
+PASS — 122 / 122 tests
+
+Static / safety checks
+PASS — duplicate FastAPI routes = 0
+PASS — same-file duplicate top-level definitions = 0
+PASS — workbook read preflight owner conflict = 0
+PASS — protected Builder boundary hashes unchanged = 10 / 10
+PASS — execution flag scan clean
+PASS — ZIP root inventory clean
+
+Safety aggregate
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

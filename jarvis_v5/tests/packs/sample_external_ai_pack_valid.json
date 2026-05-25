@@ -1,0 +1,296 @@
+{
+  "pack_name": "sample_external_ai_pack_valid",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "complete_contract_flow_with_fixture_attach",
+      "steps": [
+        {
+          "name": "create_builder_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_attach_001",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_adapter_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.contract_status",
+              "equals": "ready_for_engine_connection"
+            },
+            {
+              "path": "$.validation.valid",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.contract.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.contract.safety.legacy_builder_called",
+              "equals": false
+            }
+          ],
+          "save": {
+            "contract_id": "$.contract_id"
+          }
+        },
+        {
+          "name": "contract_replay",
+          "method": "GET",
+          "endpoint": "/api/builder/engine-contract/${contract_id}",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_replay"
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "preview_stub",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "sample_external_complete",
+            "client_event_id": "sample_ext_preview_001",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "preview_engine_not_connected"
+            },
+            {
+              "path": "$.adapter.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.adapter.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.adapter.workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

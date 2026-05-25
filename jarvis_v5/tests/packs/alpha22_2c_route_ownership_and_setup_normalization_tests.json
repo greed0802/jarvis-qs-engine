@@ -1,0 +1,550 @@
+{
+  "pack_name": "alpha22_2c_route_ownership_and_setup_normalization_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_2C_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NO_ACTIVE_TASK_LANGUAGE_GATE_OWNS_WRITING_CASUAL_TOOL_BUILDER",
+      "steps": [
+        {
+          "name": "writing",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_gate_write",
+            "client_event_id": "a222c_gate_write_001",
+            "text": "Format this sentence."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.would_route",
+              "equals": "general_writing_help"
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "format_text_not_workbook"
+            }
+          ]
+        },
+        {
+          "name": "casual_value",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_gate_casual",
+            "client_event_id": "a222c_gate_casual_001",
+            "text": "What does value mean?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "casual_non_tool_phrase"
+            }
+          ]
+        },
+        {
+          "name": "generic_tool",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_gate_tool",
+            "client_event_id": "a222c_gate_tool_001",
+            "text": "Do whatever tool makes sense here."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "soft_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_gate_builder",
+            "client_event_id": "a222c_gate_builder_001",
+            "text": "Can you help me prepare a BOQ?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.reducer_result.confidence_engine.plan_mutated",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_SETUP_NORMALIZATION_KEEPS_SLOT_REDUCER_OWNER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_setup",
+            "client_event_id": "a222c_active_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_setup",
+            "client_event_id": "a222c_active_unit",
+            "text": "The unit should be m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "unit"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_setup",
+            "client_event_id": "a222c_active_zone",
+            "text": "For now, Zone 1 is Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "dynamic_zones"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_setup",
+            "client_event_id": "a222c_active_head",
+            "text": "Please put Zone 1 under Head 2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "heading_assignments"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_setup",
+            "client_event_id": "a222c_active_levels",
+            "text": "Use levels from GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "levels"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_WRITING_AND_CONFLICTS_REMAIN_PROTECTED",
+      "steps": [
+        {
+          "name": "start_write",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_write",
+            "client_event_id": "a222c_write_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "active_writing",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_active_write",
+            "client_event_id": "a222c_write_format",
+            "text": "Format this sentence"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_conflict_a",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_conflict_a",
+            "client_event_id": "a222c_conflict_a_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "count_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_conflict_a",
+            "client_event_id": "a222c_conflict_a_edit",
+            "text": "Use Count unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_conflict_b",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_conflict_b",
+            "client_event_id": "a222c_conflict_b_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "count_should_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_conflict_b",
+            "client_event_id": "a222c_conflict_b_edit",
+            "text": "Use Count, the unit should be m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ATTACHMENT_AND_PREVIEW_STAY_PROTECTED",
+      "steps": [
+        {
+          "name": "attachment_no_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_attach_no_task",
+            "client_event_id": "a222c_attach_001",
+            "text": "Here",
+            "attachments": [
+              {
+                "filename": "Test.xlsx",
+                "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "size_bytes": 1234
+              }
+            ]
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_received_no_active_task"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "start_preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_preview",
+            "client_event_id": "a222c_preview_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "preview_stub",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222c_pack_preview",
+            "client_event_id": "a222c_preview_call",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

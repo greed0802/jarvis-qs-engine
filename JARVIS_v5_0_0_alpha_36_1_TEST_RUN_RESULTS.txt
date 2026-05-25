@@ -1,0 +1,16 @@
+Jarvis v5.0.0-alpha.36.1 test run results
+
+compile: PASS
+targeted pytest: 61 passed
+alpha36.1 pack: PASS 8/8
+alpha36.0 pack: PASS 8/8
+alpha35.19 pack: PASS 8/8
+alpha35.18 pack: PASS 8/8
+alpha35.17 pack: PASS 10/10
+alpha35.16 pack: PASS 8/8
+alpha35.15 pack: PASS 8/8
+alpha35.14 pack: PASS 6/6
+alpha35.12 pack: PASS 6/6
+alpha35.10.2 pack: PASS 3/3
+
+Safety: workbook_read_any_true=False; engine_called_any_true=False; excel_created_any_true=False; legacy_builder_called_any_true=False

@@ -1,0 +1,95 @@
+=== python -m compileall -q jarvis_v5 ===
+compile_exit=0
+
+=== PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q ===
+........................................................................ [ 19%]
+........................................................................ [ 39%]
+........................................................................ [ 59%]
+........................................................................ [ 79%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+361 passed in 17.34s
+pytest_exit=0
+
+=== python run_alpha_smoke_tests.py --pack jarvis_v5/tests/packs/alpha35_15_job_output_contract_tests.json --no-report ===
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_15_job_output_contract_tests
+
+PASS T01_VERSION_ALPHA35_15_LOCKS
+PASS T02_JOB_OUTPUT_EXECUTION_POLICY_DISABLED
+PASS T03_OUTPUT_CENTER_JOB_CONTRACT_METADATA_ONLY
+PASS T04_JOB_CAPABILITIES_METADATA_ONLY
+PASS T05_FILE_REQUIREMENT_JOB_OUTPUT_PLACEHOLDERS
+PASS T06_FUTURE_TOOL_RUN_STILL_METADATA_ONLY
+PASS T07_WORKBOOK_READ_STILL_SAFE_BLOCKED
+PASS T08_ALPHA35_14_TOOL_CONTRACTS_STILL_DISABLED
+
+Overall: PASS
+Passed: 8
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+pack_exit=0
+
+=== python run_alpha_smoke_tests.py --pack jarvis_v5/tests/packs/alpha35_14_tool_contract_map_tests.json --no-report ===
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_14_tool_contract_map_tests
+
+PASS T01_VERSION_ALPHA35_14_LOCKS
+PASS T02_TOOL_CONTRACT_REGISTRY_METADATA_ONLY
+PASS T03_CAPABILITY_CONTRACT_REGISTRY_METADATA_ONLY
+PASS T04_EXECUTION_POLICY_CONTRACT_MAP_DISABLED
+PASS T05_FUTURE_TOOL_RUN_STILL_METADATA_ONLY
+PASS T06_ROUTE_SAFETY_REGRESSIONS
+
+Overall: PASS
+Passed: 6
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+pack_exit=0
+
+=== python run_alpha_smoke_tests.py --pack jarvis_v5/tests/packs/alpha35_12_advisory_regression_hardening_tests.json --no-report ===
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_12_advisory_regression_hardening_tests
+
+PASS T01_VERSION_ALPHA35_12_LOCKS
+PASS T02_POSITIVE_ADVISORY_TYPES
+PASS T03_FUTURE_TOOL_EXECUTION_REQUESTS_METADATA_ONLY_BLOCKED
+PASS T04_UNKNOWN_SCOPE_CLARIFICATION
+PASS T05_ROUTE_PRECISION_REGRESSIONS
+PASS T06_ACTIVE_WRITING_REPORT_PREVIEW_FALSE_POSITIVE_STILL_FIXED
+
+Overall: PASS
+Passed: 6
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+pack_exit=0
+
+=== python run_alpha_smoke_tests.py --pack jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json --no-report ===
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_10_2_active_writing_report_preview_false_positive_tests
+
+PASS VERSION_ALPHA35_10_2_ACTIVE_WRITING_PREVIEW_LOCKS
+PASS WRITING_ISSUE_REPORT_WITH_PREVIEW_WORD_IS_NON_MUTATING
+PASS REAL_FEEDBACK_AND_PREVIEW_ACTIONS_STILL_WORK
+
+Overall: PASS
+Passed: 3
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+pack_exit=0

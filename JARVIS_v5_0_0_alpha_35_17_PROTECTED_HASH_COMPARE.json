@@ -1,0 +1,69 @@
+{
+  "version": "v5.0.0-alpha.35.17",
+  "base_version": "v5.0.0-alpha.35.16",
+  "protected_count": 10,
+  "unchanged_count": 10,
+  "changed_count": 0,
+  "files": [
+    {
+      "path": "jarvis_v5/tools/builder/adapter_dry_run.py",
+      "old_sha256": "844022bb697e018af53326e033bb6e9c798010fcbc31004383192b73e517465f",
+      "new_sha256": "844022bb697e018af53326e033bb6e9c798010fcbc31004383192b73e517465f",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/engine_contract_adapter.py",
+      "old_sha256": "a792df3f2dba9fa88a2e0ed74fbb7ae9f9ef24da3bc89f788fb87f0f48191f91",
+      "new_sha256": "a792df3f2dba9fa88a2e0ed74fbb7ae9f9ef24da3bc89f788fb87f0f48191f91",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/engine_boundary_audit.py",
+      "old_sha256": "2cdb5da210ea7475819875c52d6e6e9aa20ec46c89c6c8dcfb6c1c29892312d6",
+      "new_sha256": "2cdb5da210ea7475819875c52d6e6e9aa20ec46c89c6c8dcfb6c1c29892312d6",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/engine_preflight.py",
+      "old_sha256": "c9b0111f987a762a21cd6fe96e53715198c4c551d5b25a5d70aefc3da1fabd3c",
+      "new_sha256": "c9b0111f987a762a21cd6fe96e53715198c4c551d5b25a5d70aefc3da1fabd3c",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/legacy_engine_bridge.py",
+      "old_sha256": "37ecc3726dd88e11f7caa5c53ca81843393da3c92df976c213ddd06c5633b205",
+      "new_sha256": "37ecc3726dd88e11f7caa5c53ca81843393da3c92df976c213ddd06c5633b205",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/preview_execution_policy.py",
+      "old_sha256": "55822cfd5fb6ed587267afb700895038b26db86e7d979964f725ee2dafcd6dd0",
+      "new_sha256": "55822cfd5fb6ed587267afb700895038b26db86e7d979964f725ee2dafcd6dd0",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/safe_workbook_path_resolver.py",
+      "old_sha256": "b593c6c4c0ff3ca4141e92959dea3bf57638a20dbca0e56c456ea28bd373c5e9",
+      "new_sha256": "b593c6c4c0ff3ca4141e92959dea3bf57638a20dbca0e56c456ea28bd373c5e9",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/setup_completeness.py",
+      "old_sha256": "81568b4de2f64256831fb45c29d8e7bb3b9c206f3000133845023201b5c164ca",
+      "new_sha256": "81568b4de2f64256831fb45c29d8e7bb3b9c206f3000133845023201b5c164ca",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/workbook_read_policy_review.py",
+      "old_sha256": "8fe30733847211862b2527843c31938e65d278ac77f7ae2013cc40aea01be368",
+      "new_sha256": "8fe30733847211862b2527843c31938e65d278ac77f7ae2013cc40aea01be368",
+      "unchanged": true
+    },
+    {
+      "path": "jarvis_v5/tools/builder/workbook_read_preflight_contract.py",
+      "old_sha256": "209d48cc48f4556e40031221ac6f84f6b316eff83f7b9cf78d58c432f9767fc8",
+      "new_sha256": "209d48cc48f4556e40031221ac6f84f6b316eff83f7b9cf78d58c432f9767fc8",
+      "unchanged": true
+    }
+  ]
+}

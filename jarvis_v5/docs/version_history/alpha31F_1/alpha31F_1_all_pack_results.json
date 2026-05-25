@@ -1,0 +1,443 @@
+{
+  "summary": {
+    "packs": 36,
+    "passed_packs": 36,
+    "failed_packs": 0,
+    "tests_pass": 147,
+    "tests_fail": 0
+  },
+  "packs": [
+    {
+      "pack": "alpha11_contract_negative_guards",
+      "overall": "PASS",
+      "passed": 7,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha15_review_readiness_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha16_engine_preflight_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha17_engine_execution_lock_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha18_1_safety_envelope_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha18_response_consistency_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha19_contract_fixture_replay_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha20_deep_weak_point_boundary_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha20_legacy_import_boundary_audit_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha21_function_unit_compatibility_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_1_no_fallback_router_tightening_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2a_router_confidence_shadow_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2b_limited_control_router_tests",
+      "overall": "PASS",
+      "passed": 6,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2c_route_ownership_and_setup_normalization_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2d_high_priority_ownership_repair_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2e_active_task_language_plan_cleanup_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_2f_engineering_language_gate_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha22_qs_intent_alias_router_tests",
+      "overall": "PASS",
+      "passed": 8,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha23_global_capability_registry_tests",
+      "overall": "PASS",
+      "passed": 7,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha24_route_ownership_registry_advisory_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha25_legacy_bridge_readiness_audit_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha26_1_response_schema_pack_hygiene_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha26_legacy_bridge_shadow_probe_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha27_preview_execution_policy_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha28_1_package_hygiene_tests",
+      "overall": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha28_policy_response_hygiene_approval_readiness_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha29_safe_workbook_path_resolver_dry_run_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha30_1_weakness_triage_reduced_regression_tests",
+      "overall": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha30_workbook_read_preflight_contract_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31B_response_shape_compatibility_tests",
+      "overall": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31B_no_active_route_hygiene_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31C_active_non_mutating_feedback_read_only_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31D_pending_clarification_risky_action_coverage_tests",
+      "overall": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31E_parser_function_unit_conflict_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "alpha31F_1_weakness_replay_compatibility_tests",
+      "overall": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    },
+    {
+      "pack": "sample_external_ai_pack_valid",
+      "overall": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "safety": {
+        "workbook_read_any_true": false,
+        "engine_called_any_true": false,
+        "excel_created_any_true": false,
+        "legacy_builder_called_any_true": false
+      }
+    }
+  ]
+}

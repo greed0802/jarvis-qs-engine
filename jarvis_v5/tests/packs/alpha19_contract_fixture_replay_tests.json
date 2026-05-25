@@ -1,0 +1,1013 @@
+{
+  "pack_name": "alpha19_contract_fixture_replay_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA19_CONTRACT_FIXTURE_REPLAY",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.engines_connected.builder_contract_fixture_replay",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WALL_TYPES_GOLDEN_REPLAY_CLEAN",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.safety.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": true
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            }
+          ],
+          "save": {
+            "contract_id": "$.contract_id"
+          }
+        },
+        {
+          "name": "fixture_replay",
+          "method": "POST",
+          "endpoint": "/api/builder/contract-fixture-replay",
+          "json": {
+            "conversation_id": "alpha19_pack_wall_clean",
+            "client_event_id": "a19_wall_replay",
+            "fixture": "wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_contract_fixture_replay"
+            },
+            {
+              "path": "$.passed",
+              "equals": true
+            },
+            {
+              "path": "$.diff_status",
+              "equals": "clean"
+            },
+            {
+              "path": "$.diffs",
+              "equals": []
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.contract_only",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REINFORCEMENT_GOLDEN_REPLAY_CLEAN",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "reinforcement",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_trade",
+            "text": "Use Reinforcement"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            }
+          ]
+        },
+        {
+          "name": "resolve",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_resolve",
+            "text": "Use XGETCUSTOM with Reinforcement Weight unit t"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_resolved"
+            },
+            {
+              "path": "$.clarification_resolved",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            }
+          ]
+        },
+        {
+          "name": "fixture_replay",
+          "method": "POST",
+          "endpoint": "/api/builder/contract-fixture-replay",
+          "json": {
+            "conversation_id": "alpha19_pack_reo_clean",
+            "client_event_id": "a19_reo_replay",
+            "fixture": "reinforcement_xgetcustom_weight_t_zone1_head2_gf_l3_contract_v1",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_contract_fixture_replay"
+            },
+            {
+              "path": "$.passed",
+              "equals": true
+            },
+            {
+              "path": "$.diff_status",
+              "equals": "clean"
+            },
+            {
+              "path": "$.actual_stable.builder_setup.trade_profile",
+              "equals": "Concrete / Reinforcement"
+            },
+            {
+              "path": "$.actual_stable.builder_setup.custom_quantity",
+              "equals": "Reinforcement Weight"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FIXTURE_REPLAY_MISMATCH_DETECTION_NO_ENGINE",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            }
+          ]
+        },
+        {
+          "name": "fixture_replay_mismatch",
+          "method": "POST",
+          "endpoint": "/api/builder/contract-fixture-replay",
+          "json": {
+            "conversation_id": "alpha19_pack_mismatch",
+            "client_event_id": "a19_mismatch_replay",
+            "fixture": "wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1",
+            "intentional_mismatch": true,
+            "write_report": false
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_contract_fixture_replay"
+            },
+            {
+              "path": "$.passed",
+              "equals": false
+            },
+            {
+              "path": "$.diff_status",
+              "equals": "mismatch"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CONTRACT_REPLAY_AND_EXECUTION_STILL_LOCKED",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            }
+          ],
+          "save": {
+            "contract_id": "$.contract_id"
+          }
+        },
+        {
+          "name": "latest",
+          "method": "GET",
+          "endpoint": "/api/builder/engine-contract/latest/alpha19_pack_locked",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_latest_replay"
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "audit",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-boundary-audit",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_audit"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_boundary_audit"
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "preflight",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-preflight",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_preflight"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_preflight_ready"
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "execution",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-execution-request",
+          "json": {
+            "conversation_id": "alpha19_pack_locked",
+            "client_event_id": "a19_locked_execution"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_execution_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "engine_execution_disabled_by_kill_switch"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

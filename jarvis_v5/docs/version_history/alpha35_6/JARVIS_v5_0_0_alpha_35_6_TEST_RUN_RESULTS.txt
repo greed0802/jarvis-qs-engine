@@ -1,0 +1,3 @@
+Targeted alpha35.6 tests: 4/4 passed
+Attack packs 019-023: 50/50 each
+Safety aggregate: workbook_read_any_true=false; engine_called_any_true=false; excel_created_any_true=false; legacy_builder_called_any_true=false

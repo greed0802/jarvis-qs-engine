@@ -1,0 +1,441 @@
+{
+  "pack_name": "alpha26_legacy_bridge_shadow_probe_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA26_SHADOW_PROBE_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.engines_connected.legacy_bridge_shadow_probe",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHADOW_PROBE_WITHOUT_CONTRACT_IS_SAFE",
+      "steps": [
+        {
+          "name": "probe_empty",
+          "method": "POST",
+          "endpoint": "/api/builder/legacy-bridge-shadow-probe",
+          "json": {
+            "conversation_id": "alpha26_empty_probe",
+            "client_event_id": "a26_empty_probe",
+            "allow_missing_contract": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_bridge_shadow_probe"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.legacy_import_attempted",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.legacy_module_imported",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.legacy_callable_available",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.contract_found",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.safe_for_execution",
+              "equals": false
+            },
+            {
+              "path": "$.blocked_by_policy",
+              "includes_all": [
+                "workbook_read_disabled",
+                "legacy_builder_callable_disabled",
+                "excel_output_disabled",
+                "execution_kill_switch"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SHADOW_PROBE_WITH_VALID_CONTRACT_IS_STILL_BLOCKED_BY_POLICY",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_func",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_snap"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "probe_contract",
+          "method": "POST",
+          "endpoint": "/api/builder/legacy-bridge-shadow-probe",
+          "json": {
+            "conversation_id": "alpha26_contract_probe",
+            "client_event_id": "a26_probe",
+            "allow_missing_contract": false
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_bridge_shadow_probe"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "legacy_builder_execution_disabled"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.bridge_layer_found",
+              "equals": true
+            },
+            {
+              "path": "$.bridge_probe.legacy_import_attempted",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.legacy_module_imported",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_probe.contract_found",
+              "equals": true
+            },
+            {
+              "path": "$.bridge_probe.contract_ready",
+              "equals": true
+            },
+            {
+              "path": "$.bridge_probe.safe_for_future_mapping",
+              "equals": true
+            },
+            {
+              "path": "$.bridge_probe.safe_for_execution",
+              "equals": false
+            },
+            {
+              "path": "$.blocked_by_policy",
+              "includes_all": [
+                "workbook_read_disabled",
+                "legacy_builder_callable_disabled",
+                "excel_output_disabled",
+                "execution_kill_switch"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

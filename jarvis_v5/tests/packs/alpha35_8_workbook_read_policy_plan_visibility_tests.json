@@ -1,0 +1,668 @@
+{
+  "pack_name": "alpha35_8_workbook_read_policy_plan_visibility_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_8_PLAN_VISIBILITY_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "POLICY_REVIEW_VISIBLE_IN_PLAN_ADDITIVE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan_before_policy",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha35_8_pack_plan",
+          "assertions": [
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.workbook_read_policy.status",
+              "equals": "not_reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_status",
+              "equals": "not_reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_reviewed",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "policy_review",
+          "method": "POST",
+          "endpoint": "/api/builder/workbook-read-policy-review",
+          "json": {
+            "conversation_id": "alpha35_8_pack_plan",
+            "client_event_id": "a358p_policy"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "plan_after_policy",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha35_8_pack_plan",
+          "assertions": [
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.workbook_read_policy.status",
+              "equals": "reviewed"
+            },
+            {
+              "path": "$.workbook_read_policy.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_status",
+              "equals": "reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_reviewed",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.workbook_read_policy.status",
+              "equals": "reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.workbook_read_policy.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.workbook_read_policy.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.workbook_read_policy.formulas_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "POLICY_REVIEW_VISIBLE_IN_PREVIEW_EXPORT_ADDITIVE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start_builder",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach_fixture_workbook",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "policy_review",
+          "method": "POST",
+          "endpoint": "/api/builder/workbook-read-policy-review",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_policy"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            }
+          ]
+        },
+        {
+          "name": "preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_status",
+              "equals": "reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_reviewed",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_8_pack_preview_export",
+            "client_event_id": "a358a_export",
+            "text": "Export"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_export_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.status",
+              "equals": "contract_ready"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_status",
+              "equals": "reviewed"
+            },
+            {
+              "path": "$.readiness.workbook_read_policy_reviewed",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

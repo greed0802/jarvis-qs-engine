@@ -1,0 +1,223 @@
+{
+  "pack_name": "alpha36_2_sheet_name_probe_dry_run_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA36_2_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_DIRECT_SHEET_NAME_PROBE_REQUEST_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha36_2_t02",
+            "client_event_id": "alpha36_2_t02",
+            "text": "List the sheet names from this workbook now."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_CONTENT_FORMULA_CELL_STYLE_REQUEST_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha36_2_t03",
+            "client_event_id": "alpha36_2_t03",
+            "text": "Read workbook sheet names, formulas, cell values, and styles."
+          },
+          "assertions": [
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_content_read",
+              "equals": false
+            },
+            {
+              "path": "$.formulas_read",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_ALPHA36_1_POLICY_STILL_NO_PROBE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[13].policy_key",
+              "equals": "workbook_metadata_probe_plan"
+            },
+            {
+              "path": "$.policies[13].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].sheet_name_probe_allowed",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].formula_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].cell_value_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].style_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_ALPHA36_0_INTEGRITY_STILL_BLOCKS_HIGHER_TIERS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[10].policy_key",
+              "equals": "pre_execution_integrity_matrix"
+            },
+            {
+              "path": "$.policies[10].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[10].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[10].sheet_name_probe_allowed",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_WORKBOOK_PERMISSION_CONTRACT_STILL_NO_READ",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "capabilities",
+          "method": "GET",
+          "endpoint": "/api/registry/capabilities",
+          "assertions": [
+            {
+              "path": "$.capabilities[38].capability_key",
+              "equals": "workbook_read_permission_contract"
+            },
+            {
+              "path": "$.capabilities[38].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[38].workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

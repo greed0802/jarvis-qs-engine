@@ -1,0 +1,152 @@
+{
+  "version": "connector_registry_v1",
+  "registry": "connectors",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "connectors": [
+    {
+      "connector_key": "cloudflare_tunnel",
+      "display_name": "Cloudflare Tunnel",
+      "category": "access_connector",
+      "backend_language": "cloudflared_daemon",
+      "runtime_type": "remote_access_tunnel",
+      "status": "planned",
+      "execution_enabled": false,
+      "requires": [
+        "access_policy",
+        "auth_gate",
+        "local_firewall_rules",
+        "no_direct_public_port"
+      ],
+      "blocked_use": [
+        "exposing Jarvis without authentication",
+        "exposing workbook/output folders directly",
+        "bypassing local approval gates"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "cloudflare_access",
+      "category": "access_connector",
+      "status": "planned",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "ollama_http",
+      "category": "model_connector",
+      "backend_language": "ollama_http_api",
+      "status": "planned",
+      "execution_enabled": false,
+      "risk_level": "medium"
+    },
+    {
+      "connector_key": "open_webui",
+      "category": "model_ui_connector",
+      "status": "planned",
+      "execution_enabled": false,
+      "blocked_use": [
+        "state_owner"
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "connector_key": "litellm",
+      "category": "model_router_connector",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "medium"
+    },
+    {
+      "connector_key": "codex_github",
+      "category": "development_connector",
+      "status": "planned",
+      "execution_enabled": false,
+      "requires": [
+        "git_repo_connected",
+        "AGENTS.md",
+        "protected_system_rules",
+        "FIRE_approval"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "mcp_connectors",
+      "category": "external_tool_protocol",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "home_assistant",
+      "category": "smart_home_hub_connector",
+      "backend_language": "python_http_websocket",
+      "status": "future",
+      "execution_enabled": false,
+      "requires": [
+        "home_assistant_url",
+        "access_token",
+        "entity_allowlist",
+        "command_approval_policy"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "matter_bridge",
+      "category": "smart_home_protocol",
+      "status": "future",
+      "execution_enabled": false,
+      "requires": [
+        "controller_platform",
+        "device_commissioning",
+        "allowlist"
+      ],
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "apple_home",
+      "category": "smart_home_platform",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "google_home_android",
+      "category": "mobile_smart_home_api",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "alexa_skill",
+      "category": "voice_assistant_connector",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "high"
+    },
+    {
+      "connector_key": "mobile_android",
+      "category": "mobile_client",
+      "backend_language": "kotlin_or_flutter",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "medium_high"
+    },
+    {
+      "connector_key": "mobile_ios",
+      "category": "mobile_client",
+      "backend_language": "swift_or_flutter",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "medium_high"
+    },
+    {
+      "connector_key": "web_pwa",
+      "category": "web_client",
+      "backend_language": "javascript",
+      "status": "future",
+      "execution_enabled": false,
+      "risk_level": "medium"
+    }
+  ]
+}

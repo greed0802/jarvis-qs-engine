@@ -1,0 +1,18 @@
+{
+  "version": "v5.0.0-alpha.35.16",
+  "pycache_dirs": 0,
+  "pyc_files": 0,
+  "pytest_cache_dirs": 0,
+  "runtime_data_non_keep_files": [
+    "jarvis_v5/data/conversations/alpha35_10_2_write_preview.json",
+    "jarvis_v5/data/conversations/alpha35_10_2_feedback_preview.json",
+    "jarvis_v5/data/conversations/alpha35_10_2_real_preview.json",
+    "jarvis_v5/data/active_tasks/task_a68cf0be2ad6411f8f32897e308585d4.json",
+    "jarvis_v5/data/active_tasks/task_d779e107ea154b7081d490c5473e2c2e.json",
+    "jarvis_v5/data/active_tasks/task_c9d90decaccc4bf0971704e066a02f8d.json",
+    "jarvis_v5/data/events/alpha35_10_2_write_preview.json",
+    "jarvis_v5/data/events/alpha35_10_2_feedback_preview.json",
+    "jarvis_v5/data/events/alpha35_10_2_real_preview.json"
+  ],
+  "pass": false
+}

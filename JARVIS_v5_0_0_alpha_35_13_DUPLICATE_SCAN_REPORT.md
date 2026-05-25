@@ -1,0 +1,323 @@
+# Duplicate Scan Report — v5.0.0-alpha.35.13
+
+## Summary
+
+- Duplicate top-level function names: `37`
+- Duplicate top-level class names: `0`
+- Parse notes: `0`
+
+These are name-level diagnostics only. This build adds no runtime route owners and changes no route behavior.
+
+## Duplicate function names
+
+```json
+{
+  "now_iso": [
+    "jarvis_v5/core/adapter_store.py",
+    "jarvis_v5/core/attachment_store.py",
+    "jarvis_v5/core/engine_contract_store.py",
+    "jarvis_v5/core/engine_execution_store.py",
+    "jarvis_v5/core/engine_preflight_store.py",
+    "jarvis_v5/core/event_ledger.py",
+    "jarvis_v5/schemas/active_task_schema.py",
+    "jarvis_v5/schemas/builder_adapter_schema.py",
+    "jarvis_v5/schemas/builder_engine_contract_schema.py",
+    "jarvis_v5/schemas/builder_snapshot_schema.py",
+    "jarvis_v5/schemas/conversation_schema.py",
+    "jarvis_v5/tools/builder/engine_preflight.py",
+    "jarvis_v5/tools/builder/legacy_bridge_shadow_probe.py",
+    "jarvis_v5/tools/builder/legacy_engine_bridge.py",
+    "jarvis_v5/tools/builder/legacy_import_boundary_audit.py",
+    "jarvis_v5/tools/builder/preview_execution_policy.py"
+  ],
+  "_now": [
+    "jarvis_v5/parsers/conflict_guard.py",
+    "jarvis_v5/reducers/slot_reducer.py",
+    "jarvis_v5/registry/trade_profile_registry.py",
+    "jarvis_v5/tools/builder/function_unit_compatibility.py"
+  ],
+  "_word_pattern": [
+    "jarvis_v5/parsers/conflict_guard.py",
+    "jarvis_v5/registry/trade_profile_registry.py"
+  ],
+  "_norm": [
+    "jarvis_v5/registry/registry_loader.py",
+    "jarvis_v5/registry/trade_profile_registry.py"
+  ],
+  "canonical_hash": [
+    "jarvis_v5/schemas/builder_engine_contract_schema.py",
+    "jarvis_v5/schemas/builder_snapshot_schema.py"
+  ],
+  "client": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py",
+    "jarvis_v5/tests/smoke/test_alpha13_engine_boundary_audit.py",
+    "jarvis_v5/tests/smoke/test_alpha14_trade_profile_registry.py",
+    "jarvis_v5/tests/smoke/test_alpha15_review_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+    "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+    "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+    "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+    "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+    "jarvis_v5/tests/smoke/test_alpha1_state_router.py",
+    "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py",
+    "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py",
+    "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py",
+    "jarvis_v5/tests/smoke/test_alpha23_global_capability_registry.py",
+    "jarvis_v5/tests/smoke/test_alpha24_route_ownership_registry_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha26_1_response_schema_pack_hygiene.py",
+    "jarvis_v5/tests/smoke/test_alpha2_active_router.py",
+    "jarvis_v5/tests/smoke/test_alpha3_slot_reducer.py",
+    "jarvis_v5/tests/smoke/test_alpha41_snapshot_stale.py",
+    "jarvis_v5/tests/smoke/test_alpha4_builder_snapshot.py",
+    "jarvis_v5/tests/smoke/test_alpha51_adapter_freshness.py",
+    "jarvis_v5/tests/smoke/test_alpha5_builder_adapter_dry_run.py",
+    "jarvis_v5/tests/smoke/test_alpha6_attachment_binding.py",
+    "jarvis_v5/tests/smoke/test_alpha7_setup_completeness.py",
+    "jarvis_v5/tests/smoke/test_alpha8_slot_parser_expansion.py",
+    "jarvis_v5/tests/smoke/test_alpha9_parser_conflict_guard.py"
+  ],
+  "post_chat": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py",
+    "jarvis_v5/tests/smoke/test_alpha13_engine_boundary_audit.py",
+    "jarvis_v5/tests/smoke/test_alpha14_trade_profile_registry.py",
+    "jarvis_v5/tests/smoke/test_alpha15_review_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+    "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+    "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+    "jarvis_v5/tests/smoke/test_alpha51_adapter_freshness.py",
+    "jarvis_v5/tests/smoke/test_alpha5_builder_adapter_dry_run.py",
+    "jarvis_v5/tests/smoke/test_alpha6_attachment_binding.py",
+    "jarvis_v5/tests/smoke/test_alpha7_setup_completeness.py",
+    "jarvis_v5/tests/smoke/test_alpha8_slot_parser_expansion.py"
+  ],
+  "attach_workbook": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py",
+    "jarvis_v5/tests/smoke/test_alpha13_engine_boundary_audit.py",
+    "jarvis_v5/tests/smoke/test_alpha14_trade_profile_registry.py",
+    "jarvis_v5/tests/smoke/test_alpha6_attachment_binding.py",
+    "jarvis_v5/tests/smoke/test_alpha7_setup_completeness.py",
+    "jarvis_v5/tests/smoke/test_alpha8_slot_parser_expansion.py"
+  ],
+  "create_snapshot": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py",
+    "jarvis_v5/tests/smoke/test_alpha41_snapshot_stale.py",
+    "jarvis_v5/tests/smoke/test_alpha51_adapter_freshness.py",
+    "jarvis_v5/tests/smoke/test_alpha5_builder_adapter_dry_run.py",
+    "jarvis_v5/tests/smoke/test_alpha6_attachment_binding.py",
+    "jarvis_v5/tests/smoke/test_alpha7_setup_completeness.py",
+    "jarvis_v5/tests/smoke/test_alpha8_slot_parser_expansion.py"
+  ],
+  "adapter_dry_run": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py",
+    "jarvis_v5/tests/smoke/test_alpha51_adapter_freshness.py",
+    "jarvis_v5/tests/smoke/test_alpha5_builder_adapter_dry_run.py",
+    "jarvis_v5/tests/smoke/test_alpha6_attachment_binding.py",
+    "jarvis_v5/tests/smoke/test_alpha7_setup_completeness.py",
+    "jarvis_v5/tests/smoke/test_alpha8_slot_parser_expansion.py"
+  ],
+  "engine_contract": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py"
+  ],
+  "complete_setup": [
+    "jarvis_v5/tests/smoke/test_alpha10_engine_contract_adapter.py",
+    "jarvis_v5/tests/smoke/test_alpha11_contract_negative_guards.py"
+  ],
+  "attach_fixture": [
+    "jarvis_v5/tests/smoke/test_alpha15_review_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+    "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+    "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py"
+  ],
+  "complete_wall_types_setup": [
+    "jarvis_v5/tests/smoke/test_alpha15_review_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py"
+  ],
+  "assert_safety_false": [
+    "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+    "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py"
+  ],
+  "start_complete_wall_types": [
+    "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+    "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+    "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py"
+  ],
+  "assert_safety": [
+    "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+    "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+    "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py",
+    "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py"
+  ],
+  "reset_data": [
+    "jarvis_v5/tests/smoke/test_alpha1_state_router.py",
+    "jarvis_v5/tests/smoke/test_alpha2_active_router.py",
+    "jarvis_v5/tests/smoke/test_alpha3_slot_reducer.py",
+    "jarvis_v5/tests/smoke/test_alpha4_builder_snapshot.py"
+  ],
+  "post": [
+    "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py",
+    "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py",
+    "jarvis_v5/tests/smoke/test_alpha3_slot_reducer.py",
+    "jarvis_v5/tests/smoke/test_alpha41_snapshot_stale.py",
+    "jarvis_v5/tests/smoke/test_alpha4_builder_snapshot.py",
+    "jarvis_v5/tests/smoke/test_alpha9_parser_conflict_guard.py"
+  ],
+  "start_builder": [
+    "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+    "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py"
+  ],
+  "_client": [
+    "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py",
+    "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+    "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+    "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py",
+    "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+    "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py",
+    "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py",
+    "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+    "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+    "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+    "jarvis_v5/tests/smoke/test_alpha35_8_workbook_read_policy_plan_visibility.py",
+    "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+    "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py"
+  ],
+  "_chat": [
+    "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py",
+    "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py",
+    "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+    "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py",
+    "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+    "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+    "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+    "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+    "jarvis_v5/tests/smoke/test_alpha35_8_workbook_read_policy_plan_visibility.py",
+    "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+    "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py"
+  ],
+  "create_task": [
+    "jarvis_v5/tests/smoke/test_alpha2_active_router.py",
+    "jarvis_v5/tests/smoke/test_alpha3_slot_reducer.py",
+    "jarvis_v5/tests/smoke/test_alpha9_parser_conflict_guard.py"
+  ],
+  "_assert_no_execution": [
+    "jarvis_v5/tests/smoke/test_alpha31B_no_active_route_hygiene.py",
+    "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+    "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+    "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+    "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+    "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+    "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+    "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py"
+  ],
+  "_start_builder": [
+    "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+    "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+    "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+    "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+    "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py"
+  ],
+  "_reset_data": [
+    "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+    "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+    "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py"
+  ],
+  "_contains_forbidden_exact_key": [
+    "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+    "jarvis_v5/tools/builder/workbook_metadata_probe_approval.py",
+    "jarvis_v5/tools/builder/workbook_sheet_name_probe_approval.py"
+  ],
+  "test_alpha35_3_version_policy_locks": [
+    "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py",
+    "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py"
+  ],
+  "test_alpha35_6_version_lock": [
+    "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+    "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+    "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py"
+  ],
+  "_assert_no_engine_safety": [
+    "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py"
+  ],
+  "test_alpha35_10_version_lock": [
+    "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+    "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py"
+  ],
+  "_assert_registry_advisory": [
+    "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py"
+  ],
+  "test_alpha35_10_2_writing_report_preview_false_positive_stays_fixed": [
+    "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+    "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py"
+  ],
+  "_public_workbook_ref": [
+    "jarvis_v5/tools/builder/contract_fixture_replay.py",
+    "jarvis_v5/tools/builder/preview_execution_policy.py"
+  ],
+  "_contract_payload": [
+    "jarvis_v5/tools/builder/legacy_bridge_shadow_probe.py",
+    "jarvis_v5/tools/builder/preview_execution_policy.py",
+    "jarvis_v5/tools/builder/workbook_metadata_probe_approval.py",
+    "jarvis_v5/tools/builder/workbook_sheet_name_probe_approval.py"
+  ],
+  "_blocked_by_policy": [
+    "jarvis_v5/tools/builder/legacy_bridge_shadow_probe.py",
+    "jarvis_v5/tools/builder/preview_execution_policy.py"
+  ],
+  "_extension_from_filename": [
+    "jarvis_v5/tools/builder/workbook_metadata_probe_approval.py",
+    "jarvis_v5/tools/builder/workbook_sheet_name_probe_approval.py"
+  ]
+}
+```
+
+## Duplicate class names
+
+```json
+{}
+```

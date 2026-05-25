@@ -1,0 +1,11 @@
+Jarvis v5.0.0-alpha.30.1 raw test run results
+
+compileall: PASS
+pytest: PASS — 234 passed
+JSON packs: PASS — 30 / 30 packs
+JSON pack tests: PASS — 123 / 123 tests
+Duplicate FastAPI routes: 0
+Same-file duplicate top-level definitions: 0
+Cross-file helper/function duplicates documented: 33
+Protected Builder boundary hash check: 10 / 10 unchanged
+Safety aggregate: {'workbook_read_any_true': False, 'engine_called_any_true': False, 'excel_created_any_true': False, 'legacy_builder_called_any_true': False}

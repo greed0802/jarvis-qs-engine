@@ -1,0 +1,16 @@
+Jarvis v5.0.0-alpha.33.1 test run results
+
+PASS targeted failed tests: 4 / 4
+PASS compileall: python -m compileall -q jarvis_v5
+PASS smoke pytest suite in clean chunks: 275 / 275
+PASS built-in JSON pack sweep: 38 / 38 packs, 174 / 174 tests
+PASS duplicate FastAPI routes: 0
+PASS same-file duplicate top-level definitions: 0
+PASS protected Builder boundary hash check: 9 / 9
+PASS package hygiene after cleanup
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

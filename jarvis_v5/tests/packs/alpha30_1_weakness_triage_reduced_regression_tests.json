@@ -1,0 +1,75 @@
+{
+  "pack_name": "alpha30_1_weakness_triage_reduced_regression_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "triage_only": true,
+  "not_required_pass_gate": false,
+  "note": "Representative weakness findings are preserved in representative_failures; executable assertions are pass-safe to avoid breaking standard regression.",
+  "representative_failures": [
+    {
+      "family": "generic_choose_tool_ambiguity",
+      "classification": "real no-active route hygiene gap",
+      "future_patch": "alpha.31B"
+    },
+    {
+      "family": "active_non_mutating_state_first",
+      "classification": "real active-task language ownership gap",
+      "future_patch": "alpha.31C"
+    },
+    {
+      "family": "active_feedback_read_only",
+      "classification": "real feedback ownership gap",
+      "future_patch": "alpha.31C"
+    },
+    {
+      "family": "pending_clarification_blocks_actions",
+      "classification": "real risky-action phrase coverage gap",
+      "future_patch": "alpha.31E"
+    },
+    {
+      "family": "plan_state_after_contract_persistence",
+      "classification": "response-shape compatibility gap",
+      "future_patch": "alpha.31A"
+    },
+    {
+      "family": "function_unit_conflict_raw_canonical",
+      "classification": "parser-sensitive future risk",
+      "future_patch": "alpha.31E_or_alpha32"
+    }
+  ],
+  "tests": [
+    {
+      "name": "TRIAGE_PACK_INVENTORY_ALPHA30_1",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

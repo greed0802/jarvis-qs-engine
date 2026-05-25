@@ -1,0 +1,19 @@
+Jarvis v5.0.0-alpha.28.1 Test Run Results
+
+compileall: PASS
+pytest: PASS — 225 passed
+JSON packs: PASS — 27 / 27 packs
+JSON pack tests: PASS — 116 / 116 tests
+Safety aggregate:
+  workbook_read_any_true=false
+  engine_called_any_true=false
+  excel_created_any_true=false
+  legacy_builder_called_any_true=false
+Duplicate FastAPI route scan: PASS — 0 duplicates
+Same-file top-level duplicate definition scan: PASS — 0 duplicates
+Cross-file duplicate helper scan: INFO — 33 documented
+Preview-policy owner scan: PASS
+Previous-version root artifact scan: PASS — 0 stale alpha.27/alpha.28 root artifacts
+Protected Builder boundary hash check: PASS — 10 / 10 unchanged
+Execution flag scan: PASS — no execution flag enabled
+ZIP root inventory check: PASS

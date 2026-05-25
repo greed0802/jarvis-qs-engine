@@ -1,0 +1,463 @@
+{
+  "version": "v5.0.0-alpha.35.11",
+  "base_version": "v5.0.0-alpha.35.10.2",
+  "changed_files": [
+    {
+      "file": "CURRENT_BACKEND_STATUS_v5_alpha_35_11.md",
+      "change": "added"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_11_CHANGED_FILES.json",
+      "change": "added"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_11_CHANGE_REPORT.md",
+      "change": "added"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_11_PROTECTED_HASH_COMPARE.json",
+      "change": "added"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_11_TEST_REPORT.md",
+      "change": "added"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_11_TEST_RUN_RESULTS.txt",
+      "change": "added"
+    },
+    {
+      "file": "NEXT_CHAT_HANDOFF_v5_alpha_35_11.md",
+      "change": "added"
+    },
+    {
+      "file": "START_JARVIS_V5_ALPHA_35_11.bat",
+      "change": "added"
+    },
+    {
+      "file": "START_JARVIS_V5_ALPHA_35_11_SIMPLE_NO_RELOAD.bat",
+      "change": "added"
+    },
+    {
+      "file": "jarvis_v5/config.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/docs/ALPHA_35_11_SCOPE.md",
+      "change": "added"
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/registry_loader.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/requirement_advisor_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/rfi_template_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/scope_advisor_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/router/no_active_task_language_gate.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/schemas/registry_schema.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/fixtures/contracts/wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha11_contract_negative_guards.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha15_review_readiness_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha16_engine_preflight_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha17_engine_execution_lock_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha18_1_safety_envelope_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha18_response_consistency_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha19_contract_fixture_replay_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha20_deep_weak_point_boundary_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha20_legacy_import_boundary_audit_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha21_function_unit_compatibility_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_1_no_fallback_router_tightening_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2a_router_confidence_shadow_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2b_limited_control_router_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2c_route_ownership_and_setup_normalization_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2d_high_priority_ownership_repair_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2e_active_task_language_plan_cleanup_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2f_engineering_language_gate_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_qs_intent_alias_router_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha23_global_capability_registry_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha24_route_ownership_registry_advisory_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha25_legacy_bridge_readiness_audit_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha26_1_response_schema_pack_hygiene_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha26_legacy_bridge_shadow_probe_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha27_preview_execution_policy_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha28_1_package_hygiene_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha28_policy_response_hygiene_approval_readiness_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha29_safe_workbook_path_resolver_dry_run_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha30_1_weakness_triage_reduced_regression_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha30_workbook_read_preflight_contract_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31A_response_shape_compatibility_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31B_no_active_route_hygiene_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31C_active_non_mutating_feedback_read_only_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31D_pending_clarification_risky_action_coverage_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31E_parser_function_unit_conflict_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31F_1_weakness_replay_compatibility_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha32A_minimal_pair_route_ownership_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha33_workbook_metadata_probe_approval_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha34_workbook_sheet_name_probe_approval_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_1_uae_podium_basement_level_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_no_active_mixed_language_policy_route_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_11_capability_advisory_tests.json",
+      "change": "added"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_8_workbook_read_policy_plan_visibility_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_9_pending_clarification_policy_action_ownership_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_workbook_read_policy_review_tests.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/sample_external_ai_pack_valid.json",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha23_global_capability_registry.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha24_2_cleanup_hygiene.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha24_route_ownership_registry_advisory.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha25_legacy_bridge_readiness_audit.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha26_1_response_schema_pack_hygiene.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha26_legacy_bridge_shadow_probe.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha28_1_package_hygiene.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha29_safe_workbook_path_resolver_dry_run.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha30_workbook_read_preflight_contract.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31B_no_active_route_hygiene.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+      "change": "added"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_8_workbook_read_policy_plan_visibility.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+      "change": "modified"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py",
+      "change": "modified"
+    }
+  ],
+  "count": 114
+}

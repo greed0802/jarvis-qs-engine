@@ -1,0 +1,7 @@
+PASS - python -m compileall -q jarvis_v5
+PASS - pytest chunk 1: 181 passed
+PASS - pytest chunk 2: 138 passed
+PASS - total pytest smoke coverage: 319 passed
+PASS - alpha35_8_workbook_read_policy_plan_visibility_tests: 3 passed / 0 failed
+DIAGNOSTIC ONLY - old packs 032, 035, 038 still fail because they expect readiness.status override.
+Safety aggregate remained false for workbook_read, engine_called, excel_created, legacy_builder_called.

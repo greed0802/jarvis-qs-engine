@@ -1,0 +1,990 @@
+{
+  "pack_name": "alpha32A_minimal_pair_route_ownership_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA32A_MINIMAL_PAIR_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.scope",
+              "equals": "workbook_read_policy_review_no_content_read"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_BROKEN_FEEDBACK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "preview_broken_feedback",
+            "client_event_id": "evt",
+            "text": "Preview is broken."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "feedback_read_only"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_NO_ACTIVE_ACTION",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "preview_no_active_action",
+            "client_event_id": "evt",
+            "text": "Preview."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "no_active_action_needs_active_task"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DOORS_WINDOWS_CHOOSE_TOOL",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "doors_windows_choose_tool",
+            "client_event_id": "evt",
+            "text": "Use Doors and Windows."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SAFE_RESOLVER_EXPLAIN_HELP",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "safe_resolver_explain_help",
+            "client_event_id": "evt",
+            "text": "Explain safe workbook path resolver."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SAFE_RESOLVER_DRY_RUN_CHOOSE_TOOL",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "safe_resolver_dry_run_choose_tool",
+            "client_event_id": "evt",
+            "text": "Run safe workbook path resolver dry run."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WATERPROOFING_CHECKLIST_HELP",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "waterproofing_checklist_help",
+            "client_event_id": "evt",
+            "text": "I need a checklist for waterproofing."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_01",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_01",
+            "client_event_id": "evt",
+            "text": "Explain XGETCOUNT."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_02",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_02",
+            "client_event_id": "evt",
+            "text": "Use XGETCOUNT."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_03",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_03",
+            "client_event_id": "evt",
+            "text": "What does value mean?"
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_04",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_04",
+            "client_event_id": "evt",
+            "text": "Create a Schedule of Values."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_05",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_05",
+            "client_event_id": "evt",
+            "text": "Estimate how long this will take."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_06",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_06",
+            "client_event_id": "evt",
+            "text": "Build a cost estimate BOQ."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_07",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_07",
+            "client_event_id": "evt",
+            "text": "Check grammar in this RFI."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_08",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_08",
+            "client_event_id": "evt",
+            "text": "Check this workbook."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_09",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_09",
+            "client_event_id": "evt",
+            "text": "The word window appears in UI issue."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_10",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_10",
+            "client_event_id": "evt",
+            "text": "What is MPa?"
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_11",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_11",
+            "client_event_id": "evt",
+            "text": "Unit m2."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_12",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_12",
+            "client_event_id": "evt",
+            "text": "Build me a BOQ."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_13",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_13",
+            "client_event_id": "evt",
+            "text": "Format this sentence only."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MINIMAL_PAIR_REGRESSION_14",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "minimal_pair_regression_14",
+            "client_event_id": "evt",
+            "text": "Use Formatter on this workbook."
+          },
+          "assertions": [
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WRITING_HELP_NOT_FEEDBACK_1",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "writing_help_not_feedback_1",
+            "client_event_id": "evt",
+            "text": "Rewrite this issue report."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.reason",
+              "equals": "format_text_not_workbook"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WRITING_HELP_NOT_FEEDBACK_2",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "writing_help_not_feedback_2",
+            "client_event_id": "evt",
+            "text": "Make my bug report clearer."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.reason",
+              "equals": "format_text_not_workbook"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WRITING_HELP_NOT_FEEDBACK_3",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "writing_help_not_feedback_3",
+            "client_event_id": "evt",
+            "text": "Clean this complaint wording."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.reason",
+              "equals": "format_text_not_workbook"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "not_equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "not_equals": true
+            },
+            {
+              "path": "$.excel_created",
+              "not_equals": true
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "not_equals": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

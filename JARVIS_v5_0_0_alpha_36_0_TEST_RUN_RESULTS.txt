@@ -1,0 +1,15 @@
+Jarvis v5.0.0-alpha.36.0 test run summary
+
+PASS compileall
+Controlled pytest smoke suite: 394 collected; isolated smoke batches/files passed.
+PASS alpha36.0 integrity contract pack: 8/8
+PASS alpha35.19 evidence lock pack: 8/8
+PASS alpha35.18 workbook permission pack: 8/8
+PASS alpha35.17 source authority pack: 10/10
+PASS alpha35.16 document contract pack: 8/8
+PASS alpha35.15 job/output pack: 8/8
+PASS alpha35.14 tool contract map pack: 6/6
+PASS alpha35.12 advisory regression pack: 6/6
+PASS alpha35.10.2 active writing/report Preview false-positive pack: 3/3
+
+Safety: workbook_read=false, engine_called=false, excel_created=false, legacy_builder_called=false

@@ -1,0 +1,15 @@
+Targeted alpha35.5 tests: 4 passed.
+Sensitive regressions: 25 passed.
+Full pytest by controlled chunks: 308 passed.
+Built-in JSON pack sweep: 40/40 packs, 180/180 tests passed.
+Attack 014: 50/50 passed.
+Attack 015: 50/50 passed.
+Attack 016: 50/50 passed.
+Attack 017: 50/50 passed.
+Attack 018: 50/50 passed.
+Regression 006: 50/50 passed.
+Regression 007: 50/50 passed.
+Regression 008: 50/50 passed.
+Regression 012: 50/50 passed.
+Regression 013: 50/50 passed.
+Safety: workbook_read_any_true=false; engine_called_any_true=false; excel_created_any_true=false; legacy_builder_called_any_true=false.

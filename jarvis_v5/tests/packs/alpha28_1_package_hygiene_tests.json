@@ -1,0 +1,52 @@
+{
+  "pack_name": "alpha28_1_package_hygiene_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA28_1_PACKAGE_HYGIENE_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_POLICY_STILL_NO_EXECUTION_ALPHA28_1",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policy_no_contract",
+          "method": "POST",
+          "endpoint": "/api/builder/preview-execution-policy",
+          "json": {
+            "conversation_id": "pack_alpha28_1_no_contract",
+            "client_event_id": "pack_a28_1_no_contract",
+            "requested_action": "preview"
+          },
+          "assertions": [
+            {"path": "$.route", "equals": "builder_preview_execution_policy"},
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false},
+            {"path": "$.contract", "equals": null},
+            {"path": "$.safety.raw_contract_payload_returned", "equals": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

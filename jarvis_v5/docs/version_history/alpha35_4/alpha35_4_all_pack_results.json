@@ -1,0 +1,24 @@
+{
+  "version": "v5.0.0-alpha.35.5",
+  "scope": "no_active_sheet_name_probe_ambiguity",
+  "results": {
+    "targeted_alpha35_5_tests": "2/2 passed",
+    "sensitive_regressions": "12/12 passed",
+    "pytest_controlled_chunks": "304/304 passed (118 + 99 + 87); unchunked sandbox pytest exceeded tool timeout",
+    "built_in_json_pack_sweep": "40/40 packs passed, 180/180 tests passed",
+    "attack_012": "50/50 passed",
+    "attack_013": "50/50 passed",
+    "attack_006": "50/50 passed",
+    "attack_007": "50/50 passed",
+    "attack_008": "50/50 passed",
+    "attack_009": "25/50 passed; no general_stub or new_builder_task_shell; route expectation conflict only",
+    "attack_010": "25/50 passed; no general_stub or new_builder_task_shell; route expectation conflict only",
+    "attack_011": "25/50 passed; no general_stub or new_builder_task_shell; route expectation conflict only",
+    "safety": {
+      "workbook_read_any_true": false,
+      "engine_called_any_true": false,
+      "excel_created_any_true": false,
+      "legacy_builder_called_any_true": false
+    }
+  }
+}

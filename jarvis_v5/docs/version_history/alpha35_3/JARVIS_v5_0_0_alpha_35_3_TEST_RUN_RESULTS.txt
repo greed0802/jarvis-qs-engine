@@ -1,0 +1,13 @@
+# v5.0.0-alpha.35.3 TEST_RUN_RESULTS
+
+python -m compileall -q jarvis_v5: PASS
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q: 300 passed
+Built-in JSON pack sweep: 40 packs passed, 180 tests passed
+Attack 006: 50 passed, 0 failed
+Attack 007: 50 passed, 0 failed
+Attack 008: 50 passed, 0 failed
+Attack 009: 25 passed, 25 failed (route expectation conflict only; no fallback/new shell)
+Attack 010: 25 passed, 25 failed (route expectation conflict only; no fallback/new shell)
+Attack 011: 25 passed, 25 failed (route expectation conflict only; no fallback/new shell)
+Safety aggregate: workbook_read_any_true=false, engine_called_any_true=false, excel_created_any_true=false, legacy_builder_called_any_true=false
+

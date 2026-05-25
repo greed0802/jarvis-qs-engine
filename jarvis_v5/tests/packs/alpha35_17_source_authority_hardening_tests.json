@@ -1,0 +1,330 @@
+{
+  "pack_name": "alpha35_17_source_authority_hardening_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA35_17_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_SOURCE_AUTHORITY_REGISTRY_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[0].authority_key",
+              "equals": "statutory_code"
+            },
+            {
+              "path": "$.authorities[0].can_certify_compliance",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[0].web_lookup_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[0].standards_ingestion_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_NO_AUTHORITY_CAN_CERTIFY_COMPLIANCE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.authorities[1].authority_key",
+              "equals": "professional_standard"
+            },
+            {
+              "path": "$.authorities[1].can_claim_compliance",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[1].can_certify_compliance",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[16].authority_key",
+              "equals": "council_condition"
+            },
+            {
+              "path": "$.authorities[16].can_certify_compliance",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_USER_ASSUMPTION_AND_AI_INFERENCE_LOW_AUTHORITY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.authorities[7].authority_key",
+              "equals": "user_assumption"
+            },
+            {
+              "path": "$.authorities[7].must_be_marked_as_assumption",
+              "equals": true
+            },
+            {
+              "path": "$.authorities[7].can_certify_compliance",
+              "equals": false
+            },
+            {
+              "path": "$.authorities[8].authority_key",
+              "equals": "ai_inference"
+            },
+            {
+              "path": "$.authorities[8].must_be_marked_as_inference",
+              "equals": true
+            },
+            {
+              "path": "$.authorities[8].authority_level",
+              "equals": "lowest_authority_model_inference"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_STANDARDS_KB_DISABLED_NO_WEB_OR_RAG",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[9].tool_key",
+              "equals": "standards_knowledge_base"
+            },
+            {
+              "path": "$.tools[9].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[9].web_lookup_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[9].rag_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[9].standards_ingestion_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[9].can_certify_compliance",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_DOCUMENT_READER_DISABLED_NO_READ_OR_OCR",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[8].tool_key",
+              "equals": "client_document_reader"
+            },
+            {
+              "path": "$.tools[8].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].document_read",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].ocr_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[8].can_claim_compliance",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_DOCUMENT_TYPES_CANNOT_CLAIM_COMPLIANCE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "document_types_file",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_WORKBOOK_READ_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha3517_read_workbook",
+            "client_event_id": "alpha3517_read_workbook",
+            "text": "Open the workbook and read all cell values"
+          },
+          "assertions": [
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T09_ALPHA35_16_DOCUMENT_CONTRACTS_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "capabilities",
+          "method": "GET",
+          "endpoint": "/api/registry/capabilities",
+          "assertions": [
+            {
+              "path": "$.capabilities[6].capability_key",
+              "equals": "document_ocr"
+            },
+            {
+              "path": "$.capabilities[6].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[6].document_read",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[6].ocr_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[6].rag_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T10_ALPHA35_15_JOB_OUTPUT_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[8].policy_key",
+              "equals": "job_output_contract_map"
+            },
+            {
+              "path": "$.policies[8].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[8].metadata_only",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

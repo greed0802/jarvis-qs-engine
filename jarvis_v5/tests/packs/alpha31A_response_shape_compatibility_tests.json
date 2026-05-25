@@ -1,0 +1,101 @@
+{
+  "pack_name": "alpha31B_response_shape_compatibility_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA31A_RESPONSE_SHAPE_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN_COMPATIBILITY_ALIASES_NO_ACTIVE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "plan_no_active",
+          "method": "GET",
+          "endpoint": "/api/plan/pack_alpha31B_no_active",
+          "assertions": [
+            {"path": "$.found", "equals": false},
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.snapshot.found", "equals": false},
+            {"path": "$.adapter_dry_run.found", "equals": false},
+            {"path": "$.engine_contract.found", "equals": false},
+            {"path": "$.latest_snapshot.found", "equals": false},
+            {"path": "$.latest_adapter.found", "equals": false},
+            {"path": "$.latest_engine_contract.found", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN_COMPATIBILITY_ALIASES_ACTIVE_TASK",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31B_active_plan", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}, {"path": "$.plan_mutated", "equals": false}]},
+        {
+          "name": "plan_active",
+          "method": "GET",
+          "endpoint": "/api/plan/pack_alpha31B_active_plan",
+          "assertions": [
+            {"path": "$.found", "equals": true},
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.snapshot.found", "equals": false},
+            {"path": "$.adapter_dry_run.found", "equals": false},
+            {"path": "$.engine_contract.found", "equals": false},
+            {"path": "$.latest_snapshot.found", "equals": false},
+            {"path": "$.latest_adapter.found", "equals": false},
+            {"path": "$.latest_engine_contract.found", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PREVIEW_POLICY_WORKBOOK_READ_ENABLED_ALIAS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policy",
+          "method": "POST",
+          "endpoint": "/api/builder/preview-execution-policy",
+          "json": {"conversation_id": "pack_alpha31B_policy", "client_event_id": "policy", "requested_action": "preview"},
+          "assertions": [
+            {"path": "$.route", "equals": "builder_preview_execution_policy"},
+            {"path": "$.workbook_read_permission_boundary.enabled", "equals": false},
+            {"path": "$.workbook_read_permission_boundary.workbook_read_enabled", "equals": false},
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN_MUTATED_FALSE_AND_TRUE_COMPATIBILITY",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "no_mutation", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31B_plan_mutated", "client_event_id": "hello", "text": "Hello Jarvis"}, "assertions": [{"path": "$.plan_mutated", "equals": false}]},
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31B_plan_mutated", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "trade", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31B_plan_mutated", "client_event_id": "trade", "text": "Use Wall Types"}, "assertions": [{"path": "$.route", "equals": "active_task_slot_edit"}, {"path": "$.reducer_result.plan_mutated", "equals": true}, {"path": "$.plan_mutated", "equals": true}]}
+      ]
+    }
+  ]
+}

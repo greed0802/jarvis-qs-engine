@@ -1,0 +1,50 @@
+{
+  "pack_name": "alpha31D_pending_clarification_risky_action_coverage_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA31D_PENDING_CLARIFICATION_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.scope", "equals": "workbook_read_policy_review_no_content_read"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_CLARIFICATION_BLOCKS_RISKY_ACTIONS_INCLUDING_RUN_BUILDER",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_block", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "clarify", "method": "POST", "endpoint": "/api/debug/create-test-clarification", "json": {"conversation_id": "pack_alpha31D_block", "client_event_id": "clarify", "prompt": "Choose A or B.", "options": ["A", "B", "Cancel"]}, "assertions": [{"path": "$.route", "equals": "debug_create_test_clarification"}, {"path": "$.blocked", "equals": false}]},
+        {"name": "run_builder_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_block", "client_event_id": "run_builder", "text": "Run builder now"}, "assertions": [{"path": "$.route", "equals": "clarification_blocked_action"}, {"path": "$.blocked", "equals": true}, {"path": "$.fallback_used", "equals": false}, {"path": "$.reason", "equals": "pending_clarification_blocks_risky_action"}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "review_allowed_after_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_block", "client_event_id": "review", "text": "Review current setup"}, "assertions": [{"path": "$.route", "equals": "active_task_review"}, {"path": "$.blocked", "equals": false}, {"path": "$.fallback_used", "equals": false}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "answer_resolves_after_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_block", "client_event_id": "answer", "text": "A"}, "assertions": [{"path": "$.route", "equals": "clarification_resolved"}, {"path": "$.blocked", "equals": false}, {"path": "$.pending_clarification_id", "equals": null}]}
+      ]
+    },
+    {
+      "name": "PENDING_CLARIFICATION_EXISTING_RISKY_ACTIONS_STILL_BLOCK",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "clarify", "method": "POST", "endpoint": "/api/debug/create-test-clarification", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "clarify", "prompt": "Choose A or B.", "options": ["A", "B", "Cancel"]}, "assertions": [{"path": "$.route", "equals": "debug_create_test_clarification"}]},
+        {"name": "preview_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "preview", "text": "Preview safely"}, "assertions": [{"path": "$.route", "equals": "clarification_blocked_action"}, {"path": "$.blocked", "equals": true}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "export_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "export", "text": "Export current output"}, "assertions": [{"path": "$.route", "equals": "clarification_blocked_action"}, {"path": "$.blocked", "equals": true}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "download_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "download", "text": "Download output link"}, "assertions": [{"path": "$.route", "equals": "clarification_blocked_action"}, {"path": "$.blocked", "equals": true}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "approve_preview_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "approve", "text": "Approve and preview"}, "assertions": [{"path": "$.route", "equals": "clarification_blocked_action"}, {"path": "$.blocked", "equals": true}, {"path": "$.plan_mutated", "equals": false}]},
+        {"name": "cancel", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "pack_alpha31D_existing", "client_event_id": "cancel", "text": "cancel"}, "assertions": [{"path": "$.route", "equals": "clarification_cancelled"}, {"path": "$.blocked", "equals": false}, {"path": "$.pending_clarification_id", "equals": null}]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+$ python -m compileall -q jarvis_v5
+PASS compileall
+
+$ python -m pytest -q
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 63%]
+........................................................................ [ 85%]
+..................................................                       [100%]
+338 passed in 16.95s
+
+$ python run_alpha_smoke_tests.py --pack jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json --no-report
+Jarvis v5 Alpha Test Runner
+Pack: alpha35_10_2_active_writing_report_preview_false_positive_tests
+
+PASS VERSION_ALPHA35_10_2_ACTIVE_WRITING_PREVIEW_LOCKS
+PASS WRITING_ISSUE_REPORT_WITH_PREVIEW_WORD_IS_NON_MUTATING
+PASS REAL_FEEDBACK_AND_PREVIEW_ACTIONS_STILL_WORK
+
+Overall: PASS
+Passed: 3
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+$ python run_alpha_smoke_tests.py --pack /mnt/data/ext_eng/jarvis_alpha22_2D_engineering_language_4000_tests/packs/07_feedback_ownership_rewrite_vs_broken.json --no-report
+PASS T050_FEEDBACK_OWNERSHIP
+
+Overall: PASS
+Passed: 50
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+$ python run_alpha_smoke_tests.py --pack /mnt/data/ext_eng/jarvis_alpha22_2D_engineering_language_4000_tests/packs/37_active_feedback_ownership_preview.json --no-report
+PASS T050_FEEDBACK_OWNERSHIP
+
+Overall: PASS
+Passed: 50
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False
+
+$ python run_alpha_smoke_tests.py --pack /mnt/data/ext_eng/jarvis_alpha22_2D_engineering_language_4000_tests/packs/38_active_feedback_ownership_unit_alias_bugs.json --no-report
+
+
+--- pack 38 rerun ---
+Jarvis v5 Alpha Test Runner
+Pack: eng_lang_38_feedback_unit_alias_bugs
+
+PASS T001_FEEDBACK_OWNERSHIP
+PASS T002_FEEDBACK_OWNERSHIP
+PASS T003_FEEDBACK_OWNERSHIP
+PASS T004_FEEDBACK_OWNERSHIP
+PASS T005_FEEDBACK_OWNERSHIP
+PASS T006_FEEDBACK_OWNERSHIP
+PASS T007_FEEDBACK_OWNERSHIP
+PASS T008_FEEDBACK_OWNERSHIP
+PASS T009_FEEDBACK_OWNERSHIP
+PASS T010_FEEDBACK_OWNERSHIP
+PASS T011_FEEDBACK_OWNERSHIP
+PASS T012_FEEDBACK_OWNERSHIP
+PASS T013_FEEDBACK_OWNERSHIP
+PASS T014_FEEDBACK_OWNERSHIP
+PASS T015_FEEDBACK_OWNERSHIP
+PASS T016_FEEDBACK_OWNERSHIP
+PASS T017_FEEDBACK_OWNERSHIP
+PASS T018_FEEDBACK_OWNERSHIP
+PASS T019_FEEDBACK_OWNERSHIP
+PASS T020_FEEDBACK_OWNERSHIP
+PASS T021_FEEDBACK_OWNERSHIP
+PASS T022_FEEDBACK_OWNERSHIP
+PASS T023_FEEDBACK_OWNERSHIP
+PASS T024_FEEDBACK_OWNERSHIP
+PASS T025_FEEDBACK_OWNERSHIP
+PASS T026_FEEDBACK_OWNERSHIP
+PASS T027_FEEDBACK_OWNERSHIP
+PASS T028_FEEDBACK_OWNERSHIP
+PASS T029_FEEDBACK_OWNERSHIP
+PASS T030_FEEDBACK_OWNERSHIP
+PASS T031_FEEDBACK_OWNERSHIP
+PASS T032_FEEDBACK_OWNERSHIP
+PASS T033_FEEDBACK_OWNERSHIP
+PASS T034_FEEDBACK_OWNERSHIP
+PASS T035_FEEDBACK_OWNERSHIP
+PASS T036_FEEDBACK_OWNERSHIP
+PASS T037_FEEDBACK_OWNERSHIP
+PASS T038_FEEDBACK_OWNERSHIP
+PASS T039_FEEDBACK_OWNERSHIP
+PASS T040_FEEDBACK_OWNERSHIP
+PASS T041_FEEDBACK_OWNERSHIP
+PASS T042_FEEDBACK_OWNERSHIP
+PASS T043_FEEDBACK_OWNERSHIP
+PASS T044_FEEDBACK_OWNERSHIP
+PASS T045_FEEDBACK_OWNERSHIP
+PASS T046_FEEDBACK_OWNERSHIP
+PASS T047_FEEDBACK_OWNERSHIP
+PASS T048_FEEDBACK_OWNERSHIP
+PASS T049_FEEDBACK_OWNERSHIP
+PASS T050_FEEDBACK_OWNERSHIP
+
+Overall: PASS
+Passed: 50
+Failed: 0
+Safety:
+  workbook_read_any_true: False
+  engine_called_any_true: False
+  excel_created_any_true: False
+  legacy_builder_called_any_true: False

@@ -1,0 +1,14 @@
+v5.0.0-alpha.35.3 test run results
+
+PASS python -m compileall -q jarvis_v5
+PASS PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+Result: 290 passed
+
+PASS built-in JSON pack sweep
+Result: 40 / 40 packs passed, 180 / 180 tests passed
+
+PASS duplicate FastAPI routes = 0
+PASS same-file duplicate top-level definitions = 0
+PASS protected Builder boundary hash check = 9 / 9 unchanged
+PASS openpyxl/load_workbook only in sheet-name owner
+Safety aggregate: workbook_read_any_true=false; engine_called_any_true=false; excel_created_any_true=false; legacy_builder_called_any_true=false

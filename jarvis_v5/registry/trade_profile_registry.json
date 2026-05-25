@@ -1,0 +1,133 @@
+{
+  "version": "trade_profile_registry_v1",
+  "profiles": {
+    "carpet": {
+      "canonical_trade": "Floor Finishes / Carpet",
+      "aliases": ["carpet", "carpeting", "floor carpet"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false,
+      "notes": "Area-based floor finish profile. Alpha.14 normalizes trade only; function/unit still need user setup."
+    },
+    "tiling": {
+      "canonical_trade": "Floor / Wall Tiling",
+      "aliases": ["tiling", "tiles", "wall tiling", "floor tiling"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false
+    },
+    "plaster": {
+      "canonical_trade": "Plaster / Render",
+      "aliases": ["plaster", "plastering", "render", "rendering"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false
+    },
+    "insulation": {
+      "canonical_trade": "Insulation",
+      "aliases": ["insulation", "thermal insulation", "acoustic insulation"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false
+    },
+    "waterproofing": {
+      "canonical_trade": "Waterproofing",
+      "aliases": ["waterproofing", "membrane", "water proofing"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false
+    },
+    "roofing": {
+      "canonical_trade": "Roofing",
+      "aliases": ["roofing", "roof", "roof works"],
+      "risk": "low",
+      "normalization_mode": "auto",
+      "requires_custom_quantity": false
+    },
+    "painting": {
+      "canonical_trade": "Painting",
+      "aliases": ["painting", "paintwork", "paint"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "allowed_functions": ["XGETWALLAREA", "XGETAREA", "XGETCUSTOM"],
+      "default_unit": "m2",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Painting can be measured different ways. Should I use wall area, ceiling area, or a custom CostX quantity?"
+    },
+    "joinery": {
+      "canonical_trade": "Joinery",
+      "aliases": ["joinery", "carpentry", "cabinetry"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Joinery can be measured by item/count, length, area, or custom quantity. Which measurement should I use?"
+    },
+    "fencing": {
+      "canonical_trade": "Fencing",
+      "aliases": ["fencing", "fence"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Fencing can be measured by length, area, item, or custom quantity. Which measurement should I use?"
+    },
+    "scaffold": {
+      "canonical_trade": "Scaffold",
+      "aliases": ["scaffold", "scaffolding"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Scaffold can be measured by area, volume, duration, item, or custom quantity. Which measurement should I use?"
+    },
+    "demolition": {
+      "canonical_trade": "Demolition",
+      "aliases": ["demolition", "demo", "strip out"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Demolition can be measured by area, volume, count, item, or custom quantity. Which measurement should I use?"
+    },
+    "earthworks": {
+      "canonical_trade": "Earthworks",
+      "aliases": ["earthworks", "earthwork", "excavation", "bulk excavation"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Earthworks often uses volume or custom quantities. Which measurement should I use?"
+    },
+    "landscaping": {
+      "canonical_trade": "Landscaping",
+      "aliases": ["landscaping", "landscape", "soft landscaping", "hard landscaping"],
+      "risk": "medium",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Landscaping can be measured by area, length, count, item, or custom quantity. Which measurement should I use?"
+    },
+    "reinforcement": {
+      "canonical_trade": "Concrete / Reinforcement",
+      "aliases": ["reinforcement", "reo", "rebar", "bar reinforcement"],
+      "risk": "high",
+      "normalization_mode": "clarify",
+      "allowed_functions": ["XGETCUSTOM"],
+      "default_unit": "t",
+      "requires_custom_quantity": true,
+      "common_custom_quantities": ["Reinforcement Weight", "Bar Reinforcement Weight"],
+      "clarification_prompt": "For Reinforcement, should I use XGETCUSTOM with Reinforcement Weight and unit t?"
+    },
+    "metalwork": {
+      "canonical_trade": "Metalwork",
+      "aliases": ["metalwork", "metal work", "architectural metalwork"],
+      "risk": "high",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": true,
+      "clarification_prompt": "Metalwork can be item, length, area, weight, or custom quantity. Which CostX quantity should I use?"
+    },
+    "brickwork": {
+      "canonical_trade": "Brickwork",
+      "aliases": ["brickwork", "brick work", "blockwork", "block work", "masonry"],
+      "risk": "high",
+      "normalization_mode": "clarify",
+      "requires_custom_quantity": false,
+      "clarification_prompt": "Brickwork can be measured by area, count, volume, or custom quantity. Which measurement should I use?"
+    }
+  }
+}

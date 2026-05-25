@@ -1,0 +1,117 @@
+{
+  "pack_name": "alpha35_11_capability_advisory_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_11_ADVISORY_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {"path": "$.version", "equals": "v5.0.0-alpha.36.3"},
+            {"path": "$.execution_locks.workbook_read_enabled", "equals": false},
+            {"path": "$.execution_locks.builder_engine_execution_enabled", "equals": false},
+            {"path": "$.execution_locks.legacy_builder_callable", "equals": false},
+            {"path": "$.execution_locks.excel_output_enabled", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NO_ACTIVE_QS_SCOPE_ADVISORY_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "scope_advisory",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "alpha35_11_scope", "client_event_id": "scope", "text": "What should I measure for waterproofing?"},
+          "assertions": [
+            {"path": "$.route", "equals": "registry_advisory_metadata_only"},
+            {"path": "$.requirement_advisor.advisory_type", "equals": "qs_scope_advisory"},
+            {"path": "$.requirement_advisor.builder_mutation_allowed", "equals": false},
+            {"path": "$.metadata_only", "equals": true},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.fallback_used", "equals": false},
+            {"path": "$.workbook_read", "equals": false},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FILE_AND_RFI_AND_CAPABILITY_ADVISORY_TYPES",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "file_advisory",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "alpha35_11_file", "client_event_id": "file", "text": "What files do I need for tiling?"},
+          "assertions": [
+            {"path": "$.route", "equals": "registry_advisory_metadata_only"},
+            {"path": "$.requirement_advisor.advisory_type", "equals": "file_requirement_advisory"},
+            {"path": "$.execution_enabled", "equals": false},
+            {"path": "$.workbook_read", "equals": false}
+          ]
+        },
+        {
+          "name": "rfi_advisory",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "alpha35_11_rfi", "client_event_id": "rfi", "text": "What RFI should I ask for painting?"},
+          "assertions": [
+            {"path": "$.route", "equals": "registry_advisory_metadata_only"},
+            {"path": "$.requirement_advisor.advisory_type", "equals": "rfi_template_advisory"},
+            {"path": "$.engine_called", "equals": false},
+            {"path": "$.excel_created", "equals": false}
+          ]
+        },
+        {
+          "name": "capability_advisory",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {"conversation_id": "alpha35_11_capability", "client_event_id": "capability", "text": "Which tool should handle old and revised BOQ comparison?"},
+          "assertions": [
+            {"path": "$.route", "equals": "registry_advisory_metadata_only"},
+            {"path": "$.requirement_advisor.advisory_type", "equals": "capability_advisory"},
+            {"path": "$.legacy_builder_called", "equals": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TARGETED_REGRESSION_CHECKS",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "builder_start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_builder", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}, {"path": "$.fallback_used", "equals": false}]},
+        {"name": "preview_no_active", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_preview", "client_event_id": "preview", "text": "Preview"}, "assertions": [{"path": "$.route", "equals": "no_active_action_needs_active_task"}, {"path": "$.engine_called", "equals": false}, {"path": "$.excel_created", "equals": false}]},
+        {"name": "read_block", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_read", "client_event_id": "read", "text": "Open workbook and read cells"}, "assertions": [{"path": "$.route", "equals": "no_active_prompt_injection_safe_block"}, {"path": "$.workbook_read", "equals": false}, {"path": "$.legacy_builder_called", "equals": false}]},
+        {"name": "future_tool_blocked_metadata", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_future_tool", "client_event_id": "future", "text": "Run O&A now for old and revised BOQ"}, "assertions": [{"path": "$.route", "equals": "registry_advisory_metadata_only"}, {"path": "$.requirement_advisor.advisory_type", "equals": "capability_advisory"}, {"path": "$.execution_enabled", "equals": false}]}
+      ]
+    },
+    {
+      "name": "ACTIVE_WRITING_REPORT_PREVIEW_FALSE_POSITIVE_STILL_FIXED",
+      "reset_conversation": true,
+      "steps": [
+        {"name": "start", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_active_write", "client_event_id": "start", "text": "Build me a BOQ"}, "assertions": [{"path": "$.route", "equals": "new_builder_task_shell"}]},
+        {"name": "rewrite", "method": "POST", "endpoint": "/api/chat", "json": {"conversation_id": "alpha35_11_active_write", "client_event_id": "rewrite", "text": "Rewrite this issue report: Preview is broken after MPa."}, "assertions": [
+          {"path": "$.route", "equals": "active_task_non_mutating_language"},
+          {"path": "$.router_step", "equals": "active_task_non_mutating_language_gate"},
+          {"path": "$.fallback_used", "equals": false},
+          {"path": "$.plan_mutated", "equals": false},
+          {"path": "$.workbook_read", "not_equals": true},
+          {"path": "$.engine_called", "not_equals": true},
+          {"path": "$.excel_created", "not_equals": true},
+          {"path": "$.legacy_builder_called", "not_equals": true}
+        ]}
+      ]
+    }
+  ]
+}

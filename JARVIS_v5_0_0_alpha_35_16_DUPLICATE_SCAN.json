@@ -1,0 +1,8 @@
+{
+  "version": "v5.0.0-alpha.35.16",
+  "parse_errors": [],
+  "duplicate_routes": {},
+  "duplicate_function_names_count": 50,
+  "duplicate_class_names_count": 0,
+  "note": "Duplicate function/class names may be benign across tests/modules; no route file changed in alpha35.16."
+}

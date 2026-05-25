@@ -1,0 +1,10 @@
+# Package Hygiene Report
+
+{
+  "duplicate_fastapi_routes": 0,
+  "duplicate_same_file_top_level_functions_classes": 0,
+  "__pycache__": 0,
+  ".pyc": 0,
+  ".pytest_cache": 0,
+  "jarvis_v5_data_non_keep_files": 0
+}

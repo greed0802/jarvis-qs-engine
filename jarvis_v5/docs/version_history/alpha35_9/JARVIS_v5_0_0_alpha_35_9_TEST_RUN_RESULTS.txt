@@ -1,0 +1,8 @@
+PASS - python -m compileall -q jarvis_v5
+PASS - pytest chunk 1: 173 passed
+PASS - pytest chunk 2: 152 passed
+Total smoke coverage: 325 passed
+PASS - alpha35_10_pending_clarification_policy_action_ownership_tests: 6 passed / 0 failed
+DIAGNOSTIC - old pack 048: partial, expected obsolete/changed policy expectations remain
+DIAGNOSTIC - old pack 051: partial, expected low-risk auto trade expectation mismatches remain
+Safety aggregates false for targeted pack.

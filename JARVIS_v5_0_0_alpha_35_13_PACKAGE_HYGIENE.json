@@ -1,0 +1,10 @@
+{
+  "version": "v5.0.0-alpha.35.13",
+  "after_cleanup": {
+    "pycache_dirs": 0,
+    "pyc_files": 0,
+    "pytest_cache_dirs": 0,
+    "runtime_data_non_keep_files": 0,
+    "runtime_data_non_keep_paths": []
+  }
+}

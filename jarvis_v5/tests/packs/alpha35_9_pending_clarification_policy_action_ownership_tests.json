@@ -1,0 +1,454 @@
+{
+  "pack_name": "alpha35_10_pending_clarification_policy_action_ownership_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_10_PENDING_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_JOINERY_READ_CELLS_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_read",
+            "client_event_id": "alpha35_10_pack_read_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "pending_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_read",
+            "client_event_id": "alpha35_10_pack_read_trade",
+            "text": "Use Joinery"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "follow",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_read",
+            "client_event_id": "alpha35_10_pack_read_follow",
+            "text": "Read cells after approval"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_blocked_action"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_blocks_risky_action"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_PAINTING_OPEN_SHEETS_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_open",
+            "client_event_id": "alpha35_10_pack_open_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "pending_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_open",
+            "client_event_id": "alpha35_10_pack_open_trade",
+            "text": "Use Painting"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "follow",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_open",
+            "client_event_id": "alpha35_10_pack_open_follow",
+            "text": "Open workbook and list sheets"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_blocked_action"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_blocks_risky_action"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_JOINERY_PREFLIGHT_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preflight",
+            "client_event_id": "alpha35_10_pack_preflight_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "pending_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preflight",
+            "client_event_id": "alpha35_10_pack_preflight_trade",
+            "text": "Use Joinery"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "follow",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preflight",
+            "client_event_id": "alpha35_10_pack_preflight_follow",
+            "text": "Run workbook read preflight"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_blocked_action"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_blocks_risky_action"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_PAINTING_POLICY_REVIEW_ALLOWED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_policy",
+            "client_event_id": "alpha35_10_pack_policy_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "pending_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_policy",
+            "client_event_id": "alpha35_10_pack_policy_trade",
+            "text": "Use Painting"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "follow",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_policy",
+            "client_event_id": "alpha35_10_pack_policy_follow",
+            "text": "Review workbook read policy"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_read_only_policy_review_allowed"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.pending_clarification_preserved",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PENDING_JOINERY_PREVIEW_EXPORT_STILL_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preview_export",
+            "client_event_id": "pe_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "pending_trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preview_export",
+            "client_event_id": "pe_trade",
+            "text": "Use Joinery"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preview_export",
+            "client_event_id": "pe_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_blocked_action"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_pack_preview_export",
+            "client_event_id": "pe_export",
+            "text": "Export"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "clarification_blocked_action"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "version": "v5.0.0-alpha.31E",
+  "packs_total": 35,
+  "packs_passed": 35,
+  "packs_failed": 0,
+  "tests_total": 143,
+  "tests_passed": 143,
+  "tests_failed": 0,
+  "safety": {
+    "workbook_read_any_true": false,
+    "engine_called_any_true": false,
+    "excel_created_any_true": false,
+    "legacy_builder_called_any_true": false
+  },
+  "packs": [
+    {
+      "pack": "alpha11_contract_negative_guards.json",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha15_review_readiness_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha16_engine_preflight_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha17_engine_execution_lock_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha18_1_safety_envelope_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha18_response_consistency_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha19_contract_fixture_replay_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha20_deep_weak_point_boundary_tests.json",
+      "passed": 2,
+      "failed": 0,
+      "total": 2,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha20_legacy_import_boundary_audit_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha21_function_unit_compatibility_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_1_no_fallback_router_tightening_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2a_router_confidence_shadow_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2b_limited_control_router_tests.json",
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2c_route_ownership_and_setup_normalization_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2d_high_priority_ownership_repair_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2e_active_task_language_plan_cleanup_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_2f_engineering_language_gate_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha22_qs_intent_alias_router_tests.json",
+      "passed": 8,
+      "failed": 0,
+      "total": 8,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha23_global_capability_registry_tests.json",
+      "passed": 7,
+      "failed": 0,
+      "total": 7,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha24_route_ownership_registry_advisory_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha25_legacy_bridge_readiness_audit_tests.json",
+      "passed": 2,
+      "failed": 0,
+      "total": 2,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha26_1_response_schema_pack_hygiene_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha26_legacy_bridge_shadow_probe_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha27_preview_execution_policy_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha28_1_package_hygiene_tests.json",
+      "passed": 2,
+      "failed": 0,
+      "total": 2,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha28_policy_response_hygiene_approval_readiness_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha29_safe_workbook_path_resolver_dry_run_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha30_1_weakness_triage_reduced_regression_tests.json",
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha30_workbook_read_preflight_contract_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha31A_response_shape_compatibility_tests.json",
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha31B_no_active_route_hygiene_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha31C_active_non_mutating_feedback_read_only_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha31D_pending_clarification_risky_action_coverage_tests.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "overall": "PASS"
+    },
+    {
+      "pack": "alpha31E_parser_function_unit_conflict_tests.json",
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "overall": "PASS"
+    },
+    {
+      "pack": "sample_external_ai_pack_valid.json",
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "overall": "PASS"
+    }
+  ]
+}

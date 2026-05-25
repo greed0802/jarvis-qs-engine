@@ -1,0 +1,19 @@
+Jarvis v5.0.0-alpha.29 final test run results
+Generated: 2026-05-17T13:09:03.735028Z
+
+compileall: PASS
+pytest: PASS — 229 passed
+JSON packs: PASS — 28 / 28 packs
+JSON pack tests: PASS — 119 / 119 tests
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false
+
+Duplicate FastAPI routes: 0
+Same-file duplicate top-level definitions: 0
+Cross-file duplicate helper/function names: 33 documented only
+Resolver logic refs: jarvis_v5/app.py, jarvis_v5/tests/smoke/test_alpha29_safe_workbook_path_resolver_dry_run.py, jarvis_v5/tools/builder/safe_workbook_path_resolver.py
+Protected Builder boundary hash check: 10 / 10 unchanged

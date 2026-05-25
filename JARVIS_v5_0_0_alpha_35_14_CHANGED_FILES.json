@@ -1,0 +1,793 @@
+{
+  "version": "v5.0.0-alpha.35.14",
+  "base_version": "v5.0.0-alpha.35.13",
+  "changed_files": [
+    {
+      "file": "CURRENT_BACKEND_STATUS_v5_alpha_35_14.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "8abcf375b0f0a7b695c287d53a9769098d2b1a87e815f70ec065b5e60f657de0"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_CHANGED_FILES.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "a33589448b5e2ca6e3b4b3f3376cac1bbb53511c237be5f25a5fe6b75351a5c8"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_CHANGE_REPORT.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "4b72715cb723b7347c7f3c420349c1db5d31b6e1229d83fd61c380cd3fe20220"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_DUPLICATE_SCAN.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "841bb485861a5492b502d83324230ad36e5310906c3de19009e519a047847905"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_DUPLICATE_SCAN_REPORT.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "2741ee3bd4d17c0d4e927da2c6c29c7eb396911b914b99bfa68bff05bf95e8af"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_PACKAGE_HYGIENE.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "ccedf0ddf6c71a8e491b77da52bb2fd537ee2d939c03cd7a0e43913a9834390d"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_PACKAGE_HYGIENE_REPORT.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "b103153936d00b58c379d8dae53b2a1201fee8cbc9a56d9fc00a8f7618a4cf9c"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_PROTECTED_HASH_COMPARE.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "52c38d2ebe108f19978cb5b3ac43334a6c3e101261a388e7b17d67090f77e27d"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_REGISTRY_EXECUTION_FLAG_SCAN.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "78b727656a1efad5047121d5d62ec64ddff600f6ba916a96beb450b0ddec9105"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_REGISTRY_EXECUTION_FLAG_SCAN_REPORT.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "1db994e0cca357f02e3b76a08a281346a9e5d7e9d09ecf8f1dea9f3d47ad6987"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_TEST_REPORT.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "af06caa01d178a6bc8936ecfda626f21089ffc4337ef7ba8af56da5d1b1d62f7"
+    },
+    {
+      "file": "JARVIS_v5_0_0_alpha_35_14_TEST_RUN_RESULTS.txt",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "418cf53553f450c31ffc318138d656455bbe9cad97453eb39e8850a44da1557e"
+    },
+    {
+      "file": "NEXT_CHAT_HANDOFF_v5_alpha_35_14.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "8ea73eae2128b6f20d908a3e26a8a96a43d505364d256d55d8d13d813c47cbe2"
+    },
+    {
+      "file": "jarvis_v5/config.py",
+      "status": "modified",
+      "old_sha256": "8e1214c574109a9faf1bc9febab2e37fbe1b19369f2194e20d18e7944dff6c3e",
+      "new_sha256": "2d40b802d6db7e66e5a7a6959cf5fd06d213f89c0efd52578721f84d5cead0cc"
+    },
+    {
+      "file": "jarvis_v5/data/active_tasks/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/adapters/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/attachments/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/contracts/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/conversations/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/engine_execution_requests/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/events/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/outputs/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/preflights/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/snapshots/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/data/test_reports/.keep",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "jarvis_v5/docs/ALPHA_35_14_SCOPE.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "855bd21833775ab830fc861a54a44c481b482c3c17e7986762d3dbdf5782771a"
+    },
+    {
+      "file": "jarvis_v5/docs/FUTURE_TOOL_CONTRACT_MAP.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "4e500f4b68d4aab0426d5eff2fd80316ba12b639e552b547a6d1152a5d1c5291"
+    },
+    {
+      "file": "jarvis_v5/docs/ROADMAP_AFTER_ALPHA_35_13.md",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "e29143dafe0566844e1d1dab09c188b5fef7e12317abfd8b9818c8547a882280"
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "status": "modified",
+      "old_sha256": "bea99cf3eff7ec4d4cc042820e1fa44eb88428a1ac0e4ff7576f79a32ce82b66",
+      "new_sha256": "6fed4ad8ec53f6fd99a4017a8d2cfb37619545f7ecca3b77cb754d96269155a1"
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "status": "modified",
+      "old_sha256": "b2db79b76c16f8b62c76060fa9b88e5f3ddbd87d7f88617675b4eb1c63671303",
+      "new_sha256": "52c141b92d61b201b5191c12f8c88607ca8ec9caef41adef90632a11a980ed66"
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "status": "modified",
+      "old_sha256": "a89fcd4a61f0de331ac9c74731e0c3d98f866ec1b177c254550893b6ade2ea55",
+      "new_sha256": "d2b79efd6d5d9bc086d137967196db1a2811cbc56cb0478a51e66b16ac5f1746"
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "status": "modified",
+      "old_sha256": "62e8e3f61991a45f8b6bf9106f888a40f74d743be66e72e50533beda0affaf0c",
+      "new_sha256": "69ca0bf3844b7567bed560024e59b2a4143131c860d61966998c1eea00c3738b"
+    },
+    {
+      "file": "jarvis_v5/schemas/tool_contract_schema.py",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "6eb65aae48b3f9728611cd717c14d8192a79fdeb6fc535f21d8ea1423fecf8d4"
+    },
+    {
+      "file": "jarvis_v5/tests/fixtures/contracts/wall_types_xgetwallarea_zone1_head2_gf_l3_contract_v1.json",
+      "status": "modified",
+      "old_sha256": "7de9795b5c6ee85a30062235e1e6344f62dc5a36f3c8cc8dcd7b7ed798df4ee9",
+      "new_sha256": "d303608b44ac006a31811485a99ac2bfbd517b3b2f2d5384e329ef1735014598"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha11_contract_negative_guards.json",
+      "status": "modified",
+      "old_sha256": "e7f696c2df7653f7d3c37cbfad1601abb41dc7a44e3ae2744cda202a207a74ec",
+      "new_sha256": "f3dd0c91044e1c4442de64800d88c3aec5cdabfacd832e0fb3c86ba9d600dfa7"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha15_review_readiness_tests.json",
+      "status": "modified",
+      "old_sha256": "dcf30cc64b2e27080d02ba183791deb0e34babfc08d28cd57534d68afdfd768d",
+      "new_sha256": "58843868417ac5b1d6072a93b76dc29872202fd1278257936b2ea52a52fff316"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha16_engine_preflight_tests.json",
+      "status": "modified",
+      "old_sha256": "33a9e7c1c4eef75811e7c4c79a150a808df8232843210ab30cab2ce2cd8f9e4e",
+      "new_sha256": "a1bdc1932fcb46418d0ae804df1791ffdac9380806310bdac5c3f32084628d1a"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha17_engine_execution_lock_tests.json",
+      "status": "modified",
+      "old_sha256": "fae32d944375339ca657eb35fbff96368fa24e3e8d79755c32aaefe1ca7705ee",
+      "new_sha256": "5e634fe57354fac18c469745e901a1c5bb3430c2016b696f6d37996027f03849"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha18_1_safety_envelope_tests.json",
+      "status": "modified",
+      "old_sha256": "de3bb742eb53fc14707dcf55ed13c566141f93c6fed300110795a656c6a9d76c",
+      "new_sha256": "78fa062e70914f3e94a8abf862b0c4d8cbeab4f7059617a09bd16714240aaf56"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha18_response_consistency_tests.json",
+      "status": "modified",
+      "old_sha256": "c6136f0777950fd4936f6e35c7e0b4dfa08fa17ba66bd46a90a1259f92c0f0d1",
+      "new_sha256": "925fbe9aba9103317864ef00382251add7287f79723dcc2d607d519e3a0fdc0a"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha19_contract_fixture_replay_tests.json",
+      "status": "modified",
+      "old_sha256": "2acac662aaf4e894341e2aeb479e41a9004f206c996591c5eae144d2ce7d440d",
+      "new_sha256": "0ae5276e3f0761d69703043a40ff7c2182ca7fec7288fa69abd489275763eeed"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha20_deep_weak_point_boundary_tests.json",
+      "status": "modified",
+      "old_sha256": "a96668a4a50da1216e8f883adcd3f14a7c46e2d9b06c7adc44924ec9e4c607b5",
+      "new_sha256": "1716d0eb5b74cc442ab363c80a645f3f6af0b02c8ecb22f24b4410c9b0e8a2f6"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha20_legacy_import_boundary_audit_tests.json",
+      "status": "modified",
+      "old_sha256": "41d71365704f66c757eb1253d3057cd682af16880019f5cc17978f623c5d47d1",
+      "new_sha256": "158ac8a204b1db3e43afd748a001a0b808402ef1ec1805b65cd8265c2db67c26"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha21_function_unit_compatibility_tests.json",
+      "status": "modified",
+      "old_sha256": "6b5829b895debe7428c66b16c6bf6d502412099fb8fa74936be511a7253acbb9",
+      "new_sha256": "6fca904003463b036a69e1b5add71b203d9d1ed1c6dda1993d60fdcc99de7d57"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_1_no_fallback_router_tightening_tests.json",
+      "status": "modified",
+      "old_sha256": "848f0ec946ac2f8cc4215db3aa3242b073784d137a7f65b05385a7bfa167d69b",
+      "new_sha256": "9d9b0c167168bef113bddf1f7b361db44b8992dffaa4b5733b1d4485bf8c54aa"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2a_router_confidence_shadow_tests.json",
+      "status": "modified",
+      "old_sha256": "4d70ade090294ffa5be503dc87ce90183f61c7018febbd476cd50f6af29a49b6",
+      "new_sha256": "f077a716bdce1af7507aaf0e3d1175a1b5bc7da431611d6ba1f49c959e6948b0"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2b_limited_control_router_tests.json",
+      "status": "modified",
+      "old_sha256": "1d95de456a9f0f912f24d5b65300bae4085d41de941822eebd966b69aa5a71d1",
+      "new_sha256": "a6670a591b50e3bd9c186141deb3b918775303e6c3d4032a6b7dca106c3f750d"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2c_route_ownership_and_setup_normalization_tests.json",
+      "status": "modified",
+      "old_sha256": "4bea581753874083014a0f172102f9ebfec05cd055bd4238da1ac7ceb57092b0",
+      "new_sha256": "de095a88ac426585e5fdda3f8d3f7f6300e4c8c9e4189523787f7fb3a83ac0f5"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2d_high_priority_ownership_repair_tests.json",
+      "status": "modified",
+      "old_sha256": "54add2be1f5f12275f92e2ad1662bdd83e62c6f930ab4e2f1a7f32d47e5be13b",
+      "new_sha256": "c5308b3a99954db5eed76a74422f501439c2c5aafe627a773d0c96ba721d3486"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2e_active_task_language_plan_cleanup_tests.json",
+      "status": "modified",
+      "old_sha256": "7d05d60874a36a5f8105ebbd71090d7e21c0c8dd2f76ba8082324330fac7a309",
+      "new_sha256": "05c5ae04e9fafba2ccb423709621bed4a43b3081275dc31480c0bc2a314a1301"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_2f_engineering_language_gate_tests.json",
+      "status": "modified",
+      "old_sha256": "83ab78a020463106e19d61db3c10f7b69cf5e9ff8fd5664c3e62ed793e3f591a",
+      "new_sha256": "d154a98bd8b4b6645bb04c5b174c9f170ba0a9137ecf7f34f8083a127c3f9ccf"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha22_qs_intent_alias_router_tests.json",
+      "status": "modified",
+      "old_sha256": "0491605ad132624f0a1efdf9f2d1cca14921e8ba62f9a0e29580c2b7aba2409e",
+      "new_sha256": "44ed20ab0dfe8a00badf03d1ab8609355ebe6f3a2be6ec5147806b9352ed54e2"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha23_global_capability_registry_tests.json",
+      "status": "modified",
+      "old_sha256": "1f229054592e745ac5dd96ef198de0f3766f656a19ac28d6ba263d17d4d72c16",
+      "new_sha256": "0a48c1f54f217274bb4d4ad5386d56adb793618e3d8b852d478229156ea827ca"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha24_route_ownership_registry_advisory_tests.json",
+      "status": "modified",
+      "old_sha256": "6ac18c7838e73e8eb17a91408c68ea1f62f3ab7717b46c8a8f3d00280e680a82",
+      "new_sha256": "8af7949dff25fd6ff939eb9a9dfdc7154c1f80ef82b6932fd2572afe80002761"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha25_legacy_bridge_readiness_audit_tests.json",
+      "status": "modified",
+      "old_sha256": "53f7b52133a6c8edf4d9c5500228d9f5052ac9e433be52150d874028a6d6a55d",
+      "new_sha256": "937fd2a7e503230556794a4e0524aa89b952c352927d7de785e57859af090eeb"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha26_1_response_schema_pack_hygiene_tests.json",
+      "status": "modified",
+      "old_sha256": "00dcf0cdff6c344aa1f76030beb15a3fe224eabe33861f91380ca226afac4d8f",
+      "new_sha256": "8a267ec7bdea9b03f8a6464dfca597ef33344941a37544e6c7a6c46eb1d89e90"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha26_legacy_bridge_shadow_probe_tests.json",
+      "status": "modified",
+      "old_sha256": "9f6c9d46e31968d4cdd7f3682b0392fe055849856786b17e984ebb3fc0713a58",
+      "new_sha256": "97f228bee06001cacf27a1bde43f679cea9d6eec1988461ad74979bb669b11a0"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha27_preview_execution_policy_tests.json",
+      "status": "modified",
+      "old_sha256": "34179b3a2bf3e127b0465c9d8e8085f17f934e44053e4ef2d37a239d4f148e6f",
+      "new_sha256": "29c0e68eab38cf6f34c1c1eba9e84423e7468d4191fb2bb653bfaa1883cea04a"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha28_1_package_hygiene_tests.json",
+      "status": "modified",
+      "old_sha256": "61e563adc9ba55c0d4c94eff18d1665e85412c191961c7175b774ad38df89657",
+      "new_sha256": "ea7bae957f3796ad4c5d424cb08518ffff665a1f338d923362e0a66b1e05a2bd"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha28_policy_response_hygiene_approval_readiness_tests.json",
+      "status": "modified",
+      "old_sha256": "1d46f77cd562f55395f614fb4f375ce8681f27f21d1c67c94a345f024802dce0",
+      "new_sha256": "feab91f9f1fd939761d88fcb4d036af9078489f54a3821d499e1f1ab48ff2c70"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha29_safe_workbook_path_resolver_dry_run_tests.json",
+      "status": "modified",
+      "old_sha256": "d877ba352e5c1d82c8fce56c6e9f3c7c324cf7750df76f47aeef0568228e08ca",
+      "new_sha256": "824ce77d4f33da6da64bfd4d3a2e5d2231ab052d98b590136ad5b0a68ea0a4a7"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha30_1_weakness_triage_reduced_regression_tests.json",
+      "status": "modified",
+      "old_sha256": "fe2c5778efb141717505c9b7acccd5f8f7da48cd04d90cc9b62a87f9b3204101",
+      "new_sha256": "1a0463c77762dafd3076b49795d2f72eea00ae7ca80ab336120ca84a312bd817"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha30_workbook_read_preflight_contract_tests.json",
+      "status": "modified",
+      "old_sha256": "2ea56b3e0feb95f6c90c46294744fb6934e9382965480d101bdd677e6688fdc6",
+      "new_sha256": "af5e5996545e99127efc1c8783c05ce5b27aa793e586e9fcd9d325c058098dc4"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31A_response_shape_compatibility_tests.json",
+      "status": "modified",
+      "old_sha256": "99dedfa949a8c9a7dbb8ec60c98a441e359410606c9abf6e058636a7fc54edfb",
+      "new_sha256": "206238469e293dff1a8c6c96a05d653832c6325e9a5c489381e883714492a1a8"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31B_no_active_route_hygiene_tests.json",
+      "status": "modified",
+      "old_sha256": "7d5dc51570e8132d727ec6fe768caef177c03d0caf3f843739b3a23cd4b22cb2",
+      "new_sha256": "cd22823a4052b62a21662a0294ad0c7bc3eca14f1ea1719c53dc69b24c723019"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31C_active_non_mutating_feedback_read_only_tests.json",
+      "status": "modified",
+      "old_sha256": "367563fc9c6bed8793b07c9f5a9da7c529f966a591d81723bd88d60d9b9e6e64",
+      "new_sha256": "50e84c6d4f06f219e3b595dd4b844f6f391ca10fb97a4369e45d854b9b035ab1"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31D_pending_clarification_risky_action_coverage_tests.json",
+      "status": "modified",
+      "old_sha256": "7d802355bec9b9b1d64aa3b5e57f413408427c3b18da848fd78f81f0ce72560b",
+      "new_sha256": "d68c92d5268028a94b7c5f8cabd80a95c4c5eafbfcffc7f34d55fcf731559f4b"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31E_parser_function_unit_conflict_tests.json",
+      "status": "modified",
+      "old_sha256": "7be5121059e4d4352af5981e4a39db012f66d0e3ccb6ae3e378c2d4402132804",
+      "new_sha256": "9eec558a4a0c03396f8f4c91bf046ce06b6613f6022533719b89b9b0b8f1926e"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha31F_1_weakness_replay_compatibility_tests.json",
+      "status": "modified",
+      "old_sha256": "b3e678d120a485a167188a81cb674e27f868b583e8ab948936141c3102433b1c",
+      "new_sha256": "d26abef3842a3283ec482aaf6505d14d53fef78f3800d05255528506e0704b9c"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha32A_minimal_pair_route_ownership_tests.json",
+      "status": "modified",
+      "old_sha256": "0127717b9ae0f8f089e66d1918818e98c021f5200237f261f74bd41018f916ea",
+      "new_sha256": "f2d896c23b0690e9f99240e269c51a10e78ac5584346113bf2bf778480f701ec"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha33_workbook_metadata_probe_approval_tests.json",
+      "status": "modified",
+      "old_sha256": "9e0b80c03cba10d4821f2c9c2b4c995cade9b366c2e86813938573823b38fb44",
+      "new_sha256": "cad6d33040b851b088fd14d5343bc254bb04cffbf13bacc30d4263f2ccb18224"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha34_workbook_sheet_name_probe_approval_tests.json",
+      "status": "modified",
+      "old_sha256": "0f97f8475d6d900e9c69e3bfe62c805c1d2ab0877613e811acc3405579a2a6b4",
+      "new_sha256": "3e198334cc4136c9427f37297c16a90b0d44fd330fdd385af90281dbd8f27f1d"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_1_uae_podium_basement_level_tests.json",
+      "status": "modified",
+      "old_sha256": "baca90a31f217dd423eb209872853a2d75c32506b9817764b11b1ee07a0c833c",
+      "new_sha256": "3ff618ef9f7e4e82723fb73e4de94015fcb37facb6ca646b8d4ab0b793670179"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_2_active_writing_report_preview_false_positive_tests.json",
+      "status": "modified",
+      "old_sha256": "52d687a57c72d69e5d076dd9d2cf1785a6060097ae37d96473867a61ffe5f786",
+      "new_sha256": "d675e8f96c16afe4ab8140e125eb58f89dda0cfede49cd7aaaa87bc8bc7097ed"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_10_no_active_mixed_language_policy_route_tests.json",
+      "status": "modified",
+      "old_sha256": "0dcce50da9541fd7f1c4335d07792fc7bce063069071128bbe1a48c0681120e3",
+      "new_sha256": "d1be69a4f745c4fff8721c2da2200e2e26d55dcd8ca04da787861d6529014fba"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_11_capability_advisory_tests.json",
+      "status": "modified",
+      "old_sha256": "c5e7038cec453892afc5cb1c57d73841c5d2831ce9ffdd9d1406914712d87ee3",
+      "new_sha256": "3825d7c2d6e23bde08dd65bb143d0c5c80dd54dd3a3fbe8f90ec0b1c1acc4c70"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_12_advisory_regression_hardening_tests.json",
+      "status": "modified",
+      "old_sha256": "c0f74b8ecb947f56e5682722b4890b3ce80ebaa2ce405aeaa6dddd5cd28f1eab",
+      "new_sha256": "f25c9e69959c3a0aa8986995940c93b8ca6cba7fed60e32db65af90b0945e00c"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_14_tool_contract_map_tests.json",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "4e26527f10033aa4865293b7b7e8b8da37197c0999f06ad4a869234c1cad258a"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_8_workbook_read_policy_plan_visibility_tests.json",
+      "status": "modified",
+      "old_sha256": "d7cdfe56325a369b2db99244ac7190a317e01cb09722a1dcfdb9bb1f975d734a",
+      "new_sha256": "572e91f8ad6a6c8f50b6a386e6df86de4580df71006bab94de540b0342fcad52"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_9_pending_clarification_policy_action_ownership_tests.json",
+      "status": "modified",
+      "old_sha256": "cc00b8a567de006c027bf84874ab156d964490eac0c75919e8b3ecbc2174ebfd",
+      "new_sha256": "f103990723488a5d14614a79716b1e8c4c02e3249678f094631c0465d94db787"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/alpha35_workbook_read_policy_review_tests.json",
+      "status": "modified",
+      "old_sha256": "810c251385658e3ec0375c03798ac08fffc58664272a9f74754ce6d7fe976a80",
+      "new_sha256": "19ddbb18ae2f693f83227063ba064cb1a7a4fc960b020c0f9ac41d7efae289eb"
+    },
+    {
+      "file": "jarvis_v5/tests/packs/sample_external_ai_pack_valid.json",
+      "status": "modified",
+      "old_sha256": "4ce06dbf2021048d8ebb7dd530821294a3e57f862b259a11aa291d0424bca4f0",
+      "new_sha256": "e10a54024852e35821f8f6fbe6b3f4c5261f56737da1392278ea1e18add42e45"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha16_engine_preflight.py",
+      "status": "modified",
+      "old_sha256": "0dfdb59d795806285b92deeffb58c47467bafad4af7a134ad115390c3031369c",
+      "new_sha256": "f0f5917955fcd6884651da1b882b782b2a53b8df227d699019529c0c596bbe62"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha17_engine_execution_lock.py",
+      "status": "modified",
+      "old_sha256": "2e1dca2b24a0ba98622fb3dfe10faebac0b56e2c4ac9d7ced4d78ca9867a03ba",
+      "new_sha256": "260eca7e9d476a6c418dc8efdd326a95740a1b6708e104ca8f348a0b9c2e9b46"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha18_1_safety_envelope.py",
+      "status": "modified",
+      "old_sha256": "4814cd35f43d8a2ea287c2470e630e5e190b43ed790d8c32345bda33b4628660",
+      "new_sha256": "a89d52566a17df09b1f7578e5ed0e2bbc1af34a6a4b73405e2b4c80d2e57037f"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha18_response_consistency.py",
+      "status": "modified",
+      "old_sha256": "f72547045d56c256b31c7b28c2907e88db6ebd953a97773de92e512943d79489",
+      "new_sha256": "831aea6d210342ecec161dcf81e017dbfe6a122eaed0399694b0cafa8229863d"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha19_contract_fixture_replay.py",
+      "status": "modified",
+      "old_sha256": "5f41948476c48a091a449def82b2630dfa415d9800f1c2c417049fb2b269049b",
+      "new_sha256": "11e5206127cb412673fb808ebff2353825f053537bbc92e54e0a2a21743fbb21"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha20_legacy_import_boundary_audit.py",
+      "status": "modified",
+      "old_sha256": "cf495468bfc2cda792e325b3cf4dc799ad129b7a75a2a81158e08321efd34cd7",
+      "new_sha256": "9b06d27f150698bce779dd3ccf856d4685437171d0c3fb46f51424b454d005d1"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha21_function_unit_compatibility.py",
+      "status": "modified",
+      "old_sha256": "2a5db6d47d49b4b71678e59346d0ac75d9aad84aa25d162cd1b008467a528cc0",
+      "new_sha256": "de1352ccbe6aff3cbdc7d4a02805638394fd10875e649bb9788edc69f718675f"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_1_no_fallback_router_tightening.py",
+      "status": "modified",
+      "old_sha256": "4058f31a1c1f2a602bad2c8c4f0761136ecd9b37af9931095fd0af694a381003",
+      "new_sha256": "4ca170b3077feb7988d83741b13e27dff27d94427b22b7daacf032cd001af390"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2a_router_confidence_shadow.py",
+      "status": "modified",
+      "old_sha256": "8cf3e2a80fcb69e6da36063c31146da87eb599efa1a782cf1afe5542d06df5ac",
+      "new_sha256": "e10051812957447c346734ab56253faa6dea007154ab54e775542aec01f53724"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2b_limited_control_router.py",
+      "status": "modified",
+      "old_sha256": "aa19b8a1f2e42b15b39dd2fe8bd38abbdeeccc9eb5c1396ff77ec035c56230ce",
+      "new_sha256": "552efb543cc0a5dfd5c988e48e6052eda215b6ad875b99c98f035e654b3496f9"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2c_route_ownership_and_setup_normalization.py",
+      "status": "modified",
+      "old_sha256": "59e6a64e41fb9b66b573cb40323f463a90ac879d639ddeb5ef382b69b8aad507",
+      "new_sha256": "f55e9172b93dcaad60abebd1ffda9bb0de3b80a61e6ec6645c12c1167276eb4e"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2d_high_priority_ownership_repair.py",
+      "status": "modified",
+      "old_sha256": "4db872642663973158941b3616564f80cc9fd92fed83ca695e9566d43fea8bf8",
+      "new_sha256": "f5b162c93f013f118d2f2f4296e1bc8d0df5412be86f62fde1577c416bfd1f41"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2e_active_task_language_plan_cleanup.py",
+      "status": "modified",
+      "old_sha256": "61714b1f464a9a18a743fc67c45b6d62a78e9f8c9079dc2c0d243e5a1c18f1b3",
+      "new_sha256": "05eeb4e39969b8ffe0a2807b506a1841dad808b6fbdb89b9d5e5ccb94aa428cd"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_2f_engineering_language_gate.py",
+      "status": "modified",
+      "old_sha256": "7d7894274bfba9f3970ea4e155093dc97d570cd0d20f9f8d7cc94d951643f988",
+      "new_sha256": "824f268d23c6e9de26d75206f53a900e93cac8b624ba647f9bf6c3030822a38b"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha22_qs_intent_alias_router.py",
+      "status": "modified",
+      "old_sha256": "554f43747da574aee119e1ef8254312bc00ca31ae14c2c20b65be04e599d8517",
+      "new_sha256": "a7e2e6b0cd31d1c325280d614043d64ef07d01d1b85a08277d208934e3da074e"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha23_global_capability_registry.py",
+      "status": "modified",
+      "old_sha256": "5df94ad44cf32aaa61901bcac2949813bd80f0c384e291f1234d745dab16f7bb",
+      "new_sha256": "7ffe855df19cb971626fc8f40fdf9b05c1f43d4bdb8fcda71d1a06f3d707cd43"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha24_2_cleanup_hygiene.py",
+      "status": "modified",
+      "old_sha256": "6fa5845cc5ec4c67a1e6ab5d448377f5ee8e9646734c777c9c99ce7ffdf22daf",
+      "new_sha256": "0af51cc22f2557bcdfc5bbac2dd877a8b72e00ecc4e8d2cc7bd4598c22d6a206"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha24_route_ownership_registry_advisory.py",
+      "status": "modified",
+      "old_sha256": "1a5b947c62c7979c216d501fd9ac88c1bee5cbee3e4192f82e4817e96941504c",
+      "new_sha256": "af6d53dba46e01a6b41e47458a1e7ccfb6e47b9435db0a96dfb5ad16aaee4d31"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha25_legacy_bridge_readiness_audit.py",
+      "status": "modified",
+      "old_sha256": "939effa84907364374ae50650a626fd9e8e99e4b2d9509a47c6eec1fd1625504",
+      "new_sha256": "3c91ba46ef088459ed08a0753cca42ac1dca9b8d2cddfe189fb5391afa33f58f"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha26_1_response_schema_pack_hygiene.py",
+      "status": "modified",
+      "old_sha256": "9d26a45c2e306db3838abf4ed20374c349436b886ec124ab29e848e85b5a085f",
+      "new_sha256": "cda3dec8a6ea6ac1ac22fc8d6697bee0aaf9ff7641c44662e3edb7e124ecf997"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha26_legacy_bridge_shadow_probe.py",
+      "status": "modified",
+      "old_sha256": "ab0fc9014ec540398d5b461d2d865f65a511c8c3fab89b0d508a0941498d1a5e",
+      "new_sha256": "0e79a2e2c7ee49dbc078ffd811e535bb2677553443257205125a76a480c880e0"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha27_preview_execution_policy.py",
+      "status": "modified",
+      "old_sha256": "4b521faf0e76ecef8a994b0027205cd5d0645bb6b4dd689483d2d6917a59467c",
+      "new_sha256": "8e12b03f1194491fb5703782158db4e84b3c19e396a7a25425a65c0e53555d97"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha28_1_package_hygiene.py",
+      "status": "modified",
+      "old_sha256": "0140c6513f5d54aa5ebb98757a32b467b6ac555a8bd9c72e063d21554883389a",
+      "new_sha256": "0a84e1ecd5cf9292618230dae23299ebd83230a16b4d402518d1675b15ea8aba"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha28_policy_response_hygiene_approval_readiness.py",
+      "status": "modified",
+      "old_sha256": "62b2d6bd309365e0252fd15676e5bf34574af90fd8a8a885fc890d8a184e5502",
+      "new_sha256": "8bcff5f006dfc511627658522ce897bc1c1199ea1c1c13b87eccd19e722d2e3f"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha29_safe_workbook_path_resolver_dry_run.py",
+      "status": "modified",
+      "old_sha256": "f296cfd11dc4eadef29a74bb0a57be5aaa5d3e9735d27f0a46e39c1beefe8a41",
+      "new_sha256": "7f904bbe183f46b12e20d88141fab2a7afb650b4bf1f34001dfb79289959e0a6"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha30_workbook_read_preflight_contract.py",
+      "status": "modified",
+      "old_sha256": "dff9465fb9edc59b7a635c336ac3cce083cd48eca83ceb19717d1e1dfd47a586",
+      "new_sha256": "37d9571e384359761326e10afc49fec098e7b312a77a683a6fe3e5a2fccb3477"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31A_response_shape_compatibility.py",
+      "status": "modified",
+      "old_sha256": "c67313b3995f98a13f2609bda08643897faf933ce946d0e67120f0769847cfe3",
+      "new_sha256": "43c0fe9d523b507dca977f76c87c384b461bad15d4b9de148bc3eb36a9b47138"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31B_no_active_route_hygiene.py",
+      "status": "modified",
+      "old_sha256": "d13194a89461ce57980062fed782252f5eff874111c425dc6c60dcb1e4b22bea",
+      "new_sha256": "46a84c0a87dcda393ab268cb8c05df264268c0ff59d753845d700c494316c907"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31C_active_non_mutating_feedback_read_only.py",
+      "status": "modified",
+      "old_sha256": "1ddf2c6140842ed88af32bc78055d69e452817fd499f800d97557c3055045ab1",
+      "new_sha256": "beeaa1b720935ece038c1dc99bc1578262e9682e31e4ad140fcb01c2a4cdb919"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31D_pending_clarification_risky_action_coverage.py",
+      "status": "modified",
+      "old_sha256": "62bde2b6106b4f0d6491f97bd173bdead2de94cb3234ce4344adc55f3f20a9f6",
+      "new_sha256": "11b2e312fa6800dad2e83cf8d1965c70eb43c4717775fc0dd8727d5cce5fa8d9"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31E_parser_signal_consolidation_formworks_guard.py",
+      "status": "modified",
+      "old_sha256": "d87eba26349a7e556d986448c37f28df95dedfd22392981a64b8ce247ec98ea0",
+      "new_sha256": "47943d41c6a0845de2fb0f84400ee37d2cd6e02f386f3a56a665491aa1df1770"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha31F_1_weakness_replay_compatibility.py",
+      "status": "modified",
+      "old_sha256": "7994a8677154402ac4c5bf4b9cc8d6a081e1128cac9237e2e6027d3855e32772",
+      "new_sha256": "62d8594f98687e923785d844130180ab4cbfe1749652d6fe7b745d8feb958cbc"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha32A_minimal_pair_route_ownership.py",
+      "status": "modified",
+      "old_sha256": "2ee0555491020400e4d91ccd69a0ae1fa4bd1ce57f90101fd6a6c5bf26319ab6",
+      "new_sha256": "a0eb8cadc3ea1d6df3025312d8834ff041b01eb9e4daa7cd6cc835e5984e6566"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha33_workbook_metadata_probe_approval.py",
+      "status": "modified",
+      "old_sha256": "074a2437d25bf932fb784345a58ff6dcfbb81898b3c2a0b2cac69149cb39bdd9",
+      "new_sha256": "48d7f9727b7249fdb223e0bec4ca32f5b5a31f4a5d4487882b3ce7614c8b2079"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha34_workbook_sheet_name_probe_approval.py",
+      "status": "modified",
+      "old_sha256": "ed015a0a71504bddf8c730eebdfee136750dfc4dd8d140410395ec68b9a9a8cd",
+      "new_sha256": "7e2082ac23aa0f9ac05fda9d7e6a7468c684e61331475c484debfa14aeeaf34a"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_1_uae_podium_basement_levels.py",
+      "status": "modified",
+      "old_sha256": "11f570fe4444fff8e9d9001af26aa22b6ba0e2e46856d75b86082c2aac062ba0",
+      "new_sha256": "dc194b9a3626ecf8e83042ad8a196e893560aff99b33de89baf069faad3644eb"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_2_active_writing_report_preview_false_positive.py",
+      "status": "modified",
+      "old_sha256": "e8f5d8f4943e9d7149226eb855f55ae649a638cf74aece201ff6ae8969ea2b1c",
+      "new_sha256": "b8d1e566731bda2ae9a2a603fdd836791b8fa172e7ef50d293a3e8ae46f3445e"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_10_no_active_mixed_language_policy_route.py",
+      "status": "modified",
+      "old_sha256": "5af3dbed39b9ee598e0526b1e60d88d7776b0211fa368371f10e275d4e1e8130",
+      "new_sha256": "252ad18a73487853c52a43f905f959e203a8034500d09c76d1f56600454792c2"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_11_capability_advisory.py",
+      "status": "modified",
+      "old_sha256": "dc41a90e0189445488e9d1bae4a2b7f6531dbe4f005079469079f9d1f7a89c21",
+      "new_sha256": "1083981472be5c41546eeeeb7da8f04984e92cc14d89672fe7bf06050be43df6"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_12_advisory_regression_hardening.py",
+      "status": "modified",
+      "old_sha256": "d462b9fe3d757ae245b831fa4e890d843425f6b8761d30ee3ecb392d18158284",
+      "new_sha256": "a113f07a3e243f4657211c71ad27fbcbe261737ecd97e0471a1b6300d58a68bf"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_14_tool_contract_map.py",
+      "status": "added",
+      "old_sha256": null,
+      "new_sha256": "408bd7e9d8fc8ebdfa9edb1731a64aaf5c7a1ca1052e74839d013b5bdde25e0c"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_2_conversation_id_sanitization.py",
+      "status": "modified",
+      "old_sha256": "8fc1f6820e153d970b2c000a0b576e0ff7a6dd3a7e29a156bb232d334dd20c5c",
+      "new_sha256": "da4bce408c8cfc6ff46a37168d953be67d560c4de8ec52ee68911b58d3dc8ecf"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_3_no_active_workbook_read_policy_routing.py",
+      "status": "modified",
+      "old_sha256": "246a73915328a7ef0a62b0a661a6a668edd7b3e784e11e5d9102ca436d06db47",
+      "new_sha256": "f617064316950332284aa82c7943c7e2762b3df73fb0dc32765ead401005e1dc"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_4_no_active_sheet_name_probe_ambiguity.py",
+      "status": "modified",
+      "old_sha256": "6d86f463ba8c48ce6476ceb8c3460e939ebb48f5481e968115648c7978d87cf6",
+      "new_sha256": "c2db5964de9c5a72d7a9c582b8dd76df4474a1cbb0b776c06c71d3c70368300f"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_5_active_workbook_read_policy_non_mutating.py",
+      "status": "modified",
+      "old_sha256": "a84cf1136b22aa0cf6f0a97025f0c033ca5b95eb308a82d0f042a9a937c1ac66",
+      "new_sha256": "cd88f57175da37ab76a2b4267f703ffb0fa5f42f93864c2b83c142cd710bf726"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_6_active_content_read_safe_block.py",
+      "status": "modified",
+      "old_sha256": "f69ab504711d31fac4064a73f2af79183531c2605ed50d252732893f9d30f009",
+      "new_sha256": "aef752eafa93e97627f1c81ab6e16e01d9d6dee15cf4116d26f5783ab81b98b7"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_8_workbook_read_policy_plan_visibility.py",
+      "status": "modified",
+      "old_sha256": "7485de414a93914e9185b0afa64f38f64ba6013eec20783d2bce572b395b7893",
+      "new_sha256": "4ade2cbfb0a9b3a63798bb412ce27abb25a2fef5e8bd7ec8b3874e0a153f2d30"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_9_pending_clarification_policy_action_ownership.py",
+      "status": "modified",
+      "old_sha256": "41d9cfa8ac8869ab1d6cc81768850e9e6152f200c4e112805d056ef0239c2efe",
+      "new_sha256": "d9da2dc079c7126f2aede688dab8b3556bae6bd4fdacb92fa095d55d6f97b925"
+    },
+    {
+      "file": "jarvis_v5/tests/smoke/test_alpha35_workbook_read_policy_review.py",
+      "status": "modified",
+      "old_sha256": "36053c9765da01a237a5b657f6cf26499414a1c3b37edf75aaebd4598475f83e",
+      "new_sha256": "0b4367ecd1eeedd1587035c9336039026c7a387ce7cbfef2ac6e931b9e361c8b"
+    }
+  ],
+  "changed_count": 131
+}

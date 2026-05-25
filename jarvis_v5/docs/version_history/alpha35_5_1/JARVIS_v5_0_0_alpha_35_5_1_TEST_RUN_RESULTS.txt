@@ -1,0 +1,13 @@
+v5.0.0-alpha.35.6 test run results
+
+python -m compileall -q jarvis_v5: PASS
+pytest controlled chunks: PASS 310 / 310
+package hygiene + contract replay targeted: PASS 12 / 12
+alpha35.5 active-task policy routing targeted: PASS 4 / 4
+built-in JSON pack sweep: PASS 40 / 40 packs
+attack 014: PASS 50 / 50
+attack 015: PASS 50 / 50
+attack 016: PASS 50 / 50
+attack 017: PASS 50 / 50
+attack 018: PASS 50 / 50
+Safety aggregate false.

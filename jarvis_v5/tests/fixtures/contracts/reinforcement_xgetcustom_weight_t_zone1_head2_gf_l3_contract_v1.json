@@ -1,0 +1,84 @@
+{
+  "fixture_name": "reinforcement_xgetcustom_weight_t_zone1_head2_gf_l3_contract_v1",
+  "fixture_schema_version": "contract_fixture_v1",
+  "stable_contract": {
+    "contract_schema_version": "builder_contract_v1",
+    "legacy_target": "legacy_builder_v4_contract_v1",
+    "engine_version_target": "legacy_builder_v4_contract_v1",
+    "engine_mode": "contract_only",
+    "source": "builder_adapter_input",
+    "contract_status": "ready_for_engine_connection",
+    "workbook_ref": {
+      "filename": "Test.xlsx",
+      "source": "upload"
+    },
+    "builder_setup": {
+      "trade_profile": "Concrete / Reinforcement",
+      "costx_function": "XGETCUSTOM",
+      "custom_quantity": "Reinforcement Weight",
+      "unit": "t",
+      "zone_mode": "rebuild",
+      "dynamic_zones": [
+        {
+          "zone_id": 1,
+          "values": [
+            "Old",
+            "New"
+          ],
+          "head_assignment": "Head2"
+        }
+      ],
+      "heading_assignments": {
+        "1": "Head2"
+      },
+      "levels": [
+        "GF",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "aliases": {},
+      "item_code_settings": {},
+      "trade_registry": {
+        "matched": true,
+        "registry_key": "reinforcement",
+        "input": "reinforcement",
+        "canonical_trade": "Concrete / Reinforcement",
+        "risk": "high",
+        "normalization_mode": "clarify",
+        "requires_custom_quantity": true,
+        "requires_clarification": true,
+        "allowed_functions": [
+          "XGETCUSTOM"
+        ],
+        "default_unit": "t",
+        "common_custom_quantities": [
+          "Reinforcement Weight",
+          "Bar Reinforcement Weight"
+        ]
+      }
+    },
+    "setup_completeness": {
+      "status": "ready_for_future_engine",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": true,
+      "missing_required": []
+    },
+    "normalization": {
+      "status": "clean"
+    },
+    "conflicts": [],
+    "validation": {
+      "valid": true,
+      "issues": [],
+      "warnings": []
+    },
+    "safety": {
+      "workbook_read": false,
+      "engine_called": false,
+      "excel_created": false,
+      "contract_only": true,
+      "legacy_builder_called": false
+    }
+  }
+}

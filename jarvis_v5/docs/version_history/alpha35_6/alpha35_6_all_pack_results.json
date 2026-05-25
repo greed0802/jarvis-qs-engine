@@ -1,0 +1,31 @@
+{
+  "version": "v5.0.0-alpha.35.6",
+  "targeted_attack_packs": {
+    "019": {
+      "passed": 50,
+      "failed": 0
+    },
+    "020": {
+      "passed": 50,
+      "failed": 0
+    },
+    "021": {
+      "passed": 50,
+      "failed": 0
+    },
+    "022": {
+      "passed": 50,
+      "failed": 0
+    },
+    "023": {
+      "passed": 50,
+      "failed": 0
+    }
+  },
+  "safety": {
+    "workbook_read_any_true": false,
+    "engine_called_any_true": false,
+    "excel_created_any_true": false,
+    "legacy_builder_called_any_true": false
+  }
+}

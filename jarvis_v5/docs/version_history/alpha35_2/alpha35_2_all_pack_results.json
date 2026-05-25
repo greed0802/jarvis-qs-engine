@@ -1,0 +1,13 @@
+{
+  "version": "v5.0.0-alpha.35.3",
+  "pytest": "296 passed",
+  "builtin_pack_sweep": "40 / 40 packs passed",
+  "attack_pack_004": "47 passed / 3 failed; remaining failures are valid safe normal_id over-strict expectations only",
+  "attack_pack_005": "47 passed / 3 failed; remaining failures are valid safe normal_id over-strict expectations only",
+  "safety": {
+    "workbook_read_any_true": false,
+    "engine_called_any_true": false,
+    "excel_created_any_true": false,
+    "legacy_builder_called_any_true": false
+  }
+}

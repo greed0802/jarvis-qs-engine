@@ -1,0 +1,455 @@
+{
+  "pack_name": "alpha22_qs_intent_alias_router_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_QS_ALIAS_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SCHEDULE_OF_VALUES_STARTS_BUILDER_SHELL",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_sov",
+            "client_event_id": "a22p_sov_001",
+            "text": "Create a Schedule of Values"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.route_confidence",
+              "exists": true
+            },
+            {
+              "path": "$.confidence_reason",
+              "contains": "schedule_of_values"
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REGIONAL_TERMS_START_BUILDER_SHELL",
+      "steps": [
+        {
+          "name": "nrm",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_nrm",
+            "client_event_id": "a22p_nrm_001",
+            "text": "Prepare an NRM-style BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ireland_bq",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_ireland",
+            "client_event_id": "a22p_ireland_001",
+            "text": "Create a BQ for Ireland project"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ph_bill",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_ph",
+            "client_event_id": "a22p_ph_001",
+            "text": "Create a PH Bill of Quantities"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "builder"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NEGATIVE_GUARDS_DO_NOT_START_BUILDER",
+      "steps": [
+        {
+          "name": "meeting",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_meeting",
+            "client_event_id": "a22p_meeting_001",
+            "text": "Schedule a meeting tomorrow"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.active_task_id",
+              "equals": null
+            },
+            {
+              "path": "$.confidence_reason",
+              "equals": "negative_guard:casual_non_tool_phrase"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "definition",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_define",
+            "client_event_id": "a22p_define_001",
+            "text": "What is a Schedule of Values?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.active_task_id",
+              "equals": null
+            },
+            {
+              "path": "$.confidence_reason",
+              "equals": "negative_guard:casual_non_tool_phrase"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NO_ACTIVE_FORMAT_ROUTES_TO_CHOOSE_TOOL",
+      "steps": [
+        {
+          "name": "format",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_format",
+            "client_event_id": "a22p_format_001",
+            "text": "Format"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.tool_candidates",
+              "includes_all": [
+                "formatter"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_BUILDER_AMBIGUOUS_SAME_CLARIFIES_WITHOUT_MUTATION",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_active_same",
+            "client_event_id": "a22p_same_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "same",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_active_same",
+            "client_event_id": "a22p_same_002",
+            "text": "same"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_BUILDER_QS_ALIAS_PRESERVES_TASK",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_active_alias",
+            "client_event_id": "a22p_alias_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "alias",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_active_alias",
+            "client_event_id": "a22p_alias_002",
+            "text": "Create a Schedule of Values"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_new_command_confirmation"
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.qs_alias.alias",
+              "equals": "schedule_of_values"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SAME_ZONE_VALUE_STILL_REDUCES",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_same_zone",
+            "client_event_id": "a22p_samezone_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_same_zone",
+            "client_event_id": "a22p_samezone_002",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "add_same",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha22_pack_same_zone",
+            "client_event_id": "a22p_samezone_003",
+            "text": "Add Same to Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha22_pack_same_zone",
+          "assertions": [
+            {
+              "path": "$.plan_summary.zones[0].values",
+              "includes_all": [
+                "Old",
+                "New",
+                "Same"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

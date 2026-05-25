@@ -1,0 +1,412 @@
+{
+  "pack_name": "alpha20_legacy_import_boundary_audit_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA20_IMPORT_AUDIT_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.engines_connected.legacy_import_boundary_audit",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LEGACY_IMPORT_BOUNDARY_AUDIT_LOCKED_NO_IMPORT",
+      "steps": [
+        {
+          "name": "audit",
+          "method": "POST",
+          "endpoint": "/api/builder/legacy-import-boundary-audit",
+          "json": {
+            "conversation_id": "alpha20_pack_audit",
+            "client_event_id": "a20_pack_audit_001",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_import_boundary_audit"
+            },
+            {
+              "path": "$.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.legacy_import_attempted",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_module_imported",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.excel_output_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.bridge_stub.status",
+              "equals": "stub_only"
+            },
+            {
+              "path": "$.bridge_stub.can_execute",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "latest",
+          "method": "GET",
+          "endpoint": "/api/builder/legacy-import-boundary-audit/latest/alpha20_pack_audit",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_import_boundary_audit_latest"
+            },
+            {
+              "path": "$.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SNAPSHOT_AND_PREVIEW_MESSAGES_NO_ALPHA11",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_trade",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_function",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_unit",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zone",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_zone",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_head",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_levels",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_snapshot"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.message",
+              "not_contains": "alpha.11"
+            },
+            {
+              "path": "$.message",
+              "contains": "v5.0.0-alpha.36.3"
+            }
+          ]
+        },
+        {
+          "name": "preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.message",
+              "not_contains": "alpha.11"
+            },
+            {
+              "path": "$.message",
+              "contains": "v5.0.0-alpha.36.3"
+            }
+          ]
+        },
+        {
+          "name": "export",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha20_pack_message",
+            "client_event_id": "a20_msg_export",
+            "text": "Export"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_export_stub"
+            },
+            {
+              "path": "$.message",
+              "not_contains": "alpha.11"
+            },
+            {
+              "path": "$.message",
+              "contains": "v5.0.0-alpha.36.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN_SHOWS_LATEST_LEGACY_IMPORT_AUDIT",
+      "steps": [
+        {
+          "name": "audit",
+          "method": "POST",
+          "endpoint": "/api/builder/legacy-import-boundary-audit",
+          "json": {
+            "conversation_id": "alpha20_pack_plan",
+            "client_event_id": "a20_pack_plan_audit",
+            "write_report": true
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_legacy_import_boundary_audit"
+            }
+          ]
+        },
+        {
+          "name": "plan",
+          "method": "GET",
+          "endpoint": "/api/plan/alpha20_pack_plan",
+          "assertions": [
+            {
+              "path": "$.legacy_import_boundary_audit.found",
+              "equals": true
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.audit_status",
+              "equals": "locked_no_import"
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.legacy_import_attempted",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.legacy_module_imported",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_import_boundary_audit.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

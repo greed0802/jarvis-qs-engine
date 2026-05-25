@@ -1,0 +1,606 @@
+{
+  "version": "v5.0.0-alpha.35.14",
+  "execution_enabled_true_count": 0,
+  "entries": [
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[7].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[8].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[9].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[10].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[11].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[12].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[13].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[14].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[15].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[16].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[17].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[18].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[19].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[20].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[21].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[22].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[23].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[24].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[25].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/capability_registry.json",
+      "path": "$.capabilities[26].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[7].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[8].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[9].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[10].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[11].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[12].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[13].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/connector_registry.json",
+      "path": "$.connectors[14].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[7].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/ecosystem_adapter_registry.json",
+      "path": "$.ecosystem_adapters[8].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/execution_policy_registry.json",
+      "path": "$.policies[7].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[20].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[21].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[22].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[23].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[24].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[25].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[26].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[27].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[28].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[29].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[30].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[31].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/file_requirement_registry.json",
+      "path": "$.file_requirements[32].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/model_registry.json",
+      "path": "$.models[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/requirement_advisor_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/rfi_template_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/scope_advisor_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/source_authority_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[5].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[6].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[7].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[8].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[9].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[10].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[11].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[12].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[13].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[14].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[15].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[16].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[17].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[18].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[19].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[20].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[21].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/tool_registry.json",
+      "path": "$.tools[22].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[0].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[1].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[2].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[3].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[4].execution_enabled",
+      "value": false
+    },
+    {
+      "file": "jarvis_v5/registry/voice_assistant_registry.json",
+      "path": "$.voice_assistants[5].execution_enabled",
+      "value": false
+    }
+  ]
+}

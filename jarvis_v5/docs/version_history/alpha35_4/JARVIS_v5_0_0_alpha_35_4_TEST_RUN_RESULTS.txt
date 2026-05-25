@@ -1,0 +1,12 @@
+v5.0.0-alpha.35.5 test run results
+
+PASS - targeted alpha35.4 sheet-name ambiguity tests: 2 / 2 passed
+PASS - sensitive alpha35.2/35.3/35.3.1 regression tests: 12 / 12 passed
+PASS - pytest controlled chunks: 304 / 304 passed (118 + 99 + 87)
+NOTE - unchunked pytest in sandbox exceeded the tool timeout; controlled chunks were used to avoid timeout while covering all smoke files.
+PASS - built-in JSON pack sweep: 40 / 40 packs passed, 180 / 180 tests passed
+PASS - attack pack 012: 50 / 50 passed
+PASS - attack pack 013: 50 / 50 passed
+PASS - attack packs 006-008: 50 / 50 each
+EXPECTED CONFLICT - attack packs 009-011: 25 / 50 each; no general_stub or new_builder_task_shell; remaining failures are route-expectation conflicts.
+PASS - safety aggregate false for workbook_read, engine_called, excel_created, legacy_builder_called.

@@ -1,0 +1,12 @@
+{
+  "version": "v5.0.0-alpha.35.16",
+  "counts": {
+    "execution_enabled_true": 0,
+    "document_read_true": 0,
+    "ocr_enabled_true": 0,
+    "rag_enabled_true": 0,
+    "workbook_read_true": 0,
+    "tool_execution_called_true": 0
+  },
+  "items": []
+}

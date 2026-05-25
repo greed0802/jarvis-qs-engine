@@ -1,0 +1,44 @@
+{
+  "version": "voice_assistant_registry_v1",
+  "registry": "voice_assistants",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "voice_assistants": [
+    {
+      "voice_key": "push_to_talk_desktop",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 1
+    },
+    {
+      "voice_key": "mobile_voice_shortcut",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 1
+    },
+    {
+      "voice_key": "home_assistant_voice_bridge",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 2
+    },
+    {
+      "voice_key": "siri_shortcut",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 2
+    },
+    {
+      "voice_key": "google_assistant_shortcut",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 2
+    },
+    {
+      "voice_key": "alexa_skill",
+      "status": "future",
+      "execution_enabled": false,
+      "safety_tier": 2
+    }
+  ]
+}

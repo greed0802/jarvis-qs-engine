@@ -1,0 +1,10 @@
+v5.0.0-alpha.35.3 raw test summary
+
+Targeted alpha12 tests: 2 passed
+Package current artifact test: 1 passed
+compileall: passed
+pytest: 290 passed in sandbox
+JSON pack sweep: 40/40 packs, 180/180 tests passed
+Attack pack 004: completed, overall FAIL expected for malicious conversation ID assertions, no UnicodeEncodeError
+Attack pack 005: completed, overall FAIL expected for malicious conversation ID assertions, no UnicodeEncodeError
+Safety aggregate: workbook_read_any_true=false, engine_called_any_true=false, excel_created_any_true=false, legacy_builder_called_any_true=false

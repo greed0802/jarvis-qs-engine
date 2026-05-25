@@ -1,0 +1,524 @@
+{
+  "pack_name": "alpha35_10_no_active_mixed_language_policy_route_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA35_10_NO_ACTIVE_POLICY_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T01_CREATE_BOQ_NEGATIVE_POLARITY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_01",
+            "client_event_id": "alpha35_10_01_chat",
+            "text": "Create BOQ but do not read workbook contents"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.route_context.no_active_language.requires_setup",
+              "equals": true
+            },
+            {
+              "path": "$.readiness.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.readiness.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_POLICY_REVIEW_NARROW_ALIAS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_02",
+            "client_event_id": "alpha35_10_02_chat",
+            "text": "Policy review please, no active task"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_SCHEDULE_APPROVAL_GENERAL_NO_FALLBACK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_03",
+            "client_event_id": "alpha35_10_03_chat",
+            "text": "Schedule a workbook read approval for later"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.route_context.no_active_language.negative_guard",
+              "equals": "casual_non_tool_phrase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_VALUE_ENGINEERING_READ_CELLS_POLICY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_04",
+            "client_event_id": "alpha35_10_04_chat",
+            "text": "Value engineering: read cells to optimize cost"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_SAFETY_FLAG_CELLS_READ_FALSE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_05",
+            "client_event_id": "alpha35_10_05_chat",
+            "text": "What does cells_read false mean?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_WORKBOOK_POLICY_NOT_WORKBOOK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_06",
+            "client_event_id": "alpha35_10_06_chat",
+            "text": "Read the workbook policy, not the workbook"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_EXPLAIN_FORMULA_READ_POLICY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_07",
+            "client_event_id": "alpha35_10_07_chat",
+            "text": "Explain formula read policy, not formula generation"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_GRAMMAR_ATTACK_PHRASE_WRITING_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_08",
+            "client_event_id": "alpha35_10_08_chat",
+            "text": "Check grammar: open workbook and read formulas now"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.route_context.no_active_language.negative_guard",
+              "equals": "format_text_not_workbook"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T09_ESTIMATE_WORKBOOK_POLICY_SAFE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_09",
+            "client_event_id": "alpha35_10_09_chat",
+            "text": "Estimate whether workbook read policy is safe"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T10_FORMAT_WORKBOOK_POLICY_PARAGRAPH",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat_001",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha35_10_10",
+            "client_event_id": "alpha35_10_10_chat",
+            "text": "Format this workbook read policy paragraph only"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_workbook_read_policy_review"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.policy_only",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_opened",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

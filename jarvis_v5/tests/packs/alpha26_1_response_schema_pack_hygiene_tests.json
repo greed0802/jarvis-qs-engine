@@ -1,0 +1,99 @@
+{
+  "pack_name": "alpha26_1_response_schema_pack_hygiene_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA26_1_LOCK",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DEBUG_CLARIFICATION_SAFETY_ENVELOPE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "debug_clarification_missing_conversation",
+          "method": "POST",
+          "endpoint": "/api/debug/create-test-clarification",
+          "json": {
+            "conversation_id": "missing_pack_alpha26_1",
+            "client_event_id": "missing_pack_alpha26_1_evt",
+            "prompt": "Choose A or B."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "debug_create_test_clarification"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.safety.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.safety.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.safety.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.safety.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LATEST_CONTRACT_ROUTE_DISPATCH",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "latest_contract",
+          "method": "GET",
+          "endpoint": "/api/builder/engine-contract/latest/no_such_conv_pack_alpha26_1",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_latest_not_found"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

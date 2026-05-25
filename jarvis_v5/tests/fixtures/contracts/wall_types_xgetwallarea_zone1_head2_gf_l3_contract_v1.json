@@ -1,0 +1,96 @@
+{
+  "fixture_schema": "builder_engine_contract_fixture_v1",
+  "created_at": "2026-05-22T06:53:51.574765+00:00",
+  "contract_schema_version": "builder_contract_v1",
+  "legacy_target": "legacy_builder_v4_contract_v1",
+  "contract_hash": "bb3e8d83fd441f755467d94724716c1273f0946560c056deb91f3ed5fc878c76",
+  "safety": {
+    "workbook_read": false,
+    "engine_called": false,
+    "excel_created": false,
+    "contract_only": true,
+    "legacy_builder_called": false
+  },
+  "contract": {
+    "contract_id": "contract_d28a1e25a70f4bd69e226a811e4f939c",
+    "conversation_id": "alpha17_kill_switch_9df6586b2e4244b68c32a5bbfec9441b",
+    "task_id": "task_2a705835bbce4a9fb2b7abbc51fb7024",
+    "snapshot_id": "snap_cca26d2f9681460387270e14a0e6b36f",
+    "adapter_input_id": "adapter_e30fa590254743648a935d0383cf889b",
+    "source": "builder_adapter_input",
+    "engine_mode": "contract_only",
+    "contract_schema_version": "builder_contract_v1",
+    "legacy_target": "legacy_builder_v4_contract_v1",
+    "engine_version_target": "legacy_builder_v4_contract_v1",
+    "contract_status": "ready_for_engine_connection",
+    "workbook_ref": {
+      "workbook_id": "att_c72e6973da3e4b8f97ece76b0f4a75b3",
+      "attachment_id": "att_c72e6973da3e4b8f97ece76b0f4a75b3",
+      "filename": "Test.xlsx",
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size_bytes": 66,
+      "saved_path": "/mnt/data/alpha36_3_fire/jarvis_v5/data/attachments/att_c72e6973da3e4b8f97ece76b0f4a75b3_Test.xlsx",
+      "source": "upload",
+      "bound_to_task_id": "task_2a705835bbce4a9fb2b7abbc51fb7024",
+      "created_at": "2026-05-22T06:53:51.403047+00:00"
+    },
+    "builder_setup": {
+      "trade_profile": "Wall Types",
+      "costx_function": "XGETWALLAREA",
+      "custom_quantity": null,
+      "unit": "m2",
+      "zone_mode": "rebuild",
+      "dynamic_zones": [
+        {
+          "zone_id": 1,
+          "values": [
+            "Old",
+            "New"
+          ],
+          "head_assignment": "Head2"
+        }
+      ],
+      "heading_assignments": {
+        "1": "Head2"
+      },
+      "levels": [
+        "GF",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "aliases": {},
+      "item_code_settings": {},
+      "trade_registry": null
+    },
+    "setup_completeness": {
+      "status": "ready_for_future_engine",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": true,
+      "missing_required": [],
+      "missing_labels": [],
+      "warnings": [],
+      "next_actions": []
+    },
+    "normalization": {
+      "status": "clean",
+      "warnings": []
+    },
+    "conflicts": [],
+    "safety": {
+      "workbook_read": false,
+      "engine_called": false,
+      "excel_created": false,
+      "contract_only": true,
+      "legacy_builder_called": false
+    },
+    "validation": {
+      "valid": true,
+      "blockers": [],
+      "issues": [],
+      "warnings": []
+    },
+    "contract_hash": "bb3e8d83fd441f755467d94724716c1273f0946560c056deb91f3ed5fc878c76",
+    "created_at": "2026-05-22T06:53:51.547885+00:00"
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "version": "v5.0.0-alpha.35.17",
+  "registry": "source_authorities",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "authorities": [
+    {
+      "authority_key": "statutory_code",
+      "authority_level": "statutory",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_current_source": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "identify cost-affecting requirements",
+        "flag possible missing scope",
+        "suggest RFIs",
+        "suggest source documents to request"
+      ],
+      "blocked_claims": [
+        "design complies",
+        "meets code",
+        "statutory compliance confirmed",
+        "final compliance determination"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "professional_standard",
+      "authority_level": "professional_standard",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_source_upload_for_clause_advice": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "measurement method guidance",
+        "BOQ structure guidance",
+        "scope checklist",
+        "terminology guidance",
+        "RFI prompts"
+      ],
+      "blocked_claims": [
+        "measured fully in accordance with standard",
+        "certified against standard",
+        "standard compliance confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "client_standard",
+      "authority_level": "client_standard",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope checklist",
+        "missing item risk",
+        "file requirement advice",
+        "RFI drafting",
+        "BOQ inclusion prompts"
+      ],
+      "blocked_claims": [
+        "client standard compliance confirmed",
+        "client compliance satisfied",
+        "EFSG/client compliance satisfied"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "consultant_report",
+      "authority_level": "consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "testing/certification allowance prompts"
+      ],
+      "blocked_claims": [
+        "consultant compliance confirmed",
+        "all report requirements included"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "specification",
+      "authority_level": "project_contract_reference",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "BOQ description risk",
+        "scope inclusion checklist",
+        "testing/warranty item checklist",
+        "RFI if drawings/specs conflict"
+      ],
+      "blocked_claims": [
+        "specification fully complied with",
+        "all specified items included"
+      ],
+      "aliases": [
+        "project_specification"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "drawing_note",
+      "authority_level": "project_design_reference",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope checklist",
+        "takeoff prompt",
+        "RFI for conflict with specification/report",
+        "drawing revision risk"
+      ],
+      "blocked_claims": [
+        "drawing scope complete",
+        "design intent confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "email_instruction",
+      "authority_level": "project_instruction",
+      "can_inform_boq": true,
+      "requires_confirmation": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "user_assumption",
+      "authority_level": "user_supplied_assumption",
+      "can_inform_boq": false,
+      "requires_confirmation": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": false,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "assumption register",
+        "risk note",
+        "RFI recommendation",
+        "temporary estimate basis"
+      ],
+      "blocked_claims": [
+        "confirmed by project documents",
+        "client-approved assumption",
+        "compliance confirmed"
+      ],
+      "must_be_marked_as_assumption": true,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "ai_inference",
+      "authority_level": "lowest_authority_model_inference",
+      "can_inform_boq": false,
+      "requires_verification": true,
+      "can_claim_compliance": false,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "hypothesis",
+        "checklist suggestion",
+        "possible RFI",
+        "risk flag",
+        "next-file request"
+      ],
+      "blocked_claims": [
+        "confirmed",
+        "compliant",
+        "according to the standard",
+        "project requirement"
+      ],
+      "must_be_marked_as_inference": true,
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "certifier_report",
+      "authority_level": "certifier_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "fire_engineer_report",
+      "authority_level": "fire_engineer_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "access_consultant_report",
+      "authority_level": "access_consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "civil_consultant_report",
+      "authority_level": "civil_consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "traffic_consultant_report",
+      "authority_level": "traffic_consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "geotechnical_consultant_report",
+      "authority_level": "geotechnical_consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "arborist_consultant_report",
+      "authority_level": "arborist_consultant_report",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "council_condition",
+      "authority_level": "authority_condition",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "cost-affecting condition checklist",
+        "RFI for contractor/client responsibility",
+        "authority fee/bond placeholder note",
+        "scope risk register"
+      ],
+      "blocked_claims": [
+        "council conditions satisfied",
+        "authority compliance confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "project_instruction",
+      "authority_level": "project_instruction",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope impact checklist",
+        "BOQ risk identification",
+        "RFI candidates",
+        "source conflict warning"
+      ],
+      "blocked_claims": [
+        "compliance confirmed",
+        "all requirements included",
+        "final certification confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "rfi_response",
+      "authority_level": "project_clarification_record",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "pricing implication checklist",
+        "scope change risk",
+        "conflict flag",
+        "follow-up RFI suggestion"
+      ],
+      "blocked_claims": [
+        "RFI fully priced",
+        "RFI resolves all conflicts"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    },
+    {
+      "authority_key": "addendum",
+      "authority_level": "project_instruction",
+      "can_inform_boq": true,
+      "can_claim_compliance": false,
+      "requires_user_review": true,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "can_certify_compliance": false,
+      "requires_current_source": true,
+      "requires_human_review": true,
+      "citation_source_placeholder": true,
+      "allowed_qs_advisory_use": [
+        "scope change checklist",
+        "pricing impact prompt",
+        "superseded document warning",
+        "RFI follow-up"
+      ],
+      "blocked_claims": [
+        "addendum fully incorporated",
+        "latest scope confirmed"
+      ],
+      "document_read": false,
+      "ocr_enabled": false,
+      "rag_enabled": false,
+      "web_lookup_enabled": false,
+      "standards_ingestion_enabled": false,
+      "workbook_read": false,
+      "tool_execution_called": false
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Targeted alpha35.2 sanitization tests: 6 passed
+Sensitive regressions: 30 passed
+Full pytest: 296 passed
+Built-in JSON pack sweep: 40 packs passed
+Attack pack 004: 47 passed / 3 failed; no exceptions; safety aggregate false
+Attack pack 005: 47 passed / 3 failed; no exceptions; safety aggregate false

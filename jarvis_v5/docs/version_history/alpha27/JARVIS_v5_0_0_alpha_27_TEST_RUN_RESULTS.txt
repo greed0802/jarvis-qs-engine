@@ -1,0 +1,25 @@
+Jarvis v5.0.0-alpha.27 test run results
+
+PASS - python -m compileall -q jarvis_v5
+PASS - PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+Result: 216 passed
+
+PASS - retained JSON pack sweep
+Packs: 25 / 25 passed
+Tests: 110 / 110 passed
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false
+
+PASS - protected Builder boundary hash check
+10 / 10 protected files unchanged
+
+PASS - registry execution scan
+execution_enabled=true count = 0
+
+PASS - static ownership scan
+Duplicate FastAPI routes: none
+Duplicate top-level function/class definitions: none

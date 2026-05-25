@@ -1,0 +1,20 @@
+# Test Run Results — v5.0.0-alpha.36.3
+
+PASS - python -m compileall -q jarvis_v5
+PASS - PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+Result: 414 passed
+
+PASS - alpha36.3 sheet-name probe implementation-plan pack: 6 / 6
+PASS - alpha36.2 sheet-name probe dry-run pack: 6 / 6
+PASS - alpha36.1 workbook metadata probe plan pack: 8 / 8
+PASS - alpha36.0 integrity contract pack: 8 / 8
+PASS - alpha35.19 workbook permission evidence-lock pack: 8 / 8
+PASS - alpha35.18 workbook permission contract pack: 8 / 8
+PASS - alpha35.12 advisory regression pack: 6 / 6
+PASS - alpha35.10.2 active writing/report Preview false-positive pack: 3 / 3
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

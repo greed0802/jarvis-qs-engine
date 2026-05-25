@@ -1,0 +1,325 @@
+{
+  "pack_name": "alpha35_15_job_output_contract_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA35_15_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_JOB_OUTPUT_EXECUTION_POLICY_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[8].policy_key",
+              "equals": "job_output_contract_map"
+            },
+            {
+              "path": "$.policies[8].metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.policies[8].execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_OUTPUT_CENTER_JOB_CONTRACT_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[5].tool_key",
+              "equals": "output_center"
+            },
+            {
+              "path": "$.tools[5].metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.tools[5].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[5].workbook_read_required",
+              "equals": false
+            },
+            {
+              "path": "$.tools[5].safety_policy.file_created",
+              "equals": false
+            },
+            {
+              "path": "$.tools[5].safety_policy.download_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_JOB_CAPABILITIES_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "capabilities",
+          "method": "GET",
+          "endpoint": "/api/registry/capabilities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[27].capability_key",
+              "equals": "manage_job_contracts"
+            },
+            {
+              "path": "$.capabilities[27].metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.capabilities[27].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.capabilities[28].capability_key",
+              "equals": "manage_output_manifests"
+            },
+            {
+              "path": "$.capabilities[28].execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_FILE_REQUIREMENT_JOB_OUTPUT_PLACEHOLDERS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "files",
+          "method": "GET",
+          "endpoint": "/api/registry/file-requirements",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.file_requirements[33].file_key",
+              "equals": "job_contract_future"
+            },
+            {
+              "path": "$.file_requirements[33].metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.file_requirements[34].file_key",
+              "equals": "output_manifest_future"
+            },
+            {
+              "path": "$.file_requirements[34].execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_FUTURE_TOOL_RUN_STILL_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "run_formatter",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a3515_run_formatter",
+            "client_event_id": "run_formatter",
+            "text": "Run Formatter on the Builder output"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "registry_advisory_metadata_only"
+            },
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.requirement_advisor.execution_blocked",
+              "equals": true
+            },
+            {
+              "path": "$.requirement_advisor.tool_execution_called",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_WORKBOOK_READ_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "read_block",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a3515_read",
+            "client_event_id": "read",
+            "text": "Open workbook and read cells"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "no_active_prompt_injection_safe_block"
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_ALPHA35_14_TOOL_CONTRACTS_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[1].tool_key",
+              "equals": "formatter"
+            },
+            {
+              "path": "$.tools[1].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[2].tool_key",
+              "equals": "qa_checker"
+            },
+            {
+              "path": "$.tools[2].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[6].tool_key",
+              "equals": "omission_addition"
+            },
+            {
+              "path": "$.tools[6].execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

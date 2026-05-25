@@ -1,0 +1,1113 @@
+{
+  "pack_name": "alpha11_contract_negative_guards",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "complete_contract_flow",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "data": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_attach_001",
+            "text": "Here"
+          },
+          "files": [
+            {
+              "field": "file",
+              "path": "jarvis_v5/tests/fixtures/Test.xlsx",
+              "filename": "Test.xlsx",
+              "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          ],
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.reducer_result.changes.values",
+              "includes_all": [
+                "Old",
+                "New"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "headings",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_adapter_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.adapter_status",
+              "equals": "dry_run_ready"
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.contract_status",
+              "equals": "ready_for_engine_connection"
+            },
+            {
+              "path": "$.validation.valid",
+              "equals": true
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.contract.safety.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.contract.safety.legacy_builder_called",
+              "equals": false
+            }
+          ],
+          "save": {
+            "contract_id": "$.contract_id"
+          }
+        },
+        {
+          "name": "replay",
+          "method": "GET",
+          "endpoint": "/api/builder/engine-contract/${contract_id}",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_replay"
+            },
+            {
+              "path": "$.contract_only",
+              "equals": true
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "latest",
+          "method": "GET",
+          "endpoint": "/api/builder/engine-contract/latest/qa_complete_contract",
+          "assertions": [
+            {
+              "path": "$.found",
+              "equals": true
+            },
+            {
+              "path": "$.contract_id",
+              "equals": "${contract_id}"
+            }
+          ]
+        },
+        {
+          "name": "preview",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_complete_contract",
+            "client_event_id": "qa_complete_preview_001",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_preview_stub"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "preview_engine_not_connected"
+            },
+            {
+              "path": "$.adapter.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.adapter.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.adapter.workbook_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "incomplete_setup_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_incomplete_contract",
+            "client_event_id": "qa_incomplete_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_incomplete_contract",
+            "client_event_id": "qa_incomplete_002",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_incomplete_contract",
+            "client_event_id": "qa_incomplete_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "qa_incomplete_contract",
+            "client_event_id": "qa_incomplete_adapter_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.validation.valid_for_dry_run",
+              "equals": true
+            },
+            {
+              "path": "$.validation.valid_for_future_engine",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_incomplete_contract",
+            "client_event_id": "qa_incomplete_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.blocked",
+              "equals": true
+            },
+            {
+              "path": "$.reason",
+              "equals": "setup_not_ready_for_future_engine"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "snapshot_only_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "data": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_attach_001",
+            "text": "Here"
+          },
+          "files": [
+            {
+              "field": "file",
+              "path": "jarvis_v5/tests/fixtures/Test.xlsx",
+              "filename": "Test.xlsx",
+              "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          ],
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "trade",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_002",
+            "text": "Use Wall Types"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_003",
+            "text": "Use XGETWALLAREA"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_004",
+            "text": "Unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_005",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "headings",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_006",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_007",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_snapshot_only",
+            "client_event_id": "qa_snapshot_only_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "adapter_required"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stale_snapshot_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "data": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_attach_001",
+            "text": "Here"
+          },
+          "files": [
+            {
+              "field": "file",
+              "path": "jarvis_v5/tests/fixtures/Test.xlsx",
+              "filename": "Test.xlsx",
+              "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          ],
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "setup_all",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_002",
+            "text": "Use Wall Types XGETWALLAREA unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_003",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "headings",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_004",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_005",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_adapter_001"
+          },
+          "assertions": [
+            {
+              "path": "$.adapter_status",
+              "equals": "dry_run_ready"
+            }
+          ]
+        },
+        {
+          "name": "mutate",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_006",
+            "text": "Add Same to Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_stale_snapshot",
+            "client_event_id": "qa_stale_snapshot_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "snapshot_is_stale"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stale_adapter_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "data": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_attach_001",
+            "text": "Here"
+          },
+          "files": [
+            {
+              "field": "file",
+              "path": "jarvis_v5/tests/fixtures/Test.xlsx",
+              "filename": "Test.xlsx",
+              "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          ],
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            }
+          ]
+        },
+        {
+          "name": "setup_all",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_002",
+            "text": "Use Wall Types XGETWALLAREA unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "zones",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_003",
+            "text": "Zone 1: Old and New"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "headings",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_004",
+            "text": "Use Head 2 for Zone 1"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_005",
+            "text": "Levels GF to L3"
+          },
+          "assertions": [
+            {
+              "path": "$.setup_completeness.ready_for_future_engine",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_snapshot_001"
+          },
+          "assertions": [
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_adapter_001"
+          },
+          "assertions": [
+            {
+              "path": "$.adapter_status",
+              "equals": "dry_run_ready"
+            }
+          ]
+        },
+        {
+          "name": "mutate_levels",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_006",
+            "text": "Levels GF to L5"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            }
+          ]
+        },
+        {
+          "name": "new_snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_snapshot_002"
+          },
+          "assertions": [
+            {
+              "path": "$.snapshot_status",
+              "equals": "current"
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_stale_adapter",
+            "client_event_id": "qa_stale_adapter_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "adapter_is_stale"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pending_clarification_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_pending_contract",
+            "client_event_id": "qa_pending_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "conflict",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_pending_contract",
+            "client_event_id": "qa_pending_002",
+            "text": "Use Wall Types and Structural Steel"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_pending_contract",
+            "client_event_id": "qa_pending_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_exists"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "function_unit_conflict_blocks_contract",
+      "steps": [
+        {
+          "name": "create_task",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_conflict_contract",
+            "client_event_id": "qa_conflict_001",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "conflict",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "qa_conflict_contract",
+            "client_event_id": "qa_conflict_002",
+            "text": "Use Count unit m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.pending_clarification_id",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "qa_conflict_contract",
+            "client_event_id": "qa_conflict_contract_001"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_blocked"
+            },
+            {
+              "path": "$.reason",
+              "equals": "pending_clarification_exists"
+            },
+            {
+              "path": "$.contract_created",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

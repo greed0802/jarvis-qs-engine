@@ -1,0 +1,17 @@
+Jarvis v5.0.0-alpha.28 test run results
+
+compileall: PASS
+pytest: PASS — 220 passed
+JSON packs: PASS — 26 / 26 packs
+JSON pack tests: PASS — 114 / 114 tests
+Alpha.28 pack: PASS — 4 / 4 tests
+Protected Builder boundary hash check: PASS — 10 / 10
+Execution flag scan: PASS — no WORKBOOK_READ_ENABLED/BUILDER_ENGINE_EXECUTION_ENABLED/LEGACY_BUILDER_CALLABLE/EXCEL_OUTPUT_ENABLED true assignment found
+Duplicate FastAPI route scan: PASS — none found
+Preview policy route owner scan: PASS — one FastAPI endpoint owner
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

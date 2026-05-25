@@ -1,0 +1,452 @@
+{
+  "pack_name": "alpha22_2d_high_priority_ownership_repair_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ALPHA22_2D_LOCKS",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FEEDBACK_OWNERSHIP_NO_TASK_VS_ACTIVE_TASK",
+      "steps": [
+        {
+          "name": "no_task_bug_report_writing",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_fb_no_task",
+            "client_event_id": "a222d_pack_fb_no_task_001",
+            "text": "Make my bug report clearer"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.negative_guard",
+              "equals": "format_text_not_workbook"
+            }
+          ]
+        },
+        {
+          "name": "start_active",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_fb_active",
+            "client_event_id": "a222d_pack_fb_active_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "active_feedback",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_fb_active",
+            "client_event_id": "a222d_pack_fb_active_001",
+            "text": "Preview is broken"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "feedback_read_only"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "feedback_router"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EXPANDED_NO_ACTIVE_GATE_COVERAGE",
+      "steps": [
+        {
+          "name": "measurement_workbook_structure",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_gate_soft",
+            "client_event_id": "a222d_pack_gate_soft_001",
+            "text": "Create the measurement workbook structure"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "classify_task_first",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_gate_tool",
+            "client_event_id": "a222d_pack_gate_tool_001",
+            "text": "Classify this task first"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "senior_qs_help",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_gate_qs_help",
+            "client_event_id": "a222d_pack_gate_qs_help_001",
+            "text": "How should a senior QS review quantities?"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CONFLICT_EVIDENCE_VISIBLE",
+      "steps": [
+        {
+          "name": "start_count",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_conflict",
+            "client_event_id": "a222d_pack_conflict_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "count_m2",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_conflict",
+            "client_event_id": "a222d_pack_conflict_edit",
+            "text": "Use Count, the unit should be m2"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit_needs_clarification"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.plan_mutated",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.conflicts",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.normalization.raw_text",
+              "exists": true
+            },
+            {
+              "path": "$.reducer_result.normalization.canonical_text",
+              "exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MULTISLOT_FULL_FLOW_NO_ENGINE",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "attach",
+          "method": "POST",
+          "endpoint": "/api/attach",
+          "form": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_attach",
+            "text": "Here"
+          },
+          "file_fixture": "Test.xlsx",
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "attachment_bind"
+            },
+            {
+              "path": "$.reducer_result.workbook_read",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "multi_setup",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_setup",
+            "text": "Use Wall Types XGETWALLAREA unit m2. Zone 1: Old and New. Use Head 2 for Zone 1. Levels GF to L3."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "trade_profile",
+                "costx_function",
+                "unit",
+                "dynamic_zones",
+                "heading_assignments",
+                "levels"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "snapshot",
+          "method": "POST",
+          "endpoint": "/api/builder/create-snapshot",
+          "json": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_snap"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_snapshot_created"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "adapter",
+          "method": "POST",
+          "endpoint": "/api/builder/adapter-dry-run",
+          "json": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_adapter"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_adapter_dry_run"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        },
+        {
+          "name": "contract",
+          "method": "POST",
+          "endpoint": "/api/builder/engine-contract",
+          "json": {
+            "conversation_id": "a222d_pack_full_flow",
+            "client_event_id": "a222d_pack_full_contract"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "builder_engine_contract_created"
+            },
+            {
+              "path": "$.blocked",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

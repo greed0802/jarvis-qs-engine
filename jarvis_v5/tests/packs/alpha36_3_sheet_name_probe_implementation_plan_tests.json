@@ -1,0 +1,211 @@
+{
+  "pack_name": "alpha36_3_sheet_name_probe_implementation_plan_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA36_3_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_DIRECT_IMPLEMENT_PROBE_REQUEST_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha36_3_t02",
+            "client_event_id": "alpha36_3_t02",
+            "text": "Implement and run the sheet-name probe now for this workbook."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_CONTENT_FORMULA_CELL_STYLE_STILL_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha36_3_t03",
+            "client_event_id": "alpha36_3_t03",
+            "text": "Probe sheet names and also read cell values, formulas, and styles."
+          },
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.workbook_content_read",
+              "equals": false
+            },
+            {
+              "path": "$.formulas_read",
+              "equals": false
+            },
+            {
+              "path": "$.cells_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_ALPHA36_2_DRY_RUN_STILL_NO_PROBE",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_ALPHA36_1_PROBE_PLAN_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[13].policy_key",
+              "equals": "workbook_metadata_probe_plan"
+            },
+            {
+              "path": "$.policies[13].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].sheet_name_probe_allowed",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].formula_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].cell_value_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[13].style_read",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_ALPHA36_0_INTEGRITY_STILL_BLOCKS_HIGHER_TIERS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[10].policy_key",
+              "equals": "pre_execution_integrity_matrix"
+            },
+            {
+              "path": "$.policies[10].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[10].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[10].sheet_name_probe_allowed",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

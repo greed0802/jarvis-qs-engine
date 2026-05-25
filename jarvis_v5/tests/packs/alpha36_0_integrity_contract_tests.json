@@ -1,0 +1,265 @@
+{
+  "pack_name": "alpha36_0_integrity_contract_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "format": "multi_step",
+  "tests": [
+    {
+      "name": "T01_VERSION_ALPHA36_0_LOCKS",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.builder_engine_execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.legacy_builder_callable",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T02_EXECUTION_INTEGRITY_POLICIES_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[10].policy_key",
+              "equals": "pre_execution_integrity_matrix"
+            },
+            {
+              "path": "$.policies[10].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.policies[10].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[11].policy_key",
+              "equals": "state_transition_contract"
+            },
+            {
+              "path": "$.policies[11].sheet_name_probe_allowed",
+              "equals": false
+            },
+            {
+              "path": "$.policies[12].policy_key",
+              "equals": "sheet_name_probe_readiness_gates"
+            },
+            {
+              "path": "$.policies[12].execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T03_TOOL_RISK_TIERS_KEEP_RUNTIME_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "tools",
+          "method": "GET",
+          "endpoint": "/api/registry/tools",
+          "assertions": [
+            {
+              "path": "$.tools[0].tool_key",
+              "equals": "builder"
+            },
+            {
+              "path": "$.tools[0].execution_risk_tier",
+              "equals": 7
+            },
+            {
+              "path": "$.tools[0].execution_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.tools[0].engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.tools[1].execution_risk_tier",
+              "equals": 6
+            },
+            {
+              "path": "$.tools[1].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.tools[2].execution_risk_tier",
+              "equals": 4
+            },
+            {
+              "path": "$.tools[2].tool_execution_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T04_DIRECT_WORKBOOK_PROBE_STILL_SAFE_BLOCKED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha360_pack_direct_probe_block",
+            "client_event_id": "alpha360_pack_direct_probe_block",
+            "text": "Probe this workbook, list sheet names, formulas, and cell values."
+          },
+          "assertions": [
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T05_ALPHA35_19_EVIDENCE_LOCK_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T06_ALPHA35_18_WORKBOOK_PERMISSION_STILL_DISABLED",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "policies",
+          "method": "GET",
+          "endpoint": "/api/registry/execution-policies",
+          "assertions": [
+            {
+              "path": "$.policies[9].policy_key",
+              "equals": "workbook_read_permission_contract"
+            },
+            {
+              "path": "$.policies[9].workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].workbook_content_read",
+              "equals": false
+            },
+            {
+              "path": "$.policies[9].sheet_name_probe_allowed",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T07_ALPHA35_17_SOURCE_AUTHORITY_STILL_METADATA_ONLY",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "source_authorities",
+          "method": "GET",
+          "endpoint": "/api/registry/source-authorities",
+          "assertions": [
+            {
+              "path": "$.metadata_only",
+              "equals": true
+            },
+            {
+              "path": "$.execution_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T08_ROUTE_SAFETY_REGRESSION_NO_ACTIVE_PREVIEW",
+      "reset_conversation": true,
+      "steps": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "alpha360_no_active_preview",
+            "client_event_id": "alpha360_no_active_preview",
+            "text": "Preview"
+          },
+          "assertions": [
+            {
+              "path": "$.workbook_read",
+              "equals": false
+            },
+            {
+              "path": "$.engine_called",
+              "equals": false
+            },
+            {
+              "path": "$.excel_created",
+              "equals": false
+            },
+            {
+              "path": "$.legacy_builder_called",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

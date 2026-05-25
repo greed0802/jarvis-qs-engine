@@ -1,0 +1,21 @@
+JARVIS v5.0.0-alpha.35.19 TEST RUN RESULTS
+
+compileall: PASS
+pytest -q: sandbox timeout after partial progress; controlled batches used.
+controlled pytest batches: PASS 387/387
+
+Targeted packs:
+alpha35_19_workbook_permission_evidence_lock_tests.json: PASS 8/8
+alpha35_18_workbook_permission_contract_tests.json: PASS 8/8
+alpha35_17_source_authority_hardening_tests.json: PASS 10/10
+alpha35_16_document_contract_tests.json: PASS 8/8
+alpha35_15_job_output_contract_tests.json: PASS 8/8
+alpha35_14_tool_contract_map_tests.json: PASS 6/6
+alpha35_12_advisory_regression_hardening_tests.json: PASS 6/6
+alpha35_10_2_active_writing_report_preview_false_positive_tests.json: PASS 3/3
+
+Safety aggregate:
+workbook_read_any_true=false
+engine_called_any_true=false
+excel_created_any_true=false
+legacy_builder_called_any_true=false

@@ -1,0 +1,261 @@
+{
+  "pack_name": "alpha22_2f_engineering_language_gate_tests",
+  "version_target": "v5.0.0-alpha.36.3",
+  "tests": [
+    {
+      "name": "VERSION_ENGINEERING_SCOPE_ALPHA22_2F",
+      "steps": [
+        {
+          "name": "version",
+          "method": "GET",
+          "endpoint": "/api/version",
+          "assertions": [
+            {
+              "path": "$.version",
+              "equals": "v5.0.0-alpha.36.3"
+            },
+            {
+              "path": "$.scope",
+              "equals": "workbook_read_policy_review_no_content_read"
+            },
+            {
+              "path": "$.scope_metadata.engineering_language_gate",
+              "equals": true
+            },
+            {
+              "path": "$.scope_metadata.no_engine",
+              "equals": true
+            },
+            {
+              "path": "$.engines_connected.builder",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.workbook_read_enabled",
+              "equals": false
+            },
+            {
+              "path": "$.execution_locks.excel_output_enabled",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTIVE_ENGINEERING_HELP_DOES_NOT_ENTER_REDUCER",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_active_eng",
+            "client_event_id": "a222f_pack_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "mpa_help",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_active_eng",
+            "client_event_id": "a222f_pack_mpa",
+            "text": "Hi Jarvis, explain what MPa means."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result",
+              "not_exists": true
+            }
+          ]
+        },
+        {
+          "name": "engineering_qa_unit",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_active_eng",
+            "client_event_id": "a222f_pack_psi",
+            "text": "Use unit psi for engineering QA."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_non_mutating_language"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "active_task_non_mutating_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result",
+              "not_exists": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NO_ACTIVE_ENGINEERING_HELP_AND_TOOL_AMBIGUITY",
+      "steps": [
+        {
+          "name": "help",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_no_active_help",
+            "client_event_id": "a222f_help",
+            "text": "Explain concrete compressive strength in MPa and psi."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "general_stub"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        },
+        {
+          "name": "choose_tool",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_no_active_tool",
+            "client_event_id": "a222f_tool",
+            "text": "Audit pressure units."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "choose_tool"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "no_active_task_language_gate"
+            },
+            {
+              "path": "$.fallback_used",
+              "equals": false
+            },
+            {
+              "path": "$.requires_clarification",
+              "equals": true
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SLOT_REDUCER_STILL_OWNS_BUILDER_SETUP_AND_UNIT_EVIDENCE",
+      "steps": [
+        {
+          "name": "start",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_slot",
+            "client_event_id": "a222f_pack_slot_start",
+            "text": "Build me a BOQ"
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "new_builder_task_shell"
+            }
+          ]
+        },
+        {
+          "name": "setup",
+          "method": "POST",
+          "endpoint": "/api/chat",
+          "json": {
+            "conversation_id": "a222f_pack_slot",
+            "client_event_id": "a222f_pack_slot_setup",
+            "text": "Use Wall Types XGETWALLAREA unit sq. m. Zone 1: Old and New. Use Head 2 for Zone 1. Levels GF to L3."
+          },
+          "assertions": [
+            {
+              "path": "$.route",
+              "equals": "active_task_slot_edit"
+            },
+            {
+              "path": "$.router_step",
+              "equals": "slot_reducer"
+            },
+            {
+              "path": "$.confidence_engine.control_taken",
+              "equals": false
+            },
+            {
+              "path": "$.reducer_result.changed_slots",
+              "includes_all": [
+                "trade_profile",
+                "costx_function",
+                "unit",
+                "dynamic_zones",
+                "heading_assignments",
+                "levels"
+              ]
+            },
+            {
+              "path": "$.reducer_result.normalization.canonical_unit",
+              "equals": "m2"
+            },
+            {
+              "path": "$.reducer_result.normalization.unit_normalized",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "format": "multi_step"
+}

@@ -1,0 +1,246 @@
+{
+  "version": "v5.0.0-alpha.36.1",
+  "registry": "execution_policies",
+  "metadata_only": true,
+  "execution_enabled": false,
+  "policies": [
+    {
+      "policy_key": "metadata_only",
+      "tier": 0,
+      "execution_enabled": false,
+      "description": "Read registry metadata only."
+    },
+    {
+      "policy_key": "explain_classify_only",
+      "tier": 1,
+      "execution_enabled": false,
+      "description": "Explain or classify without tool execution."
+    },
+    {
+      "policy_key": "read_only_extraction",
+      "tier": 2,
+      "execution_enabled": false,
+      "requires_approval": true
+    },
+    {
+      "policy_key": "deterministic_calculation",
+      "tier": 3,
+      "execution_enabled": false,
+      "requires_validation": true
+    },
+    {
+      "policy_key": "preview_generation",
+      "tier": 4,
+      "execution_enabled": false,
+      "preview_first": true
+    },
+    {
+      "policy_key": "file_export",
+      "tier": 5,
+      "execution_enabled": false,
+      "approval_required": true
+    },
+    {
+      "policy_key": "destructive_external_or_code_patch",
+      "tier": 6,
+      "execution_enabled": false,
+      "FIRE_required": true,
+      "risk_level": "high"
+    },
+    {
+      "policy_key": "future_tool_contract_map",
+      "tier": 1,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "description": "Declare future tool contracts without reading files, running tools, or creating outputs.",
+      "allowed": [
+        "registry_metadata",
+        "input_contract_description",
+        "output_contract_description",
+        "required_file_description",
+        "approval_gate_description"
+      ],
+      "blocked": [
+        "workbook_read",
+        "tool_execution",
+        "file_generation",
+        "output_download_creation"
+      ],
+      "requires_approval_before_execution": true
+    },
+    {
+      "policy_key": "job_output_contract_map",
+      "tier": 1,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "description": "Declare future job and output manifest contracts without creating jobs, running workers, reading files, or generating outputs.",
+      "allowed": [
+        "job_contract_schema",
+        "output_manifest_schema",
+        "approval_state_description",
+        "progress_state_description",
+        "retention_policy_description",
+        "download_policy_placeholder",
+        "audit_contract_description"
+      ],
+      "blocked": [
+        "background_worker",
+        "job_queue_execution",
+        "workbook_read",
+        "tool_execution",
+        "file_generation",
+        "download_route_creation",
+        "output_cleanup"
+      ],
+      "requires_approval_before_execution": true
+    },
+    {
+      "policy_key": "workbook_read_permission_contract",
+      "tier": 1,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "description": "Declare future workbook read permission contracts without opening workbooks, listing sheets, reading cells, formulas, formats, or running any tool.",
+      "allowed": [
+        "permission_contract_schema",
+        "approval_state_description",
+        "file_reference_description",
+        "sheet_scope_description",
+        "range_scope_description",
+        "revocation_expiry_description",
+        "audit_contract_description",
+        "blocked_reason_description"
+      ],
+      "blocked": [
+        "open_workbook",
+        "parse_workbook",
+        "list_sheets",
+        "sheet_name_probe",
+        "read_cell_values",
+        "read_formulas",
+        "read_styles",
+        "run_builder_engine",
+        "create_excel"
+      ],
+      "workbook_read": false,
+      "workbook_content_read": false,
+      "formula_read": false,
+      "cell_value_read": false,
+      "sheet_name_probe_allowed": false,
+      "sheet_name_probe_requires_separate_approval": true,
+      "engine_called": false,
+      "excel_created": false,
+      "legacy_builder_called": false,
+      "tool_execution_called": false,
+      "requires_approval_before_execution": true
+    },
+    {
+      "policy_key": "pre_execution_integrity_matrix",
+      "tier": 0,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "workbook_read": false,
+      "workbook_content_read": false,
+      "sheet_name_probe_allowed": false,
+      "formula_read": false,
+      "cell_value_read": false,
+      "description": "Defines execution tiers and risk boundaries before any metadata probe; contract only.",
+      "allowed": [
+        "execution_tier_description",
+        "tool_risk_tier_description",
+        "state_transition_description"
+      ],
+      "blocked": [
+        "workbook_read",
+        "sheet_name_probe",
+        "tool_execution",
+        "worker_runtime",
+        "file_output"
+      ]
+    },
+    {
+      "policy_key": "state_transition_contract",
+      "tier": 0,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "workbook_read": false,
+      "workbook_content_read": false,
+      "sheet_name_probe_allowed": false,
+      "formula_read": false,
+      "cell_value_read": false,
+      "description": "Defines allowed and blocked state transitions without enabling runtime transitions.",
+      "allowed": [
+        "transition_contract_description",
+        "blocked_transition_description"
+      ],
+      "blocked": [
+        "runtime_state_store",
+        "workbook_read",
+        "sheet_name_probe",
+        "engine_call"
+      ]
+    },
+    {
+      "policy_key": "sheet_name_probe_readiness_gates",
+      "tier": 1,
+      "execution_enabled": false,
+      "metadata_only": true,
+      "workbook_read": false,
+      "workbook_content_read": false,
+      "sheet_name_probe_allowed": false,
+      "formula_read": false,
+      "cell_value_read": false,
+      "description": "Lists gates required before any future sheet-name-only probe; does not approve or run a probe.",
+      "allowed": [
+        "readiness_gate_description"
+      ],
+      "blocked": [
+        "sheet_name_probe",
+        "workbook_open",
+        "safe_path_resolver_call",
+        "openpyxl_import_for_reading"
+      ]
+    },
+    {
+      "policy_key": "workbook_metadata_probe_plan",
+      "tier": 1,
+      "metadata_only": true,
+      "execution_enabled": false,
+      "description": "Plan a future sheet-name-only workbook metadata probe without opening workbooks, reading sheets, or enabling probe execution.",
+      "allowed": [
+        "probe_scope_description",
+        "blocked_read_matrix",
+        "approval_requirement_description",
+        "file_reference_requirement_description",
+        "safe_path_review_requirement_description",
+        "audit_requirement_description",
+        "output_shape_description",
+        "blocked_result_shape"
+      ],
+      "blocked": [
+        "workbook_reader_runtime",
+        "sheet_name_probe",
+        "workbook_read",
+        "workbook_content_read",
+        "formula_read",
+        "cell_value_read",
+        "style_read",
+        "openpyxl_import",
+        "pandas_import",
+        "safe_path_resolver_call",
+        "endpoint_creation"
+      ],
+      "workbook_read": false,
+      "workbook_content_read": false,
+      "sheet_name_probe_allowed": false,
+      "formula_read": false,
+      "cell_value_read": false,
+      "style_read": false,
+      "engine_called": false,
+      "excel_created": false,
+      "legacy_builder_called": false,
+      "tool_execution_called": false,
+      "approval_required_future": true,
+      "safe_path_review_required_future": true
+    }
+  ]
+}
