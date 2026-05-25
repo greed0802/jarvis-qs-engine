@@ -1,0 +1,82 @@
+{
+  "contract_id": "contract_9ecf1103dc92482caeaf04e708001e2e",
+  "conversation_id": "alpha34_approved_a70c1457",
+  "task_id": "task_c6a92475e4ad48c9aef08986544fd9b0",
+  "snapshot_id": "snap_72a68c1c7473471cab499daeef624d5e",
+  "adapter_input_id": "adapter_1e6592a5e5c54f9c90c1dbfdc71da170",
+  "source": "builder_adapter_input",
+  "engine_mode": "contract_only",
+  "contract_schema_version": "builder_contract_v1",
+  "legacy_target": "legacy_builder_v4_contract_v1",
+  "engine_version_target": "legacy_builder_v4_contract_v1",
+  "contract_status": "ready_for_engine_connection",
+  "workbook_ref": {
+    "workbook_id": "att_1774c5259b0842ddb689ea58db8d7c8a",
+    "attachment_id": "att_1774c5259b0842ddb689ea58db8d7c8a",
+    "filename": "SheetProbe.xlsx",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size_bytes": 5642,
+    "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_1774c5259b0842ddb689ea58db8d7c8a_SheetProbe.xlsx",
+    "source": "upload",
+    "bound_to_task_id": "task_c6a92475e4ad48c9aef08986544fd9b0",
+    "created_at": "2026-05-25T11:19:43.358237+00:00"
+  },
+  "builder_setup": {
+    "trade_profile": "Wall Types",
+    "costx_function": "XGETWALLAREA",
+    "custom_quantity": null,
+    "unit": "m2",
+    "zone_mode": "rebuild",
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": "Head2"
+      }
+    ],
+    "heading_assignments": {
+      "1": "Head2"
+    },
+    "levels": [
+      "GF",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null
+  },
+  "setup_completeness": {
+    "status": "ready_for_future_engine",
+    "ready_for_dry_run": true,
+    "ready_for_future_engine": true,
+    "missing_required": [],
+    "missing_labels": [],
+    "warnings": [],
+    "next_actions": []
+  },
+  "normalization": {
+    "status": "clean",
+    "warnings": []
+  },
+  "conflicts": [],
+  "safety": {
+    "workbook_read": false,
+    "engine_called": false,
+    "excel_created": false,
+    "contract_only": true,
+    "legacy_builder_called": false
+  },
+  "validation": {
+    "valid": true,
+    "blockers": [],
+    "issues": [],
+    "warnings": []
+  },
+  "contract_hash": "76500066a872bd4e1e368bbeb767600979a128f1a1f32f513d2adc3146ee4661",
+  "created_at": "2026-05-25T11:19:43.826935+00:00"
+}

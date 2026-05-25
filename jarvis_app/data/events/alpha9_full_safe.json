@@ -1,0 +1,1993 @@
+[
+  {
+    "event_id": "evt_9253f630687e42bf8e86627e3b3fc5c5",
+    "client_event_id": "alpha9_full_safe_new",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "NEW_COMMAND",
+    "route": "new_builder_task_shell",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Build me a BOQ",
+      "client_event_id": "alpha9_full_safe_new",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_9253f630687e42bf8e86627e3b3fc5c5",
+      "intent": "NEW_COMMAND",
+      "route": "new_builder_task_shell",
+      "message": "I can start a Builder task. Please attach the workbook and confirm trade/profile, function, unit, zones/headings, and levels.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "waiting_for_file",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "soft_request + qs_alias:boq",
+      "router_step": "no_active_task_language_gate",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": null,
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:04.458457+00:00"
+      },
+      "reducer_result": {
+        "qs_alias": {
+          "matched": true,
+          "alias": "boq",
+          "canonical_intent": "builder_start",
+          "confidence": 95,
+          "region_hint": null,
+          "requires_setup": true,
+          "negative_guard": null,
+          "tool_candidates": [
+            "builder"
+          ]
+        },
+        "confidence_engine": {
+          "would_route": "new_builder_task_shell",
+          "plan_mutated": false
+        }
+      },
+      "snapshot": null,
+      "route_confidence": 95,
+      "confidence_reason": "soft_request + qs_alias:boq",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "limited_control",
+        "would_route": "new_builder_task_shell",
+        "would_confidence": 95,
+        "confidence_reason": "soft_request + qs_alias:boq",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": true,
+        "actual_route": "new_builder_task_shell",
+        "route_mismatch": false
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": false,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": null,
+        "no_active_language": {
+          "matched": true,
+          "category": "soft_builder_start",
+          "route": "new_builder_task_shell",
+          "intent": "NEW_COMMAND",
+          "confidence": 95,
+          "reason": "soft_request + qs_alias:boq",
+          "tool_candidates": [
+            "builder"
+          ],
+          "requires_setup": true,
+          "requires_clarification": false,
+          "alias": "boq"
+        },
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "workbook_ref",
+          "trade_profile",
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Workbook",
+          "Trade/Profile",
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is not attached yet."
+        ],
+        "next_actions": [
+          "Set workbook",
+          "Set trade/profile",
+          "Set costx function",
+          "Set unit",
+          "Set dynamic zones",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "waiting_for_workbook",
+        "user_status": "Waiting for workbook",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "workbook_ref",
+          "trade_profile",
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Workbook",
+          "Trade/Profile",
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Attach workbook"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:04.529032+00:00"
+  },
+  {
+    "event_id": "evt_b20bb056c6824cc487bb70d5bc23df08",
+    "client_event_id": "a9_attach_001",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "ATTACHMENT_ONLY",
+    "route": "attachment_bind",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Here",
+      "client_event_id": "a9_attach_001",
+      "mode": "ask_first",
+      "attachments": [
+        {
+          "attachment_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "filename": "Test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32,
+          "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_c3449d32222e4ff9ae70066a16d23437_Test.xlsx"
+        }
+      ]
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_b20bb056c6824cc487bb70d5bc23df08",
+      "intent": "ATTACHMENT_ONLY",
+      "route": "attachment_bind",
+      "message": "Workbook received. I kept it bound to the active Builder task.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "active_builder_attachment_bound_metadata_only",
+      "router_step": "attachment_bind",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:04.661077+00:00"
+      },
+      "reducer_result": {
+        "workbook": {
+          "workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "attachment_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "filename": "Test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32,
+          "source": "upload",
+          "bound_to_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+          "created_at": "2026-05-25T11:20:04.659075+00:00"
+        },
+        "workbook_read": false
+      },
+      "snapshot": null,
+      "route_confidence": 98,
+      "confidence_reason": "active_builder_attachment_bound_metadata_only",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "attachment_bind",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": true,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "trade_profile",
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Trade/Profile",
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set trade/profile",
+          "Set costx function",
+          "Set unit",
+          "Set dynamic zones",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "trade_profile",
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Trade/Profile",
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Set Trade/Profile",
+          "Set CostX function",
+          "Set Unit",
+          "Set Dynamic zones",
+          "Set Heading assignments",
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:04.672709+00:00"
+  },
+  {
+    "event_id": "evt_ad10cdc1722c46d2a7301de01486798d",
+    "client_event_id": "a9_full_2",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Use Wall Types",
+      "client_event_id": "a9_full_2",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_ad10cdc1722c46d2a7301de01486798d",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — updated trade/profile to Wall Types.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:04.776363+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "trade_function_unit",
+        "changes": {
+          "trade_profile": "Wall Types"
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — updated trade/profile to Wall Types.",
+        "warnings": [],
+        "changed_slots": [
+          "trade_profile"
+        ],
+        "confidence": 0.9,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Use Wall Types",
+          "raw_text": "Use Wall Types",
+          "canonical_text": "Use Wall Types",
+          "applied": false
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set costx function",
+          "Set unit",
+          "Set dynamic zones",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "costx_function",
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "CostX function",
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Set CostX function",
+          "Set Unit",
+          "Set Dynamic zones",
+          "Set Heading assignments",
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:04.779216+00:00"
+  },
+  {
+    "event_id": "evt_80b0eba3a8524c2e94e77046822ef031",
+    "client_event_id": "a9_full_3",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Use XGETWALLAREA",
+      "client_event_id": "a9_full_3",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_80b0eba3a8524c2e94e77046822ef031",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — updated function to XGETWALLAREA.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:04.880469+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "trade_function_unit",
+        "changes": {
+          "costx_function": "XGETWALLAREA"
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — updated function to XGETWALLAREA.",
+        "warnings": [],
+        "changed_slots": [
+          "costx_function"
+        ],
+        "confidence": 0.9,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Use XGETWALLAREA",
+          "raw_text": "Use XGETWALLAREA",
+          "canonical_text": "Use XGETWALLAREA",
+          "applied": false
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set unit",
+          "Set dynamic zones",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "unit",
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Unit",
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Set Unit",
+          "Set Dynamic zones",
+          "Set Heading assignments",
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:04.883009+00:00"
+  },
+  {
+    "event_id": "evt_dc506c8ca5554ec5ad42f93d3781871e",
+    "client_event_id": "a9_full_4",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Unit m2",
+      "client_event_id": "a9_full_4",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_dc506c8ca5554ec5ad42f93d3781871e",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — updated unit to m2.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.101703+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "trade_function_unit",
+        "changes": {
+          "unit": "m2"
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — updated unit to m2.",
+        "warnings": [],
+        "changed_slots": [
+          "unit"
+        ],
+        "confidence": 0.9,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Unit m2",
+          "raw_text": "Unit m2",
+          "canonical_text": "Unit m2",
+          "applied": false,
+          "original_unit": "m2",
+          "canonical_unit": "m2"
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set dynamic zones",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "dynamic_zones",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Dynamic zones",
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Set Dynamic zones",
+          "Set Heading assignments",
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:05.107398+00:00"
+  },
+  {
+    "event_id": "evt_e697ff3bdee542faae56cff6859b51db",
+    "client_event_id": "a9_full_5",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Zone 1: Old and New",
+      "client_event_id": "a9_full_5",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_e697ff3bdee542faae56cff6859b51db",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — set Zone 1 to Old, New.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.240216+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "zones",
+        "changes": {
+          "zone_id": 1,
+          "values": [
+            "Old",
+            "New"
+          ]
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — set Zone 1 to Old, New.",
+        "warnings": [],
+        "changed_slots": [
+          "dynamic_zones"
+        ],
+        "confidence": 0.95,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Zone 1: Old and New",
+          "raw_text": "Zone 1: Old and New",
+          "canonical_text": "Zone 1: Old and New",
+          "applied": false
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Heading assignments",
+          "Levels"
+        ],
+        "next_actions": [
+          "Set Heading assignments",
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:05.247427+00:00"
+  },
+  {
+    "event_id": "evt_f59e2947516b4fdf8fa9f921d2b83f3e",
+    "client_event_id": "a9_full_6",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Use Head 2 for Zone 1",
+      "client_event_id": "a9_full_6",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_f59e2947516b4fdf8fa9f921d2b83f3e",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — updated heading assignments.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.358288+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "heading_assignments",
+        "changes": {
+          "assignments": {
+            "1": "Head2"
+          },
+          "confidence": 0.92
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — updated heading assignments.",
+        "warnings": [],
+        "changed_slots": [
+          "heading_assignments"
+        ],
+        "confidence": 0.92,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Use Head 2 for Zone 1",
+          "raw_text": "Use Head 2 for Zone 1",
+          "canonical_text": "Use Head 2 for Zone 1",
+          "applied": false
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "levels"
+        ],
+        "missing_labels": [
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is attached but setup is not complete for future Builder engine."
+        ],
+        "next_actions": [
+          "Set levels"
+        ]
+      },
+      "readiness": {
+        "status": "incomplete_setup",
+        "user_status": "Setup incomplete",
+        "can_create_snapshot": false,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": true,
+        "blockers": [],
+        "missing": [
+          "levels"
+        ],
+        "missing_labels": [
+          "Levels"
+        ],
+        "next_actions": [
+          "Set Levels"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "incomplete",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:05.363517+00:00"
+  },
+  {
+    "event_id": "evt_86241659575049eb8526691076ad6eb0",
+    "client_event_id": "a9_full_7",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "SLOT_EDIT",
+    "route": "active_task_slot_edit",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "text": "Levels GF to L3",
+      "client_event_id": "a9_full_7",
+      "mode": "ask_first",
+      "attachments": []
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "event_id": "evt_86241659575049eb8526691076ad6eb0",
+      "intent": "SLOT_EDIT",
+      "route": "active_task_slot_edit",
+      "message": "Done — set Levels to GF, L1, L2, L3.",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "active_task_status": "collecting",
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "slot_reducer_applied",
+      "router_step": "slot_reducer",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.462514+00:00"
+      },
+      "reducer_result": {
+        "handled": true,
+        "action": "set",
+        "slot": "levels",
+        "changes": {
+          "levels": [
+            "GF",
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        "requires_clarification": false,
+        "clarification": null,
+        "message": "Done — set Levels to GF, L1, L2, L3.",
+        "warnings": [],
+        "changed_slots": [
+          "levels"
+        ],
+        "confidence": 0.9,
+        "conflict_type": null,
+        "conflicting_slots": [],
+        "conflicts": [],
+        "options": [],
+        "plan_mutated": true,
+        "normalization": {
+          "status": "clean",
+          "warnings": [],
+          "original_text": "Levels GF to L3",
+          "raw_text": "Levels GF to L3",
+          "canonical_text": "Levels GF to L3",
+          "applied": false
+        },
+        "trade_registry": null
+      },
+      "snapshot": null,
+      "route_confidence": 96,
+      "confidence_reason": "slot_reducer_applied",
+      "tool_candidates": [
+        "builder"
+      ],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "active_task_context",
+        "would_confidence": 90,
+        "confidence_reason": "active_task_present:builder",
+        "tool_candidates": [
+          "builder"
+        ],
+        "requires_clarification": false,
+        "control_taken": false,
+        "actual_route": "active_task_slot_edit",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": true,
+        "has_pending_clarification": false,
+        "has_attachments": false,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": {
+          "matched": false,
+          "action": null,
+          "route_hint": null,
+          "confidence": 0,
+          "reason": "no_active_task_action_language_match"
+        },
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": {
+        "status": "ready_for_future_engine",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": true,
+        "missing_required": [],
+        "missing_labels": [],
+        "warnings": [],
+        "next_actions": []
+      },
+      "readiness": {
+        "status": "ready_for_snapshot",
+        "user_status": "Ready to create snapshot",
+        "can_create_snapshot": true,
+        "can_run_adapter_dry_run": false,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": false,
+        "blockers": [],
+        "missing": [],
+        "missing_labels": [],
+        "next_actions": [
+          "Create snapshot"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "ready_for_future_engine",
+        "snapshot_status": null,
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      }
+    },
+    "created_at": "2026-05-25T11:20:05.478531+00:00"
+  },
+  {
+    "event_id": "evt_81c45b62b9e8406a8abd1af7fb409742",
+    "client_event_id": "a9_snap_001",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "BUILDER_SNAPSHOT",
+    "route": "builder_snapshot_created",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "client_event_id": "a9_snap_001",
+      "approve": true
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+      "route": "builder_snapshot_created",
+      "message": "Builder snapshot created from the active plan. Preview/export engines are still not connected in v5.0.0-alpha.36.3.",
+      "valid": true,
+      "blocked": false,
+      "reason": "builder_snapshot_created_from_active_task",
+      "router_step": "builder_snapshot_create",
+      "snapshot_hash": "b521d3fa5adadcc89ab823d0480dc39e19147f3013f14e405d91f1fe15bf21e9",
+      "snapshot_status": "current",
+      "stale_reason": null,
+      "source_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+      "active_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+      "validation": {
+        "valid": true,
+        "issues": [],
+        "warnings": [],
+        "setup_completeness": {
+          "status": "ready_for_future_engine",
+          "ready_for_dry_run": true,
+          "ready_for_future_engine": true,
+          "missing_required": [],
+          "missing_labels": [],
+          "warnings": [],
+          "next_actions": []
+        }
+      },
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.462514+00:00"
+      },
+      "snapshot": {
+        "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+        "conversation_id": "alpha9_full_safe",
+        "task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "source": "active_task",
+        "workbook_ref": {
+          "workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "attachment_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "filename": "Test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32,
+          "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_c3449d32222e4ff9ae70066a16d23437_Test.xlsx",
+          "source": "upload",
+          "bound_to_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+          "created_at": "2026-05-25T11:20:04.659075+00:00"
+        },
+        "trade_profile": "Wall Types",
+        "costx_function": "XGETWALLAREA",
+        "custom_quantity": null,
+        "unit": "m2",
+        "zone_mode": "rebuild",
+        "dynamic_zones": [
+          {
+            "zone_id": 1,
+            "values": [
+              "Old",
+              "New"
+            ],
+            "head_assignment": "Head2"
+          }
+        ],
+        "heading_assignments": {
+          "1": "Head2"
+        },
+        "levels": [
+          "GF",
+          "L1",
+          "L2",
+          "L3"
+        ],
+        "aliases": {},
+        "item_code_settings": {},
+        "trade_registry": null,
+        "approved_by_user": true,
+        "status": "current",
+        "stale_reason": null,
+        "source_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+        "active_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+        "validation": {
+          "valid": true,
+          "issues": [],
+          "warnings": [],
+          "setup_completeness": {
+            "status": "ready_for_future_engine",
+            "ready_for_dry_run": true,
+            "ready_for_future_engine": true,
+            "missing_required": [],
+            "missing_labels": [],
+            "warnings": [],
+            "next_actions": []
+          }
+        },
+        "setup_completeness": {
+          "status": "ready_for_future_engine",
+          "ready_for_dry_run": true,
+          "ready_for_future_engine": true,
+          "missing_required": [],
+          "missing_labels": [],
+          "warnings": [],
+          "next_actions": []
+        },
+        "normalization": {
+          "status": "clean",
+          "warnings": []
+        },
+        "conflicts": [],
+        "snapshot_hash": "b521d3fa5adadcc89ab823d0480dc39e19147f3013f14e405d91f1fe15bf21e9",
+        "created_at": "2026-05-25T11:20:05.548535+00:00",
+        "updated_at": null
+      },
+      "setup_completeness": {
+        "status": "ready_for_future_engine",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": true,
+        "missing_required": [],
+        "missing_labels": [],
+        "warnings": [],
+        "next_actions": []
+      },
+      "readiness": {
+        "status": "snapshot_current",
+        "user_status": "Ready for adapter dry run",
+        "can_create_snapshot": true,
+        "can_run_adapter_dry_run": true,
+        "can_create_engine_contract": false,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": false,
+        "blockers": [],
+        "missing": [],
+        "missing_labels": [],
+        "next_actions": [
+          "Run adapter dry run"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "ready_for_future_engine",
+        "snapshot_status": "current",
+        "adapter_status": null,
+        "adapter_freshness": null,
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      },
+      "intent": "BUILDER_SNAPSHOT"
+    },
+    "created_at": "2026-05-25T11:20:05.608300+00:00"
+  },
+  {
+    "event_id": "evt_be51267e417e42c89c8df3f3f3001a10",
+    "client_event_id": "a9_adapter_001",
+    "conversation_id": "alpha9_full_safe",
+    "intent": "BUILDER_ADAPTER_DRY_RUN",
+    "route": "builder_adapter_dry_run",
+    "request": {
+      "conversation_id": "alpha9_full_safe",
+      "client_event_id": "a9_adapter_001",
+      "snapshot_id": null,
+      "allow_stale": false
+    },
+    "response": {
+      "conversation_id": "alpha9_full_safe",
+      "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+      "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+      "adapter_input_id": "adapter_92add758d3754cdf80f72ce59efbf071",
+      "route": "builder_adapter_dry_run",
+      "message": "Builder adapter dry run completed. No Builder engine was called and no Excel file was created.",
+      "blocked": false,
+      "reason": "builder_adapter_dry_run_completed",
+      "router_step": "builder_adapter_dry_run",
+      "adapter_status": "dry_run_ready",
+      "engine_called": false,
+      "excel_created": false,
+      "workbook_read": false,
+      "adapter_input": {
+        "adapter_input_id": "adapter_92add758d3754cdf80f72ce59efbf071",
+        "conversation_id": "alpha9_full_safe",
+        "task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+        "snapshot_hash": "b521d3fa5adadcc89ab823d0480dc39e19147f3013f14e405d91f1fe15bf21e9",
+        "source": "builder_run_snapshot",
+        "workbook_ref": {
+          "workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "attachment_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "filename": "Test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32,
+          "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_c3449d32222e4ff9ae70066a16d23437_Test.xlsx",
+          "source": "upload",
+          "bound_to_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+          "created_at": "2026-05-25T11:20:04.659075+00:00"
+        },
+        "workbook_read": false,
+        "trade_profile": "Wall Types",
+        "costx_function": "XGETWALLAREA",
+        "custom_quantity": null,
+        "unit": "m2",
+        "zone_mode": "rebuild",
+        "dynamic_zones": [
+          {
+            "zone_id": 1,
+            "values": [
+              "Old",
+              "New"
+            ],
+            "head_assignment": "Head2"
+          }
+        ],
+        "heading_assignments": {
+          "1": "Head2"
+        },
+        "levels": [
+          "GF",
+          "L1",
+          "L2",
+          "L3"
+        ],
+        "aliases": {},
+        "item_code_settings": {},
+        "trade_registry": null,
+        "setup_completeness": {
+          "status": "ready_for_future_engine",
+          "ready_for_dry_run": true,
+          "ready_for_future_engine": true,
+          "missing_required": [],
+          "missing_labels": [],
+          "warnings": [],
+          "next_actions": []
+        },
+        "normalization": {
+          "status": "clean",
+          "warnings": []
+        },
+        "conflicts": [],
+        "created_at": "2026-05-25T11:20:05.632888+00:00"
+      },
+      "validation": {
+        "valid_for_dry_run": true,
+        "valid_for_future_engine": true,
+        "issues": [],
+        "warnings": []
+      },
+      "state": {
+        "conversation_id": "alpha9_full_safe",
+        "project_id": null,
+        "active_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+        "active_workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:04.451429+00:00",
+        "updated_at": "2026-05-25T11:20:05.462514+00:00"
+      },
+      "snapshot": {
+        "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+        "status": "current",
+        "stale_reason": null,
+        "source_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+        "active_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+        "snapshot_hash": "b521d3fa5adadcc89ab823d0480dc39e19147f3013f14e405d91f1fe15bf21e9",
+        "workbook_ref": {
+          "workbook_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "attachment_id": "att_c3449d32222e4ff9ae70066a16d23437",
+          "filename": "Test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32,
+          "source": "upload",
+          "bound_to_task_id": "task_1ff91488c7bc46968ed5d77256fc420f",
+          "created_at": "2026-05-25T11:20:04.659075+00:00"
+        },
+        "setup_completeness": {
+          "status": "ready_for_future_engine",
+          "ready_for_dry_run": true,
+          "ready_for_future_engine": true,
+          "missing_required": [],
+          "missing_labels": [],
+          "warnings": [],
+          "next_actions": []
+        }
+      },
+      "adapter": {
+        "adapter_input_id": "adapter_92add758d3754cdf80f72ce59efbf071",
+        "snapshot_id": "snap_9501f26fb2bd43f3a24be6ec325b5cfb",
+        "snapshot_status": "current",
+        "freshness": "current",
+        "stale_reason": null,
+        "engine_called": false,
+        "excel_created": false,
+        "workbook_read": false,
+        "valid_for_dry_run": true,
+        "valid_for_future_engine": true,
+        "adapter_status": "dry_run_ready",
+        "setup_completeness": {
+          "status": "ready_for_future_engine",
+          "ready_for_dry_run": true,
+          "ready_for_future_engine": true,
+          "missing_required": [],
+          "missing_labels": [],
+          "warnings": [],
+          "next_actions": []
+        },
+        "normalization": {
+          "status": "clean",
+          "warnings": []
+        },
+        "conflicts": [],
+        "trade_registry": null
+      },
+      "setup_completeness": {
+        "status": "ready_for_future_engine",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": true,
+        "missing_required": [],
+        "missing_labels": [],
+        "warnings": [],
+        "next_actions": []
+      },
+      "readiness": {
+        "status": "ready_for_contract",
+        "user_status": "Ready to create safe engine contract",
+        "can_create_snapshot": true,
+        "can_run_adapter_dry_run": true,
+        "can_create_engine_contract": true,
+        "can_preview": false,
+        "can_export": false,
+        "preview_status": "stubbed_no_engine",
+        "export_status": "stubbed_no_engine",
+        "blocked": false,
+        "blockers": [],
+        "missing": [],
+        "missing_labels": [],
+        "next_actions": [
+          "Create engine contract"
+        ],
+        "pending_clarification_id": null,
+        "pending_clarification_prompt": null,
+        "setup_status": "ready_for_future_engine",
+        "snapshot_status": "current",
+        "adapter_status": "dry_run_ready",
+        "adapter_freshness": "current",
+        "engine_contract_status": null,
+        "engine_boundary_audit_status": null,
+        "normalization_status": "clean",
+        "trade_registry": null,
+        "workbook_read_policy_status": "not_reviewed",
+        "workbook_read_policy_reviewed": false,
+        "workbook_read_policy": {
+          "found": false,
+          "status": "not_reviewed",
+          "policy_only": true,
+          "workbook_opened": false,
+          "workbook_read": false,
+          "workbook_content_read": false,
+          "cells_read": false,
+          "formulas_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "legacy_builder_called": false
+        },
+        "safety": {
+          "workbook_read": false,
+          "engine_called": false,
+          "excel_created": false,
+          "contract_only": true,
+          "legacy_builder_called": false
+        }
+      },
+      "intent": "BUILDER_ADAPTER_DRY_RUN"
+    },
+    "created_at": "2026-05-25T11:20:05.737153+00:00"
+  }
+]

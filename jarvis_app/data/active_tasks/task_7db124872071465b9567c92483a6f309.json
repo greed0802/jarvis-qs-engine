@@ -1,0 +1,160 @@
+{
+  "task_id": "task_7db124872071465b9567c92483a6f309",
+  "conversation_id": "alpha8_stale_a6095a874f1642f8935a69c0c227acd0",
+  "tool": "builder",
+  "status": "collecting",
+  "workbook": {
+    "workbook_id": "att_a3172b74a78741adac5c743d50350f3c",
+    "attachment_id": "att_a3172b74a78741adac5c743d50350f3c",
+    "filename": "Steel_test.xlsx",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size_bytes": 30,
+    "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_a3172b74a78741adac5c743d50350f3c_Steel_test.xlsx",
+    "source": "upload",
+    "bound_to_task_id": "task_7db124872071465b9567c92483a6f309",
+    "created_at": "2026-05-25T11:20:02.443697+00:00"
+  },
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": "Wall Types",
+    "costx_function": "XGETWALLAREA",
+    "custom_quantity": null,
+    "unit": "m2",
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New",
+          "Same"
+        ],
+        "head_assignment": "Head2"
+      }
+    ],
+    "heading_assignments": {
+      "1": "Head2"
+    },
+    "levels": [
+      "GF",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.95
+  },
+  "pending_clarification": null,
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": {
+    "adapter_input_id": "adapter_7ee6bbf8306c44a7ab2c98b3688c1620",
+    "conversation_id": "alpha8_stale_a6095a874f1642f8935a69c0c227acd0",
+    "task_id": "task_7db124872071465b9567c92483a6f309",
+    "snapshot_id": "snap_8e572a0d208f41dd83221278ef8881f0",
+    "snapshot_status": "stale",
+    "route": "builder_adapter_dry_run",
+    "blocked": false,
+    "reason": "builder_adapter_dry_run_completed",
+    "adapter_status": "stale_due_to_snapshot",
+    "freshness": "stale",
+    "stale_reason": "source_snapshot_is_stale",
+    "engine_called": false,
+    "excel_created": false,
+    "workbook_read": false,
+    "adapter_input": {
+      "adapter_input_id": "adapter_7ee6bbf8306c44a7ab2c98b3688c1620",
+      "conversation_id": "alpha8_stale_a6095a874f1642f8935a69c0c227acd0",
+      "task_id": "task_7db124872071465b9567c92483a6f309",
+      "snapshot_id": "snap_8e572a0d208f41dd83221278ef8881f0",
+      "snapshot_hash": "e484fef4bbe099b8f06aa26c1a263106babbbd3668d22538605bd8034f5a94ed",
+      "source": "builder_run_snapshot",
+      "workbook_ref": {
+        "workbook_id": "att_a3172b74a78741adac5c743d50350f3c",
+        "attachment_id": "att_a3172b74a78741adac5c743d50350f3c",
+        "filename": "Steel_test.xlsx",
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size_bytes": 30,
+        "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_a3172b74a78741adac5c743d50350f3c_Steel_test.xlsx",
+        "source": "upload",
+        "bound_to_task_id": "task_7db124872071465b9567c92483a6f309",
+        "created_at": "2026-05-25T11:20:02.443697+00:00"
+      },
+      "workbook_read": false,
+      "trade_profile": "Wall Types",
+      "costx_function": "XGETWALLAREA",
+      "custom_quantity": null,
+      "unit": "m2",
+      "zone_mode": "rebuild",
+      "dynamic_zones": [
+        {
+          "zone_id": 1,
+          "values": [
+            "Old",
+            "New"
+          ],
+          "head_assignment": "Head2"
+        }
+      ],
+      "heading_assignments": {
+        "1": "Head2"
+      },
+      "levels": [
+        "GF",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "aliases": {},
+      "item_code_settings": {},
+      "trade_registry": null,
+      "setup_completeness": {
+        "status": "ready_for_future_engine",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": true,
+        "missing_required": [],
+        "missing_labels": [],
+        "warnings": [],
+        "next_actions": []
+      },
+      "normalization": {
+        "status": "clean",
+        "warnings": []
+      },
+      "conflicts": [],
+      "created_at": "2026-05-25T11:20:02.874781+00:00"
+    },
+    "validation": {
+      "valid_for_dry_run": false,
+      "valid_for_future_engine": false,
+      "issues": [
+        "source_snapshot_is_stale"
+      ],
+      "warnings": []
+    },
+    "message": "Builder adapter dry run completed. No Builder engine was called and no Excel file was created.",
+    "setup_completeness": {
+      "status": "ready_for_future_engine",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": true,
+      "missing_required": [],
+      "missing_labels": [],
+      "warnings": [],
+      "next_actions": []
+    },
+    "normalization": {
+      "status": "clean",
+      "warnings": []
+    },
+    "conflicts": [],
+    "created_at": "2026-05-25T11:20:02.874781+00:00",
+    "updated_at": "2026-05-25T11:20:02.941375+00:00"
+  },
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:02.402111+00:00",
+  "updated_at": "2026-05-25T11:20:03.045829+00:00"
+}

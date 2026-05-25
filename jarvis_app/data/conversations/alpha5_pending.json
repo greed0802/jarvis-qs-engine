@@ -1,0 +1,12 @@
+{
+  "conversation_id": "alpha5_pending",
+  "project_id": null,
+  "active_task_id": "task_00a6eae2276f477c9026ac09cd05c4ee",
+  "active_workbook_id": null,
+  "pending_clarification_id": "clar_19cf8e93e6b740c88023c8bee9335496",
+  "latest_preview_id": null,
+  "latest_export_id": null,
+  "current_mode": "ask_first",
+  "created_at": "2026-05-25T11:19:59.279973+00:00",
+  "updated_at": "2026-05-25T11:19:59.406613+00:00"
+}

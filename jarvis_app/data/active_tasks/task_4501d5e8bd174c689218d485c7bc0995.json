@@ -1,0 +1,31 @@
+{
+  "task_id": "task_4501d5e8bd174c689218d485c7bc0995",
+  "conversation_id": "alpha61_safe_failure",
+  "tool": "builder",
+  "status": "waiting_for_file",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.0
+  },
+  "pending_clarification": null,
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:00.323310+00:00",
+  "updated_at": "2026-05-25T11:20:00.323310+00:00"
+}

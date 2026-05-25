@@ -1,0 +1,101 @@
+{
+  "adapter_input_id": "adapter_98398fd095bf41499c88d9b605317c92",
+  "conversation_id": "alpha35_8_not_reviewed_a450a16e9700464085ae291a3a10fca8",
+  "task_id": "task_f81e263d1c2a463eb0842373ba8181a5",
+  "snapshot_id": "snap_f7b77e433e514adaaf12321decc08e16",
+  "snapshot_status": "current",
+  "route": "builder_adapter_dry_run",
+  "blocked": false,
+  "reason": "builder_adapter_dry_run_completed",
+  "adapter_status": "dry_run_ready",
+  "freshness": "current",
+  "stale_reason": null,
+  "engine_called": false,
+  "excel_created": false,
+  "workbook_read": false,
+  "adapter_input": {
+    "adapter_input_id": "adapter_98398fd095bf41499c88d9b605317c92",
+    "conversation_id": "alpha35_8_not_reviewed_a450a16e9700464085ae291a3a10fca8",
+    "task_id": "task_f81e263d1c2a463eb0842373ba8181a5",
+    "snapshot_id": "snap_f7b77e433e514adaaf12321decc08e16",
+    "snapshot_hash": "ce05692bbbf8b954e54ff34cdb74c0f8669f2be249f9db6d4b7a319c71993047",
+    "source": "builder_run_snapshot",
+    "workbook_ref": {
+      "workbook_id": "att_8fd85f8642294f299e3dda69be1a583b",
+      "attachment_id": "att_8fd85f8642294f299e3dda69be1a583b",
+      "filename": "Test.xlsx",
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size_bytes": 66,
+      "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_8fd85f8642294f299e3dda69be1a583b_Test.xlsx",
+      "source": "upload",
+      "bound_to_task_id": "task_f81e263d1c2a463eb0842373ba8181a5",
+      "created_at": "2026-05-25T11:19:52.292946+00:00"
+    },
+    "workbook_read": false,
+    "trade_profile": "Wall Types",
+    "costx_function": "XGETWALLAREA",
+    "custom_quantity": null,
+    "unit": "m2",
+    "zone_mode": "rebuild",
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": "Head2"
+      }
+    ],
+    "heading_assignments": {
+      "1": "Head2"
+    },
+    "levels": [
+      "GF",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "setup_completeness": {
+      "status": "ready_for_future_engine",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": true,
+      "missing_required": [],
+      "missing_labels": [],
+      "warnings": [],
+      "next_actions": []
+    },
+    "normalization": {
+      "status": "clean",
+      "warnings": []
+    },
+    "conflicts": [],
+    "created_at": "2026-05-25T11:19:52.810833+00:00"
+  },
+  "validation": {
+    "valid_for_dry_run": true,
+    "valid_for_future_engine": true,
+    "issues": [],
+    "warnings": []
+  },
+  "message": "Builder adapter dry run completed. No Builder engine was called and no Excel file was created.",
+  "setup_completeness": {
+    "status": "ready_for_future_engine",
+    "ready_for_dry_run": true,
+    "ready_for_future_engine": true,
+    "missing_required": [],
+    "missing_labels": [],
+    "warnings": [],
+    "next_actions": []
+  },
+  "normalization": {
+    "status": "clean",
+    "warnings": []
+  },
+  "conflicts": [],
+  "created_at": "2026-05-25T11:19:52.810833+00:00",
+  "updated_at": null
+}

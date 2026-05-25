@@ -1,0 +1,119 @@
+{
+  "snapshot_id": "snap_b934648b4dbe4822b675cd2fc88f0c20",
+  "conversation_id": "alpha7_snapshot_adapter_completeness_7de376306ea841ea871308189986fef5",
+  "task_id": "task_e9ca6b4fefc7404c8affc3ee75bd1ea1",
+  "source": "active_task",
+  "workbook_ref": {
+    "workbook_id": "att_9ab293d1a7664de285f0ef52677a3743",
+    "attachment_id": "att_9ab293d1a7664de285f0ef52677a3743",
+    "filename": "Steel_test.xlsx",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size_bytes": 30,
+    "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_9ab293d1a7664de285f0ef52677a3743_Steel_test.xlsx",
+    "source": "upload",
+    "bound_to_task_id": "task_e9ca6b4fefc7404c8affc3ee75bd1ea1",
+    "created_at": "2026-05-25T11:20:00.625417+00:00"
+  },
+  "trade_profile": null,
+  "costx_function": null,
+  "custom_quantity": null,
+  "unit": null,
+  "zone_mode": "rebuild",
+  "dynamic_zones": [
+    {
+      "zone_id": 1,
+      "values": [
+        "Old",
+        "New"
+      ],
+      "head_assignment": null
+    }
+  ],
+  "heading_assignments": {},
+  "levels": [],
+  "aliases": {},
+  "item_code_settings": {},
+  "trade_registry": null,
+  "approved_by_user": true,
+  "status": "current",
+  "stale_reason": null,
+  "source_plan_hash": "903449c68cc9b37bb47b25353c98675fd05bcc9b04f124ee32e417201baae0ce",
+  "active_plan_hash": "903449c68cc9b37bb47b25353c98675fd05bcc9b04f124ee32e417201baae0ce",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "warnings": [
+      "No trade/profile selected",
+      "No CostX function selected",
+      "No unit selected",
+      "No levels set",
+      "No heading assignments set"
+    ],
+    "setup_completeness": {
+      "status": "incomplete",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": false,
+      "missing_required": [
+        "trade_profile",
+        "costx_function",
+        "unit",
+        "heading_assignments",
+        "levels"
+      ],
+      "missing_labels": [
+        "Trade/Profile",
+        "CostX function",
+        "Unit",
+        "Heading assignments",
+        "Levels"
+      ],
+      "warnings": [
+        "Workbook is attached but setup is not complete for future Builder engine."
+      ],
+      "next_actions": [
+        "Set trade/profile",
+        "Set costx function",
+        "Set unit",
+        "Set heading assignments",
+        "Set levels"
+      ]
+    }
+  },
+  "setup_completeness": {
+    "status": "incomplete",
+    "ready_for_dry_run": true,
+    "ready_for_future_engine": false,
+    "missing_required": [
+      "trade_profile",
+      "costx_function",
+      "unit",
+      "heading_assignments",
+      "levels"
+    ],
+    "missing_labels": [
+      "Trade/Profile",
+      "CostX function",
+      "Unit",
+      "Heading assignments",
+      "Levels"
+    ],
+    "warnings": [
+      "Workbook is attached but setup is not complete for future Builder engine."
+    ],
+    "next_actions": [
+      "Set trade/profile",
+      "Set costx function",
+      "Set unit",
+      "Set heading assignments",
+      "Set levels"
+    ]
+  },
+  "normalization": {
+    "status": "clean",
+    "warnings": []
+  },
+  "conflicts": [],
+  "snapshot_hash": "5657ba2a5f3ac1933a8b11aa0e4a17b0f5613b22f5aa2d038b7cca74c2b2adca",
+  "created_at": "2026-05-25T11:20:00.705334+00:00",
+  "updated_at": null
+}

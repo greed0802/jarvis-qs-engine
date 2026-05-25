@@ -1,0 +1,57 @@
+{
+  "task_id": "task_307c674c057b4504b78b0c817a133542",
+  "conversation_id": "alpha9_conflict_trade",
+  "tool": "builder",
+  "status": "needs_clarification",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.0
+  },
+  "pending_clarification": {
+    "clarification_id": "clar_c08e89b2d6a24d848073dec2f41caf79",
+    "type": "trade_conflict",
+    "prompt": "I found more than one trade/profile. Choose one before I update the Builder setup.",
+    "options": [
+      "Use Wall Types",
+      "Use Structural Steel",
+      "Cancel"
+    ],
+    "expected_answer_classes": [
+      "choice",
+      "cancel"
+    ],
+    "resolver_name": "resolve_parser_conflict_guard",
+    "context": {
+      "trades": [
+        "Wall Types",
+        "Structural Steel"
+      ]
+    },
+    "repeats": 0,
+    "max_repeats": 2,
+    "status": "open",
+    "created_at": "2026-05-25T11:20:03.109500+00:00",
+    "updated_at": "2026-05-25T11:20:03.109500+00:00",
+    "task_id": "task_307c674c057b4504b78b0c817a133542"
+  },
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:03.066442+00:00",
+  "updated_at": "2026-05-25T11:20:03.109500+00:00"
+}

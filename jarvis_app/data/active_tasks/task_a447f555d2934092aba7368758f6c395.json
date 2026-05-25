@@ -1,0 +1,75 @@
+{
+  "task_id": "task_a447f555d2934092aba7368758f6c395",
+  "conversation_id": "alpha9_head",
+  "tool": "builder",
+  "status": "needs_clarification",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": null
+      },
+      {
+        "zone_id": 2,
+        "values": [
+          "External",
+          "Internal"
+        ],
+        "head_assignment": null
+      }
+    ],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.95
+  },
+  "pending_clarification": {
+    "clarification_id": "clar_0dff338c0302450184d4e0bc97da9358",
+    "type": "heading_ambiguity",
+    "prompt": "Which zone should use Head2?",
+    "options": [
+      "Use Head2 for Zone 1",
+      "Use Head2 for Zone 2",
+      "Cancel"
+    ],
+    "expected_answer_classes": [
+      "choice",
+      "cancel"
+    ],
+    "resolver_name": "resolve_parser_conflict_guard",
+    "context": {
+      "head": "Head2",
+      "zone_ids": [
+        1,
+        2
+      ]
+    },
+    "repeats": 0,
+    "max_repeats": 2,
+    "status": "open",
+    "created_at": "2026-05-25T11:20:03.657651+00:00",
+    "updated_at": "2026-05-25T11:20:03.657651+00:00",
+    "task_id": "task_a447f555d2934092aba7368758f6c395"
+  },
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:03.446587+00:00",
+  "updated_at": "2026-05-25T11:20:03.658653+00:00"
+}

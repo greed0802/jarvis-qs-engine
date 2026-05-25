@@ -1,0 +1,59 @@
+{
+  "task_id": "task_e2b63a7079124664b4f652bdba9b884d",
+  "conversation_id": "alpha9_count_conflict",
+  "tool": "builder",
+  "status": "needs_clarification",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.0
+  },
+  "pending_clarification": {
+    "clarification_id": "clar_7939afc49ae448e7a6b48a6b639adf2b",
+    "type": "function_unit_conflict",
+    "prompt": "Count usually uses a count unit such as no, nr, count, item, each, or pcs. Which setup should I use?",
+    "options": [
+      "Use XGETCOUNT with unit no",
+      "Use XGETCOUNT with unit nr",
+      "Keep the stated unit and choose another function later",
+      "Cancel"
+    ],
+    "expected_answer_classes": [
+      "choice",
+      "cancel"
+    ],
+    "resolver_name": "resolve_parser_conflict_guard",
+    "context": {
+      "function": "XGETCOUNT",
+      "units": [
+        "m2",
+        "count"
+      ]
+    },
+    "repeats": 0,
+    "max_repeats": 2,
+    "status": "open",
+    "created_at": "2026-05-25T11:20:03.223538+00:00",
+    "updated_at": "2026-05-25T11:20:03.223538+00:00",
+    "task_id": "task_e2b63a7079124664b4f652bdba9b884d"
+  },
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:03.156614+00:00",
+  "updated_at": "2026-05-25T11:20:03.223538+00:00"
+}

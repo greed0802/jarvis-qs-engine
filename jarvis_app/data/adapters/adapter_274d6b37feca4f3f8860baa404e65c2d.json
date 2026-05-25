@@ -1,0 +1,140 @@
+{
+  "adapter_input_id": "adapter_274d6b37feca4f3f8860baa404e65c2d",
+  "conversation_id": "alpha6_snapshot_adapter",
+  "task_id": "task_f0bd8dbc30224baf89d8ea1fff04c79e",
+  "snapshot_id": "snap_8a86cba7f99b4bf690042fd487d12e55",
+  "snapshot_status": "current",
+  "route": "builder_adapter_dry_run",
+  "blocked": false,
+  "reason": "builder_adapter_dry_run_completed",
+  "adapter_status": "dry_run_ready_with_warnings",
+  "freshness": "current",
+  "stale_reason": null,
+  "engine_called": false,
+  "excel_created": false,
+  "workbook_read": false,
+  "adapter_input": {
+    "adapter_input_id": "adapter_274d6b37feca4f3f8860baa404e65c2d",
+    "conversation_id": "alpha6_snapshot_adapter",
+    "task_id": "task_f0bd8dbc30224baf89d8ea1fff04c79e",
+    "snapshot_id": "snap_8a86cba7f99b4bf690042fd487d12e55",
+    "snapshot_hash": "4af249a3dafe7d3a729a9cd0a1a12e6ecf0325cdb33069b5e708cc59cff00d8b",
+    "source": "builder_run_snapshot",
+    "workbook_ref": {
+      "workbook_id": "att_0f4fae9562b34aa6a0ae48a20bd8ef19",
+      "attachment_id": "att_0f4fae9562b34aa6a0ae48a20bd8ef19",
+      "filename": "Steel test.xlsx",
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size_bytes": 30,
+      "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_0f4fae9562b34aa6a0ae48a20bd8ef19_Steel test.xlsx",
+      "source": "upload",
+      "bound_to_task_id": "task_f0bd8dbc30224baf89d8ea1fff04c79e",
+      "created_at": "2026-05-25T11:19:59.848171+00:00"
+    },
+    "workbook_read": false,
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "zone_mode": "rebuild",
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": null
+      }
+    ],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "setup_completeness": {
+      "status": "incomplete",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": false,
+      "missing_required": [
+        "trade_profile",
+        "costx_function",
+        "unit",
+        "heading_assignments",
+        "levels"
+      ],
+      "missing_labels": [
+        "Trade/Profile",
+        "CostX function",
+        "Unit",
+        "Heading assignments",
+        "Levels"
+      ],
+      "warnings": [
+        "Workbook is attached but setup is not complete for future Builder engine."
+      ],
+      "next_actions": [
+        "Set trade/profile",
+        "Set costx function",
+        "Set unit",
+        "Set heading assignments",
+        "Set levels"
+      ]
+    },
+    "normalization": {
+      "status": "clean",
+      "warnings": []
+    },
+    "conflicts": [],
+    "created_at": "2026-05-25T11:20:00.010898+00:00"
+  },
+  "validation": {
+    "valid_for_dry_run": true,
+    "valid_for_future_engine": false,
+    "issues": [],
+    "warnings": [
+      "No trade/profile selected",
+      "No CostX function selected",
+      "No unit selected",
+      "No heading assignments set",
+      "No levels set"
+    ]
+  },
+  "message": "Builder adapter dry run completed. No Builder engine was called and no Excel file was created. Future engine readiness is not complete yet.",
+  "setup_completeness": {
+    "status": "incomplete",
+    "ready_for_dry_run": true,
+    "ready_for_future_engine": false,
+    "missing_required": [
+      "trade_profile",
+      "costx_function",
+      "unit",
+      "heading_assignments",
+      "levels"
+    ],
+    "missing_labels": [
+      "Trade/Profile",
+      "CostX function",
+      "Unit",
+      "Heading assignments",
+      "Levels"
+    ],
+    "warnings": [
+      "Workbook is attached but setup is not complete for future Builder engine."
+    ],
+    "next_actions": [
+      "Set trade/profile",
+      "Set costx function",
+      "Set unit",
+      "Set heading assignments",
+      "Set levels"
+    ]
+  },
+  "normalization": {
+    "status": "clean",
+    "warnings": []
+  },
+  "conflicts": [],
+  "created_at": "2026-05-25T11:20:00.010898+00:00",
+  "updated_at": null
+}

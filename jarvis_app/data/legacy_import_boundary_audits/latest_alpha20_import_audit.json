@@ -1,0 +1,84 @@
+{
+  "audit_id": "legacy_audit_515a156b3b9448a1819000d10fc1be1d",
+  "conversation_id": "alpha20_import_audit",
+  "client_event_id": "a20_audit_001",
+  "route": "builder_legacy_import_boundary_audit",
+  "blocked": false,
+  "audit_status": "locked_no_import",
+  "reason": "legacy_import_boundary_locked",
+  "version": "v5.0.0-alpha.36.3",
+  "legacy_import_attempted": false,
+  "legacy_module_imported": false,
+  "legacy_builder_callable": false,
+  "legacy_builder_called": false,
+  "builder_engine_execution_enabled": false,
+  "workbook_read_enabled": false,
+  "excel_output_enabled": false,
+  "dynamic_import_allowed": false,
+  "subprocess_allowed": false,
+  "workbook_read": false,
+  "engine_called": false,
+  "excel_created": false,
+  "contract_only": true,
+  "safety": {
+    "workbook_read": false,
+    "engine_called": false,
+    "excel_created": false,
+    "contract_only": true,
+    "legacy_builder_called": false
+  },
+  "import_boundary": {
+    "policy": "no_legacy_import_allowed",
+    "legacy_import_attempted": false,
+    "legacy_module_imported": false,
+    "legacy_builder_callable": false,
+    "legacy_builder_called": false,
+    "dynamic_import_allowed": false,
+    "subprocess_allowed": false,
+    "workbook_read_allowed": false,
+    "excel_output_allowed": false
+  },
+  "bridge_stub": {
+    "module": "jarvis_v5.tools.builder.legacy_engine_bridge",
+    "status": "stub_only",
+    "can_prepare_blocked_request": true,
+    "can_execute": false,
+    "legacy_runtime_imported": false
+  },
+  "locks": {
+    "builder_engine_execution_enabled": false,
+    "legacy_builder_callable": false,
+    "workbook_read_enabled": false,
+    "excel_output_enabled": false
+  },
+  "static_findings": {
+    "legacy_runtime_imports_found": [],
+    "dynamic_import_patterns_found": [
+      {
+        "file": "tests\\smoke\\test_alpha1_state_router.py",
+        "pattern": "__import__(",
+        "diagnostic_only": true
+      }
+    ],
+    "subprocess_execution_patterns_found": [],
+    "workbook_reader_imports_found": [
+      {
+        "file": "tests\\smoke\\test_alpha31B_no_active_route_hygiene.py",
+        "pattern": "openpyxl.load_workbook",
+        "diagnostic_only": true
+      }
+    ],
+    "legacy_builder_call_patterns_found": [],
+    "diagnostic_only": true
+  },
+  "future_connection_requirements": [
+    "Explicit FIRE approval",
+    "Dedicated legacy adapter module",
+    "Static contract-to-legacy mapping",
+    "Preflight must pass",
+    "Execution kill switch must remain default false",
+    "Workbook read must remain disabled until approved separately"
+  ],
+  "message": "Legacy Builder import boundary audit completed. No legacy Builder module was imported or called.",
+  "created_at": "2026-05-25T11:19:19.339968+00:00"
+}

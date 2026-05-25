@@ -1,0 +1,50 @@
+{
+  "task_id": "task_0b0cc6a47ecf453b83e99a530cabb12b",
+  "conversation_id": "alpha7_plan_completeness_f59f892ed78241b9ac5ddb03fb25ace0",
+  "tool": "builder",
+  "status": "collecting",
+  "workbook": {
+    "workbook_id": "att_fe53ab2c985d4306b093e23a5a95cd8b",
+    "attachment_id": "att_fe53ab2c985d4306b093e23a5a95cd8b",
+    "filename": "Steel_test.xlsx",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size_bytes": 30,
+    "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_fe53ab2c985d4306b093e23a5a95cd8b_Steel_test.xlsx",
+    "source": "upload",
+    "bound_to_task_id": "task_0b0cc6a47ecf453b83e99a530cabb12b",
+    "created_at": "2026-05-25T11:20:00.451773+00:00"
+  },
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": null
+      }
+    ],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.95
+  },
+  "pending_clarification": null,
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:20:00.400201+00:00",
+  "updated_at": "2026-05-25T11:20:00.505890+00:00"
+}

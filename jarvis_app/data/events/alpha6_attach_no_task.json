@@ -1,0 +1,101 @@
+[
+  {
+    "event_id": "evt_67cd6decbf74466a8c474f7c66484b4e",
+    "client_event_id": "a6n_attach_001",
+    "conversation_id": "alpha6_attach_no_task",
+    "intent": "ATTACHMENT_ONLY",
+    "route": "attachment_received_no_active_task",
+    "request": {
+      "conversation_id": "alpha6_attach_no_task",
+      "text": "Here",
+      "client_event_id": "a6n_attach_001",
+      "mode": "ask_first",
+      "attachments": [
+        {
+          "attachment_id": "att_98e2fc746e6f4f9c8013a21deb9a4325",
+          "filename": "Steel test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 30,
+          "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_98e2fc746e6f4f9c8013a21deb9a4325_Steel test.xlsx"
+        }
+      ]
+    },
+    "response": {
+      "conversation_id": "alpha6_attach_no_task",
+      "event_id": "evt_67cd6decbf74466a8c474f7c66484b4e",
+      "intent": "ATTACHMENT_ONLY",
+      "route": "attachment_received_no_active_task",
+      "message": "Workbook received. Tell me what you want to do with it.",
+      "active_task_id": null,
+      "active_task_status": null,
+      "pending_clarification_id": null,
+      "blocked": false,
+      "reason": "attachment_present_no_active_task",
+      "router_step": "attachment_bind",
+      "duplicate": false,
+      "state": {
+        "conversation_id": "alpha6_attach_no_task",
+        "project_id": null,
+        "active_task_id": null,
+        "active_workbook_id": null,
+        "pending_clarification_id": null,
+        "latest_preview_id": null,
+        "latest_export_id": null,
+        "current_mode": "ask_first",
+        "created_at": "2026-05-25T11:20:00.093128+00:00",
+        "updated_at": "2026-05-25T11:20:00.093128+00:00"
+      },
+      "reducer_result": {
+        "workbook": {
+          "workbook_id": "att_98e2fc746e6f4f9c8013a21deb9a4325",
+          "attachment_id": "att_98e2fc746e6f4f9c8013a21deb9a4325",
+          "filename": "Steel test.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 30,
+          "source": "upload",
+          "bound_to_task_id": null,
+          "created_at": "2026-05-25T11:20:00.095595+00:00"
+        },
+        "workbook_read": false
+      },
+      "snapshot": null,
+      "route_confidence": 90,
+      "confidence_reason": "attachment_present_no_active_task",
+      "tool_candidates": [],
+      "fallback_used": false,
+      "requires_clarification": false,
+      "confidence_engine": {
+        "enabled": true,
+        "mode": "shadow",
+        "would_route": "choose_tool",
+        "would_confidence": 88,
+        "confidence_reason": "attachment_present_no_active_task_needs_tool_choice",
+        "tool_candidates": [
+          "builder",
+          "formatter",
+          "qa_checker"
+        ],
+        "requires_clarification": true,
+        "control_taken": false,
+        "actual_route": "attachment_received_no_active_task",
+        "route_mismatch": true
+      },
+      "route_context": {
+        "classification_owner": "main_router_route_context",
+        "classification_reused": true,
+        "has_active_task": false,
+        "has_pending_clarification": false,
+        "has_attachments": true,
+        "exact_action": null,
+        "active_action": null,
+        "active_action_language": null,
+        "no_active_language": null,
+        "negative_guard": null
+      },
+      "adapter": null,
+      "setup_completeness": null,
+      "readiness": null
+    },
+    "created_at": "2026-05-25T11:20:00.096599+00:00"
+  }
+]

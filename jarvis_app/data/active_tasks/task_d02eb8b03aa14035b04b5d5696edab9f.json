@@ -1,0 +1,178 @@
+{
+  "task_id": "task_d02eb8b03aa14035b04b5d5696edab9f",
+  "conversation_id": "alpha51_refresh",
+  "tool": "builder",
+  "status": "waiting_for_file",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New",
+          "Same"
+        ],
+        "head_assignment": null
+      }
+    ],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.95
+  },
+  "pending_clarification": null,
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": {
+    "adapter_input_id": "adapter_aff10b48964c44e3ae4eca804c205ecc",
+    "conversation_id": "alpha51_refresh",
+    "task_id": "task_d02eb8b03aa14035b04b5d5696edab9f",
+    "snapshot_id": "snap_64f62be9073c4b248ba902ad7dc13566",
+    "snapshot_status": "current",
+    "route": "builder_adapter_dry_run",
+    "blocked": false,
+    "reason": "builder_adapter_dry_run_completed",
+    "adapter_status": "dry_run_ready_with_warnings",
+    "freshness": "current",
+    "stale_reason": null,
+    "engine_called": false,
+    "excel_created": false,
+    "workbook_read": false,
+    "adapter_input": {
+      "adapter_input_id": "adapter_aff10b48964c44e3ae4eca804c205ecc",
+      "conversation_id": "alpha51_refresh",
+      "task_id": "task_d02eb8b03aa14035b04b5d5696edab9f",
+      "snapshot_id": "snap_64f62be9073c4b248ba902ad7dc13566",
+      "snapshot_hash": "bbc5ca57ddcf68cc8349e3681c06ae168df5b20b1f778d92a3be855288e8fd0f",
+      "source": "builder_run_snapshot",
+      "workbook_ref": null,
+      "workbook_read": false,
+      "trade_profile": null,
+      "costx_function": null,
+      "custom_quantity": null,
+      "unit": null,
+      "zone_mode": "rebuild",
+      "dynamic_zones": [
+        {
+          "zone_id": 1,
+          "values": [
+            "Old",
+            "New",
+            "Same"
+          ],
+          "head_assignment": null
+        }
+      ],
+      "heading_assignments": {},
+      "levels": [],
+      "aliases": {},
+      "item_code_settings": {},
+      "trade_registry": null,
+      "setup_completeness": {
+        "status": "incomplete",
+        "ready_for_dry_run": true,
+        "ready_for_future_engine": false,
+        "missing_required": [
+          "workbook_ref",
+          "trade_profile",
+          "costx_function",
+          "unit",
+          "heading_assignments",
+          "levels"
+        ],
+        "missing_labels": [
+          "Workbook",
+          "Trade/Profile",
+          "CostX function",
+          "Unit",
+          "Heading assignments",
+          "Levels"
+        ],
+        "warnings": [
+          "Workbook is not attached yet."
+        ],
+        "next_actions": [
+          "Set workbook",
+          "Set trade/profile",
+          "Set costx function",
+          "Set unit",
+          "Set heading assignments",
+          "Set levels"
+        ]
+      },
+      "normalization": {
+        "status": "clean",
+        "warnings": []
+      },
+      "conflicts": [],
+      "created_at": "2026-05-25T11:19:58.601140+00:00"
+    },
+    "validation": {
+      "valid_for_dry_run": true,
+      "valid_for_future_engine": false,
+      "issues": [],
+      "warnings": [
+        "No workbook attached",
+        "No trade/profile selected",
+        "No CostX function selected",
+        "No unit selected",
+        "No heading assignments set",
+        "No levels set"
+      ]
+    },
+    "message": "Builder adapter dry run completed. No Builder engine was called and no Excel file was created. Future engine readiness is not complete yet.",
+    "setup_completeness": {
+      "status": "incomplete",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": false,
+      "missing_required": [
+        "workbook_ref",
+        "trade_profile",
+        "costx_function",
+        "unit",
+        "heading_assignments",
+        "levels"
+      ],
+      "missing_labels": [
+        "Workbook",
+        "Trade/Profile",
+        "CostX function",
+        "Unit",
+        "Heading assignments",
+        "Levels"
+      ],
+      "warnings": [
+        "Workbook is not attached yet."
+      ],
+      "next_actions": [
+        "Set workbook",
+        "Set trade/profile",
+        "Set costx function",
+        "Set unit",
+        "Set heading assignments",
+        "Set levels"
+      ]
+    },
+    "normalization": {
+      "status": "clean",
+      "warnings": []
+    },
+    "conflicts": [],
+    "created_at": "2026-05-25T11:19:58.601140+00:00",
+    "updated_at": null
+  },
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:19:58.300449+00:00",
+  "updated_at": "2026-05-25T11:19:58.601140+00:00"
+}

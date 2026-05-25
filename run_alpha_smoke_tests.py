@@ -5,8 +5,8 @@ import json
 import sys
 from pathlib import Path
 
-from jarvis_v5.app import app
-from jarvis_v5.qa_runner.test_executor import TestPackExecutor
+from jarvis_app.app import app
+from jarvis_app.qa_runner.test_executor import TestPackExecutor
 
 
 def _configure_unicode_safe_console() -> None:

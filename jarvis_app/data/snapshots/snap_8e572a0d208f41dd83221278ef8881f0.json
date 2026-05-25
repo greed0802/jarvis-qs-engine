@@ -1,0 +1,80 @@
+{
+  "snapshot_id": "snap_8e572a0d208f41dd83221278ef8881f0",
+  "conversation_id": "alpha8_stale_a6095a874f1642f8935a69c0c227acd0",
+  "task_id": "task_7db124872071465b9567c92483a6f309",
+  "source": "active_task",
+  "workbook_ref": {
+    "workbook_id": "att_a3172b74a78741adac5c743d50350f3c",
+    "attachment_id": "att_a3172b74a78741adac5c743d50350f3c",
+    "filename": "Steel_test.xlsx",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size_bytes": 30,
+    "saved_path": "D:\\Jarvis\\jarvis_v5\\data\\attachments\\att_a3172b74a78741adac5c743d50350f3c_Steel_test.xlsx",
+    "source": "upload",
+    "bound_to_task_id": "task_7db124872071465b9567c92483a6f309",
+    "created_at": "2026-05-25T11:20:02.443697+00:00"
+  },
+  "trade_profile": "Wall Types",
+  "costx_function": "XGETWALLAREA",
+  "custom_quantity": null,
+  "unit": "m2",
+  "zone_mode": "rebuild",
+  "dynamic_zones": [
+    {
+      "zone_id": 1,
+      "values": [
+        "Old",
+        "New"
+      ],
+      "head_assignment": "Head2"
+    }
+  ],
+  "heading_assignments": {
+    "1": "Head2"
+  },
+  "levels": [
+    "GF",
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "aliases": {},
+  "item_code_settings": {},
+  "trade_registry": null,
+  "approved_by_user": true,
+  "status": "stale",
+  "stale_reason": "active_plan_changed_after_snapshot",
+  "source_plan_hash": "7840fee6eff146e83f9c4363f6b00397fb506ecc58c14e89d1b3ddb195cfb1b1",
+  "active_plan_hash": "038a86dab8187323f1091a7d0c667c0480d3d0c393cd83c61396f91f9c339ed3",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "warnings": [],
+    "setup_completeness": {
+      "status": "ready_for_future_engine",
+      "ready_for_dry_run": true,
+      "ready_for_future_engine": true,
+      "missing_required": [],
+      "missing_labels": [],
+      "warnings": [],
+      "next_actions": []
+    }
+  },
+  "setup_completeness": {
+    "status": "ready_for_future_engine",
+    "ready_for_dry_run": true,
+    "ready_for_future_engine": true,
+    "missing_required": [],
+    "missing_labels": [],
+    "warnings": [],
+    "next_actions": []
+  },
+  "normalization": {
+    "status": "clean",
+    "warnings": []
+  },
+  "conflicts": [],
+  "snapshot_hash": "e484fef4bbe099b8f06aa26c1a263106babbbd3668d22538605bd8034f5a94ed",
+  "created_at": "2026-05-25T11:20:02.837227+00:00",
+  "updated_at": "2026-05-25T11:20:02.927461+00:00"
+}

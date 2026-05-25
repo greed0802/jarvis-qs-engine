@@ -1,0 +1,68 @@
+{
+  "task_id": "task_00a6eae2276f477c9026ac09cd05c4ee",
+  "conversation_id": "alpha5_pending",
+  "tool": "builder",
+  "status": "needs_clarification",
+  "workbook": null,
+  "plan": {
+    "source": "v5_alpha3_builder_shell",
+    "raw_command": "Build me a BOQ",
+    "trade_profile": null,
+    "costx_function": null,
+    "custom_quantity": null,
+    "unit": null,
+    "dynamic_zones": [
+      {
+        "zone_id": 1,
+        "values": [
+          "Old",
+          "New"
+        ],
+        "head_assignment": null
+      }
+    ],
+    "heading_assignments": {},
+    "levels": [],
+    "aliases": {},
+    "item_code_settings": {},
+    "trade_registry": null,
+    "warnings": [],
+    "confidence": 0.95
+  },
+  "pending_clarification": {
+    "clarification_id": "clar_19cf8e93e6b740c88023c8bee9335496",
+    "type": "zone_replace_confirmation",
+    "prompt": "Do you want to replace Old with Toad, or add Toad as a new Zone value?",
+    "options": [
+      "Confirm replace",
+      "Add as new",
+      "Cancel"
+    ],
+    "expected_answer_classes": [
+      "replace",
+      "add",
+      "cancel"
+    ],
+    "resolver_name": "resolve_zone_replace_confirmation",
+    "context": {
+      "old_value": "Old",
+      "new_value": "Toad",
+      "zone_ids": [
+        1
+      ]
+    },
+    "repeats": 0,
+    "max_repeats": 2,
+    "status": "open",
+    "created_at": "2026-05-25T11:19:59.406613+00:00",
+    "updated_at": "2026-05-25T11:19:59.406613+00:00",
+    "task_id": "task_00a6eae2276f477c9026ac09cd05c4ee"
+  },
+  "preview_result": null,
+  "export_result": null,
+  "adapter_dry_run_result": null,
+  "output_ids": [],
+  "feedback_log": [],
+  "created_at": "2026-05-25T11:19:59.282932+00:00",
+  "updated_at": "2026-05-25T11:19:59.406613+00:00"
+}
